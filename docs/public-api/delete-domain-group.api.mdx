@@ -1,0 +1,72 @@
+---
+id: delete-domain-group
+title: "Delete a domain group"
+description: "Delete a domain group"
+sidebar_label: "Delete a domain group"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVttu2zgQ/RVi9iG7gGRLsp04ess2SZFFty1SFwtsEBQUNbbZSKJKUk5cQf++GEq+O02yfjFBzeXM7QxrsHxmIL6DS5VzWRi490CVqLmVqrhJIYYUM7TYfn6vVVWCByXXPEeLmlRrKHiOEIPSM17InytVD2QBMfyoUC/BgxSN0LKkjxDDZI7s5pKpKbNzZNuaTD0Wspi5e41GVVqgAQ80/qikxhRiqyv0wIg55hziGuyyJPfGalnMwAN84nmZoQtL6dm30/G5EEk6Hk6DUTLk42gYDoaDQUCxWmkzUv60g/1aYpZuLLWxfTsdR8kwEuej4fTsPJieRYMgGfB0BE3jrZMg14GX3M7fgLtp7knYlKowhL2GKBjS327i2kKwGVWCtbVJmamEQGOmVZYtofFgeExz4hL6o0JDKqvUskduWKEsm6qqIOxCFRYLS/q8LDMpXE763w0ZqQ/hq+Q7CktNoalxrGzBG8ttZd6pFI+VaBfZbYuKtTpMkNJuGSmg+8YD1Frplw1ekZizw5RmJMtkioWVU4l6z/Rtl4iPyl67FJAfq7lAav/XQt+YZ1Nyqbl4oC7mRcpSTKrZ7LA3g+E4TTk/94PobOAP6XTOo1N/lIQYjTFKEhG0aGSOxvK8fBnPZCXKZMFuvnwiNDmn8nSHGFJu0SeTe3CiIBr5wcgPTyfhKB6M4uG4Nz4d/OsgpGi5zMyxuu8CuEhTSUeeMddJT9Y3JQo5lYK56rGVqabx4MnfIKjhqj2zcL+BXP3X1T8smQc5GsNn+5PMPirLViLrmr4u8Ttpfz45O6l5BYpVDJu7pmk2POQ697ZjARrl7fykOOVV5kZzwbMK356mTQ54IvwwGvhPy5/+2fj8WLhh4IfDSXgWj4I4CHpBEDwb7sqVI3Qat5OvBvUJe5R2Tjx/EkaD4ejkgGw6zli2xNl0Pw8MikpLur+r4U/kGvVFZecQ390TTRrUi9XyqXQGMcytLU3c7/NSRj3kZpnmXIueUHl/EfaCgzb9IBcIZGqPXR2hMs7SLZp17WXnarMN3QokONBfhP1W1neypl/LtIFNBF+IL9vybcexHiMCfoDuPRa0gpEtVaUZd+TOrHrAglXG0Upl50Q4gkO3UchW4hyA1x2uVxP/1z8TaqXkF/7fZmO9CF7S8HbcUGVlMVXO/arhuVle/n1x+45dfL4BD6iubRLCXnCkcBv5z1WSSUFq7FKJKsfCunHrdhgXblC6tbxWA2+vY3aaBRwnZWrmMP5CsC/zWZ/keqVj4YSLB2qAIn2nMjd9v127H3jAMzvBJ7uDglJRKmNzXmyhfK79dlKwLh2Ra7/MuCwItgNbd315B4uQ9LY7EzyIZUqPnrkylmTqOuEGv+qsaei6fanRTKXS8CSjN8uUZwYPAKzfCPD7bfe8+YO9/Ul3NI4HXB57S3aEB25oF1xLAvj/wT7nvbvkxXLb5woVcRRtwznylKbgru4+XAiBpd1SOXg6Eew1i1xefbiaXFFr7A7j3ig5B0cR1XUrMSFOaJo1QMcRhLFp/gNbD/f7
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a domain group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/domain-groups/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a domain group
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","in":"query","description":"The ID of the organization owning the resources","required":true,"schema":{"type":"string","examples":["org_689ccbd84f05b4a824134330"],"title":"OrganizationIdField","example":"org_682b42c954f790f7230b3ad5"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Domain group deleted successfully"},"404":{"description":"The requested resource was not found","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"string","description":"Request status code","examples":["404"]},"error":{"type":"string","description":"Error code or type identifier","examples":["ResourceNotFound"]},"traceId":{"type":"string","description":"Request identifier for tracking and debugging","examples":["048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0"]},"timestamp":{"type":"string","description":"Timestamp in ISO format","format":"date-time","examples":["2025-05-16T15:35:48.863Z"]},"details":{"type":"object","description":"Additional context-specific error details"}},"x-examples":{"Example 1":{"statusCode":"404","error":"ResourceNotFound","message":"Organization Not Found","traceId":"048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0","timestamp":"2025-05-16T15:35:48.863Z","details":{"message":"Organization Not Found","error":"Not Found"}}},"title":"ErrorResponse"},"examples":{"default":{"value":{"statusCode":"404","error":"ResourceNotFound","traceId":"abc-123-xyz-789","timestamp":"2025-10-14T17:50:00.000Z","details":{"message":"Resource of type 'User' with ID '12345' was not found","property":"id"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

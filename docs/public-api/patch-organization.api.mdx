@@ -1,0 +1,72 @@
+---
+id: patch-organization
+title: "Partially update existing organization"
+description: "Updates the organization with the specified fields. Only provided fields will be updated."
+sidebar_label: "Partially update existing organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vttu4zYQ/RVi+tIC8jXxrqM3bzZpU3S7QeKgwAZGQVMjixuJ1JKULyvo34uhZEe+NOkCjV8sUTPDwzPDM1OCztFwJ7W6iSCEnDuRfDYLruR3vwoBRGiFkbl/C+Ehj7hDy1yCTLcM2Uq6xK/aHIWMJUYslphGtss+q3TDcqOXMtqtspVMUzZHVviAURcCyLnhGTo0FsLHEhTPEEJo73ITQQAGvxXSYAShMwUGIFWNPDkGq+S3ApmMUDmCZJiOj5BDALjmWZ42m/39bjw8G0QixvkYL+L+xZD3R8P5eAwBWJFgxiEswW1ysrfOSLWAqprVuNC6DzrakMUhzH1obZKZnn9F4WoKG3qcJnJybpzkabrZ0gQBCK0cKkdb8DxPpfAxel8txS2PIdbBiV5DyXYSLX2t2T08SAAZX/+BauESCAfD8SHsP3HFyPNVIiciQ3ajRJc9NMirqp26xxrALAAnnfeo7faKr6pqJ5trZWvYw36f/l4gs2GK2UIItDYu0nTz/9Emo1OkvWnZVcG/JusgOT+UGIorDBJXE09LrE3GHYRA/HWczBCCV3acygyt41nOVgmqE6LALWv22AMx7A9Hnf6oMzibDvrh8DwcjLrn/fEXwtTk700xpdy61pU6Aez9dDAIz0YEbPTu/Zej6pXk59PSZrGNvlXa94k27kRln58q5hu15KmMWCMnrKWK3mVw7PKgeOESbeR3jFiHbSNowzJprVQLRt+pGuuqZ04/oarDnR2Hu9ZmLqMIlY9liziWQqJyLEfjA2rlBao+K3OJtPv15gOfv3JPlXYs1oWKvPnw4th8qjX7xNWG3dVUWNZhd7RjKjPpGK4FYoTef3SaSYdG8ZTdo1miYVfGaOMz6fiCesweIEsZsygKI93GNyBNrA0hfJxVQQlz5AaNf5sFkKFL9K5l+uZFkgm95aDX5sL2yv0GVlEb8XjqLleYFEJInMtt2OvxXA67yO0myrgRXaEzqFqw7kmlaiH64OFMCtp1JwwU5uhC/IqKejyyjS4M414V6wpgxUFxbFscxWrOGzQP19ub+PtfU2J8/sL+PxZjJ7+veQR721AeSb3vntvu1fYe74aHE22IBoZYe9DN9bzidvPx0+Tukk1ubyAAyk1N3aDb7/aPCH22vy3mqRTkxj5qUWSo3FZxqd9w4VpYdm4kE3tZP0h4AOtOqhce4wuGPZktemTXzb0Mzrl4Whi6UZc61QZC+Ona/yAAnroprt0eCiIw19ZlXLVQ3h6MHAzX0joqE/3CXFg+99c3HRGbAnC4dr085dJrjeeobG7gIywHEOxNjRYCCA/GyFkAibaO7Mtyzi0+mLSqaPlbgYbu/yyAJTeSz6lGHkuIpKXnCMKYp/ZwoGsT8PNd0yh+Yf91FDh5rmaRK5pfljwt6A0CeMLN8VxczaoAEuSR16iyMbqsQXWmFOo5yNEERAJXe0yEwNy9aNuWv9vJ9PI3Kr5m6s10RE6Gr2hS56sasc7rPNBYTGslpFwtCr4g2zooVSPfV5MDLfDHOslJWdYWUxK1qtpR1LS5WVVV/wBrL3Gb
+sidebar_class_name: "patch api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Partially update existing organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/organizations/{organizationId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates the organization with the specified fields. Only provided fields will be updated.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"path","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"description":"Organization object with fields to be partially updated","content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","maxLength":128,"description":"New name of the organization","example":"Acme Inc. Updated"}},"required":["name"],"title":"UpdateOrganization"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Organization updated successfully","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88"},"name":{"type":"string","description":"Name of the organization","example":"Acme Inc."},"createdAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was created","example":"2025-05-13T10:24:15.408Z"},"updatedAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was last updated","example":"2025-05-17T11:35:15.567Z"}},"required":["id","name","createdAt","updatedAt"],"title":"ShortOrganization"}}}},"400":{"description":"Invalid request parameters"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Insufficient permissions to update this organization"},"404":{"description":"Organization not found"},"429":{"description":"Too Many Requests - Rate limit exceeded"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      

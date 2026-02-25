@@ -1,0 +1,86 @@
+---
+id: patch-change-personal-info
+title: "Update User Info"
+description: "Updates personal information for a specific user. This endpoint allows modification of user profile details such as first name and last name."
+sidebar_label: "Update User Info"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVtty2zYQ/ZWd7UNbD3XxJWnDN8eOW2dy8Tj29MH2dCBiKSIGAQYX2YpG/95ZkJIoK03SvnWmetCQBHb3YPfsWSxQki+caoKyBnO8bqQI5KEh560RGpQprasFL0NpHQjwDRWqVAVET24IV5XyQEY2VpkAQmv74KG2kre0ZrZMW6FxtlSaQFIQSnvwsahAeCiV8wGMqAmEkaBF9za8Nbdmby9BEhNNcKZIS5/v7d2aAZytrfjtjVi/sM07awZ/Y/eqFkqDkNKR9/CTo09ROfLgqRFOBIIZuQ32UtuHn9nsmk9wfrp6XMVtvW2Z+CBC9C2OC3K18l5Z4+GyjSQ7HG+jDzAhCBW16QkV1Z70jHwG1q23VGJGIGStDDirCZRJJtZNhVGfU0jM0Dbk0vO5xBwbEYrqz6ISZkoXXSXPTWkxQz5kTYGcx/zmLkM+P/nw0so55gvs0iExDy5ShoU1gUzgJdE0ujvj6KNntizQFxXVgp/CvCHM0U4+UhE4jmNIQZHnVT4gI1vv88EpM8XsCf2uOBlGfYoESpIJqlTkmEDrLD1U1tMWK31lo5acypjIKzHDdhVzjFHxOz2KutEc+KiUR788E+MBPR+LwdGhGA9+PSjLwXP54tnhQVEc0osJLjPkCIx3G9/7dDzgrAhllJlugG01SiIcBNtBGsJ7o+fcADMlSa7WH5TWPdzDPtAFprZ4J2pG/doaESrBleb26L5+qFWoGKzQ+n2J+c23ytBz+a1KtEIg+83J7b86LmZYK/OGzDRUmO9nWIvH9dt43M/4GvuyD/5746/V4N+G75K0zHrcvullogfqLsOgQrLiHu93zknqJVzePXXUMbsjTM/DyW73LZettW+s8W1FDsbjXZZdP+VTRxBWzIK8L6PW8yFcUojO+DYp3Y5ERda9Iaf76EveXwoJXdfDAM7NTGglQZkmBtioQwZUN2HeOYaWUCxMkPa3uMg563wbaf8L5zAihso69ZkkDOAtK6GZsg/VReV1bvNOOoO9J9O6O9x1d2bdRElJBgZwvDEkCZMYQIvinr03a8nd9B8EHlKcmx99P7FtqKPdUO9sgNJGw7BTNR5UqFKiu+lHEs5PQVryYGwAelQ+JJJ5KqJTYZ660fL5Dlhol8wMMWXRTeX1TJWaQmXXep3EmQmMo9n+iMH6kWpF25ObtYq9wOg05liF0Ph8NBKNOhiS8HNZC1cMC1sjh1qh+MD63DLtJQlHjvPWaz52s9N6v5GhNAnnNjoQiXJtaSCmAm6qxthSCMxxkgJg1j2crST49R9XnOfJV+L/Mx/rwfMti2wrDFeH59blZuK92qjtakJ934DYzIfvVuneTFlJxCvh56dvjy9P4PjiHDPkGrcl2B+Oh+Odwmz2X8SJVgWbwaktYk0mrG4CaTYVaWKbFsDaDLMn7HlCnAwfB9pOE8avbBypejrifcMmCfdEFPdTx91yYrV1mOMPZ+mHPJnCFT2GLRScisb6UAvTQ9kKfnfPamm/dfrF5i7y/y31P3pL7dox0GMYNVqoJMCJaYtO+25wts80TRK5GaqV9YEXF4uJ8HTt9HLJnz9FcvP2HjsTTnEak9hmWJGQrBQ3C7ynOY/jljyDK4bA23VkKDuX2mVfly+Or05+Z4Z3t+PaSjZy4gGz9J9junuzeRLZ9G2BWphpFFPe2zrl318RCqb5
+sidebar_class_name: "patch api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update User Info"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/users/info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates personal information for a specific user. This endpoint allows modification of user profile details such as first name and last name.
+
+**Updatable Fields:**
+- First name
+- Last name
+
+**Non-Updatable Fields:**
+- Email address (requires separate verification flow)
+- User ID
+- Username
+- Email verification status
+
+**Permissions Required:**
+- Must be the user themselves, or
+- Must have admin role in the organization
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"userId":{"type":"string","description":"The unique identifier of the user whose information should be updated","format":"uuid","example":"4fd475a0-e60a-43a0-82ff-6d9532cc3e9b"},"info":{"description":"Object containing the user information fields to update. Only provided fields will be updated.","example":{"firstName":"Jonathan","lastName":"Smith"},"allOf":[{"type":"object","properties":{"firstName":{"type":"string","description":"Updated first name for the user","minLength":1,"maxLength":100,"example":"Jonathan"},"lastName":{"type":"string","description":"Updated last name for the user","minLength":1,"maxLength":100,"example":"Smith"}},"required":["firstName","lastName"],"title":"UserPersonalInfoChange"}]}},"required":["userId","info"],"title":"ChangePersonalInfo"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"User information updated successfully. Returns the updated user data."},"400":{"description":"Bad request - Invalid input parameters, empty update object, or validation errors"},"401":{"description":"Unauthorized - Missing or invalid authentication token"},"403":{"description":"Forbidden - Authenticated but lacking permission to update this user's information"},"404":{"description":"Not found - User with the specified ID does not exist"}}}
+>
+  
+</StatusCodes>
+
+
+      

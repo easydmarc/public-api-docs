@@ -1,0 +1,72 @@
+---
+id: dns-lookup-batch-txt
+title: "DNS lookup batch for txt record"
+description: "DNS lookup for txt record type for a list of domains"
+sidebar_label: "DNS lookup batch for txt record"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1lv2zgQ/ivE7Kt8ZdMtIKAPTuwsvGjiwla6BQxjQUtjS41EqiTl2jC0v30xpGTLR3P0bYH6JYw45zcHZ3Ygc1TcJFKMIvAhEvqjlE9FfsNNGAcbAx5EqEOV5EQDPgwepiy1JGwpFTMbwxSGUkXMbHO03zhLE22YXLJIZjwRGjzIueIZGlQa/NncA4XfCtTmRkZb8Hf230RhBL5RBXoQSmFQGLrieZ4moTWx81WTDTvQYYwZpxMpBR/k4iuGZGyuyCGToKbbjG/6K7zXDUpRZAtU4AFueJanCP67brd76mUQI8v4JsmKjPEVki8mRhbyMEaWCJYlaZpoDKWINJt1560lmjBmkdAem7V689ZSycyRQ+lBjYO/O6id1cd2KLODPW2pVjD3anO5UnwLHiQGs6Yb2qhErKAsS68B3myviSQkhvRAsDE2mhMbJj1xyBOr5dW5FNrBddXt0p9jKODt0fiR0T+IkrP53DkPRJGmfEFeLHmq8VKUHDMTPNtHKfgSVDnZbsb5CG9ynX8nna/Qofj3hlB9JHU2g/UHnS97LBFhWkTo/6PzZXsl5Wof2n95msLcm4H72tKJwdYaVbKsoPzAF2GEy97V79fvYP6G6Hs1pmdhI7tzrjRGDdOZoyYHeJqOl+DPXgpO5fP/HqmTOqndOq4TVyJjh0Q5Lz1Y8zSJuPPwEsSH+8vZ91qYUSmp9Is6MtSar1C73hsjo3Z80PZz9feE20vFd27IE25rL89talNNVefXiWt8ORfbhtOQkZkHDY3Afd4z3VeXxPqdK5GI1Q8wrW5/Afp6QBOxlJfBpJtfSL4WyRPeqvIbCVtB3RAzEPogaYK6SKv29K1AtZ0aborj4QKmj7e3w+n0APwzzmrLX/t5M7ofnT6hosjI1IPQh/GgH/TtIbgbPz4MwINgdD8cPwbgwXAyGU/Ag+lw8vmuP/pIdF8G4/v+6OHEK9dwKwdKuspQG57llya2c8v35OfNtxpSj16g3vvudfeP91dd+l2enMDNBd4hIRsvwDHeTWsvPSN2wio9uL40Vd3wiO0nMaK5Pqd5kIbdyUJEluLq6pziUeRKhpRZixTZUJjEbG1yGk6Nb2andTfQk4kaw0IRCb1HC+QKFU3j5Zxy18SSNoBcaluG3MTgQ2fd60RCtxyYHbMxnQXNkkDC1NqN8zsoVAo+xMbk2u90eJ5ctZHrbZRxFbpxq6F9SuOiK+8ba0O/IF37eJOYs2j/iYL2FGRbWSjGQ3KaGfmEghWaGjkvTIzCJCEn26wK8GsnvepwJ1XGDfjw198Bgbp4Rv/bZOzn4Jc4vCM1FCsaoyeHdWhYZ2tzfal2lHqNeHZ3aLTqOieHXG8H9/3JLet/GlFOo9IO11672+6eoX2g/1Qs0iQkNjaQYZGhMHUt0FbA3ehJ03eTDbyTlDjJBg82rVSurI3PEHaSbNUhunZuW9eCh08rRRVxK1OpwIff7uzPDlomwI05soLQpXzOuGhY2dhgbS6f7LGnYOwO68/PLr9VxA1uTCdPqcuUFUC7qtBmsO6R4n2pEZfdvl25zT2IqTD9Gex2C67xUaVlSZ9tR3I79ZqrxM3nM0qCGHlkC7x6RuHW+dEKyBzb2Ar7JJ+udKVXc/TDEHPzLG2zd3waTynBF9VSn8mIeFw/tdsWLZPS4up2C7eBpVysCvs0g5NJcePHRXlSUs2Jmottw8LdzlEE1BvKErzKFdsr6NEsy/8AAtvKIQ==
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup batch for txt record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/txt/batch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for txt record type for a list of domains
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domains":{"example":["example.com","example.org"],"type":"array","items":{"type":"string"}}},"required":["domains"],"title":"TxtBatchRecordsRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"domain":{"type":"string","nullable":false,"description":"The domain name of the TXT record.","example":"example.com"},"raw":{"nullable":false,"description":"The raw TXT records.","example":[["v=spf1 include:_spf.google.com","~all"],["google-site-verification=abcdef12345"]],"type":"array","items":{"type":"string"}},"object":{"description":"The parsed TXT record object.","allOf":[{"type":"object","properties":{"records":{"nullable":false,"description":"The raw TXT records.","example":[["v=spf1 include:_spf.google.com","~all"],["google-site-verification=abcdef12345"]],"type":"array","items":{"type":"string"}}},"required":["records"],"title":"TxtRecordObject"}]},"validation":{"description":"The validation of the TXT record.","allOf":[{"type":"object","properties":{"errors":{"description":"The validation messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"warnings":{"description":"The warning messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"info":{"description":"The info messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}}},"required":["errors","warnings","info"],"title":"DnsValidationResult"}]},"queryStatus":{"example":"SUCCESS","type":"string","description":"The status of the BIMI TXT record.","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"title":"DnsRecordStatus"},"timestamp":{"type":"number","description":"The timestamp of the TXT record lookup.","example":1704067200000}},"required":["domain","raw","object","validation","queryStatus","timestamp"],"title":"TxtRecord"}}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

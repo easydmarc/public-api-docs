@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-cname
+title: "DNS lookup for cname record"
+description: "DNS lookup for cname record type"
+sidebar_label: "DNS lookup for cname record"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVl2P4jYU/SvW7UsreYAZTbtS3hg+VlQLrIDZroR4MM4FspPYGduZAaH89+o6AQJh6bQqLwRyfM+5396DTtEIF2k1CCGAUNkvWr9kaV+bjhIJAocQrTRRShgIoDuasthD2EobJgnEDEptQuZ2KR1IhREJOjQWgvkevJkAErFtr3FogYPB1ywyGEKwErFFDhFZfs3Q7Gp8sw2yRGyjJEuYWCPTK+Y2yKSQG2SRYkkUx5FFqVVo2by1uFuhkxsWKsvZ/O5+cbcyOingwMHKDSYCgj3gViRpjBD83mq1OHjpAagsWaKBPOdH3aFORKTOVDuTXYq+Yvjw1JA6gSODdSZSa8jzBVm0qVYWLZ17aLXo69x74CC1cqgcvRNpGkfSZ6v5wxJgXyEuCfTyB0pHaTCUWxcV5ks3TrhSCAeVxbFYkuIyG/UEFIeZz3WZgM6oPeyViW8A/4nbOQcj3v8jqxHvN2icMGt0jQpbg+hK96/Eo06QCmMxvODIObyJOApFAbzMCJ07vf9ZNEQcj1e++m9n5QV314JTp3zB3YGrwp6gtWKNXnT5/DFzlX/qZhtU/5Vyn3uZJ4YFBxc5n4Rvx0PD8mW+yHnRFVMnXGbPW2I0nvXHz6NurR+uibTewEHf02A4YLPvs2oxqCwhedPnTqc3nQKH0bjbnrX9w5FoNhj2xs8z4NCbTMYT4DDtTb7124MvhPveHQ/bg1HVqa6yE89RepDTqwStE0laCW85K64pP8Kv1Uc5Ps+q+f5T67H1x6eHFn0uo3+aQOId+KmUKmV6HvKq3opffqAXnkGeE8vjtZnzJEI2wdcMrQOPeaxjRtqxvs5U6BEPD3XEs0qNllQUyxhZT7nI7XxdObGmveAXSbFrSKNFmRmCUM8sURg0EMwXNCUTdBtNy2mNvoGE20AAzbf7ZqjsXRHMpiyXlUXzdlg8mYkhgI1zqQ2aTZFGDw0UdhcmwshiOlWIpzRHi6Z88vTtjHiO2SYztVx/RkXbE9lOZ4YJSf4yp19QscxGas1E5jaoXCTFYUeQrdI/Xj70tUmEgwD+/GtG8Vze4P93No4L4p9O8DMaSlOkVtrTl8XTE3bXHbYnHdb+OqDiQ2OLINw3Wo1WLTQn/NdsGUeSjrGullmCyh2KlnabKKZ1uW2Px4Bf5O8idRy2d7Fee403gM0oWTcJ10j9lFkK+bI2VLkdHWsDAfzS9x8/tN0Mt+5MBYUi1dYlQlVU3rgEXQZif1rgH7k7lWlwuHXNNKa2z8tA7MvKn8PbPZEca5/i6HUtOGy0dQTZ75fC4rOJ85z+Lm4p1BNh5BsyvL52q2L/34vXVb/89qteDN9EnBEM6P71cam/Tspp+Ru7TXWcpCeiBf0wUXEVmdPy2qAI/fQp1zO0pcTUVU7V7mFnY+pzj/pJnLfvRfNVrwZC7Sq29/sCMaMpkudwkO6nCm3XPP8bHQvw6A==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for cname record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/cname"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for cname record type
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domain":{"type":"string","nullable":false,"description":"The domain name of the CNAME record.","example":"example.com"},"raw":{"type":"string","nullable":false,"description":"The raw CNAME record.","example":"target.example.com."},"object":{"type":"object","description":"The parsed CNAME record."},"validation":{"description":"The validation of the CNAME record.","allOf":[{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}]},"queryStatus":{"example":"NOTFOUND","type":"string","description":"The status of the BIMI TXT record.","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"title":"DnsRecordStatus"},"timestamp":{"type":"number","description":"The timestamp of the CNAME record lookup.","example":1704067200000}},"required":["domain","raw","object","validation","queryStatus","timestamp"],"title":"CnameRecord"}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

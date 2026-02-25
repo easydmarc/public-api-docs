@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-ns
+title: "DNS lookup for ns record"
+description: "DNS lookup for ns record type"
+sidebar_label: "DNS lookup for ns record"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV0tv4zgM/isC9zILuEladHcA3zp9DGax7Q6advcQ5MDITKzWllxJbhME/u8Dyk7ixO5jgD1OLk0jkh/58SFqDaYgi14Z/S2BGBLt/jbmsSyujL1xEEFCTlpVsADEcHEzFlk4F3NjhXbCkjQ2EX5VEERQoMWcPFkH8WQNGnOCGHJcni3oms1ZeiqVpQTiOWaOIlBs9qkku+qA3aUkclyqvMwFLkiYufApCYkyJaG0yFWWKUfS6MSJyWh6NCcvU5FoF4nJ0fH0aG5NXotDBE6mlCPEa6Al5kVGEP8xGo0iCK7HoMt8RhaqKtr6nZgcld7z2tvy0Okew5tvA2ly2CI4b5VeQFVN2aIrjHbkWO9kNOI/+9FDBNJoT9rzGRZFpmTI0/DBscC6BdwAmNkDSc9psJxVr2rzTRg7ucaRCHSZZThjj5tsdBNQKwtmZJOAm3GT9QFEr8RcRWDxhSE/AGHxZWfT7RmdwAM5pyQOtBvIzJTJPEO74fXBpLrnYLplHK1FTpHylLsuAVUVbTjrIbHraIHWUdKOv4rgGTOVYC11mENW2p338odZ9s88NMvbSSRrjXXvQuTkHC7IhfZksIs9tHd4eQX7kVZ91dN15JFWmyC7PgW2mu8fM9f6pWt2ENK368xJcHOHwFWgfKjMf7dK180hq76g1UovXuG0Of1F6McJVXpu+snkk19MfpTJA92m81sF21DdMnOh3c7SLbky81BNq6i+pMYefdkz//oCc0H2nVE/vj8/vxyPmTWvcnIe86JlvrlK+8xvxTsIzV6xB3T8eXQ6+vPzyYg/h7zsbmd8gWhXIK2BvB9/29kWdzfuNjjAzFcRnPZdxl8wEbf0VJLzEGROuzI3xosrU+okSJycdCXudWGN5DzPMhKX2iu/CqXikcfQJKxX9frFDjqSpWURvh1mhJYsxJMprw85+dTwvrag0BPoU4hh+Hw8TLQ7qpkcag7ZkX3erGOlzSCG1PvCxcMhFupkQOhWSY5W1td2C3XM20XdZF8C9lnJINsks5lOir+S5m2SxMqUVqDkYIU3j6RF6XicYulT0l5J3GxObKsJLmq+XBmbo4cY/vrvjsmcvYH/cza2a9N7GtEeTHu6bcrmEt3q4vrs9lycff/GZUfW1SQcD0aDUYeanfz3cpYpyWriwsgyJ+035cobH9brSLODbtUgOsjfQeoiWB5lZhF8fENwqPLFkOUGRZgAM5SPC8tle24yYyGG367CJ+wm/o6Wfs8LpqIwzueoW16+9i44ZGG922nffUs0CfC09MMi41avGgrWTcFP4PmYEbYlzyut49ZJjfN8vl7P0NG9zaqKf65Xdm6FRIUmTPrX0rab/+8rpDeocIm1X0nPmJUsBvwY+birn26b8fi7eBtqOzp3QFP+x6p6VZ/w1ZESJmHiNLcsnElJhW9pdR4le6Pp6yW3Ee537UHPtRdf1KuW7fW6lrjj4VFVsHE9DBO+26rqB7rgByE=
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for ns record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/ns"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for ns record type
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domain":{"type":"string","nullable":false,"description":"The domain name of the NS record.","example":"example.com"},"raw":{"nullable":false,"description":"The raw NS records.","example":["jessica.ns.cloudflare.com","john.ns.cloudflare.com"],"type":"array","items":{"type":"string"}},"object":{"type":"object","description":"The parsed NS record."},"validation":{"description":"The validation of the NS record.","allOf":[{"type":"object","properties":{"errors":{"description":"The validation messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"warnings":{"description":"The warning messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"info":{"description":"The info messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}}},"required":["errors","warnings","info"],"title":"DnsValidationResult"}]},"queryStatus":{"type":"string","description":"The status of the NS record.","example":"SUCCESS"},"timestamp":{"type":"number","description":"The timestamp of the NS record lookup.","example":1704067200000}},"required":["domain","raw","object","validation","queryStatus","timestamp"],"title":"NsRecord"}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

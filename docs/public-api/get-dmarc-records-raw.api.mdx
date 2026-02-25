@@ -1,0 +1,72 @@
+---
+id: get-dmarc-records-raw
+title: "Get raw DMARC records"
+description: "Get raw DMARC records for a domain"
+sidebar_label: "Get raw DMARC records"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVdtu2zgQ/RVi9pW+JOi+qCiwuXXRxXY3SFLsg2EUY2ossRFJlaRSG4L+vRhSiS9JsxesH2xKnuEcnplz2INryWPUzn4ooYCK4qVBr25IOV+GG/wGEkoKyuuWg6CAXykKj9/E5cezmwvhc6BYOy9QlM6gtiChRY+GIvkAxWIpwdPXjkI8d+UWij49ak8lFNF3JEE5G8lG/gvbttEqIZp9CVyxh6BqMsiruG0JCnCrL6Qi1/GMP2oK/K/BzVlFH8NepO3MijxIoA2atiEofp7P58dnuqtJGNxo0xmBFQm3FrEmoVDVJLQVRjeNDqScLYNYzJeTNUVVi9IGKRaTk+Vk7Z3J4TBIGGnYoQjRa1vto3hcTZUznFKR5T7Q55Lp/1y7EPfyV841hHZ/g0xcSWvsmpgfh0HuMbt4hLGUEHVMRQ96m1sCw5DzQutsyDyezuf8c8gR/G9t+g/0jGPGOU8xC3h4l4bw5K1o31ln6a3wHb4zqJvoCixD+Quvp75LHORa6D1uQYKOZMJzDMMPSNxBeJnOkcY3LzF3jqV4YlvCm9PT5zGfbOudohBw1ZC4slHHLfCOESvWEFz+cSt+d+6+axlBINV5DikWPawIPXkW2rCUYCjWjrXc8gyxFGMNBcweTmalDZMm7TFLYzYbzzTxSeeB/ENWbA+db6CAOsY2FLMZtvp0Shi2KS03ZQ/FLTc+9/Y8YTnruOYTt7zNCz6SJ15sXecFKj68iO6erOiCtpXALtZko1bI2FIJlkI+rBwX7503GKGA3/66Y3JXr9T/d3s8TfTfZciDMtwzFsTNzvGuHid236FGGxqlcDDvP3CDJHEJ2q5dOts4hFcYttmLz64/gARuYWb4ZDqfzp/xvou/7laNVpwmLp3qDNmYBD0qHVVSukVzUAbk0XAczYWEzaRxVcL4SuBMm2rGcdM2SX+F6r7yrrPlhWuchwJ+ep8+IAGbeEebeICCeeYJN2j3UL54OR1T0O+M7J/dZmN/I23irG343TCS0I/yWsDDCZd5Ehg/8FF3xpFEtpSQm7mAvl9hoE++GQZ+/bUjv82X5QN6zTaQFC2hJiyTvHu4py0UcJHRT+4YFoc3XXK2Y0se5GPGmVLUxldj953j+s9bHuvVeFsbV3JONgn+TpeBS2wm0ad3PTRoqw4rjs17co/wUIpHQkqnenRmu91D2Pc54o4dYRhAjkdJDgHDchiG74fR+a0=
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get raw DMARC records"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dmarc/records-raw"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get raw DMARC records for a domain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domain":{"type":"string","example":"example.com"},"generate_dmarc_host":{"type":"boolean","example":true,"default":true}},"required":["domain"],"title":"DmarcRecordsRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domain":{"type":"string","example":"example.com"},"records":{"example":["v=DMARC1; p=none; rua=mailto:adsd@mail.ru"],"type":"array","items":{"type":"string"}}},"required":["domain","records"],"title":"DmarcRecord"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

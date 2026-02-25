@@ -1,0 +1,72 @@
+---
+id: get-webhook-by-object-id
+title: "Get a specific webhook"
+description: "Get a specific webhook"
+sidebar_label: "Get a specific webhook"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVm1v2zYQ/ivE7csGyLbsvLTVN7dJgwzdWmQpAswwBko6W0wkUiFPdgxD/304SpatOEs6bIYByySP99zd89xpCySXDqIZTHO0pPQS5gGYEq0kZfR1ChEske4wzox5+Lj5Gt9jQtcpBFBKKwsktGy+BS0LhAgUbykNEZSSMgjA4mOlLKYQka0wAJdkWEiItkCbki0cWXZb13M+7EqjHTren4Qh/6ToEqtKhgMR3CBVVjtBGYp1gwoCSIwm1MTHZVnmKvHoR/eObbbHPo0Pg4OwHCupxqPZRXeELngG47tWjxUKlaImtVBoxcLYZ6DwSRZljj67chxPkpP0dIBni/PBu+X7bPBBhfeDh3E+KU70qTkrz2FeB20a33L/uyxQmMUrDi9MIZUWlyvU5ERbP+/BrDXaH4mxqbW4TtnTV7Z63WUpLWm0f40nJ6dn5+/efwi9v8rmP5DPmy9inaHt7hbYIF+rPBcxCsfl7fvLiEoXjUbt2jAxxai1diOUbpMW0iYeQ3PZAQxprdwcofiiHHGM/rjgUjDRlOtAuSrm8zGvmz6cGaQ+5cPEoiRkGbQLK7RMkdSLoTSWhhYTVCtMYT4PQBEW7iU9BCATUqtDOsTG5Cj1EfC7DCnDHgGFcqK17+FkFXJKWphTers4t6pAR7IouUS652QtndgHvDC2kAQRpJJwQKp45hsm4eRkEI4H4fg2DCP/HYZh+GdDlDL9nxDl0pFor/uPsOrDDjbbd4hWqXs5NUTvqNYV7zDThzHOAyBFOQe5U2fNnwAcJpVVtPFtNUZp0U4ryiCazblHOrSrXdP12uqEIEs1GXbE93pYjYfhCzRfIfBV/eUrJCGFKzFRC5UciLxAykw7CXzjZzAwWo33ctuqtIY99D+44TY99eNBAF1ZGfERrCvUPHZQbExlhUwSdCyzB9Sickovhawo436bSGjniNeEdwBB+/B5V+xf726hDnoJfO7/393RTZK3LIKeGy6p0gvj3bcVv5Ruc/Hb9OaTmH67hgC4oE0SxsPwhYrtz3+r4lwlbCYuTFIVqMnPunYIysSrpx3GnVnLzj1VeizhEJ8GuVl6jK8cHKliOeJzw9KLMpbJw9KaSqefTG4sRPDTZ/9h+ud0i0/UQ8GpKI2jQuoDlP/Iu14OutoRPtGozKXSsJ8uDSdnsBpDADtWQgCRSllpmXHE29ttLB1+t3ld8/JjhZZlNg9gJa2SMRdntoVUOX5OIVrI3OERku51A36+aZvDL2Jf9j7C3cTRPG9WMq/4HwTwgJvmfanm5pehTJlis227MU0SLOnA5OjFhhXcSfPqknkn+zR/RlJ/+4twttvmxC2rra47dF59DLCu/wbEYG9g
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get a specific webhook"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/webhooks/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get a specific webhook
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Returns the webhook","content":{"application/json":{"schema":{"type":"object","properties":{"objectId":{"type":"string","description":"Unique identifier for the webhook","examples":["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"]},"name":{"type":"string","description":"Name of the webhook","examples":["Domain Events Webhook"]},"ownerId":{"type":"string","description":"Object Id of Owner of the webhook","examples":["partner_1234567890"]},"url":{"type":"string","description":"URL where webhook events will be sent","examples":["https://example.com/webhooks/easydmarc"]},"events":{"type":"array","description":"List of event names this webhook subscribes to","examples":[["domain.created","domain.verified","report.received"]],"items":{"type":"string"}},"active":{"type":"boolean","description":"Whether the webhook is active","examples":[true]},"createdAt":{"type":"string","description":"Timestamp when the webhook was created","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]},"updatedAt":{"type":"string","description":"Timestamp when the webhook was last updated","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]}},"required":["objectId","name","ownerId","url","events","active","createdAt","updatedAt"],"title":"Webhook"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

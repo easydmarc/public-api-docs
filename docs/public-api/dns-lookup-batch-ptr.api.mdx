@@ -1,0 +1,72 @@
+---
+id: dns-lookup-batch-ptr
+title: "DNS lookup batch for ptr record"
+description: "DNS lookup for ptr record type for a list of domains"
+sidebar_label: "DNS lookup batch for ptr record"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1v4jgQ/ivW3FfzUtS73uYbLfTU07ZUQPdOQnwwyQDexnbWdrpFKP/9NE6AQGh3twcfCM6M55n3ZwsmQyu8NPougQgS7T4b85xn18LH60dvgUOCLrYyIxmIYPAwYWkQYUtjWeYtsxgbmzC/yTCcCZZK55lZssQoIbUDDpmwQqFH6yCazTlY/Jaj89cm2UC0DX+lxQQib3PkEBvtUXt6JbIslXGA2PnqCMMWXLxGJeiJjEIEZvEVY092LDnkJTp6q8Rrf4X3riapc7VAcgtfhcpShOj3brd76uV0jUyJV6lyxcQKyRe/RhaLeI1MaqZkmkqHsdGJY7PuvLVEH69Zoh1ns9bFvLW0RpXiUHCQWYCwNzmDP9vhCxwu2vSFOd8hFNaKDXCQHlUdufNW6hUURcFr8ZqFy0lberoaHr0NyRuHrLhxGWhSC3ouM9qV0el1u/Rz7Dn8evDfAvxGUmTWdIqDztNULMiDpUgdnktIWU1MC7VPyON0XJVfu57SfXjJZfH9g/as+P6mAbq58q8RQtLNhHWY1NRZKU23iDQdLSGa/ShQmbdVEps2+hRzisLBgqsDnIESMm1X/9uxUcDBoX1Buz80dvU/yq6G7rj6ytNR6VMxLzi8iFQmokR+LliH9+fz+rE6e8bNucQ3zT/jZme3hkShc2KFbcp09fxz19VOmte24TSOBPNgoRbKL3ul++olqX7L0W4mXvj8TJI4oM4V3Tp5urkZTibA4WE06E/74WF6O3p6GACH6d39cPQ0BQ7D8Xg0Bg6T4fjLbf/uM8n9Oxjd9+8eCEvTOxdMN/NULYXjLtmhKMgrhc4LlZ2bxU0ze/Gfs3RxdXnV611effp09UevOSChHAP8UCq1kjyOaR3puboOg7TgcHlueF6LhO0HLslcNmUejGe3JtdJkOj1mhJPOrMmppwvUmRD7aXfhNx7saL1GXZwuaYJosM4tyRCE2WBwqKlHVvMqar82tBez4wLDSL8GiLovFx0Eu1aZSA7mbedBa2M/Yhw4a7cphDB2vvMRZ2OyGSvjcJtEiVsHCZKUbM+oa1QNt51wNDPydY+13RNI9N/oSb2gWxjcstETE4zb55Rs9xJvWIi92vUXsaCsAUTEO2c5NXDrbFKeIjg73+mFNTFO/Z/7Y79uvuRBj8yQ7mibTk+kJzhrlLrpKRkHoEcnGMERBz00gQnqjIcCrcZ3PfHN6z/eEdljNaVobxod9vdRoAP8o/5IpUxqbGBiXOF2u/Kn/a9KBcZ7da6GvCTKjgpAA6vrdSsAsZ3BDtSrTok187ClFqI+HllqQluTGosRPDbbfiE7ein+OqPUFBAqYSV0DWUNSoayveEkJ4GY3sgNh9lsVWSPb76TpYKqSkCwe9t1VszeLkgw/vuoq4LNLrssDmHNfViNIPtdiEcPtm0KOg4DKGSHL8IK0tuMqMiWKNIQk9XOw1uSj9aU4ITZlke9uMpWSv4TqMfx5j5d2Xr4+JxNKGaXlTsXJmEdMoRGvgU0UQT4ho6vuJYqdCrPOxJKO+kvInjPjzpojoNEnpTQ7jdlhJTGgdFAbxyJYwH4hVF8R+mVUph
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup batch for ptr record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/ptr/batch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for ptr record type for a list of domains
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"ips":{"example":["8.8.8.8","1.1.1."],"type":"array","items":{"type":"string"}}},"required":["ips"],"title":"PtrBatchRecordsRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"ip":{"type":"string","nullable":false,"description":"The domain name of the PTR record.","example":"8.8.8.8"},"raw":{"type":"string","nullable":false,"description":"The raw PTR record.","example":""},"object":{"description":"The parsed PTR record object.","allOf":[{"type":"object","properties":{"ptrRecords":{"description":"Array of PTR records","example":["mail.example.com","server.example.org"],"type":"array","items":{"type":"string"}}},"required":["ptrRecords"],"title":"PtrRecordObject"}]},"validation":{"description":"The validation of the PTR record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"queryStatus":{"type":"string","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"description":"The status of the PTR record lookup.","example":"SUCCESS"},"timestamp":{"type":"number","description":"The timestamp of the PTR record lookup.","example":1747224799762}},"required":["ip","raw","object","validation","queryStatus","timestamp"],"title":"PtrRecord"}}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

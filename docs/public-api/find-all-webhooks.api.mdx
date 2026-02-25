@@ -1,0 +1,72 @@
+---
+id: find-all-webhooks
+title: "Get webhook list for specific owner"
+description: "Get webhook list for specific owner"
+sidebar_label: "Get webhook list for specific owner"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV21v4kYQ/iur6ZdWMmBIci/+RnO5U6p7idKcTipC1WIPeC/2rm93TEDI//006xcwpEmqFiFhlnl5ZuaZ2WEHJFcOohlMM7Sk9ArmAZgCrSRl9HUCESyVTqZZ9g0XqTH3DgIopJU5ElrW3IGWOUIE5kGjvU4gAKUhgkJSCgFY/FEqiwlEZEsMwMUp5hKiHdC2YDVHlt1W1ZyFXWG0Q8e/T8KQPxJ0sVUFw4EIbpFKq52QWSbYYSIe9rhiowk1sZYsikzFPojRd8equ1PXZvEdY+KALIdMqnacSDqUktbKLUdFmLvntetjztxxiMFRLF+1+lGiUAlqUkuFViyNFZRiGxMEgBuZFxn6EsnxYhKfJecDvFi+GrxevUkHb1X4fXA/zib5mT43F8UrmFdBU5Dn3H+WOQqzfMLhO5NLpcXVGjU50RDAe2hr/ayTLz4b4jphT19Y62mXhbSk0f49npydX7x6/eZt6P2VNntBPm8/iocUbWdbYI38QWWZWKBwTI6+v5SocNFo1JwNY5OPWkaNULptkksbewy1sUeI0UfxUTniGL244FI4QalyHShXLlh+weemD2cGiU/5MLYoCbmXmoM1WqZI4juqMJaGFmNUa0xgPj/lZtdUAciY1PqQDgtjMpT6BPi3FCnFHgGFcqLR7+HkVuaUNDCn9Hxx7lSOjmRecIl0z8mDdGIf8NLYXBJE3IY4IJUf+YZJODkbhONBOL4Lw8i/h2EY/lUTpUj+J0SZdCQac/8RVnU4Bmf7CdF0anAwOpnoHdW64h1m+jDGeQCkKOMg2+5kZznSo2Oulb2RK6X9bPzEkseJuTSapNJOFJ2ckDoRxtODjQsekd20sn4mY+JPT+YhGZKHzas04QrtaTlYTtRE7mV2PDnjymYqV/QCO7ncqLzMhS7zRT1tvE1RoOWAjso2Cdm2P3/e9I1cYWuXg9/n58hoa/PSlPolmOvYWcNBFUAq3Y3FtTKlu+kja3u3FvqMG/ongSqAzWCPaQdX9bMYHxTl7KLL6yRs0zDuYZ88AmcpM4dHCHgkVM0rgPPw/PTurse/NiSWpmQ+8Zfu/ha44clZk0o5f7tbH4fDuLSKtn7ZWKC0aKclpRDN5rw0OLTrdhXx90Q31GWhJsNuiPvZvh4Pw0dG9hqBTfWPPyB1EyFrsbkCY7VUcYPPN1tqeE9aoV8GeO2JYLQe7+8RLzraNV1ewT6kP3klqevz+0FgXTk5khO4H1DzfoZia0orZByj46vkHrUondIrIUtKeaeIuRv91uOp4R1A0Dy8bwfaH9/umE+LJ/z/OxvdrvWcRtBzw6VWemm8+2ZSXUm3ffdpensppjfXEAAXuk7CeBg+Usm9/E25yFTMauKdicscNbWdymuijH1fNqtrp9ZM4D2FeuwB31SZWXmMTwiOVL4asdyw8BfPQsb3K8ukvzSZsRDBL+/9i0d8Rne4oR4KTkVhHOVSH6B8GR97CekKSbihUZFJ5WdHs07VXJ3BegwBHOzRramovZfmAaTGEcvudgvp8KvNqoqPf5RouTHnAaylVXLBZZvtIFGOn5NuWBzB6lZ1+PW2uRp/E3tC9OG2+5bmbWsts5K/QQD3uD3431Hx1E1RJszA2a75dRrHWNCB3sk/A278rok/XDEtZb8LjjjsrT+KaberJe64Gauqg+ibkwFW1U+ddJTB
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get webhook list for specific owner"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/webhooks/owner/{ownerId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get webhook list for specific owner
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"ownerId","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Returns all owned webhooks","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"objectId":{"type":"string","description":"Unique identifier for the webhook","examples":["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"]},"name":{"type":"string","description":"Name of the webhook","examples":["Domain Events Webhook"]},"ownerId":{"type":"string","description":"Object Id of Owner of the webhook","examples":["partner_1234567890"]},"url":{"type":"string","description":"URL where webhook events will be sent","examples":["https://example.com/webhooks/easydmarc"]},"events":{"type":"array","description":"List of event names this webhook subscribes to","examples":[["domain.created","domain.verified","report.received"]],"items":{"type":"string"}},"active":{"type":"boolean","description":"Whether the webhook is active","examples":[true]},"createdAt":{"type":"string","description":"Timestamp when the webhook was created","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]},"updatedAt":{"type":"string","description":"Timestamp when the webhook was last updated","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]}},"required":["objectId","name","ownerId","url","events","active","createdAt","updatedAt"],"title":"Webhook"}},"meta":{"type":"object","title":"PaginationMeta","description":"Contains pagination and other meta data for the returned data","properties":{"total":{"type":"integer","description":"Total items","examples":[123]},"limit":{"type":"integer","description":"maximum number of items per page","examples":[20]},"page":{"type":"integer","description":"Page number for pagination","examples":[2]},"pageCount":{"type":"integer","description":"Total pages"},"hasPreviousPage":{"type":"boolean"},"hasNextPage":{"type":"boolean"}},"x-examples":{"Example 1":{"total":35,"limit":20,"page":1,"pageCount":2,"hasPreviousPage":false,"hasNextPage":true}}}}}}}},"404":{"description":"Owner not found or no webhooks exist for this owner"}}}
+>
+  
+</StatusCodes>
+
+
+      

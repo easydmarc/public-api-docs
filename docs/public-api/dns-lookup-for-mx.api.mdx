@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-mx
+title: "DNS lookup for mx record"
+description: "DNS lookup for mx record type"
+sidebar_label: "DNS lookup for mx record"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV99v2kgQ/ldWcy93kgMkyjVXv9FAKk4lVEB6lRAPiz3gbexdd3edgJD/99OsDTbYSdrehYcYPD+/+WZ2dg8qRc2tUHIUgg+hNJ+UeszSO6XHW/AgRBNokZIA+DC4n7HYvWdrpVmyZRoDpUNmdymCBynXPEGL2oC/2IPkCYIPCd/2Nzg24IHG75nQGIK/5rFBDwSZ/Z6h3jWczSNkCd+KJEsY3yBTa2YjZAEPImRCskTEsTAYKBkatugtL9Zog4iF0nhscXG5vFhrlRTi4IEJIkw4+HvALU/SGMH/s9freeBC90FmyQo15Ll3jDtUCRfyJGqrs/OgWwwfnjqBSuDowVgt5ObEg3kUaT8MNRqDb8PT4qmIp3SwUipGLiHPl2TKpEqSWX8PV70e/TvFFzwIlLQoLb3jaRqLwDGh+82QwL7msPSgVt8wsFRoTbyxojBfAlXJlal6L0LSrHRhgxEwjlvPkQgiNv5aMsywZ9TINFot8AlDyClF96aZ2SdhLNGlpk0m7dFNVRSuNSdshcXE/JdMZRbHfEWplqV7PcWSzMcIOy+CRYny5190qfnzSz7IcJllA0BSTbk2GFbarBAmIzyOJ2vX4a+jlWynL5WoT7if1uiXi5JqobSwu5pk2c1tkBykGyWoo3PZy+lbEHG5wTbsm3YP0sygfkJdMa2CPOEi7pzVlh/bv7UKcUnl0Wd2lGTcGBUIbjFkz8JGLo0z93W/C7jsuA948FfHfWD5JtjVuAJhvvBYhP16qGcz5xyRkWFPpFNFXY+Ixlae1+fdoqpiDfg6PC1hUBLCOmjHJdUmBUXyc+sVFU+UDuLL3AMXLy/ibytF9b61e3+Nu4+4+zF6PeKRsbVAEjSGb7BDTCqff8xc7Zem2Q6cw0dhVh5qEH45Ko3Ll6TqTqyZ5TYzpwfj7OH2djibNQ7FthCN0z9E92E0HrH513l9lsksoeAqo/eTQX/edw/zu8nD/QA8mI/Gw8nDHDwYTqeTKXgwG06/3PVHn0ju62Ay7o/u6ykNpCm4UiaQ06sEjeVJ+mMj5ijeIEq5PZ1M4sub65urq+ub9+9v3r07B77aQfgzeBWLamQ9hbsebEt/NDujtuW0NMiha3Knd922R3zgIZvi9wyNBSdz3ZS5V5bdqUy6c/v66qop8SBTrQLi0CpGNpSWRgH5tHxD26TbPYvdlCI0GGTFzF/sYYVcowZ/saTNJ0EbKVpmN+j6jdsIfOg+XXZDaS6KAnQTWm6LUVnsqpmOwYfI2tT43S5PxVUHudmFCddBMatrXme0GBUN/MH57mfk5MgNMtNgxkeUtGoj26lMMx5QssyqR5QsM0JuGM9shNKKgB+WPTdhi+S88uFO6YRb8OHvf+YE5uoV/z9n47jxvaXhnbhxB4RcK+e+5M2Qm91g3J/esv7nEbEVtSlAuOz0Or0GNJX852wVi4DU2EAFWYLSHlhOyyovtpVyfT6qgXdWv7PSebC9iNXGxfiKYFckmy7JdVI3k1Y8eNxoou2tipUGH367c39uB7Jz3NqTKAiKVBmbcFmL8qVL0zkK+2odf/OiVRbA4tZ205j6Ny8h2JeEX8ATnfcV5Wl+b6l1ImUsvd/vV9zgg47znH4ubhnUCqFwTRi275X1MP/fK1prUu6ArF8hn3iclfvrz4T6+7SceX+w110d5+Hrjgrh8wtcpbOkL1oU+/mC9osIeeimVHnqQz8IMLU1rcYd7GScfRxS6/HTTj/r0/pSzuWuZnu/LyTmNHDyHA4ZuAFEC1Ce/wsK23Dm
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for mx record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/mx"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for mx record type
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}},{"name":"skipAddresses","required":false,"in":"query","schema":{"example":true,"type":"boolean"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domain":{"type":"string","example":"example.com","description":"The domain name for which MX records were retrieved"},"records":{"description":"List of MX records for the domain","type":"array","items":{"type":"object","properties":{"domain":{"type":"string","nullable":false,"description":"The domain name of the MX record.","example":"example.com"},"raw":{"type":"string","nullable":false,"description":"The raw MX record.","example":""},"object":{"description":"The parsed MX record object.","allOf":[{"type":"object","properties":{"mxRecords":{"description":"Array of MX records","type":"array","items":{"type":"object","properties":{"priority":{"type":"number","description":"The priority of the MX record","example":10},"exchange":{"type":"string","description":"The exchange server domain","example":"mail.example.com"},"addresses":{"description":"The list of IP addresses associated with the exchange server","example":["1.1.1.1","8.8.8.8"],"type":"array","items":{"type":"string"}},"isValidAddresses":{"type":"boolean","description":"Is valid addresses","example":true}},"required":["priority","exchange","addresses","isValidAddresses"],"title":"MxRecordObject"}}},"required":["mxRecords"],"title":"MxObject"}]},"validation":{"description":"The validation of the MX record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"queryStatus":{"example":"SUCCESS","type":"string","description":"The status of the BIMI TXT record.","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"title":"DnsRecordStatus"},"timestamp":{"type":"number","description":"The timestamp of the MX record lookup.","example":1747224799766}},"required":["domain","raw","object","validation","queryStatus","timestamp"],"title":"MxRecord"}}},"required":["domain","records"],"title":"MxRecords"}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

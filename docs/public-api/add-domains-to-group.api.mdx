@@ -1,0 +1,78 @@
+---
+id: add-domains-to-group
+title: "🚧 Add domains to a domain group"
+description: "🚧 Add domains to a domain group"
+sidebar_label: "🚧 Add domains to a domain group"
+hide_title: true
+hide_table_of_contents: true
+api: eJylV81y2zYQfhXM9tLOkBIly4nNm+L8jDtpnLHVdqYaH1YEJCEmAQYAFSscvkgvPfb1+gidBX8kSkritLoIIhe73+5++wEqweHKQjyHlzpDqSzcB6BzYdBJra45xICcN+9m+o3RRQ4B5GgwE04Y2lqCwkxADJJDAFJBDDm6NQRgxMdCGsEhdqYQAdhkLTKEuAS3zWmHdUaqFVTVfW0srHuh+ZYsuLCJkTnBgBjeSuuYXjJeI2FOM+ScvtxasBXBGpwImGjlhHLkD/M8lYlPa/jBktPyGI9efBCJowQNFcFJYT2WpjY7QzQGt5StE5k9lVC1D2beebivAhCPmOVp41kssUg9wA2mhehFm7emo0GiM+h2jv3P+8p/KI7NtbK1w3EUHVev6R+VTPSLxmyRJMLaZZGmlM9/LpiTLqUH00O23DwcldNHJm4dlS2o373zfDrxtinNlPL4rm48oewdqnoVIvTQgM+GTeEQxRO7NDnVmGu1wVRy1nCf7eZqwF4NVgPfqJZHu7dMWpZJa6VaDf5P0/ptsQ5dYa80P1H74AD4bQO43sMS2rRf4jlMoknNdmO0+bbDV2Tm/TBtGNkyyYVycimFOXB9K6wuTCLeafdaF4r7OM5gIk6R6kvQd+7ZkkIaTB6kWjFUnHGxKFarevd+5GhywTniZRiNn5+FE1pd4vhZeL4YifGFGC8WSVSjkZmwDrP823hmrSmTil3f3RCaDKk9zSIGjk6E5PIAzjgan4fReTh6Nhudx2fn8eRicPHs7A8PgQuHMrWn+t4HMOVc0hJT5pn06EKbi0QuZcJ891jrinj8GO4P0qt6zUaHBPL977p/3LIAMmEtrsj0xqxQyc+eteyddqw16Xr6tML3yv7l4vRK8wQUbQ67Z36gW8XzzL1tNBieIDQHZYr2QvxGauAReK+9EuAiCUfjs/Bx+zl8fnF5KttRFI4ms9E4PoviKBpEUfTFbGeNsNAkUNf9+SAbOdo73juR2NYHfFW1gmZFUhhJz+clvBBohJkWbg3x/J6OcyvMpr0fFCaFGNbO5TYeDjGX44FAu+UZmoRUcrgZDaIjXr6VGwHk6jGUygmjMG3P9b7hP3/9+Tebct67HTQ/6mPOz40TykqtakgPghLa8xy0DaIIFDUTbq2p8Lm2XizpThPDcDMa1q5D79oOS8mrYXto7+pyR7Jbs2C/Ot00UjmOcn4jFN29BNvqwjD0ZzNz+kEoVlivToVbk24ldDx5ZSdfCx8AgmbxuhWOn3+fESMXX4n/fT668+RbO4JeGOILHUe3uzteoxwHF55GI0m/pFpqD7edM7Tbl79Mb6/Y9P01tUsYWxdtNIhO0Gdn/75YpDKhbeylTopMKOdnrDk6MfHz2Vxiu20QHPC2R1nwUpjqlcf4FcOhzFZDshvkXvwXmDwQcRS/0qkf+h9e+w8EgKmbiUfXQ0GlIwZmqPZQPonyvXp0fSeBH+YpSkU5eORlQ+45bEbd/aahNwQQ+4s93/1BWNNExHMoywVa8atJq4oefyyEITm4p1kyEhfUt3kJXFpac4iXmNrD8S139xf48ba56/zEdgzqA26vfGq7G1mAoBloUigiz1ogJ7Z2k35VxwhntH238ei+VAXtjmmSiNx91XZfJd7f3BHrF83fl6yWd4Of6G8JfqpBap+z1wT/rIQU1aqoJbn2Sf3G/qQezJnP6mQZyrK2mJFgVFVXFS8gVJiq+hdYJrww
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"🚧 Add domains to a domain group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/domain-groups/{id}/domains"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+```
+x-internal: true
+```
+
+
+
+🚧 Add domains to a domain group
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"description":"List of domains to add to the group.","required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"domains":{"type":"array","items":{"type":"string"}}},"required":["domains"]},"examples":{"default":{"value":{"domains":["example1.com","example2.com"]}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Domains added to the group successfully","content":{"application/json":{"schema":{"type":"object","title":"AddDomainsToGroupOk","properties":{"groupId":{"type":"string"},"groupName":{"type":"string"},"domainsAdded":{"type":"array","items":{"type":"string"}}}},"examples":{"default":{"value":{"groupId":"group-a","groupName":"Group A","domainsAdded":["example1.com","example2.com"]}}}}}},"400":{"description":"Invalid request parameters. E.g. the required parameter is missing.","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"string","description":"Request status code","examples":["404"]},"error":{"type":"string","description":"Error code or type identifier","examples":["ResourceNotFound"]},"traceId":{"type":"string","description":"Request identifier for tracking and debugging","examples":["048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0"]},"timestamp":{"type":"string","description":"Timestamp in ISO format","format":"date-time","examples":["2025-05-16T15:35:48.863Z"]},"details":{"type":"object","description":"Additional context-specific error details"}},"x-examples":{"Example 1":{"statusCode":"404","error":"ResourceNotFound","message":"Organization Not Found","traceId":"048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0","timestamp":"2025-05-16T15:35:48.863Z","details":{"message":"Organization Not Found","error":"Not Found"}}},"title":"ErrorResponse"},"examples":{"default":{"value":{"statusCode":"400","error":"ValidationError","traceId":"abc-123-xyz-789","timestamp":"2025-10-14T12:30:00.000Z","details":{"message":"The request contains invalid parameters","property":"id"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

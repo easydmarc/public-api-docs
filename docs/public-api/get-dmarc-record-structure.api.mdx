@@ -1,0 +1,72 @@
+---
+id: get-dmarc-record-structure
+title: "Get DMARC record structure"
+description: "Get DMARC record structure for a domain"
+sidebar_label: "Get DMARC record structure"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVk1v2zgQ/SvE7FX+SNC9qAiw+eoii203SFLswfBhTI0lNiKpklRqQ9B/L4aUY9nJpgiwvpiSZ8g3b+Y9ugPbkMOgrLkpIIeSwpVGJ+9IWlfcB9fK0DqCDAry0qmGIyGHPymIq8/nd5fCxUjhd6FibZ1AUViNykAGDTrUFMh5yBfLDBx9b8mHC1tsIe/io3JUQB5cSxlIawKZwD9h09RKRmyzb56P7cDLijTyKmwbghzs6hvJwOc4riQo8vyrxs15SZ/9KNK0ekUOMqAN6qYmyH+fz+fHhT1UJDRulG61wJKEXYtQkZAoKxLKCK3qWnmS1hReLObLyZqCrERhfCYWk5PlZO2sTuHQZzDQsEfhg1OmHKPYrabSak5RpiKnwp21qRWj5JW1NaEZZyfWClpjW4f947ikm7RhrMNZe9g46Pts1ITFDvEyg6BCxPfaQNylLkLfp3zfWOMT9afzOX8dYoD/rbMJ9lVE+QU1vYvblBz3eY5ZwNNZZOTko2jOjDX0UbgWzzSqOtgcC1/8weupayMr6Sx0DreQgQqk/UsM/TGtL2DvwfyC6oHjD6/ReoGFeG5FBh9OT1/GfDWNs5K8x1VN4toEFbax6wFL1iRcfbkXf1v72DYMxZNsHYfkiw5WhI4cC7dfZqApVJZdorE+NgZDBTnMnk5mhfGTOu4xK7iGWSpu4kcO4sk9JRvooHU15FCF0Ph8NsNGnU4J/TbmpmaNoNzzaKTuX0RA5y0f/Mw5b/OKQxk2NhJb2zqBkhkQwT6SEa1XphTYhopMUBIZWzyCJZYqzobFJ+s0Bsjhr38fmOHVG+e/b4/nmf9VRnZwDDeOJXO3t9Hr3SSPbW/wtsF+DnTwmsWwb0TvWdtY2DCP1+i3yS3Ob28gA+5fovdkOp/OX5C+j79tV7WSnCaurGw1mRD1PhgBymgEJgp4nwbZ0WQcDUUGm0lty4jxjcCZ0uWM46ZN9IMVysfS2dYUl7a2DnL47VP8QAZYhwfahAMUTDLPuEYzQvnfd94xD93e7N5xUw5tDrQJs6bmd/1ARzdIbQFPJ3zWs9j4ITZw5yYjwS0zqFin+QK6boWevrq67/n195bcNt3GT+gU+0KUeAYVYRH13sEjbSGHy1TH5IGxcXjdRvc7NvA+22WcS0lNeDN2bCW3/9zziK+GvwPaFpzj8AeXhD/S1WEjr8n++V0HNZqyxZJj057cMjyU5ZGoYlU79zbbEcKuSxEP7A59D9lQSnQL6Jd93/8EQFwjEw==
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get DMARC record structure"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dmarc/record-structure"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get DMARC record structure for a domain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domain":{"type":"string","example":"example.com"},"inheritRootDmarc":{"type":"boolean","example":true,"default":true,"description":"Inherit the root DMARC record"}},"required":["domain"],"title":"DmarcRecordStructureRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"recordDomainName":{"type":"string","example":"example.com"},"records":{"example":["v=DMARC1; p=none; rua=mailto:adsd@mail.ru"],"type":"array","items":{"type":"string"}}},"required":["recordDomainName","records"],"title":"DmarcRecordStructure"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

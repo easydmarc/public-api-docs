@@ -1,0 +1,72 @@
+---
+id: get-organization-by-id
+title: "Get organization details"
+description: "Retrieves the organization details by the specified ID."
+sidebar_label: "Get organization details"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vttu2zgQ/RVi9mUXkK+J20RvbnOBF+i2SBws0MBY0NTYYiORCjly4gr692JoJbUiI9nFon6xRA3PHM7lDCuwBTpJ2ppZAjGskT67tTT6e1j7sJ0lEEGCXjld8ArEcIXkNG7QC0pR2D1zkSBJnXmx3IZvvkClVxoTMTvrQwSFdDJHQuchvq3AyBwhhn2E4M7hfakdJhCTKzECzV4LSWmHyo3R9yUKnaAhduSEXXVYQQT4KPMia5z98+5kfDRK1AqXJ3i6Gp6O5XAyXp6cQARepZhLiCugbcH2npw2a6jrBfPyhTUePX8fD4f81+bz+VAwXBOvRPhSKfR+VWbZFiJQ1hAaYhhZFJlWYd/gm2esqsvFLr+hIo6j46yR3jHRSZfvLw5UHTXJe8vvXzLHN11NVY5iZlSfcZVDSZhMQ1hW1uWSIIZEEvZI5wjRGx7nOkdPMi/EQ4qmW6IP0ovGR4vEeDie9IaT3uhoPhrG4+N4NOkfD0++MqeySH45p0x6Eo2jw8Tez0ej+GjCxCbv3n+Fut5vlVuugyYt+1HcZ7+IgDQF1OvUularQ10z4PFw1C3rGyNLSq3T3zERPTEzG5npRFgncu29NmvB37m0diUsyN6hgQB31IW7sG6pkwRNwPLlaqWVRkOiQBcArfGCrNhofBCUat8unQB7/EbzGUtiZUuTBPPxadd8bq34JM1WXOF9iZ686IkrSSgynWsS+KgQEwz7J4d6fWYInZGZuEa3QSfOnbMuJIXkmgWuRchz8D2q0mnaBvWzHLMxxLeLOqpgidKhC2+LCHKk1DZ6HHSTUohhsBkN9iPhB1VbO2tWsMBmJ7ClyyCGlKjw8WAgCz3uo/TbJJdO9ZXNod4jdc1ys1OUD4HMtGSvzx3OMJ3KvkTD4wPF1pZOyCBvu+yL8kVhPKkrYzWnjZqHi6eW+vPvOcd7+Yr//4bxrKNv7YhabjiL2qxscN90zLn027NP06uPYvplBhFwlHdBGPWH/WEnND/tv5TLTCveJs6sKnM09CSCPAKkCrrSTMPnbdy5rfy9SF0Ej73MrgPHVwwHOl8P2K5fBGVaSnW3dtwZH21mHcTw20X4QQQyozk+UosFh6KwnnJp9lheIh2c/C+jUP0ccv/j3tCkhvCRBkUmddCAcOaq6Y1b2Iwgal0lmEv84m6xiCC1nti+qpbS443L6pqX70t03JeLCDbSabnknN9WkGjPzwnEK5l5fOV4v181WvyH+LfT9uC5mkVp+IqwkVnJbxDBHW67l6V6UUeQokyCdlSN0VQpLGhve+d60RKZy3Ouf9lutxfNEtAPUquqncWcu76un5k2M2BR1/UP8pCO4Q==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get organization details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{organizationId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves the organization details by the specified ID.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"path","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Organization details retrieved successfully","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88"},"name":{"type":"string","description":"Name of the organization","example":"Acme Inc."},"createdAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was created","example":"2025-05-13T10:24:15.408Z"},"updatedAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was last updated","example":"2025-05-17T11:35:15.567Z"}},"required":["id","name","createdAt","updatedAt"],"title":"ShortOrganization"}}}},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Insufficient permissions to view this organization"},"404":{"description":"Organization not found"},"429":{"description":"Too Many Requests - Rate limit exceeded"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      

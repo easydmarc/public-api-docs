@@ -1,0 +1,72 @@
+---
+id: get-spf-record-lookup-result
+title: "Get SPF record lookup result"
+description: "Get SPF record lookup result for a domain"
+sidebar_label: "Get SPF record lookup result"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVdtu4zYQ/RVi+kpfEmxfBPQh12KL7jaIs+iDYRRjaixxI16WpLI2BPXbi6Hk2HGCLBaoXyzLZzhnzswZduA8BUza2Y8lFFBRWvjNPSkXyj+de2z9PcW2SSChpKiC9gyFAn6nJBZ3tyJkqGgyVoQMFhsXBIrSGdQWJHgMaChRiFAsVxICfWsppktX7qDo8k8dqIQihZYkKGcT2cR/ofeNVpne7GvkxB1EVZNBfko7T1CAW38lxQx94GKSpsj/GtxeVPQpHiFta9YUQAJt0fiGoPh1Pp+flvZQkzC41aY1AisSbiNSTUKhqkloK4xuGh1JOVtGsZyvJhtKqhaljVIsJ2erySY4M8ChlzDKcGARU9C2Omaxf5oqZ6Dv5ZEky338SkLSKaPf7ND9ICr0/XBA9M7GQYnz+Zy/XlYJ/5vQwwhcZ5qf0dBPlCrH4HzOM2YJT78t7m7PhLaqaUsq/ol+Mz0KFP9i02RFhjQYAu5Agk5k4uv0/amkrxgfePxI5lHfD29JeomleG6DhA/n568xX6wPTlGMuG5I3Nik0y63PGHF9oDrzwsxJGQukVQbGFIsO1gTBgrsoX4lwVCqHXvWu5ibgqmGAmZPZ7PSxsngyFn0m9nwOAl7J0cKT4MZO2hDAwXUKflYzGbo9fmUMO5Kg0ENPTpiseCJGJp+mblctJzzWW8+5o1NYXnDkNi5NghUXLxI7pGsaKO2lcA21WSTVsjccgoo9sXK8eHWBYMJCvjj7wcWd/1O/p8743nUfxQhX6ThnrFT7g/L7GY/wMfLZ9ww4xI4HX9tNy4XMM7cDcbd9aeL+ytxcfcRJHCfBhnPpvPp/JW4B/xdu2604jBx7VRryKZs59HnqLLPbfbnIQzkyQScNF/CdtK4KnN8BzjTppoxbuqz3deoHqvgWlteucYFKOCX2/wBCdikB9qmFyxYTB5jg/aI5Xt3zKkS3WGb/dTdNLY00TbNfMPv+lGSbnTUEp7OONuzp3jC/AYkvPTVSkLNTiyW0HVrjPQlNH3Pr7+1FHbD1feEQbPzs4kl1IRldnQHj7SDAq6GIiYPTIvhTZsX3Ol67uU+4kIp8uld7PGyuPtrwZO8Hu9e40qOCfiddyB+Hy4Gl0Udlju/66BBW7VYMXY4kzuGL9134p1c1X5B290Rw64bEA+8BPoe5FhKXgrQr/q+/w++/PEP
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get SPF record lookup result"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/spf/lookup-result"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get SPF record lookup result for a domain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domain":{"type":"string","example":"example.com"}},"required":["domain"],"title":"SpfRecordLookupResultRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"recordDomainName":{"type":"string","example":"example.com"},"records":{"example":["v=SPF1 include:_spf.example.com ~all"],"type":"array","items":{"type":"string"}}},"required":["recordDomainName","records"],"title":"SpfRecordLookupResult"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

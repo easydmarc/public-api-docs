@@ -1,0 +1,72 @@
+---
+id: create-webhook
+title: "Create a new webhook"
+description: "Create a new webhook"
+sidebar_label: "Create a new webhook"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/ivE7atsy85LW31zk3TI0K1B6izADGGgpLPFhCIVkrJjGPrvw1G2JMddsmH9sAEzDNg+HXkP757njt6C40sL0RymEo0TaglxALpEw53Q6jqDCFKD3OE9JrnWjxCAwacKrfuosw1EW/9TGMwgcqbCAFKtHCpHj3hZSpH6nUYPViuy2TTHgtM3tykRItDJA6YOAigNxXUCLT1VvMCel3WGwAWQoU2NKGlPiOAXXiDTC+ZyZOsWIT7zopToz3WpCy4Uu1qhcpbtTxHXAei1QkMnfCvIF4+QXWcU6Qutej1kyY1TaH4fT05Oz87fvf8Q+niVkW/Hurv9zNY5mnZvhg3ytZCSJcgs5fYwXu5caaPRaGcbproY7VbbEXK7yQpuUo+h2awHgxvDN0coPgvr6IzenVEpLHO5sC0om+tKZsxWCS1LkDl9CGoOmU/8sGFPRiEawwqNWAhvMVhq44YGUxQrzCCOAxAOC3ucp7oOgKdOrPqkSLSWyNUR/PscXY6mXyImLNutJ+8Fr6TbM7YHmwwxxepYPW+o2PGlqWSbyzgAJ5wkPBd9pdw2MoG6bvazpVa24fYkHNPHIehZD2zOLUsQFbNVmqK1i0rKDetS+Z001pj/igTulHiqkIkMlaPqGbbQ5hUJ8HEySU+y0wGeLc4H75bv88EHET4MHsdyUpyoU31WnntC/i/zf7XM9/q2/y2BHyk62E2xbOreLs5MFGgdL0oqkToIsua2J8OFNgV3EEHGHQ6cKF7Ehkk4ORmE40E4noVh5N/DMAx/a4hSZt8JkeTWsd12/xDWi9bXdojgjS7YFq+f6f4Ze21yr86mM55OJsfN8FcuReabGltwITHz/LCYVka4DUTzLSTIDZpp5XKI5nEd02OzQmP9U6/CVjK8FJNhKxGvnNV4GH5DECsE2urQ3PR1xpnCda8ZFOhyTTekUlvfXDlhgdFq3OoSOtBfqSk3ffdjD3pbesJ6BOhHVHQVQ7bRlWHcDwPm9CMqVlmhloxXLqeenHIK5UOQbnwACHZfPu0J8dP9DOrgIHUv4/+9Pdpp89aK4CAMFZOG1W13lbxq+Nld/TottB28MzXlbX/u+918b4q7ZkINoA5AqIX2p92R8IrbzeXP09sLNr25hgCIOU3Ox8PwG9To/G+qRIqUlrFLnVYFKueZupvLPHW9Q7TLWtBtG+/TkTL6PJB66TG+4jgSxXJEfsPSnzzh6ePS6EplF1pqAxH88Mm/SJHSzfDZHaCgzBNdC656KP+E4AcZaIni8NmNSsmFgm7cNdyfw2oMAbTsjwPISRvRHLbbhFu8M7KuyfxUoSEdxwGsuBE8oaLMqS3myDMi1nwLj7ghcM1lZzCj8OQuKz/SXl586mC/YpqmWLpXfeOefG++fCWCJrs/NIXOaI3ha5pgfA0REAl9Grx8vW0LkqtlxZfk2+zpR9ihqF5Iwp9qP5LVpodwu208ZqTtuoZgdxSvdajjuq7/AGrPq3I=
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new webhook"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/webhooks"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new webhook
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","description":"Name of the webhook","examples":["Domain Events Webhook"]},"ownerId":{"type":"string","description":"Object Id of Owner of the webhook","examples":["partner_1234567890"]},"url":{"type":"string","description":"URL where webhook events will be sent","examples":["https://example.com/webhooks/easydmarc"]},"events":{"type":"array","description":"List of event names this webhook should subscribe to","examples":[["domain.created","domain.verified","report.received"]],"items":{"type":"string"}},"active":{"type":"boolean","description":"Whether the webhook is active","default":true,"examples":[true]}},"required":["name","ownerId","url","events"],"title":"CreateWebhookRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"The webhook has been successfully created","content":{"application/json":{"schema":{"type":"object","properties":{"objectId":{"type":"string","description":"Unique identifier for the webhook","examples":["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"]},"name":{"type":"string","description":"Name of the webhook","examples":["Domain Events Webhook"]},"ownerId":{"type":"string","description":"Object Id of Owner of the webhook","examples":["partner_1234567890"]},"url":{"type":"string","description":"URL where webhook events will be sent","examples":["https://example.com/webhooks/easydmarc"]},"events":{"type":"array","description":"List of event names this webhook subscribes to","examples":[["domain.created","domain.verified","report.received"]],"items":{"type":"string"}},"active":{"type":"boolean","description":"Whether the webhook is active","examples":[true]},"createdAt":{"type":"string","description":"Timestamp when the webhook was created","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]},"updatedAt":{"type":"string","description":"Timestamp when the webhook was last updated","format":"date-time","examples":["2023-01-01T00:00:00.000Z"]}},"required":["objectId","name","ownerId","url","events","active","createdAt","updatedAt"],"title":"Webhook"}}}},"422":{"description":"Validation failed"}}}
+>
+  
+</StatusCodes>
+
+
+      

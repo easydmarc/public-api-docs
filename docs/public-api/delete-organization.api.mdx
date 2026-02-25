@@ -1,0 +1,72 @@
+---
+id: delete-organization
+title: "Delete an organization"
+description: "Deletes the organization by the specified ID. This action is irreversible."
+sidebar_label: "Delete an organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVduO2zYQ/RVi+tICjG9Jio3etrG3cNGiQeJFHxZGQZEji1iJ1A4pYxVB/14Mrd31Jdg2QP1ikZrLOTNnRj34BklF693aQAYGK4z4J+2Us1/TNUgwGDTZJp0yWCaTIGKJwh8ZirxLd6FBbQuLRqyXE7EpbRBKJwMbhCXCPVKweYUTkNAoUjVGpADZXQ9O1QgZHIddG5BA+NBaQgNZpBYlWAbSqFheoLt19qFFYQ26yChI+OISavTiwBQk4KOqm2pM+/fPV4u3c6MLzK/wQzH7sFCz94v86gokBF1irSDrIXYN24dI1u1gGLaMMDTeBQz8fjF7x3+nyI6LOmY3IrRaYwhFW1UdDBLezeaXnrdOtbH0ZL+iEW/E2u1VZY3wJGobgnU7we+ZsH6id4/uEO7tZbgbT7k1Bl2KFdqisNqii6JBSgG9Cy8VEpE7eFy9Q+B/Y+h8FIVvnWHz97PZpfnaRSSnKvEFaY8kVkSeYBgkRLVjPZwEDLCVEFC3ZGOXxOKZ9QKyu+0ge8hREVI6bSXUGEv/IuiktFhCBtP9fHpMJkz7U7UN3OkE6CDJlirIoIyxCdl0qhq7mKAKnakV6Yn2NQxHuL6wRA4a+CXhuW4567NiOMyFZH9FxyOIovMtCZUEcWihaM+6+6RCjjUSluPDjadaRcjgt782XPL8lfzfF4P9/5OHPEnDjbSu8Cm9jWnCVip0yz+uP38U15/WICGtglSE+WQ2mV2U5sX+U5tXVrObWHrd1uji03rS3kWlI+cZ98ezG8iz/p21TsLjm8rvEsZXDKe23k3ZbtK4HXNX+n5HLO6PvvIEGfxwk34gQVVxg4/xBAWXovEh1sodoTwsUqHc6XSd1aBP/NDF/3v1jr2K+BinTaVsmutUhH4cljvYz0GebOMAErKz9byVUPoQ2b7vcxXwlqph4OuHFolndSthr8iqnEVw14OxgZ8NZIWqAr7C+MfP4+b/SXz/Zv8mw/FSuY71p6qWTyDhHrvLL8+wHY52yXL1+2qz4h6fTtXZTCSK30zT9weLDQ/3MDxnHff1dhiGfwA+tJwd
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete an organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{organizationId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes the organization by the specified ID. This action is irreversible.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"path","description":"Unique identifier of the organization to delete","example":"org_68231dcfeb8e9f092a052b88","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Organization deleted successfully"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Insufficient permissions to delete this organization"},"404":{"description":"Organization not found"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      

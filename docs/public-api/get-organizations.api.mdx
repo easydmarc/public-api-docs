@@ -1,0 +1,72 @@
+---
+id: get-organizations
+title: "List organizations"
+description: "Retrieves a paginated list of organizations within the partner tenant. Use page and limit parameters to control pagination."
+sidebar_label: "List organizations"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFV9tu2zgQ/RVi9lXxRanbVG/e9IIsNt0gdVCggVGMpbHFViJVknLsGvr3xVByLFuJvVlgsXmJJXHmHJ7hXLgBXZBBJ7W6SiCCBbm/zAKV/OXfWQggIRsbWfAjRHBLzkhakhUoClxIhY4SkUnrhJ4L3bYVD9KlUgmXkijQOEVGOFKoXE/cWX63IIGKrXPpeAnm5MhY4bSItXJGZ1sMqVUPAtitgeh+AwpzggjYEQRg6GcpDSUQzTGzFIBkwj9LMuvONm4YW5X5jIyYa9OCgQBohXmREUTDAGycUo4QbSCXSuZl7t8mNMcyc/63WxdMonYGVRU88vL7eiGxTzUnPRfSUW5FQZ4ctWmFg+d45biqf48GbZKDLssp07KFVpYsewkHA/63T2Z8JLAtyURODhN0CAFw3Eg59oVFkcnYr+h/t+xw06LdENKz7xSzSIXhk+hkTcd7261CY7Cr1Zjf7qTiOPJZi0tjSLmtbP7jaUSZtNZYZ6RadADvlPxZkpAJKSfnso4TQ7blaUcKtFl8e30Rng+TeE6zC3o7H7wNcTAKZxcXUAXNSTmF+wlzOgk1jnMSVyrusd/YECfm2Adirk2ODiJWlc6czFmW44gTmZN1mBfiISXVARYPaEWDsUciHISjs8HobHg+GQ6i8FU0HPVeDS6+MqeySP5zThlaJxqgp4m9mQyH0fmIiY1ev/nKCdtK0Hs+B01Y2iq22U8DcNJ5r59TbfYKpnfH6dBNpptuvgip4qxMpFoIpx1mItalckFdGZvfXCAVLuWiNp1nuLA7qZ45zP7o745Vk/WHgl62EkU8rtlVvypoSthJT9d13dlW1BPVqwrAb/e034lX5dArxkZbKzDz7YHsHunwvAr8/i9Zv5dDdDy+qQJI0d4YWkpd2pt9aWdaZ4Sq4/ZLSi4lX5AMCenbZeOhaXxLlBnOsj1tfH+o8T7Ryv17LEUrdwTHmZIOD34Tp23TqiPUlrIrwz7RVl7w8zU5/BZ28qvpEz5HplXFn1891Xuu1BIzmQi2JdseD8CbDLsmdwpLl2ojf1EizsTWgzYil9ZylvF3rt11VxJO/yBVuzvvuvugzUwmCSnvy5bzuYylzxcy3iHPR2wcvu0aT7QW16jW4rbmb8WZuEVHzbBDq5gooYTtR09v35FRmInPZJZkxHtjtJ8uwHEBiO5hf06bBmApLo10az8aad5qCNH9lAeSGaEh45+mXvtUN9Oej7BLIYL+ctjXB7Of9eD1sFWaDCJInSts1O9jIcMeoV0nOZq4F+scqhaHz9zn61r0u8celwzyeJTZTeccfyTFsyiJtS6NwDgma+sYifIgfNBMQD4t6s0FzY8P287yx5cJyzs7gv8yH48DzCmLYA+GgybVXHv4JkHeo12/ux7fXorxzRUEwCrXIgx7g96gI81u/U05y2TMZuKdjsuclNvOAjx7YexrXjOBPppxA9uL30HoAlidZXrhOR5Z2Jf5os/reoVv0DOMfyyMLlVyqTNtIILfPvg/CAAzN6GV22PBUhTauhxVi+Wffsg8du3Y7ObK//kG0gTW0cr1iwylLx9esU2TSPewHEIA+jA9U20df91sZmjpzmRVxa/rawAnWCIt1+ndNeFZCY7eXp5k+IPWu4vSErOSlwCXhn+OeuRqcgRz2092oFN+MNL3JF+fICVMfHnaNEbjOKaibdW5S+zVsY/vOedwP8UPEtR7314n1Lrle7OpV0y40lQVbJk33YGb1N++gzNJ
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List organizations"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves a paginated list of organizations within the partner tenant. Use page and limit parameters to control pagination.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"page","required":false,"in":"query","description":"Page number for pagination","example":1,"schema":{"minimum":1,"default":1,"type":"number"}},{"name":"limit","required":false,"in":"query","description":"Number of items per page","example":20,"schema":{"minimum":1,"maximum":50,"default":10,"type":"number"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"A list of organizations with pagination metadata","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","description":"Array of items for the current page","items":{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88"},"name":{"type":"string","description":"Name of the organization","example":"Acme Inc."},"createdAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was created","example":"2025-05-13T10:24:15.408Z"},"updatedAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was last updated","example":"2025-05-17T11:35:15.567Z"}},"required":["id","name","createdAt","updatedAt"],"title":"ShortOrganization"}},"meta":{"description":"Pagination metadata including total count, page count, and navigation flags","type":"object","properties":{"page":{"type":"number","description":"Current page number","example":1},"limit":{"type":"number","description":"Maximum number of items per page","example":20},"total":{"type":"number","description":"Total number of items across all pages","example":123},"pageCount":{"type":"number","description":"Total number of pages","example":7},"hasPreviousPage":{"type":"boolean","description":"Whether there is a previous page available","example":false},"hasNextPage":{"type":"boolean","description":"Whether there is a next page available","example":true}},"required":["page","limit","total","pageCount","hasPreviousPage","hasNextPage"],"title":"PageMeta_2"}},"required":["data","meta"]}}}},"400":{"description":"Invalid request parameters"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Insufficient permissions"},"429":{"description":"Too Many Requests - Rate limit exceeded"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      

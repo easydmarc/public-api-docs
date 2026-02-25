@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-a
+title: "DNS lookup for a record"
+description: "DNS lookup for a record type"
+sidebar_label: "DNS lookup for a record"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1tv4jgU/ivW2ZddyeWm7lbKGy0wYjWUEdDZkRAPJjlApomd2k4LQvnvq+MEEghtWWkfpy9N6+Nz+c7t8x5UglrYUMlhAB4E0nxV6jlNBkp3gUOAxtdhQufgQe9xyiJ3zFZKM8E0+koHzO4SBA6J0CJGi9qAN9+DFDGCB7HYdtc4MsBB40saagzAW4nIIIeQtL6kqHc1W7MNslhswziNmVgjUytmN8h84W+QhZLFYRSFBn0lA8PmrcXNCq2/YYE0nM1v2oublVZxLg4cjL/BWIC3B9yKOIkQvD9brRYH57oHMo2XqCHL+NHvQMUilCdeW52eO31B8eGr4asYjhaM1aFcQ5YtSKNJlDRo6F6n1aJfp9EDB19Ji9LSmUiSKPRdlpo/DQnsK4YLA2r5E31LadCUUxvm6oswSrnCEQ4yjSKxJI+LbNQTkF9mhMghAd0i6Q3g74SccdDijSxeYUGLt6NKc6JzDu3OXaPVaDXawI/fHVgcIRVaC8pBaDE29QizjB9AqeFLphOhDQYnAYkoGq9c8X4IasbBhtYF3p24y+NcLltkHF5FFAYiN3TJbnl+CdMrXQDUWmnzqYUYjRFrNK5hyRb1cGntEyTfsf2Mu0sFVXfkGXeHGOs+NahSiu/r1FX+U1fbcAkvm3Xu3CwtLMqkfT9eGhWHdPVNaBnK9TuYFqe/AL0e0FCu1GUw6eQXktcieXa36PxKwRZQV9T0pCk1TdCkUTGc3N6aWmFTc7q0pk8PD/3ptLawLgVr3P1DnPfD0ZDNfsyqi0GmMblaKn0c97qzrvuYDcZPjz3gMBuO+uOnGXDoTybjCXCY9iffB93hV5L70RuPusPHs6jycVsE4OZwjMaKOKmkqVjmlzw/ip+P3oLXnGyg9l3rtvXXXadFP+dZKOmBeANelmNl+p+iXfV1UVsglOaMw+0lMnAvAjbBlxSNBSdzW5d5VJYNVCoDJ9Hp1CWeZKKVT0W1jJD1pQ3tztWlFTTz5o7d5eSP/DPop5pEaBUtUWjU4M0XRF9itBtFbHGNrgGF3YAHzdd2M5DmJgeyKYgcoX49sMFUR+DBxtrEeM2mSMJOA4XZBbHQfk4bKkanRG7yhr53prsp2ThmmNTU8vsFJVFZZDuVaiZ8ipVZ9YySpYZGt0jtBqUNfXEgbqSriI0XHwOlY2HBg7//mRGWyw/s/zcdR9b22Q1+YqY6SQ9F0xdm1xt1Jw+s+21IRYfa5CC0iSXVoCnlv6XLKPTpGuspP41R2kOxEuEUOVkqKPDxGvCz/J2ljsP2JlJr5+MHgs0wXjdJrpG4ybIU/vNaU9U+qEhp8OC3gftxPMjOcGtPvCAoEmVsLGTFy3deJecg7EtG/dlDpoDf4tY2k4jaPCsA2BfVPodXYqVlvZPH1DYbZSwd7/dLYfBJR1lG/86fC9QHQegaMLjMiatO/r8voIsxuW1ZfaG9iiglMaCH0PWu/j4pJuMf7GNTx6lZGlrQHzrM3wlz2lEbFIGbNsU6h67vY2Irt2oPopOx9KVPPSROW/as4aoMW8hdRfd+n0vMaHJkGRxcd5OElmiW/QuqQiRy
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for a record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/a"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+DNS lookup for a record type
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domain":{"type":"string","nullable":false,"description":"The domain name of the A record.","example":"example.com"},"raw":{"nullable":false,"description":"The raw A records.","example":["127.0.0.1","127.0.0.2"],"type":"array","items":{"type":"string"}},"object":{"description":"The parsed A record.","allOf":[{"type":"object","properties":{},"title":"ARecordObject"}]},"validation":{"description":"The validation of the A record.","allOf":[{"type":"object","properties":{"errors":{"description":"The validation messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"warnings":{"description":"The warning messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"info":{"description":"The info messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}}},"required":["errors","warnings","info"],"title":"DnsValidationResult"}]},"queryStatus":{"example":"SUCCESS","type":"string","description":"The status of the BIMI TXT record.","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"title":"DnsRecordStatus"},"timestamp":{"type":"number","description":"The timestamp of the A record lookup.","example":1704067200000}},"required":["domain","raw","object","validation","queryStatus","timestamp"],"title":"ARecord"}}}},"400":{"description":"Bad Request"},"404":{"description":"Not Found"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,74 @@
+---
+id: get-auth-token
+title: "Obtain authentication token"
+description: "Authenticates your client credentials and returns a bearer token required for accessing protected API endpoints."
+sidebar_label: "Obtain authentication token"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFV+Fu2zYQfhWC+5MEsuwm7VoI24A0WdoEK9rZTrs1DQKaPNtsJFIlT0lUw8DeYW+4JxmOlGM5TuquGDb/sWySd999993xNOO2BCdQW3OseMYngPsVTof2EgxPuAIvnS5pmWecVsCglgLBs9pWjslcg0EmHShaEblnwijmACtnPBNsBMKBY0gGmYNPlXag2Ng6JqQE77WZsNJZBImg2P6bYwZGlVYb9OkH84FAlMKJAhCc59nZecLJCnh8blXNsxlfGOUZugoSLq1BMEhLoixzQqut6d50rq+vO2Prik7lcjDSKjoz415OoRD0hHUJPON29BEkkmNH5KAGT6sx1AutWls9Om0ma0QdRFaOD4kkZkcotAHFtAkBNquFMGICBT3SgpS2MsgOrPE2B55wuBFFmZMXUer0pK+evn/86VKN6xcvh/3v3+OpfKZO5fTtr8Xbp+oxnycLhB6kA/xqlIOw/d9BOviMz/Z2L1/q3weHv7x4O3jVH+653fcnE21/e9fn83nSStdZi9K74M8TjhqDzVs99mPe+Xwe7fjSGh9zs9vr0dfDclUp22e+CpIbVzlrNPSQUKOGczrICkChBIqM5Liz02/8siMNufI7Ox9Mp9HyRTy8FfnezthwCo3ByoNiaJloYQoUN0B8yo6NzCsFDKfaE884BUYhWKc/BwmzKQgFjgnPnkewP7T9/pQSErgptQN/oQ3bMlUxAkc4AoYrkWulsWaqihVPXjxIa5RnW5BOUrbX67Ef2RNWaFMh+O1g0sHYgZ9e3Gt6P78WtWc99tcff95WedjPtGfGIvNVWVpHKSBjYcsFCbPFU2MkRhW2GYudEYytg05pcy3rlstjg+CMyFmzciXyCtgW1qWWIs9r1ttOmBdj4p7pibEOgk0v7YrXQfhtx032QlPC24xFQspqlGvZEaXeTvmDveWjJ8F9fStpp21znf7HKlop6N7KJ01T6jNLIbTAx/Ssg/9m6bVx7PV6oeTvCnGz/1t9djaps+2PvC2VujlFqwJeYTD+R7StaXoz+m+R+t04guw3h/AN1bAMcrmw1uNXtL6inXsTusL7fZwtArr/hoi9ubkiHm+4FUiHR0LnoHjY/Wh996kRTfHQJlKFmNAYcscMoSkAp5ZmqNL6UPICpzzjXTLQXYTvwV3FQWbGK5fzjE8RS591u6LUuykIX6tCOJlKW/D5OR2QldNYD6i1xO4RFUUAWlklM2s5fQGGhjuIs1qT2EUroclr2UgCr+SCZzxehTxpHo6sKwTyjJ+8GxJRoy/4/2c2bnvmphPJihvKgzZjG9w3GvhZ+Prw1X7/gPohTzixHEl4lPbS3ho1y/1vgnZDGz20sqIxJ+Y0tnshQ7s3olhxw5M7+buTuoTfdHI7CRi/sLGri0mX9qVlqMmRkJcTZyujDmxuHc/4d0fhwxMuchzCDa6gICpIb4UwLZSvwxzXviZI6njfUD9b3mn/13zfpBbhBrtlLrQh9gJns6aIzjiFsugNVGxTqrHsjM9mI+Hh1OXzOf39qQJXx7eEK+G0GJE2zs7nCY+3Xqi7S6hp+o1hd4ax0YTOGmbtTa8M82RhYl9KKPGBw2EmmLf7wpvXA1LyqHlvKayiMy3LSfsHwZ7P/waks7za
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtain authentication token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/auth/token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Authenticates your client credentials and returns a bearer token required for accessing protected API endpoints.
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"client_id":{"type":"string","description":"Client ID you obtained in API Client management in Account Console","example":"api.JRd7Z4qkdfyGHTR6ZtUc8dUchVQmV7d4"},"client_secret":{"type":"string","description":"Client Secret you obtained in API Client management in Account Console","example":"Szt832kHiYSDLGVSMRT3r2ZJgioXWR"}},"required":["client_id","client_secret"],"title":"AuthTokenRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Authenticated. A successful request returns a bearer token and related metadata:\n\n**Response Fields**\n- access_token (string): The token used to authenticate API requests. Include this in the Authorization header as Bearer <access_token>.\n- expires_in (number): Token validity duration in seconds (e.g. 300 = 5 minutes).\n- refresh_expires_in (number): Always 0 – token refresh is not supported.\n- token_type (string): Always Bearer.\n- not-before-policy (number): Internal policy value (typically 0), safe to ignore.\n- scope (string): Scope of access for the token (e.g. public-api).","content":{"application/json":{"schema":{"type":"object","properties":{"access_token":{"type":"string","description":"The token used to authenticate API requests. Include this in the Authorization header as Bearer <access_token>.","example":"00000000000000..."},"expires_in":{"type":"number","description":"Token validity duration in seconds (e.g. 300 = 5 minutes).","example":300},"refresh_expires_in":{"type":"number","description":"Always 0 - token refresh is not supported.","example":0},"token_type":{"type":"string","description":"Always Bearer.","example":"Bearer"},"not-before-policy":{"type":"number","description":"Internal policy value (typically 0), safe to ignore.","example":0},"scope":{"type":"string","description":"Scope of access for the token (e.g. public-api).","example":"public-api"}},"required":["access_token","expires_in","refresh_expires_in","token_type","not-before-policy","scope"],"title":"AuthTokenResponse"}}}},"400":{"description":"Authentication Failed"},"401":{"description":"Unauthorized"}}}
+>
+  
+</StatusCodes>
+
+
+      

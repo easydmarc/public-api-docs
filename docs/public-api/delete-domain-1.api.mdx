@@ -1,0 +1,78 @@
+---
+id: delete-domain-1
+title: "Remove a domain from a domain group"
+description: "Remove a domain from a domain group"
+sidebar_label: "Remove a domain from a domain group"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vk1z2zYQ/SuY7cHtDCmRsuQP3lzb6biTJhlHmc7U4wMErCTEJMAAoCKFw//eWZD6dmKnh+oiCMLuvn27+4AaPJ85yB7gxhRcaQePEZgSLffK6DsJGUjM0WP7dwoRlNzyAj1aMqtB8wIhAyUhAqUhg5L7OURg8UulLErIvK0wAifmWHDIavCrkiyct0rPoGmijRMZgtz9d1ePdNiVRjt09P8gGdKXRCesKiklyLpMmcXCLFCyqTUFm1lTlcxVQqBz0yrPV9BEMHzOfDxHRojQeZTMojOVFci+cse08WxqKk0JCKM9ak/2vCxzJQKj/c+OnNTHOZjJZxSe+LXEv1dtBs5zX7lrI/E43+gA2X2LirU2TJBRBLjkRZljKDIl9NhEgNYa+7LDWzoW/DBjGZ1lSqL2aqrQHri+74h4Z/ybQAHF8ZYLpC56LfStezalkJaLJ6VnjGvJJE6q2ay13o2cDC+k5PwyTgbnp/GQVpd8cBaPJikOLnAwmYikRaMKdJ4X5ct4xuujTGl29/E9oSk4ladbZCC5x5hcHsAZJINRnIzi9GycjrLTUTa86F2cnf4TIEj0XOXuubrvA7iSUtGS5yx00tLHrkShpkqwUD22dtU0ESzjLYIabts1Sw8bKNR/U/3jkkVQoHN8Rkff2xnX6lvoWvbOeLY+sqnp64jfo/375OxR8woU6xy2e00TSuxzXHfufScFNMq7/Eic8ioPo7ngeYU/T9OWAz4RcTo4jZerb/H5xeVz6aZJnA7H6Xk2SrIk6SVJ8t1016GYmbbjdvLJoT1hX5Wfs7sbdpIOToejkyOx6TRj1Qpx030icCgqq2j/oYbfkVu0V5WfQ/bwSFrp0C7WOl7ZHDKYe1+6rN/npRr0kLuVLLgVPWGK/iLtJUdt+lYtEMjVMlbao9U8X6v04YCT2jLOWo1vVXfzK8hvmCOP2imjW0xPSBntuI7WBaMQFLZAPzfbWypcT5Qf9Bdpv3UeB+euXyvZdFuuX6+vmga2LH0kTW5bZJerzagSOUcM/IGabktkK1NZxsMFwrx5Qs0qF6Sr8nMSNcGhu7rI1yQEgKhbvFmryp9/j6ldJz+I/3M+NpfNSxbRXhjqHqWnJoRfDxV3q5u/ru6v2dWHO6oFWteSkPaSZ5pje/5DNcmVIDN2Y0RVoPZhpLt7koswjN0rYGMG0UFX7jUkBN3LzSxg/MHBvipmfTrXK4PST7h4op7Q8trkYcJ/eRM+EAHP/RiXfg8FUVEa5wuud1C+rqH3CNkUkuS8X+ZcaUoiQK+7xn2ABT2y9loXIsjC+6rrXvq9eSo9RjA3zpNlXU+4w082bxra/lKhpcl/pKmxik+oiA81SOVoLSGb8twdTmq9fbnAr/fdy+s3tm2PffDdJter7XACRN3okhhF/2vEDS8NXbdz5JJGYKMlV0Jg6XcMj95me6pyc/v2dnxLfbE/iQdzFAI8i6uu2xNjEoSm2cAMAkEYm+ZfG6LbNQ==
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Remove a domain from a domain group"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/domain-groups/{id}/domains/{domainId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+```
+x-internal: true
+```
+
+
+
+Remove a domain from a domain group
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}},{"name":"domainId","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Domain removed from group successfully"},"404":{"description":"The requested resource was not found","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"string","description":"Request status code","examples":["404"]},"error":{"type":"string","description":"Error code or type identifier","examples":["ResourceNotFound"]},"traceId":{"type":"string","description":"Request identifier for tracking and debugging","examples":["048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0"]},"timestamp":{"type":"string","description":"Timestamp in ISO format","format":"date-time","examples":["2025-05-16T15:35:48.863Z"]},"details":{"type":"object","description":"Additional context-specific error details"}},"x-examples":{"Example 1":{"statusCode":"404","error":"ResourceNotFound","message":"Organization Not Found","traceId":"048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0","timestamp":"2025-05-16T15:35:48.863Z","details":{"message":"Organization Not Found","error":"Not Found"}}},"title":"ErrorResponse"},"examples":{"default":{"value":{"statusCode":"404","error":"ResourceNotFound","traceId":"abc-123-xyz-789","timestamp":"2025-10-14T17:50:00.000Z","details":{"message":"Resource of type 'User' with ID '12345' was not found","property":"id"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

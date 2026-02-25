@@ -1,0 +1,83 @@
+---
+id: post-revoke-organization-access
+title: "Revoke org access"
+description: "Revokes organization access for one or more specified users. This removes users from the organization and terminates their access to all organization resources."
+sidebar_label: "Revoke org access"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1v2zgQ/SvE7C2QbMd2mkS3NG0XWaBtkCbYQ1osKHJksaFIhR9OXMP/fTGUHNtxm+0Cu7f6JEvDmTczb95wCRK9cKoNyhoo4Arn9g49s27GjfrG6TXjQqD3rLKOWYPMOtZYh8y3KFSlULLo0fkBu66VZw4bO0ffvWOVsw0LNT5zaCQL6BpleEBP35VbRwmWca137R16G51AP/hsPpuDg4umtS5wE9gHG9AXBwefTd6F5yKdUJ6ppkGpeMAUTnBjbGAlsmikNUgHbhLEB6U109bjTyFYnyNjG03wjDtk5FqixoAyY9boRZ/Tjo8GmxKdr1XLnuokNzgENwTPYa7MXAWUVGiHOZcSJYHaK6PmAV1XkUuqpvfKGs+u8D4qh7Ivy/voA6v5HBmXjTLMWY1MmT13ZHveVcklFmz3fWGj86irF432ANoHgw4ysC269OZCQgGt9eGv7vTHLeuz5AgyaLnjDQZ0HorbLxk4vI/ow2srF1As019KD4rgImYgrAloAn3ibauVSN6GXz0Regle1NhwegqLFqEAW35FESiOI1xBoaev28AJ5pO9D06ZGWTPJuW6Jiqp+4hMSTSBJsExW+1XIc3AQ61ETV3syxZ7DnUpV9Y1PEABMSoJGeAjb1pN0U/4cXkqxjI/xEmVT/lRmZ+KE5kf46vqiE/LiRhLWGVA/i5kymQX55lzfEG4UsSLN5491Ftk97WNWnbEI2BywM607qe3IeqUuGbuOrvN4G/nOdjGfQvTSk6Pj/gox1cjnk8nfJSfjKsqfyVPjyZjISZ4WkIGx+JEnuKoysd8UuZTcSTzEzyt8hE/LMdiIqd4VMGXbN0MTtlABipg4/ebtFqtsi2C3D7v6qZO5FKFVOLLWGolrn5AyKuOfeQ6+fatNb6jzHg0+k69u7r21WQ+pv9V1HpBCrknm8xYpq2ZoeuH9EmEnhNpQH2efi/may5ZPyUsZxdmzrWSTJk2BraZpow1XBPT+tBEhoxEBps2LLpXWlGqFOZwP8yN4THU1qlvKFnO3pPgmBl5UH1I+k6z0M0gC/YOTedusu/unXWlkhINy9nZ5iBKVsbANBd35L19Urat6emKlMDzEAg/mW6+24f11uqiT/ejf7CBVTYayuTjj7ca+56uSYs+aT4+pnqtMvAoolNhAcXtEizVYUzqtSKe8RkpGSSZJ+I1GGq7VsIkeKGGAobzw2GKOeyyyLdj5k9a4dHNO21cQnQaCqhDaH0xHPJWjQfI/UI23ImBsA1Q/DW0T6SEHXNfI3foqOhbM0Ru9mTudzSk3Zg2wIacd2hYTN3ftJywpRBQQJkCQNY/vFvr2x9/XlNHyhfi/zsfTxL/TyeynTDUMtoQV5vd8natXfu74OdUeEuE/2P5W2WgTGVTrXrResv94s37s6tzdnZ5ARkQJbqOHQ5Gg9FeHzf2ndzRMfbGitigCSlR6FYpF2mVGt7shKHsdsj2jGcZPObazhLGFwyHqpkNyW7Qpp1acnE3czSG51ZbBwX89i79IAOuwzU+hh0U1DeamoabLZRX/dS72Wal7qS/3NwSfl1xf11x/4crbi8uAR/DsNVcpbWXBmHZ6/stzA97jSB+vqDxXzKoaTMUt7BcltzjjdOrFb2+j+gW3a14zp3iZbprkT7UyCWp4e0S7nABBZx3hM+vCRiZ65guUM+vyKvthXT58RMpZdlftRsr6YzjDwSYP0AB6TZPp9MeSe+WoLmZRT4j284n/f4GWSQGDw==
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Revoke org access"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/users/revoke-organization-access"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Revokes organization access for one or more specified users. This removes users from the organization and terminates their access to all organization resources.
+
+**Important Notes:**
+- This action is immediate and cannot be undone
+- Users will lose access to all organization resources
+- User accounts are not deleted, only their organization membership is removed
+- Users can be re-invited or re-added to the organization later
+
+**Permissions Required:**
+- Must have admin role in the organization
+- Cannot revoke access for yourself
+- Cannot revoke access for the organization owner
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"organizationId":{"type":"string","description":"The unique identifier of the organization from which to revoke user access","format":"uuid","example":"8a7b9c2d-1e3f-4a5b-9c8d-7e6f5a4b3c2d"},"userIds":{"description":"Array of user IDs whose access should be revoked. All users must be members of the specified organization.","example":["4fd475a0-e60a-43a0-82ff-6d9532cc3e9b","7c8d9e0f-2a3b-4c5d-8e9f-0a1b2c3d4e5f"],"type":"array","items":{"type":"string"}}},"required":["organizationId","userIds"],"title":"PublicRevokeOrganizationAccessRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Access revoked successfully. The specified users no longer have access to the organization."},"400":{"description":"Bad request - Invalid input parameters, malformed user IDs, or empty user list"},"401":{"description":"Unauthorized - Missing or invalid authentication token"},"403":{"description":"Forbidden - Authenticated but lacking permission to revoke access, or attempting to revoke own access"},"404":{"description":"Not found - One or more specified users or the organization does not exist"}}}
+>
+  
+</StatusCodes>
+
+
+      

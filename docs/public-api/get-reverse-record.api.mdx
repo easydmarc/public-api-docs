@@ -1,0 +1,72 @@
+---
+id: get-reverse-record
+title: "Perform reverse DNS lookup"
+description: "Resolves an IP address or reverse DNS name to its corresponding PTR record. Supports both IPv4 and IPv6 addresses. Returns status codes for different resolution outcomes (SUCCESS, NOTFOUND, NODATA, etc.)."
+sidebar_label: "Perform reverse DNS lookup"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV1tv4jgU/ivW2ZeOZAIddVejvLGlHbHaXhTo7EqIB5McEk8TO2M7tAjx31fHCSQUellpn1ZDH0iJfc7n79w+b0CXaISTWo0TCCFFF+EKjcUIY20S4JCgjY0saQmEEKHV+QotE4qN75lIEoPWMm2Yqfex0e2EKVEgc5pJZ1msjUFbapVIlbL7acSMNx2wSVWW2jjLFtplbHy/umBCJfTw284w2oBF6CqjLLNOuIrsJWjZUhuWyOUSDSrHDKGqCCLTlYt1gZadTR4uL68mE85u76bXdw+3I3oaDadDztDFwacAOJTCiAIdGgvhbAOEG0IoxPMwxRsLHAz+qKTBBMKlyC1ykMTCjwrN+oibaYasEM+yqAomUmR6yVyGLBZxhkwqVsg8lxZjrRLLZoN5b4kuzliiLGez3vm8tzS6qJcDBxtnWAgIN4DPoihzhPDXwWDAwa1LAqmqYoEGtlu+x72D1YJ2pnqJ+YRd+BL4P9gbt85IlcJ2OydrFD2LlvZ8Hgzo6/DgFPJc68eqZLvF7Em6rBsyH1rtd4i8kwYsEU4Ah1grh8qRcVGWuYx9Uva/W/Kw6aBuEOrFd4wdhdBQCjtZ4zPi6RgfBcaIp8ajDdpzCmMEkSIdFrZjfX9+3vB29Iq/oO8iuDiZENrIVNKRO9XiMuHYk7CMbEtMYEss+/K59ZF8y9lFcOGjJVWP7AXClCI46fqoIs9a2j/5CqL0bHERjEQXQqq3ESTKBqnWaY6n/dY2miZARz10U1cr9RCnyeVK5DIR9f5TkWvf7ypqd7A654CDyPO7pa/gt7MDjdHGvuumQGtF2nQZckgMNl3r/dx5xfcjnsyiYyCPuN4d9BhTQIw1zx8z1/nl2GzgU7ztFzMPs/Uw5+Ck81H/tt9007ykrU/CKKnSVzht3v4k9OOESrXUp8mkNz+Z/CiTL/Y2ld9J2IbqjpmRsq2lCG2VO9jOdyNg4mfZyc6oqoJ8NIIDONQ6wz/U0gM4TMc3V3cPU+BwFUV3EXCYXEXfrofjP2nd36O7m+H4luC0jbY1eDxvO5KnM2WPOKN5yDvCoB0yh8fq0NAIwJGyUTPMiU4y7AQV+oyIutTGh6BAl+lGOXo95TIIob867yfK9uoG3W/c9hJFtFs0q53gqkwOIWTOlTbs90UpPwco7DophImDWBdAAsRiXBnp1hPSAHXG/o7CoBlW5G0fEDJzxNVXVCRwka11ZZiIYz+A9SMqVlnqTaJyGSonY7ETR2Rr4R0Abx6utSmEgxD++GtKab54w/+/s7EXN+/t4Aduuq1iF7grYdejm2F0yYb3Y+BALNcknAeDYHBETbv+vlrkMqZtbKTjqkDl6oFc6zIRe13WqMz9NuAv4vcidByee7lOPcY3FvZlkfZpXVD6clqI+DE1ulLJpc61gRB+ufYfP+jdFJ/dAQqiotTWFUJ1UN6jWWpTHIigvV444GHTas//2/WmyRiHz65f5iTstk3MNk2pzmB1ToTsi7XtEr5c5xwybR0t3GwWwuKDybdb+rnRxbMNJNKKRd65I71K7397Qzp5Oj/Luje4lcgrWgZ0Ufo41LOo6aKf2Nuudr219TOnf4wkRxDOaIBkKBIq9Vkza2EYx1i6zq6jO8+221y/Xk1hu/0HwDRYVg==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Perform reverse DNS lookup"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/reverse-dns"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Resolves an IP address or reverse DNS name to its corresponding PTR record. Supports both IPv4 and IPv6 addresses. Returns status codes for different resolution outcomes (SUCCESS, NOTFOUND, NODATA, etc.).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"query","required":true,"in":"query","schema":{"example":"8.8.8.8","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"DNS lookup response with status code and optional PTR record data","content":{"application/json":{"schema":{"type":"object","properties":{"raw":{"description":"The raw records.","type":"array","items":{"type":"string"}},"query":{"type":"string","example":"8.8.4.4","description":"The original IP address that was queried"},"reverseName":{"type":"string","example":"4.4.8.8.in-addr.arpa.","description":"The reverse DNS name (PTR record) for the IP address"},"domain":{"type":"string","example":"dns.google.","description":"The domain name that the IP address resolves to"},"validation":{"description":"The validation of the reverse lookup","allOf":[{"type":"object","properties":{"errors":{"description":"The validation messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"warnings":{"description":"The warning messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}},"info":{"description":"The info messages for the DNS record.","type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"The key of the validation message."},"message":{"type":"string","description":"The description of the validation."}},"required":["key","message"],"title":"ValidationMessage"}}},"required":["errors","warnings","info"],"title":"DnsValidationResult"}]},"queryStatus":{"type":"string","enum":["SUCCESS","NODATA","NOTFOUND","TIMEOUT","ERROR","SERVFAIL","NXDOMAIN"],"example":"SUCCESS","description":"DNS resolution status code"}},"required":["raw","query","reverseName","queryStatus"],"title":"ReverseDnsResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: delete-domain
+title: "Delete a domain"
+description: "Delete a domain"
+sidebar_label: "Delete a domain"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVllv2zgQ/ivE7EN2AdmWZDmx9ZY2ySKL7YHUxQIbBAVFjm02kqiSlBvX0H9fDCXb8dEjm5cQ8hzffHOuwfG5hfQernTBVWnhIQBdoeFO6fJWQgoSc3TY/gwBVNzwAh0a0lpDyQuEFLSZ81J922gFoEpI4UuNZgUBSLTCqIp+hBSmC2S3V0zPmFsge67J9NdSlXP/3aDVtRFoIQCDX2plUELqTI0BWLHAgkO6BreqyL11RpVzCACfeFHl6CPSZv7pfDwRIpPjZBaOsoSP4yQaJsNhSGE65XJSfreH/UZhLneW2tg+nY/jLInFZJTMLibh7CIehtmQyxE0TbAlQW448sFX3C1egL1pHkjYVrq0hH8NcZjQv33y2jywNimS2VoItHZW5/kKmgCSMDzWecUlu8MvNVrXykTHMh9LXruFNuobylZoeCx0o02mpMSylTgBb+oz512h3OaQfeWWldqxma5LIlfo0mHpSJ9XVa6EJ3/w2ZKR9TFHOvuMwlH1GSpOp1qGrOOutq+1xFO1sI+sI4C1OkyQ0n69UEAPTQBojDY/N3hNYt4O04aRLFMSS6dmCs2B6buOiLfa3XgKyI8zXCC12K9C35lnM3JpuHikduGlZBKzej4/boIwGUvJ+aQXxhfDXkKvCY/Pe6MswniMcZaJsEWjCrSOF9XP8Uw3okyV7PbDO0JTcEpP90hBcoc9MnkAJw7jUS8c9aLzaTRKh6M0GffH58N/PQSJjqvcnsr7PoBLKRU9ec58JT25nq1QqJkSzGePbUw1TQBPvR2CNVy3bxYdFpDP/zb7xykLoEBr+fxwZLC32rGNyDanv0b8Hu3fJ2ePml9AsYlh961pmt3A85V7140aauXn/Eic8Tr3rbnkeY0vp2nHAc9EL4qHvafVt97FeHIq3CjsRck0ukhHYRqG/TAMvxvuxpXfHNRuZx8tmjP2VbkFLZSzKB4mo7OjYdPNjBWkoDwTjWcjiScn5pfW7A0vV5t5aYme0amhels6NFSBH9As0TBPqq83i6I2ivzdr+EVcoPmsnYLSO8faMZbL99uz9rkkMLCucqmgwGvVNxHbley4Eb0hS4Gy6gfHpX/32qJQKYOVoPfCYyz7R4q0C30bof77U1AYLCMBq2UHazbRwM75B9o/rbl8Bz/ti0J8BGqP7GkswHZSteGcb+XmNOPWLLa+jFVuwUNMMGhW4NkK/MOIOgeN5sJ8tc/U+I++4H/l9nYLpafaQR7biijqpxp737TQNyurt5c3r1ml+9vIQDKZ0tC1A9PJGwn/77OciVIjV1pURdYOt++3U7kwjded09s1SA4qJS9IgE/43I99xh/IDhQxXxAcv3KT/WMi8e5oS55rXPfzb/d+D8IgOduik9uDwVRUWnrCl4+Q3lcdnvBb5NGY3pQ5STSdPGsu3q8h2VEet0JGkDa2XoIYKGtI4n1OuMWP5q8aehze1pSD0lleZbTgTXjucUj99tbA36/626xP9jLb9CTUTzi6tTx2w1O8E265EYRwP8P9nveu4+8XD33uUHVUdjQZl0gl9QB9+vux0shsHLP1I7OMIK+nR9X139fT6+pLPYb8aCNvIOTqNbrVmJK86BptiD9fCCMTfMf3YsyKg==
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a domain"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/domains/{domain}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a domain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","in":"query","description":"The ID of the organization owning the resources","required":true,"schema":{"type":"string","examples":["org_689ccbd84f05b4a824134330"],"title":"OrganizationIdField","example":"org_682b42c954f790f7230b3ad5"}},{"name":"domain","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Domain deleted successfully"},"400":{"description":"Bad Request"},"401":{"description":"Unauthorized"},"403":{"description":"Forbidden"},"404":{"description":"The requested resource was not found","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"string","description":"Request status code","examples":["404"]},"error":{"type":"string","description":"Error code or type identifier","examples":["ResourceNotFound"]},"traceId":{"type":"string","description":"Request identifier for tracking and debugging","examples":["048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0"]},"timestamp":{"type":"string","description":"Timestamp in ISO format","format":"date-time","examples":["2025-05-16T15:35:48.863Z"]},"details":{"type":"object","description":"Additional context-specific error details"}},"x-examples":{"Example 1":{"statusCode":"404","error":"ResourceNotFound","message":"Organization Not Found","traceId":"048ddaa9-0273-4aa9-9a26-5b1e28e2bbc0","timestamp":"2025-05-16T15:35:48.863Z","details":{"message":"Organization Not Found","error":"Not Found"}}},"title":"ErrorResponse"},"examples":{"default":{"value":{"statusCode":"404","error":"ResourceNotFound","traceId":"abc-123-xyz-789","timestamp":"2025-10-14T17:50:00.000Z","details":{"message":"Resource of type 'User' with ID '12345' was not found","property":"id"}}}}}}},"429":{"description":"Too Many Requests"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      

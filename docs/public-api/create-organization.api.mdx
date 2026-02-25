@@ -1,0 +1,72 @@
+---
+id: create-organization
+title: "Create a new organization"
+description: "Creates a new organization within the partner tenant with the specified name."
+sidebar_label: "Create a new organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vttu4zYQ/RVi+ipfE+86estmkyJFtxskDgpsEBRjcWxxI5EKSSX2Cvr3Yig5kS9NUHTrB9ui5nLmDOeQFZiCLHpl9KWEGBJL6OmrXaJWP8IyRCDJJVYV4SmGs2DiBApNz8J0TMWz8qnSwqckCrRekxWeNGof3oR1V1CiFoqk0JhTHyIo0GJOnqyD+O4+AkuPJTn/ycg1xFV4VJYkxN6WtAumi1SY+XdKvPApeqGJpBPeiDkJlJIkRJAY7Ul7jopFkakkuA2+Ow5VgUtSypH/+XVBEEMTjyFaZskrcvyWgXesnLdKLyGCHFe/k176FOLReLqL9A/MSZhFIMFs80srzIuMY50mOYlLnfShrqNO6XdN0vsIvPLB8my/UXXdOLnCaNdAHQ9H/PMGZ03DpXBlkpBzizLL1j+PKiUPEbUN51arx5KEkqQ97wz7LkvGLv/6MB0fjWSyoPmUThbDkzEOJ+P5dAp19I8N+m8NidrhkKeBloWxOXqIQaKnnlc5QfROxpnKyXnMC/Gckt5LLJ7RbfqxBWI8HE96w0lvdDQbDePxcTya9I+H02+MqSzk/44pQ+dFm+gwsI+z0Sg+mjCwyYeP3/Z2r2K/0JYui130na19kxrrD+zs4+FwfzNf6ifMlBStaohXNRE9cd1CeF0VyolcOaf0UhgrVOMNIfqBUbnVWPrUWPWDpOiJTTJjX4Lwe964zYAIbx5IN+GO9sNdGDtXUpIOsVy5WKhEkfaiIBsCGh00q6FoqxEuBB2f7AedGSO+oF6Hasn5UDi7ZypXXtAqIWL9qyOYHGbQk9WYiRuyT2TFubXGhg56XLImbwmG4045Skqr/BriuwoMUzBm7a6jCuaElmx4uo8gJ58aPlcK44I6IKsjDJ5Gg+3iOCZndyFkaTOIIfW+cPFggIUa9wndWuZok35icqg7IG5Yixq5+RSSn5ac5GX8Oczetv+VNB97JNamtAKD9jXNE+VOXxlbSAHxprqo/XOxmbff/pwxv/M38v+7GC8i+55HtJWGu8Yaff16hp5vpnVzcG1rmtILE8C2w3eObv35y+n1mTi9uoQIuCcNZaP+sD/cI/LV/qqcZyphN/HZJGVO2m/0lE8TTHwHw4sbi8BWt3caHcGql5llwPiG4UDlywHb9YsgcnNMHpbWlFqemcxYiOGXi/CBCDDzM1r5LRRMHO/RHHUHZXPIHrjp7NJQvR6YP/1+1PbX08oPigxVkJdARdXO0x08jSACszumKQ9dfAdVNUdHtzara15+LMmum7vWE1qFc248Ty+khDIMbwUPtOZamqp6M8bA5lnJWPauBDz5jcdpklDh37Tt6sLV1xvew/P2spcbyT4WnyEK3zFwYUVTEt8Gea2CDPWyxCXbNjG5f7g9dztTE6pqX6FedxBWVWMx4/Gva4jaUlotv6/r+m9yYtNY
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates a new organization within the partner tenant with the specified name.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"description":"Organization object that needs to be added","content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","maxLength":128,"description":"Name of the organization","example":"Acme Inc."}},"required":["name"],"title":"CreateOrganization"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Organization created successfully","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier of the organization","example":"org_68231dcfeb8e9f092a052b88"},"name":{"type":"string","description":"Name of the organization","example":"Acme Inc."},"createdAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was created","example":"2025-05-13T10:24:15.408Z"},"updatedAt":{"format":"date-time","type":"string","description":"Timestamp when the organization was last updated","example":"2025-05-17T11:35:15.567Z"}},"required":["id","name","createdAt","updatedAt"],"title":"ShortOrganization"}}}},"400":{"description":"Invalid request parameters - Required parameter is missing or invalid"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Insufficient permissions to create organizations"},"429":{"description":"Too Many Requests - Rate limit exceeded"},"500":{"description":"Internal Server Error"}}}
+>
+  
+</StatusCodes>
+
+
+      
