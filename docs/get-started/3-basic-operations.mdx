@@ -1,0 +1,158 @@
+---
+slug: /basic-operations
+title: Basic operations
+sidebar_label: Basic operations
+sidebar_position: 3
+---
+
+# Basic operations
+
+## Onboarding Flow
+
+The onboarding process with the EasyDMARC API involves creating an organisation, setting up domain groups, registering a webhook for async events, adding domains, and updating DNS records.
+
+1. **Create Organisation:** Create an organisation to serve as your account’s root entity.
+2. **Create Domain Group:** Organize your domains into groups for better management.
+3. **Create Webhook:** Register a webhook endpoint to receive async events (e.g., domain verification).
+4. **Add Domain:** Add a domain under your organisation and assign it to a group.
+5. **Update DNS record:** Generate the DMARC record and update it in your DNS.
+6. **Domain Verification:** Once the DMARC record propagates, an async event is delivered to your webhook.
+
+Follow the steps below to get started.
+
+
+## Step 1: Create an Organisation
+
+Create a new organisation that represents your company or business unit.
+`POST /v1/organizations`
+
+**Example Request:**
+
+```bash
+curl -X POST "https://api2.easydmarc.com/v1/organizations" \
+-H "Authorization: Bearer {API_TOKEN}" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Acme Inc."
+}'
+```
+
+> **_Tip:_** Save the returned organisation ID as it is required for subsequent API calls related to this organisation.
+
+## Step 2: Create a Domain Group
+
+Domain groups allow you to manage sets of domains together for streamlined policy application and reporting.
+
+`POST /v1/domain-groups`
+
+**Example Request:**
+
+```bash
+curl -X POST "https://api2.easydmarc.com/v1/domain-groups" \
+-H "Authorization: Bearer {API_TOKEN}" \
+-H "Content-Type: application/json" \
+-d '{
+  "organizationId": "{ORG_ID}",
+  "name": "Group 1"
+}'
+```
+
+
+## Step 3: Create a Webhook
+
+Register a webhook to receive asynchronous events. Subscribe to `domain.verified` to be notified when EasyDMARC confirms (or fails to confirm) a domain's DMARC record.
+
+`POST /v1/webhooks`
+
+**Example Request:**
+
+```bash
+curl -X POST "https://api2.easydmarc.com/v1/webhooks" \
+-H "Authorization: Bearer {API_TOKEN}" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Domain Events",
+  "ownerId": "{PARTNER_ID}",
+  "url": "https://your-app.example.com/webhooks/easydmarc",
+  "events": ["domain.verified"]
+}'
+```
+
+> **_Tip:_** Save the returned webhook `objectId` and secret for signature verification.
+
+
+## Step 4: Add a Domain
+
+Add a domain to the organisation. Specify the domain type (`sending` or `parked`) and assign it to a domain group.
+
+`POST /v1/domains`
+
+**Example Request:**
+
+```bash
+curl -X POST "https://api2.easydmarc.com/v1/domains" \
+-H "Authorization: Bearer {API_TOKEN}" \
+-H "Content-Type: application/json" \
+-d '{
+  "organizationId": "{ORG_ID}",
+  "domain": "domain1.com",
+  "type": "sending",
+  "groupId": "{GROUP_ID}"
+}'
+```
+
+> **_Tip:_** To add multiple domains, call this endpoint once per domain.
+
+
+## Step 5: Set DNS record
+
+Generate a DMARC record using `GET /v1/domains/{domain}/setup` and add it to your DNS provider. Pass `type` (`TXT` or `CNAME`) and your `organizationId` as query parameters.
+
+**Example request:**
+```bash
+curl "https://api2.easydmarc.com/v1/domains/domain1.com/setup?type=TXT&organizationId={ORG_ID}" \
+-H "Authorization: Bearer {API_TOKEN}"
+```
+
+**Example response:**
+```json
+{
+  "host": "_dmarc.domain1.com",
+  "type": "txt",
+  "value": "v=DMARC1;p=none;rua=mailto:abc123@rua.easydmarc.com;fo=1;"
+}
+```
+
+> **Note:** DNS propagation may take up to several hours.
+
+
+## Step 6: Handle async event
+
+Once the DMARC record propagates and is picked up by the EasyDMARC platform, a webhook event is delivered to your registered endpoint.
+
+**Webhook request example:**
+```json
+POST https://your-app.example.com/webhooks/easydmarc
+{
+  "data": {
+    "domain": "domain1.com",
+    "reason": "RUA address not found",
+    "verificationStatus": "failed"
+  },
+  "metadata": {
+    "eventName": "domain.verified",
+    "ownerId": "partner_1234567890"
+  }
+}
+```
+
+
+## Additional Tips
+- Plan for Asynchronous Processing:
+    For large-scale operations, consider using batch processing.
+- Adhere to REST Conventions:
+    Follow standard HTTP status codes and error handling practices for robust client implementations.
+- Integration with other services:
+    Leverage related APIs (e.g., DNS API and Reporting API) to further automate domain management and compliance monitoring.
+
+Good luck!

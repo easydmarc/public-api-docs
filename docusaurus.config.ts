@@ -101,12 +101,18 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
+          sidebarId: 'get-started',
+          position: 'left',
+          label: 'Get Started',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'public-api',
           position: 'left',
           label: 'API',
         },
-        {href: 'https://easydmarc.com/blog/category/blog', label: 'Blog', position: 'left'},
-        {href: 'https://easydmarc.com/tools', label: 'Tools', position: 'left'},
+        {href: 'https://easydmarc.com/blog/category/blog', label: 'Blog', position: 'right'},
+        {href: 'https://easydmarc.com/tools', label: 'Tools', position: 'right'},
         {href: 'https://github.com/easydmarc/public-api-docs', label: 'GitHub', position: 'right'},
         {type: 'search', position: 'right'},
         {href: 'https://app.easydmarc.com/login', label: 'Log In', position: 'right'},

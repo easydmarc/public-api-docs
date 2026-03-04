@@ -1,0 +1,188 @@
+---
+slug: /get-started
+title: Getting started
+sidebar_label: Getting started
+sidebar_position: 1
+---
+
+# Getting started
+
+## Overview
+
+The EasyDMARC Public API lets you automate domain security operations and reporting across your estate. It covers organisations, domains and domain groups, DMARC (RUA/RUF) analytics, DNS lookups (SPF/DKIM/DMARC/BIMI, etc.), alerting via webhooks, and supporting services like billing/subscriptions and email verification—so you can integrate onboarding, compliance checks, and monitoring into existing workflows.
+
+### What’s in the API
+
+* **Domains & Domain Groups** – add/remove domains, update properties, assign to groups, and fetch status/compliance.
+* **DMARC Reports** – query aggregates, failure samples, and originals with filters, time ranges, grouping, and sorting.
+* **DNS Lookups** – resolve and validate SPF/DKIM/DMARC/BIMI and related records; surface misconfigurations.
+* **Alerts & Webhooks** – subscribe to verification, DNS change, policy, and health events.
+* **Billing & Subscriptions (partners)** – assign plans and list prices for partner-led provisioning.
+* **Email Verification** – validate recipient addresses before sending (separate service).
+* **Organizations** – create, update, and manage tenant-level settings; list membership-bound resources.
+
+---
+
+## Base URL & Versioning
+
+```
+https://api2.easydmarc.com/v1
+```
+
+Version is part of the path to enable non‑breaking iteration while preserving stable contracts.
+
+---
+
+## Authentication
+
+Use OAuth 2.0 **Client Credentials** to obtain a short‑lived access token, then pass it as a Bearer token.
+
+> **Important (302 redirects):** Some HTTP clients automatically switch to **GET** on `302 Found` responses when following redirects. Ensure your client keeps the original **POST** method when following redirects, otherwise token requests may fail. For `curl`, use `-L --post302`.
+
+**Get a token**
+
+```bash
+curl -L --post302 \
+  --request POST 'https://api2.easydmarc.com/auth/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'client_id=YOUR_CLIENT_ID' \
+  --data-urlencode 'client_secret=YOUR_CLIENT_SECRET' \
+  --data-urlencode 'grant_type=client_credentials'
+```
+
+**Use the token**
+
+```bash
+curl --request GET 'https://api2.easydmarc.com/health' \
+  --header "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+**Best practices**
+
+* Create separate clients per environment (test/live).
+* Cache tokens until expiry; do not hardcode tokens in code or CI logs.
+
+---
+
+## Rate limits
+
+* **60 requests/minute per customer.**
+* Daily request limits are enforced to prevent abuse;
+* When limits are exceeded, the API returns **429 Too Many Requests**. Respect the `Retry-After` header and use jittered exponential backoff.
+
+---
+
+## Pagination
+
+Most collection endpoints are paginated.
+
+* **Parameters:** `page` (1-based) and `pageSize` (default 20).
+* **Guidance:** Prefer small pages with parallel retrieval over very large pages; filter and time‑box server‑side where supported.
+
+---
+
+## Errors
+
+Standard HTTP semantics with structured error bodies.
+
+| Status  | Meaning (examples)                                    |
+| ------- | ----------------------------------------------------- |
+| 400     | Validation failed or unsupported query combination    |
+| 401/403 | Missing/expired token or insufficient permissions     |
+| 404     | Resource not found or out of your organisation scope  |
+| 409     | Conflict (duplicate domain, invalid state transition) |
+| 429     | Rate limited (back off and retry after delay)         |
+| 5xx     | Transient server error (retry with backoff)           |
+
+Include the returned machine‑readable `code` in logs to aid support.
+
+---
+
+## Quick starts
+
+### List domains
+
+```bash
+curl --request GET \
+  'https://api2.easydmarc.com/v1/domains?organizationId=YOUR_ORG_ID&page=1&pageSize=20' \
+  --header "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  --header "Accept: application/json"
+```
+
+**Response (abridged)**
+
+```json
+{
+  "items": [
+    {
+      "domain": "example.com",
+      "type": "sending",
+      "policy": "quarantine",
+      "domainVerified": true,
+      "domainGroup": "Default Group",
+      "domainGroupId": "dmngrp_67457f052750d56713945475"
+    }
+  ],
+  "page": 1,
+  "pageSize": 20,
+  "total": 127
+}
+```
+
+### DNS lookup (DMARC)
+
+```bash
+curl --request GET \
+  'https://api2.easydmarc.com/v1/dns-lookup/dmarc?domain=example.com' \
+  --header "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+Use this in onboarding to verify record presence, syntax, and policy alignment.
+
+### DMARC aggregates (RUA)
+
+```bash
+curl --request GET \
+  'https://api2.easydmarc.com/v1/reports/aggregate?organizationId=YOUR_ORG_ID&from=2025-10-01&to=2025-10-31&groupBy=domain,source' \
+  --header "Authorization: Bearer YOUR_ACCESS_TOKEN"
+```
+
+Returns time‑bounded stats with optional grouping (e.g., by domain, source ASN, alignment).
+
+---
+
+## Webhooks & alerts
+
+* Register endpoints to receive events (e.g., domain verification succeeded/failed, DNS changed, policy updated).
+* Verify incoming requests via signature headers; reply with **2xx** to acknowledge.
+
+**Recommendations**
+
+* Use unique secret per webhook.
+* Implement retries with idempotency (e.g., dedupe by `eventId`).
+* Keep handlers fast; offload heavy work to async jobs.
+
+---
+
+## Idempotency & retries
+
+* Treat create/update flows as **upserts** where supported to avoid duplicate resources in concurrent runs.
+* Use client‑side idempotency keys for at‑least‑once webhook delivery and job restarts.
+
+---
+
+## Observability
+
+* Log request IDs and error `code` values.
+* Track 429 counts and token expiry events.
+* Add metrics for latency percentiles of critical endpoints (e.g., aggregates, DNS lookup).
+
+---
+
+## Tips for a smooth start
+
+- **Filter early:** limit report queries by date and fields to reduce payloads and cost.
+- **Backoff everywhere:** apply jittered exponential backoff on 429/5xx.
+- **Review the API Reference:** Although this guide covers the workflow, consult the API reference for detailed parameters and response schemas.
+- **Use Pagination:** The default page size is set to 20 items per page. Customize using the page and pageSize query parameters.
+- **Error Handling:** Implement robust error handling for common HTTP error statuses (e.g., 400, 429, etc.).

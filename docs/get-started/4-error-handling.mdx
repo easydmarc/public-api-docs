@@ -1,0 +1,213 @@
+---
+slug: /error-handling
+title: Error Handling
+sidebar_label: Error Handling
+sidebar_position: 4
+---
+
+# Error Handling
+
+## Overview
+
+Effective error handling is a critical part of integrating with the EasyDMARC API. This guide explains the common error responses you might encounter, provides example responses, and offers best practices to help you build robust client applications.
+
+## Common HTTP Error Responses
+
+### 400 Bad Request
+
+This response indicates that your request is malformed or contains invalid parameters.
+
+**Example Response:**
+
+```json
+{
+  "error": "ValidationError",
+  "message": "The request is missing mandatory parameters",
+  "details": {
+    "invalidFields": [
+      {
+        "field": "organizationId",
+        "message": "Must be a valid organizationId"
+      }
+    ]
+  },
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Possible solutions:**
+- Validate your request parameters on the client side.
+- Use the error details to adjust and resend your request.
+
+
+### 401 Unauthorized
+
+This response indicates that authentication is missing or the provided token is invalid.
+
+**Example Response:**
+```json
+{
+  "error": "AuthenticationError",
+  "message": "Authentication required to access this resource",
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Possible solutions:**
+- Ensure you include the correct Authorization header with your Bearer token. See [Authentication](/authentication) for more details.
+- Verify that your token is valid and has not expired.
+
+
+### 403 Forbidden
+
+This response indicates that you do not have permission to access the requested resource.
+
+**Example Response:**
+```json
+{
+  "error": "PermissionDenied",
+  "details": {
+    "requiredPermissions": ["resource:read"]
+  },
+  "message": "You don't have permission to access this resource",
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Possible solutions:**
+- Check your user permissions and ensure the token grants access to the requested resource.
+- Contact support if you believe the permissions should be different.
+
+
+### 404 Not Found
+
+This response is returned when the requested resource cannot be found.
+
+**Example Response:**
+```json
+{
+  "error": "ResourceNotFound",
+  "details": {
+    "resourceId": "domain1.com",
+    "resourceType": "Domain"
+  },
+  "message": "The requested domain could not be found",
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Possible solutions:**
+- Verify the resource ID and endpoint.
+- Gracefully handle this error in your application.
+
+
+### 409 Conflict
+
+This response indicates that the request conflicts with the current state of the resource (e.g., a duplicate entry).
+
+**Example Response:**
+```json
+{
+  "error": "ResourceConflict",
+  "message": "Domain already exists",
+  "details": {
+    "conflictReason": "A domain with this identifier already exists",
+    "resourceId": "domain1.com",
+    "resourceType": "Domain"
+  },
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Best Practices:**
+- Ensure you are not submitting duplicate data.
+- Check for unique constraints before making your request.
+
+
+### 422 Unprocessable Entity
+
+This response indicates that the server understands the request’s content type but cannot process the contained instructions. For example
+
+**Example Response:**
+```json
+{
+  "error": "ValidationError",
+  "message": "The request contains invalid parameters",
+  "details": {
+    "invalidFields": [
+      {
+        "field": "domain",
+        "message": "Must be a valid domain"
+      }
+    ]
+  },
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Possible solutions:**
+- Validate your request parameters on the client side.
+- Use the error details to adjust and resend your request.
+
+### 429 Too Many Requests
+
+This response indicates that you have exceeded the API’s rate limits.
+
+**Example Response:**
+```json
+{
+  "error": "RateLimitExceeded",
+  "details": {
+    "limit": 60,
+    "period": "1 minute",
+    "retryAfterSeconds": 60
+  },
+  "message": "You have exceeded the rate limit for this API",
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Best Practices:**
+- Implement client-side rate limiting to avoid hitting API limits.
+- Respect the retryAfterSeconds value before retrying your request.
+
+
+### 5xx Internal Server Error
+
+This response indicates an unexpected error occurred on the server.
+
+**Example Response:**
+```json
+{
+  "error": "InternalServerError",
+  "message": "An unexpected error occurred while processing your request",
+  "traceId": "abc-123-xyz-789"
+}
+```
+
+**Best Practices:**
+- Log the error details along with the traceId for further investigation.
+- Implement retry logic with exponential backoff for transient issues.
+- Contact support if the error persists.
+
+
+## Additional Error Responses
+
+Other error responses include:
+- Unsupported Media Type:
+  When the content type specified in the request is not supported.
+- Gateway Timeout / Service Unavailable:
+  These indicate issues with upstream services or temporary unavailability of the API.
+
+## General Best Practices for Error Handling
+
+- Graceful Degradation:
+  Ensure your application can handle errors gracefully, providing informative feedback to users and fallback mechanisms where possible.
+- Logging and Monitoring:
+  Implement robust logging to capture error details, including trace IDs, to help diagnose issues. Use monitoring tools to track error rates and alert you to potential problems.
+- Retry Logic:
+  For transient errors (such as 429 or 500 responses), implement exponential backoff strategies to retry the request after a delay.
+- Documentation and Communication:
+  Refer to the API reference for comprehensive details on error responses. Ensure your development team is aware of error handling best practices and has access to relevant documentation.
+
+By following these guidelines and understanding the common error responses, you can build resilient integrations with the EasyDMARC API.

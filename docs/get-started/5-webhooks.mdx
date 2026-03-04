@@ -1,0 +1,91 @@
+---
+slug: /webhooks
+title: Webhooks
+sidebar_label: Webhooks
+sidebar_position: 5
+---
+
+# Async Events and Webhooks
+
+## Overview
+
+The EasyDMARC API supports asynchronous event notifications via webhooks. When certain events occur, such as an alert being triggered or a domain status update, a notification is sent to the webhook URL configured in your Account Console.
+
+## Configuring Your Webhook
+
+Webhooks can be registered via the API or the Account Console.
+
+### Via API
+
+`POST /v1/webhooks`
+
+```bash
+curl -X POST "https://api2.easydmarc.com/v1/webhooks" \
+  -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Domain Events Webhook",
+    "ownerId": "partner_1234567890",
+    "url": "https://your-app.example.com/webhooks/easydmarc",
+    "events": ["domain.created", "domain.verified", "report.received"]
+  }'
+```
+
+The response includes an `objectId` and a `secret` for signature verification. Store both securely.
+
+### Via Account Console
+
+1. **Log in** to your EasyDMARC account.
+2. **Navigate to Webhook Settings** in your account settings.
+3. **Set your endpoint URL** and select the events to subscribe to.
+4. **Save** — events will be delivered to this endpoint going forward.
+
+## Event Types
+
+| Event | Description |
+| --- | --- |
+| `domain.created` | A domain was added to the organisation |
+| `domain.verified` | Domain DMARC verification succeeded or failed |
+| `report.received` | A new DMARC aggregate report was received |
+
+Each event payload includes a `metadata` object with `eventName` and `ownerId`, and a `data` object with event-specific fields.
+
+## Example Webhook Payload
+
+Below is an example payload:
+
+```json
+{
+  "data": {
+    "domain": "easydmarc.us",
+    "reason": "RUA address not found",
+    "verificationStatus": "failed"
+  },
+  "metadata": {
+    "eventName": "domain.verified",
+    "ownerId": "partner_1234567890"
+  }
+}
+```
+
+## Verifying Webhook Events
+
+To ensure that the events you receive are authentic:
+- **Signature Verification:**
+  Each webhook request includes a signature header. Verify the signature using the secret key provided in your Account Console.
+- **Timely Response:**
+  Your endpoint should respond with a 2xx HTTP status code within a short timeframe (typically within 3 seconds). Failure to do so may result in retries.
+
+## Best Practices
+- **Secure Your Endpoint:**
+  Always use HTTPS and validate the signature on incoming webhook requests.
+- **Implement Idempotency:**
+  Since webhooks may be retried, design your processing logic to handle duplicate events gracefully.
+
+## Troubleshooting
+- Timeouts or Non-200 Responses:
+  If your endpoint fails to respond with a 2xx status, our system will retry delivery. Review your logs to diagnose potential issues.
+- Signature Mismatch:
+  Ensure you are using the correct secret key from the Account Console to verify incoming requests.
+- Missing Events:
+  Verify your webhook URL configuration and check for any network or firewall issues that might block incoming requests.

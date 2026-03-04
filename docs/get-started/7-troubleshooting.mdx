@@ -1,0 +1,25 @@
+---
+slug: /troubleshooting
+title: Troubleshooting
+sidebar_label: Troubleshooting
+sidebar_position: 7
+---
+
+# Troubleshooting
+
+
+## 405 Method Not Allowed when requesting an access token
+
+Can occur when requesting an access token from `https://api2.easydmarc.com/auth/token`. Some HTTP clients automatically change the POST method to GET on a 302 Found redirect; ensure your client preserves the original method.
+
+**Solution**
+- curl: use `-L --post302` to preserve POST and body across 302 redirects.
+- Postman: Settings → **Follow original HTTP method** (keep **Automatically follow redirects** enabled).
+- Other HTTP clients: set the corresponding option to preserve the method on redirect, or handle the 302 manually by extracting the `Location` header and sending a new POST request.
+
+Example error:
+```json
+{
+  "error": "HTTP 405 Method Not Allowed"
+}
+```

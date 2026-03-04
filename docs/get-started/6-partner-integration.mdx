@@ -1,0 +1,261 @@
+---
+slug: /partner-integration
+title: Partner Integration Guide
+sidebar_label: Partner Integration Guide
+sidebar_position: 6
+---
+
+# Partner (Reseller) Integration Guide
+
+This guide describes how a Partner (Reseller) onboards and manages End‑Customer Organizations using the Public API. It focuses on the business flows and the relevant capabilities for provisioning, subscription lifecycle, access (SSO via magic link), and visibility.
+
+> Scope: This guide intentionally excludes generic topics covered elsewhere (authentication, pagination, error envelopes). Use the API reference for schema details.
+
+---
+
+## Roles & Terms
+
+- **Partner (Reseller):** Integrates their billing/CRM to provision and manage EasyDMARC Organizations for End Customers. (Generic; works with any billing platform.)
+- **Organization:** An Organization owned by a user; used to group domains, reports, and settings for that customer.
+- **Plan / Price:** Plans/Prices available for a Partner/Reseller (e.g., _Plus_, _Premium_) that define feature set and hard limits (domains, volume). Catalog is Partner‑scoped.
+- **Subscription:** Assignment of a plan and price to an Organization. Billing (charges/invoices) is handled by the Partner; the API stores state.
+- **Magic link:** Time‑bound SSO link for a user to access the Organization dashboard at EasyDMARC portal.
+
+---
+
+## What a Partner Can Do (API High‑Level)
+
+**Subscriptions & Pricing**
+
+- List the plans available for the Partner.
+- Assign a plan (create a subscription) for an Organization.
+- Update a subscription (upgrade/downgrade plan).
+- Renew a subscription term.
+- Cancel/Suspend a subscription.
+
+**Organizations**
+
+- Create an Organization and (implicitly) associate it to the Partner via the Partner’s credentials.
+- Transfer ownership (unlink from Partner, set a new admin/owner).
+- Send account emails to Organization users (e.g., invite/reset).
+- Terminate an Organization.
+
+**Users**
+
+- Add/invite users to an Organization (e.g., Admin/Owner).
+- Generate a magic link for passwordless SSO.
+
+**Read Models for UI**
+
+- Fetch plan/limits for the active subscription.
+- Fetch DMARC progress (for onboarding status in Partner portal).
+
+Other functionalities available for regular users.
+
+---
+
+## Core Flows
+
+> The snippets below use **EasyDMARC Public API** endpoints. Replace placeholders like `<ORGANIZATION_ID>`, `<SUBSCRIPTION_ID>`, `<PRICE_ID>`, and set your OAuth bearer token in the `Authorization` header.
+
+### 1) Onboard New End‑Customer (Provision → Assign → SSO)
+
+**Intent:** Provision an Organization, attach the Partner’s predefined plan, and hand over access.
+
+**Steps & Endpoints**
+
+1. **Create Organization**
+   `POST /organizations`
+
+   ```bash
+   curl -X POST https://api2.easydmarc.com/v1.0/organizations \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"name":"Acme Inc."}'
+   ```
+
+   → save `id` as `<ORGANIZATION_ID>`.
+
+2. **Invite Admin user**
+   `POST /v1/users/invite`:
+
+   ```bash
+   curl -X POST https://api2.easydmarc.com/v1/users/invite \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{
+        "organizationId": "<ORGANIZATION_ID>",
+        "permissions": {
+          "users": [
+            {
+              "email": "john.doe@example.com"
+            }
+          ],
+          "organization": {
+            "role": "admin"
+          }
+        }
+      }'
+   ```
+
+   → the invited user receives an email; use their email as `<USER_ID>` when generating a magic link.
+
+3. **Get available Plans with Prices**
+   `GET /partners/plans`
+
+   ```bash
+   curl -X GET https://api2.easydmarc.com/v1/partners/plans \
+     -H "Authorization: Bearer $TOKEN"
+   ```
+
+   → present available plans/prices to the End Customer and capture selected `<PRICE_ID>`.
+
+4. **Assign Plan (Reseller: Activate)**
+   `POST /v1/partners/subscriptions/assign`
+
+   ```bash
+   curl -X POST https://api2.easydmarc.com/v1/partners/subscriptions/assign \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"organizationId":"<ORGANIZATION_ID>","priceId":"<PRICE_ID>"}'
+   ```
+
+   → save resulting `<SUBSCRIPTION_ID>`.
+
+5. **Issue Magic Link (SSO)**
+   `POST /auth/magic-link`
+
+   ```bash
+   curl -X POST https://api2.easydmarc.com/auth/magic-link \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{
+       "userId":"<USER_ID>",
+       "organizationId":"<ORGANIZATION_ID>",
+       "redirectUri":"https://app.easydmarc.com/dashboard"
+     }'
+   ```
+
+   → return the `link` to your customer for one‑click access.
+
+**Outcome:** Customer can access their Organization via SSO; plan limits/features are active.
+
+---
+
+### 2) Upgrade or Downgrade Plan (Change Subscription)
+
+**Intent:** Switch plans (e.g., _Plus → Premium_) within the Partner‑approved catalog.
+
+**Steps & Endpoints**
+
+1. **Pick a new Plan** (from your mapping)
+   `GET /partners/plans`
+2. **Update the subscription**
+   `POST /v1/partners/subscriptions/<SUBSCRIPTION_ID>`
+
+   ```bash
+   curl -X POST https://api2.easydmarc.com/v1/partners/subscriptions/<SUBSCRIPTION_ID> \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"priceId":"<NEW_PRICE_ID>"}'
+   ```
+3. **Refresh entitlements/limits** in your UI.
+
+**Outcome:** Organization features and limits reflect the new plan.
+
+---
+
+### 3) Renew Subscription (Reseller: Extend Term)
+
+**Intent:** Extend the current term without changing the plan.
+
+**Endpoint**
+`POST /v1/partners/subscriptions/<SUBSCRIPTION_ID>/renew`
+
+```bash
+curl -X POST https://api2.easydmarc.com/v1/partners/subscriptions/<SUBSCRIPTION_ID>/renew \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Outcome:** Service continuity; plan limits remain unchanged.
+
+---
+
+### 4) Cancel / Suspend Subscription (Reseller: Suspend)
+
+**Intent:** Stop service for an Organization initiated by the End Customer or Partner.
+
+**Endpoint**
+`POST /v1/partners/subscriptions/<SUBSCRIPTION_ID>/cancel`
+
+```bash
+curl -X POST https://api2.easydmarc.com/v1/partners/subscriptions/<SUBSCRIPTION_ID>/cancel \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Optional Re‑activation:** Renew or assign a new subscription.
+
+**Outcome:** Subscription is suspended; feature access is limited per platform rules.
+
+---
+
+### 5) Transfer Ownership (Unlink Organization from Partner)
+
+> **Not available yet.** This capability is planned. The future flow will allow setting a new owner and unlinking the Organization from the Partner. For now, handle offboarding via subscription cancellation and (if required) Organization termination.
+
+---
+
+### 6) Terminate Organization
+
+**Intent:** Permanently shut down an Organization after subscription cancellation.
+
+**Endpoint**
+`DELETE /organizations/{id}`
+
+```bash
+curl -X DELETE https://api2.easydmarc.com/v1/organizations/<ORGANIZATION_ID> \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Outcome:** Tenant is removed according to platform rules.
+
+---
+
+### 7) Access via Magic Link (SSO)
+
+**Intent:** Provide one‑click, time‑bound access without passwords.
+
+**Endpoint**
+`POST /auth/magic-link`
+
+```bash
+curl -X POST https://api2.easydmarc.com/auth/magic-link \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{
+    "userId":"<USER_ID>",
+    "organizationId":"<ORGANIZATION_ID>",
+    "redirectUri":"https://app.easydmarc.com/dashboard"
+  }'
+```
+
+**Outcome:** User is authenticated into the Organization with the expected role.
+
+---
+
+## UI Data the Partner Typically Shows
+
+---
+
+## Operational Notes
+
+- **Partner‑Scoped Catalog:** Only Partner‑approved prices can be assigned/updated.
+- **Plan Mapping:** Map your products to EasyDMARC `priceId` values. Keep an internal table `<product_sku> ⇄ <priceId>`.
+- **Automation:** Use webhooks or order‑lifecycle hooks to trigger: Create Org → Create Admin User → Get Prices → Assign Subscription → Magic Link.
+- **Idempotency & Retries:** Make flows retry‑safe. Guard with your correlation IDs.
+- **Auditability:** Store `organizationId`, `userId`, `subscriptionId` and your external references for traceability.
+
+---
+
+## Quick Mapping (Operations → API Reference)
+
+- **Billing – Subscriptions & Pricing**: `GET /partners/plans`, `POST /partners/subscriptions/assign`, `POST /partners/subscriptions/{subscriptionId}`, `POST /partners/subscriptions/{subscriptionId}/renew`, `POST /partners/subscriptions/{subscriptionId}/cancel`, `GET /partners/subscriptions?organizationId=...`
+- **Organizations**: `POST /organizations`, `GET /organizations`, `GET /organizations/{id}`, `DELETE /organizations/{id}` (plus standard update/read operations in the spec).
+- **Users**: `POST /users`, `POST /auth/magic-link`, `GET /users/{userId}`, `PATCH /users/info`, `POST /users/revoke-organization-access`.
+- **Domains/Setup (optional)**: Use domain endpoints from the spec if your onboarding also covers DNS setup UX.
+
+> For request/response schemas and edge‑case semantics, see the OpenAPI files: _Billing (Subscriptions & Pricing)_, _Organizations_, _Users_, and _Domains_. Integrate authentication per the common API docs; avoid duplicating it here.

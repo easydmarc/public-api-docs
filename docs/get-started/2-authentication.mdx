@@ -1,0 +1,141 @@
+---
+slug: /authentication
+title: Authentication
+sidebar_label: Authentication
+sidebar_position: 2
+---
+
+# Authentication
+
+## Overview
+
+The EasyDMARC API uses OpenID Connect with OAuth 2.0 client credentials flow for authentication. Every API request requires a valid access token obtained from our authentication endpoint using your client credentials.
+
+## How Authentication Works
+
+- **Authentication Method:** OpenID Connect with OAuth 2.0 Client Credentials Flow
+- **Token Type:** Bearer Token
+- **Authorization Header Format:**
+  ```http
+  Authorization: Bearer ACCESS_TOKEN
+  ```
+
+## Authentication Flow
+
+The authentication process follows these steps:
+
+1. **Obtain client credentials** from the EasyDMARC Account Console
+2. **Request an access token** from the authentication endpoint using your client credentials
+3. **Use the access token** as a Bearer token in API requests
+
+## Obtaining Client Credentials
+
+1. **Log in to the Account Console:**
+   Sign in to your EasyDMARC account at [EasyDMARC Account Console](https://account-console.easydmarc.com/public-api).
+
+2. **Navigate to API Credentials:**
+   In your account settings, locate the section labeled "API Credentials".
+
+3. **Generate Client Credentials:**
+   Create a new client to receive:
+   - `client_id`: Your unique client identifier
+   - `client_secret`: Your client secret (keep this confidential)
+
+## Getting an Access Token
+
+Use the authentication endpoint to exchange your client credentials for an access token:
+
+**Endpoint:** `POST https://api2.easydmarc.com/auth/token`
+
+
+**Request Example:**
+
+```bash
+curl -L --post302 \
+  --request POST 'https://api2.easydmarc.com/auth/token' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'client_id=YOUR_CLIENT_ID' \
+  --data-urlencode 'client_secret=YOUR_CLIENT_SECRET' \
+  --data-urlencode 'grant_type=client_credentials'
+```
+
+**Parameters:**
+- `client_id`: Your client ID from the Account Console
+- `client_secret`: Your client secret
+- `grant_type`: Must be `client_credentials`
+
+**Response Example:**
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+## Using the Access Token
+
+Include the access token in the Authorization header for all API requests:
+
+```bash
+curl -X GET "https://api2.easydmarc.com/v1/organizations?id=org-123" \
+-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+```
+
+## Token Management
+
+### Token Expiration
+- Access tokens have a limited lifespan — check the `expires_in` field in the token response (e.g., `300` means 5 minutes)
+- Request a new token before the current one expires
+- Token refresh is not supported; always request a new token using client credentials
+
+### Example Token Refresh Implementation
+
+```python
+import requests
+import time
+
+class TokenManager:
+    def __init__(self, client_id, client_secret):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.token = None
+        self.token_expiry = 0
+
+    def get_access_token(self):
+        if self.token and time.time() < self.token_expiry:
+            return self.token
+
+        response = requests.post(
+            'https://api2.easydmarc.com/auth/token',
+            data={
+                'client_id': self.client_id,
+                'client_secret': self.client_secret,
+                'grant_type': 'client_credentials'
+            }
+        )
+
+        data = response.json()
+        self.token = data['access_token']
+        self.token_expiry = time.time() + data['expires_in'] - 60  # Refresh 1 minute early
+
+        return self.token
+```
+
+## Best Practices
+
+### Security
+- **Protect your client secret:** Never expose it in client-side code or public repositories
+- **Use environment variables:** Store credentials in environment variables or secure vaults
+- **Rotate credentials:** Periodically rotate your client credentials to minimize risk
+
+### Performance
+- **Cache tokens:** Reuse access tokens until they expire to reduce authentication requests
+- **Handle expiration gracefully:** Implement automatic token renewal before expiration
+- **Implement retry logic:** Handle authentication failures with exponential backoff
+
+### Error Handling
+- **401 Unauthorized:** Token expired or invalid - request a new token
+- **400 Bad Request:** Invalid client credentials or request format
+- **429 Too Many Requests:** Rate limit exceeded - implement backoff strategy
