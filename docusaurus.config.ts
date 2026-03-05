@@ -42,7 +42,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           routeBasePath: '/', // Serve docs at root
-          editUrl: 'https://github.com/easydmarc/public-api-docs/edit/main/',
+          // editUrl: 'https://github.com/easydmarc/public-api-docs/edit/main/',
         },
         pages: false, // Disable pages plugin
         blog: false,
