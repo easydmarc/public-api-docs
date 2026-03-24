@@ -1715,7 +1715,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1758,7 +1758,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1812,7 +1812,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1846,7 +1846,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1890,7 +1890,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1945,7 +1945,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -2267,7 +2267,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -2496,7 +2496,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -2596,7 +2596,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -2709,7 +2709,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -2809,7 +2809,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -3131,7 +3131,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
