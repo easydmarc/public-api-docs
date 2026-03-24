@@ -58,12 +58,7 @@
   ],
   "paths": {
     "/v1/domains/overview": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Domains"
@@ -148,19 +143,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domains": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Domains"
@@ -256,7 +246,7 @@
         "security": [],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -358,19 +348,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domains/batch": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Domains"
@@ -531,19 +516,14 @@
         "security": [],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domains/{domain}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Domains"
@@ -600,7 +580,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -676,7 +656,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ],
@@ -765,7 +745,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -819,19 +799,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domains/{domain}/setup": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Domains"
@@ -955,7 +930,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1002,19 +977,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domains/search": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Domains"
@@ -1100,19 +1070,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domain-groups": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Domains"
@@ -1198,7 +1163,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1280,19 +1245,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domain-groups/{id}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Domains"
@@ -1353,7 +1313,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1459,7 +1419,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
@@ -1498,19 +1458,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/domain-groups/{id}/domains": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Domains"
@@ -1608,7 +1563,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ],
@@ -1616,12 +1571,7 @@
       }
     },
     "/v1/domain-groups/{id}/domains/{domainId}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "delete": {
         "tags": [
           "Domains"
@@ -1661,7 +1611,7 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ],
@@ -1669,12 +1619,7 @@
       }
     },
     "/v1/webhooks": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Alerting"
@@ -1713,19 +1658,14 @@
         ],
         "servers": [
           {
-            "url": "https://api2.easydmarc.com/v1.0",
+            "url": "https://api2.easydmarc.com",
             "description": "Live"
           }
         ]
       }
     },
     "/v1/webhooks/owner/{ownerId}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Alerting"
@@ -1782,12 +1722,7 @@
       }
     },
     "/v1/webhooks/{id}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Alerting"
@@ -1918,12 +1853,7 @@
       }
     },
     "/v1/webhooks/{id}/regenerate-secret": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "post": {
         "tags": [
           "Alerting"
@@ -1967,12 +1897,7 @@
       }
     },
     "/v1/webhooks/{id}/deliveries": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Alerting"
@@ -2027,12 +1952,7 @@
       }
     },
     "/v1/dmarc/failure-reports": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -2354,12 +2274,7 @@
       }
     },
     "/v1/dmarc/failure-reports/{id}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -2588,12 +2503,7 @@
       }
     },
     "/v1/dmarc/failure-reports/{id}/eml": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -2693,12 +2603,7 @@
       }
     },
     "/v1/dmarc/failure-reports/{id}/attachments/{index}": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -2811,12 +2716,7 @@
       }
     },
     "/v1/dmarc/failure-reports/{id}/attachments/all": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -2916,12 +2816,7 @@
       }
     },
     "/v1/dmarc/failure-reports/aggregates": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com/v1.0",
-          "description": "Live"
-        }
-      ],
+      "servers": [],
       "get": {
         "tags": [
           "Failure Reports"
@@ -8531,7 +8426,16 @@
       },
       "SsoCreate": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "idp_entity_id": {
+            "type": "string",
+            "description": "Identity Provider entity ID from the IdP metadata. This is the unique identifier for the external SAML identity provider (e.g., Okta, Azure AD, Google Workspace)",
+            "example": "https://idp.example.com/saml/metadata"
+          }
+        },
+        "required": [
+          "idp_entity_id"
+        ]
       },
       "CustomerUpsertRequest": {
         "type": "object",
@@ -9240,93 +9144,113 @@
         "properties": {
           "domain_count": {
             "type": "number",
-            "description": "Number of domains included in the plan",
-            "example": 2
+            "description": "Maximum number of domains that can be monitored under this plan",
+            "example": 10
           },
           "email_volume_count": {
             "type": "number",
-            "description": "Monthly email volume limit",
-            "example": 100000
+            "description": "Maximum email volume count allowed per month (in millions or total emails)",
+            "example": 1000000
           },
           "verification_count": {
             "type": "number",
-            "description": "Number of verifications allowed"
+            "description": "Number of email verifications available per month",
+            "example": 500
           },
           "data_retention_days": {
             "type": "number",
-            "description": "Data retention period in days"
+            "description": "Number of days the user can look back when viewing data. Does not affect data retention — only limits the visible date range (e.g., 30, 90, 365)",
+            "example": 90
           },
           "public_api": {
             "type": "boolean",
-            "description": "Whether public API access is enabled"
+            "description": "Whether public API access is enabled for programmatic integration",
+            "example": true
           },
           "bimi_reporting": {
             "type": "boolean",
-            "description": "Whether BIMI reporting is enabled"
+            "description": "Whether BIMI reporting is enabled",
+            "example": true
           },
           "saml": {
             "type": "boolean",
-            "description": "Whether SAML SSO is enabled"
+            "description": "Whether SAML-based Single Sign-On authentication is available",
+            "example": true
           },
           "alerting": {
             "type": "boolean",
-            "description": "Whether alerting features are enabled"
+            "description": "Whether email alerting and notification features are enabled",
+            "example": true
           },
           "api_access": {
             "type": "boolean",
-            "description": "Whether API access is enabled"
+            "description": "Whether API access is granted for this plan (legacy field, prefer public_api)",
+            "example": true
           },
           "reputation_monitoring": {
             "type": "boolean",
-            "description": "Whether reputation monitoring is enabled"
+            "description": "Whether reputation monitoring and blacklist checking features are available",
+            "example": true
           },
           "mailbox_count": {
             "type": "number",
-            "description": "Number of mailboxes included"
+            "description": "Number of mailboxes that can be configured for inbox placement testing",
+            "example": 5
           },
           "inbox_placement_test_count": {
             "type": "number",
-            "description": "Number of inbox placement tests allowed"
+            "description": "Number of inbox placement tests that can be run per month",
+            "example": 50
           },
           "easy_spf": {
             "type": "boolean",
-            "description": "Whether EasySPF feature is enabled"
+            "description": "Whether EasySPF feature for simplified SPF record management is enabled",
+            "example": true
           },
           "domain_access": {
             "type": "boolean",
-            "description": "Whether domain access feature is enabled"
+            "description": "Whether domain-level access control and permissions are available",
+            "example": true
           },
           "audit_log": {
             "type": "boolean",
-            "description": "Whether audit log feature is enabled"
+            "description": "Whether audit logging functionality for compliance and security tracking is enabled",
+            "example": true
           },
           "audit_log_duration": {
             "type": "number",
-            "description": "Audit log retention duration in days"
+            "description": "Duration in days that audit logs are retained (e.g., 30, 90, 365)",
+            "example": 365
           },
           "dns_integrations": {
             "type": "boolean",
-            "description": "Whether DNS integrations are enabled"
+            "description": "Whether DNS integrations are enabled",
+            "example": true
           },
           "messaging_integrations": {
             "type": "boolean",
-            "description": "Whether messaging integrations are enabled"
+            "description": "Whether messaging integrations are enabled",
+            "example": true
           },
           "email_investigation": {
             "type": "boolean",
-            "description": "Whether email investigation feature is enabled"
+            "description": "Whether email investigation and forensics features are available",
+            "example": true
           },
           "amazon_ses_integration": {
             "type": "boolean",
-            "description": "Whether Amazon SES integration is enabled"
+            "description": "Whether Amazon SES integration for sending emails is enabled",
+            "example": false
           },
           "touchpoint": {
             "type": "boolean",
-            "description": "Whether touchpoint feature is enabled"
+            "description": "Whether touchpoint tracking and engagement analytics are available",
+            "example": true
           },
           "touchpoint_limit": {
             "type": "number",
-            "description": "Touchpoint usage limit"
+            "description": "Touchpoint usage limit",
+            "example": 10000
           }
         }
       },
@@ -9334,25 +9258,53 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "number",
+            "description": "Unique numeric identifier for the plan",
+            "example": 101
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name of the plan (e.g., \"Premium Monthly\", \"Domain Add-on\")",
+            "example": "Premium Monthly Plan"
           },
           "objectId": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique object identifier with \"plan\" prefix used for external references",
+            "example": "plan_xyz789abc456"
           },
           "productFamily": {
+            "description": "Product family classification that groups related plans together. Includes Plus, Premium, Enterprise, MSP variants, and custom plans",
+            "example": "premium",
             "$ref": "#/components/schemas/ProductFamilyEnum"
           },
           "type": {
+            "description": "Type of plan distinguishing between base subscription plans and add-on features",
+            "example": "plan",
             "$ref": "#/components/schemas/PlanTypeEnum"
           },
           "features": {
-            "$ref": "#/components/schemas/PlanFeatures"
+            "description": "Comprehensive feature configuration for this plan including domain limits, email volume, retention periods, and feature flags (SAML, API access, alerting, audit logs, etc.)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlanFeatures"
+              }
+            ]
           },
           "productType": {
-            "$ref": "#/components/schemas/ProductType"
+            "description": "Product type associated with this plan, defining the service category (e.g., DMARC monitoring, email investigation)",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ProductType"
+              }
+            ]
+          },
+          "prices": {
+            "description": "Available pricing options for this plan. Multiple prices can exist with different currencies, billing frequencies (monthly/annual), and billing cycles",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Price"
+            }
           }
         },
         "required": [
@@ -9368,45 +9320,76 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Numeric identifier for the price record",
+            "example": "123"
           },
           "objectId": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique object identifier with \"price\" prefix used for external references",
+            "example": "price_abc123xyz789"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable name describing the pricing tier or option",
+            "example": "Premium Monthly - USD"
           },
           "amount": {
-            "type": "number"
+            "type": "number",
+            "description": "Price amount in the specified currency. Stored as decimal with 2 decimal places",
+            "example": 99.99
           },
           "currency": {
+            "description": "Currency code for the price amount. Supports USD, EUR, and GBP",
+            "example": "USD",
             "$ref": "#/components/schemas/CurrencyEnum"
           },
           "frequency": {
+            "description": "Billing frequency for this price. Monthly (m), yearly (y), or daily (d)",
+            "example": "m",
             "$ref": "#/components/schemas/FrequencyEnum"
           },
           "minimumBillableItems": {
             "type": "number",
+            "description": "Minimum number of items that will be billed regardless of actual usage. Used for enforcing minimum charges",
+            "example": 10,
             "nullable": true
           },
           "billingCycles": {
             "type": "number",
+            "description": "Number of billing cycles for this price. Used for limited-term subscriptions or promotional periods",
+            "example": 12,
             "nullable": true
           },
           "billingPeriod": {
-            "type": "number"
+            "type": "number",
+            "description": "Billing period multiplier. For example, 1 for standard monthly/yearly, 2 for bi-monthly, etc.",
+            "example": 1
           },
           "vendorPriceId": {
-            "type": "string"
+            "type": "string",
+            "description": "Vendor-specific price identifier used for payment gateway integration (e.g., Stripe price ID, Chargebee price ID)",
+            "example": "price_1234567890abcdef",
+            "nullable": true
           },
           "vendor": {
+            "description": "Payment vendor/gateway used for this price. Supports Stripe, Chargebee, Chargebee EU, and Azure in multiple regions",
+            "example": "chargebee",
             "$ref": "#/components/schemas/VendorEnum"
           },
           "plan": {
-            "$ref": "#/components/schemas/Plan"
+            "description": "Associated plan containing feature definitions and plan type information",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Plan"
+              }
+            ]
           },
           "toolsPlanId": {
-            "type": "number"
+            "type": "number",
+            "description": "Legacy tools plan identifier for backward compatibility with the old billing system",
+            "example": 789
           }
         },
         "required": [
@@ -9431,78 +9414,64 @@
           "suspended"
         ]
       },
-      "SubscriptionItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "objectId": {
-            "type": "string"
-          },
-          "price": {
-            "$ref": "#/components/schemas/Price"
-          },
-          "status": {
-            "$ref": "#/components/schemas/SubscriptionItemStatusEnum"
-          },
-          "quantity": {
-            "type": "number"
-          },
-          "minimumBillableItems": {
-            "type": "number"
-          },
-          "features": {
-            "$ref": "#/components/schemas/PlanFeatures"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "status",
-          "features",
-          "createdAt",
-          "updatedAt"
-        ]
-      },
       "Subscription": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "number",
+            "description": "Unique numeric identifier for the subscription",
+            "example": 12345
           },
           "objectId": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique object identifier with \"sub\" prefix used for external references",
+            "example": "sub_abc123xyz789"
           },
           "expireDate": {
             "format": "date-time",
-            "type": "string"
+            "type": "string",
+            "description": "Date when the subscription expires. Used for subscription renewal scheduling and lifecycle management",
+            "example": "2025-12-31T23:59:59.999Z"
           },
           "cancelledAt": {
             "format": "date-time",
-            "type": "string"
+            "type": "string",
+            "description": "Date when the subscription was cancelled. Null if the subscription is still active",
+            "example": "2025-10-01T10:30:00.000Z",
+            "nullable": true
           },
           "organisation": {
-            "$ref": "#/components/schemas/Organisation"
+            "description": "Organisation that owns this subscription. Contains organisation details including billing information",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Organisation"
+              }
+            ]
           },
           "toolsUserPlanId": {
-            "type": "number"
+            "type": "number",
+            "description": "Legacy tools user plan identifier for backward compatibility with the old system",
+            "example": 456,
+            "nullable": true
           },
           "vendorSubscriptionId": {
-            "type": "string"
+            "type": "string",
+            "description": "Payment vendor subscription identifier (e.g., Chargebee subscription ID) used for vendor API integration",
+            "example": "cb_sub_9876543210",
+            "nullable": true
           },
           "product": {
-            "$ref": "#/components/schemas/Product"
+            "description": "Product associated with this subscription. Includes product type and resource groups",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Product"
+              }
+            ]
           },
           "items": {
+            "description": "List of subscription items representing individual plan components with pricing, features, and quantities. Each item can have different statuses and feature configurations",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SubscriptionItem"
@@ -9510,20 +9479,99 @@
           },
           "createdAt": {
             "format": "date-time",
-            "type": "string"
+            "type": "string",
+            "description": "Timestamp when the subscription was created",
+            "example": "2025-01-01T00:00:00.000Z"
           },
           "updatedAt": {
             "format": "date-time",
-            "type": "string"
+            "type": "string",
+            "description": "Timestamp when the subscription was last updated",
+            "example": "2025-10-09T12:00:00.000Z"
           }
         },
         "required": [
           "id",
           "objectId",
           "expireDate",
-          "cancelledAt",
-          "toolsUserPlanId",
-          "vendorSubscriptionId",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "SubscriptionItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "Unique numeric identifier for the subscription item",
+            "example": 9876
+          },
+          "objectId": {
+            "type": "string",
+            "description": "Unique object identifier with \"si\" prefix used for external references",
+            "example": "si_def456uvw123"
+          },
+          "price": {
+            "description": "Pricing information for this subscription item, including amount, currency, frequency, and associated plan details",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Price"
+              }
+            ]
+          },
+          "status": {
+            "description": "Current status of the subscription item. Determines if the item is active, suspended, or removed from the subscription",
+            "example": "active",
+            "$ref": "#/components/schemas/SubscriptionItemStatusEnum"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantity of this subscription item. Used for metered billing or multiple units of the same plan component",
+            "example": 5,
+            "nullable": true
+          },
+          "minimumBillableItems": {
+            "type": "number",
+            "description": "Minimum number of billable items required. Used for enforcing minimum billing thresholds regardless of actual usage",
+            "example": 10,
+            "nullable": true
+          },
+          "features": {
+            "description": "Plan features configuration including domain count, email volume, retention days, and boolean feature flags (SAML, API access, alerting, etc.)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlanFeatures"
+              }
+            ]
+          },
+          "subscription": {
+            "description": "Parent subscription that this item belongs to. Contains full subscription details including organisation and other items",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            ]
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Timestamp when the subscription item was created",
+            "example": "2025-01-15T08:30:00.000Z"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Timestamp when the subscription item was last updated",
+            "example": "2025-10-09T14:22:00.000Z"
+          }
+        },
+        "required": [
+          "id",
+          "objectId",
+          "status",
+          "features",
           "createdAt",
           "updatedAt"
         ]
