@@ -50,10 +50,6 @@
     {
       "name": "Users",
       "x-displayName": "Users"
-    },
-    {
-      "name": "DnsCore",
-      "x-displayName": "DnsCore"
     }
   ],
   "paths": {
@@ -3144,9 +3140,8 @@
         }
       ],
       "post": {
-        "operationId": "createMagicLink",
-        "summary": "Generate login magic link",
         "description": "Generates a short-lived, one-time URL that authenticates a specific user into a specific organization, then redirects them to your chosen EasyDMARC URI.\n\n## Using the Magic Link\n1. Your backend calls POST /auth/magic-link with userId, organizationId, redirectUri.\n2. API returns a single-use url and expiringAt.\n3. Redirect the user (HTTP 302) or render a button that navigates to url.\n4. The user is authenticated and then redirected to redirectUri within EasyDMARC.\n\nNotes\n- Treat the returned url as a credential: never log or expose it broadly.\n- The link expires at expiringAt; do not cache beyond that time.\n- A new link should be generated per session/initiation.\n\n\n## Examples\n\n**cURL**\n```\ncurl -X POST \"https://api2.easydmarc.com/auth/magic-link\" \\\n  -H \"Authorization: Bearer $EASYDMARC_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"userId\": \"c99cf9f3-f946-4707-9984-a19bf2d57841\",\n    \"organizationId\": \"org_0987654321\",\n    \"redirectUri\": \"https://account-console.easydmarc.com\"\n  }'\n```\n\nSecurity Best Practices\n- Send the request server-to-server only; never expose your API token to the browser or client apps.\n- Do not log full magic links; if needed, mask them.\n- Prefer short validity windows for operational usage; launch the redirect immediately after generating the link.",
+        "operationId": "createMagicLink",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -3177,13 +3172,14 @@
             "description": "Unauthorized - Invalid or missing Bearer token"
           }
         },
-        "tags": [
-          "Authentication"
-        ],
         "security": [
           {
             "bearer": []
           }
+        ],
+        "summary": "Generate login magic link",
+        "tags": [
+          "Authentication"
         ]
       }
     },
@@ -3194,9 +3190,8 @@
         }
       ],
       "post": {
-        "operationId": "getAuthToken",
-        "summary": "Obtain authentication token",
         "description": "Authenticates your client credentials and returns a bearer token required for accessing protected API endpoints.\n\n",
+        "operationId": "getAuthToken",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -3226,6 +3221,7 @@
             "description": "Unauthorized"
           }
         },
+        "summary": "Obtain authentication token",
         "tags": [
           "Authentication"
         ]
@@ -3238,9 +3234,8 @@
         }
       ],
       "post": {
-        "operationId": "createOrganization",
-        "summary": "Create a new organization",
         "description": "Creates a new organization within the partner tenant with the specified name.",
+        "operationId": "createOrganization",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -3280,9 +3275,6 @@
             "description": "Internal Server Error"
           }
         },
-        "tags": [
-          "Organizations"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3290,22 +3282,33 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Create a new organization",
+        "tags": [
+          "Organizations"
         ]
       },
       "get": {
-        "operationId": "getOrganizations",
-        "summary": "List organizations",
         "description": "Retrieves a paginated list of organizations within the partner tenant. Use page and limit parameters to control pagination.",
+        "operationId": "getOrganizations",
         "parameters": [
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Object"
+            }
+          },
           {
             "name": "page",
             "required": false,
             "in": "query",
             "description": "Page number for pagination",
-            "example": 1,
             "schema": {
               "minimum": 1,
               "default": 1,
+              "example": 1,
               "type": "number"
             }
           },
@@ -3314,11 +3317,11 @@
             "required": false,
             "in": "query",
             "description": "Number of items per page",
-            "example": 20,
             "schema": {
               "minimum": 1,
-              "maximum": 50,
+              "maximum": 100,
               "default": 10,
+              "example": 20,
               "type": "number"
             }
           }
@@ -3367,9 +3370,6 @@
             "description": "Internal Server Error"
           }
         },
-        "tags": [
-          "Organizations"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3377,6 +3377,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "List organizations",
+        "tags": [
+          "Organizations"
         ]
       }
     },
@@ -3387,17 +3391,16 @@
         }
       ],
       "patch": {
-        "operationId": "patchOrganization",
-        "summary": "Partially update existing organization",
         "description": "Updates the organization with the specified fields. Only provided fields will be updated.",
+        "operationId": "patchOrganization",
         "parameters": [
           {
             "name": "organizationId",
             "required": true,
             "in": "path",
             "description": "Unique identifier of the organization",
-            "example": "org_68231dcfeb8e9f092a052b88",
             "schema": {
+              "example": "org_68231dcfeb8e9f092a052b88",
               "type": "string"
             }
           }
@@ -3443,9 +3446,6 @@
             "description": "Internal Server Error"
           }
         },
-        "tags": [
-          "Organizations"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3453,20 +3453,23 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Partially update existing organization",
+        "tags": [
+          "Organizations"
         ]
       },
       "get": {
-        "operationId": "getOrganizationById",
-        "summary": "Get organization details",
         "description": "Retrieves the organization details by the specified ID.",
+        "operationId": "getOrganizationById",
         "parameters": [
           {
             "name": "organizationId",
             "required": true,
             "in": "path",
             "description": "Unique identifier of the organization",
-            "example": "org_68231dcfeb8e9f092a052b88",
             "schema": {
+              "example": "org_68231dcfeb8e9f092a052b88",
               "type": "string"
             }
           }
@@ -3498,9 +3501,6 @@
             "description": "Internal Server Error"
           }
         },
-        "tags": [
-          "Organizations"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3508,20 +3508,23 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Get organization details",
+        "tags": [
+          "Organizations"
         ]
       },
       "delete": {
-        "operationId": "deleteOrganization",
-        "summary": "Delete an organization",
         "description": "Deletes the organization by the specified ID. This action is irreversible.",
+        "operationId": "deleteOrganization",
         "parameters": [
           {
             "name": "organizationId",
             "required": true,
             "in": "path",
             "description": "Unique identifier of the organization to delete",
-            "example": "org_68231dcfeb8e9f092a052b88",
             "schema": {
+              "example": "org_68231dcfeb8e9f092a052b88",
               "type": "string"
             }
           }
@@ -3543,9 +3546,6 @@
             "description": "Internal Server Error"
           }
         },
-        "tags": [
-          "Organizations"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3553,6 +3553,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Delete an organization",
+        "tags": [
+          "Organizations"
         ]
       }
     },
@@ -3563,9 +3567,8 @@
         }
       ],
       "get": {
-        "operationId": "listPlans",
-        "summary": "List plans",
         "description": "Returns all plans available to the partner, including pricing information, feature sets, and billing details. Use this endpoint to discover sellable plans and prices for subscription assignment.",
+        "operationId": "listPlans",
         "parameters": [],
         "responses": {
           "200": {
@@ -3585,9 +3588,6 @@
             "description": "Unauthorized - Invalid or missing authentication token"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3595,6 +3595,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "List plans",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -3605,18 +3609,17 @@
         }
       ],
       "get": {
-        "operationId": "listSubscriptions",
-        "summary": "List subscriptions for an organization",
         "description": "Retrieves all subscriptions for a given organization, including expired and cancelled subscriptions.",
+        "operationId": "listSubscriptions",
         "parameters": [
           {
             "name": "organizationId",
             "required": true,
             "in": "query",
             "description": "External organization ID",
-            "example": "org_88xy77",
             "schema": {
               "maxLength": 128,
+              "example": "org_88xy77",
               "type": "string"
             }
           }
@@ -3645,9 +3648,6 @@
             "description": "Unprocessable Entity - Invalid organization ID format"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3655,6 +3655,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "List subscriptions for an organization",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -3665,17 +3669,16 @@
         }
       ],
       "post": {
-        "operationId": "cancelSubscription",
-        "summary": "Cancel a subscription",
         "description": "Cancels a subscription immediately. Cannot be applied to an already cancelled subscription.",
+        "operationId": "cancelSubscription",
         "parameters": [
           {
             "name": "subscriptionId",
             "required": true,
             "in": "path",
             "description": "Subscription ID",
-            "example": "sub_12ab34",
             "schema": {
+              "example": "sub_12ab34",
               "type": "string"
             }
           }
@@ -3704,9 +3707,6 @@
             "description": "Unprocessable Entity - Subscription already cancelled"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3714,6 +3714,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Cancel a subscription",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -3724,17 +3728,16 @@
         }
       ],
       "post": {
-        "operationId": "renewSubscription",
-        "summary": "Renew the subscription",
         "description": "Updates the expiration date of an active subscription based on the assigned price billing period. Cannot be applied to a cancelled subscription.",
+        "operationId": "renewSubscription",
         "parameters": [
           {
             "name": "subscriptionId",
             "required": true,
             "in": "path",
             "description": "Subscription ID",
-            "example": "sub_12ab34",
             "schema": {
+              "example": "sub_12ab34",
               "type": "string"
             }
           }
@@ -3766,9 +3769,6 @@
             "description": "Unprocessable Entity - Subscription is cancelled"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3776,6 +3776,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Renew the subscription",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -3786,9 +3790,8 @@
         }
       ],
       "post": {
-        "operationId": "assignSubscription",
-        "summary": "Assign a subscription (partner-admin flow)",
         "description": "Assigns a subscription for an organization using a priceId the partner is allowed to sell. Payment is handled by the partner; this endpoint only registers the assignment.",
+        "operationId": "assignSubscription",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -3828,9 +3831,6 @@
             "description": "Conflict - Organization already has an active incompatible subscription"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3838,6 +3838,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Assign a subscription (partner-admin flow)",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -3848,17 +3852,16 @@
         }
       ],
       "post": {
-        "operationId": "updateSubscriptionPrice",
-        "summary": "Upgrade/downgrade plan",
         "description": "Creates a new subscription with a new Plan/Price. The current active subscription is cancelled and replaced with the new one.",
+        "operationId": "updateSubscriptionPrice",
         "parameters": [
           {
             "name": "subscriptionId",
             "required": true,
             "in": "path",
             "description": "Subscription ID",
-            "example": "sub_12ab34",
             "schema": {
+              "example": "sub_12ab34",
               "type": "string"
             }
           }
@@ -3898,9 +3901,6 @@
             "description": "Unprocessable Entity - Subscription already cancelled or price ID is required"
           }
         },
-        "tags": [
-          "Billing - Subscriptions & Pricing"
-        ],
         "security": [
           {
             "oauth2": []
@@ -3908,6 +3908,10 @@
           {
             "bearer": []
           }
+        ],
+        "summary": "Upgrade/downgrade plan",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
         ]
       }
     },
@@ -5013,6 +5017,50 @@
         ]
       }
     },
+    "/v1/dns-lookup/dmarc/verification-status-batch": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "post": {
+        "operationId": "getVerificationStatusBatch",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DmarcRuxBatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DomainVerificationStatusResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DNS Lookup"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/v1/dns-lookup/dkim": {
       "servers": [
         {
@@ -5513,54 +5561,6 @@
           {
             "bearer": []
           }
-        ]
-      }
-    },
-    "/v1/dns-lookup/reverse-dns": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com"
-        }
-      ],
-      "get": {
-        "operationId": "getReverseRecord",
-        "summary": "Perform reverse DNS lookup",
-        "description": "Resolves an IP address or reverse DNS name to its corresponding PTR record. Supports both IPv4 and IPv6 addresses. Returns status codes for different resolution outcomes (SUCCESS, NOTFOUND, NODATA, etc.).",
-        "parameters": [
-          {
-            "name": "maxAgeMs",
-            "required": false,
-            "in": "query",
-            "description": "The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache",
-            "schema": {
-              "example": 5000,
-              "type": "number"
-            }
-          },
-          {
-            "name": "query",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "example": "8.8.8.8",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "DNS lookup response with status code and optional PTR record data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ReverseDnsResponse"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DnsCore"
         ]
       }
     },
@@ -6069,7 +6069,7 @@
       ],
       "post": {
         "description": "Creates one or more new users in the organization with specified roles and permissions. Unlike the invite endpoint, this creates users directly without requiring them to accept an invitation.\n\n**Key Differences from Invite:**\n- Creates users immediately without invitation flow\n- Users are active immediately\n- No email invitation is sent\n\n**Use Cases:**\n- Bulk user import from external systems\n- Automated user provisioning via integrations\n- Pre-creating accounts for known team members\n\n**Permissions Required:**\n- Must have admin role in the organization\n- Must have user creation permissions",
-        "operationId": "create",
+        "operationId": "create_2",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -6181,7 +6181,7 @@
         ]
       }
     },
-    "/v1/users/revoke-organization-access": {
+    "/v1/users/revoke-organization-access/{token}": {
       "servers": [
         {
           "url": "https://api2.easydmarc.com"
@@ -6330,6 +6330,21 @@
         "scheme": "bearer",
         "bearerFormat": "JWT",
         "type": "http"
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://uac.easydmarc.com/realms/easydmarc/protocol/openid-connect/auth",
+            "scopes": {
+              "openid": "openid",
+              "profile": "profile",
+              "email": "email",
+              "offline_access": "offline_access"
+            }
+          }
+        },
+        "scheme": "bearer"
       }
     },
     "responses": {
@@ -6453,28 +6468,6 @@
           }
         }
       },
-      "GatewayTimeout": {
-        "description": "The server did not receive a timely response from an upstream service",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "error": "GatewayTimeout",
-                  "details": {
-                    "serviceId": "payment-processor"
-                  },
-                  "message": "The server did not receive a timely response from an upstream service",
-                  "traceId": "abc-123-xyz-789"
-                }
-              }
-            }
-          }
-        }
-      },
       "TooManyRequests": {
         "description": "The client has sent too many requests in a given time period",
         "content": {
@@ -6493,54 +6486,6 @@
                     "message": "You have exceeded the rate limit for this API",
                     "property": "id"
                   }
-                }
-              }
-            }
-          }
-        }
-      },
-      "MethodNotAllowed": {
-        "description": "The HTTP method is not supported for this resource",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "error": "MethodNotAllowed",
-                  "details": {
-                    "allowedMethods": [
-                      "GET",
-                      "POST"
-                    ]
-                  },
-                  "message": "This HTTP method is not supported for this endpoint",
-                  "traceId": "abc-123-xyz-789"
-                }
-              }
-            }
-          }
-        }
-      },
-      "ServiceUnavailable": {
-        "description": "The service is temporarily unavailable",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "error": "ServiceUnavailable",
-                  "details": {
-                    "retryAfterSeconds": 300,
-                    "maintenanceScheduled": true
-                  },
-                  "message": "The service is temporarily unavailable",
-                  "traceId": "abc-123-xyz-789"
                 }
               }
             }
@@ -6589,31 +6534,6 @@
                     "message": "Unprocessable Entity",
                     "property": "id"
                   }
-                }
-              }
-            }
-          }
-        }
-      },
-      "UnsupportedMediaType": {
-        "description": "The content type specified in the request is not supported",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "examples": {
-              "default": {
-                "value": {
-                  "error": "UnsupportedMediaType",
-                  "details": {
-                    "supportedTypes": [
-                      "application/json",
-                      "application/xml"
-                    ]
-                  },
-                  "message": "The content type specified in the request is not supported",
-                  "traceId": "abc-123-xyz-789"
                 }
               }
             }
@@ -8315,630 +8235,48 @@
         "type": "object",
         "properties": {}
       },
-      "User": {
+      "PageMeta_2": {
         "type": "object",
         "properties": {
-          "objectId": {
-            "type": "string",
-            "nullable": false,
-            "description": "The unique identifier of the user.",
-            "example": "4a3d6dd3-6694-a41b-9abc-a46fa810a298"
-          },
-          "email": {
-            "type": "string",
-            "nullable": false,
-            "description": "The email address of the user.",
-            "example": "angus.young@example.com"
-          },
-          "status": {
-            "type": "string",
-            "nullable": false,
-            "description": "The status of the user.",
-            "enum": [
-              "active",
-              "invite_pending",
-              "deactivated"
-            ],
-            "example": "active"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true,
-            "description": "The name of the user.",
-            "example": "Donny Darko"
-          },
-          "country": {
-            "type": "string",
-            "nullable": true,
-            "description": "The country of the user.",
-            "example": "USA"
-          },
-          "timezone": {
-            "type": "string",
-            "nullable": true,
-            "description": "The timezone of the user.",
-            "example": "America/New_York"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "The date and time when the user was created.",
-            "example": "2023-10-01T12:00:00Z"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "The date and time when the user was last updated.",
-            "example": "2023-10-01T12:00:00Z"
-          }
-        },
-        "required": [
-          "objectId",
-          "email",
-          "status"
-        ]
-      },
-      "GetAttributesResponse": {
-        "type": "object",
-        "properties": {}
-      },
-      "Attribute": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string",
-            "description": "The key of the attribute",
-            "example": "channel"
-          },
-          "values": {
-            "description": "The values of the attribute",
-            "example": [
-              "partner",
-              "direct"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "key",
-          "values"
-        ]
-      },
-      "UpsertMeRequest": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "userId",
-          "email"
-        ]
-      },
-      "SsoCreate": {
-        "type": "object",
-        "properties": {
-          "idp_entity_id": {
-            "type": "string",
-            "description": "Identity Provider entity ID from the IdP metadata. This is the unique identifier for the external SAML identity provider (e.g., Okta, Azure AD, Google Workspace)",
-            "example": "https://idp.example.com/saml/metadata"
-          }
-        },
-        "required": [
-          "idp_entity_id"
-        ]
-      },
-      "CustomerUpsertRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "OrganisationCreateRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "objectId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "VendorEnum": {
-        "type": "string",
-        "enum": [
-          "stripe_eu",
-          "stripe",
-          "chargebee",
-          "chargebee_eu",
-          "azure"
-        ]
-      },
-      "BillingInfo": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingEmail": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressLine": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressCountry": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressCity": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressState": {
-            "type": "string",
-            "nullable": true
-          },
-          "addressZip": {
-            "type": "string",
-            "nullable": true
-          },
-          "misc": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerVendor": {
-            "nullable": true,
-            "$ref": "#/components/schemas/VendorEnum"
-          },
-          "customerId": {
-            "type": "string",
-            "nullable": true
-          },
-          "billingDay": {
+          "page": {
             "type": "number",
-            "nullable": true
+            "description": "Current page number",
+            "example": 1
           },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
+          "limit": {
+            "type": "number",
+            "description": "Maximum number of items per page",
+            "example": 20
           },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
+          "total": {
+            "type": "number",
+            "description": "Total number of items across all pages",
+            "example": 123
+          },
+          "pageCount": {
+            "type": "number",
+            "description": "Total number of pages",
+            "example": 7
+          },
+          "hasPreviousPage": {
+            "type": "boolean",
+            "description": "Whether there is a previous page available",
+            "example": false
+          },
+          "hasNextPage": {
+            "type": "boolean",
+            "description": "Whether there is a next page available",
+            "example": true
           }
         },
         "required": [
-          "name",
-          "email",
-          "billingEmail",
-          "addressLine",
-          "addressCountry",
-          "addressCity",
-          "addressState",
-          "addressZip",
-          "misc",
-          "customerVendor",
-          "customerId",
-          "billingDay",
-          "createdAt",
-          "updatedAt"
+          "page",
+          "limit",
+          "total",
+          "pageCount",
+          "hasPreviousPage",
+          "hasNextPage"
         ]
-      },
-      "ProductTypeEnum": {
-        "type": "string",
-        "enum": [
-          "dmarc",
-          "sender",
-          "inguard",
-          "unspecified"
-        ]
-      },
-      "ProductType": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "$ref": "#/components/schemas/ProductTypeEnum"
-          },
-          "homeUrl": {
-            "type": "string"
-          },
-          "icon": {
-            "type": "string"
-          },
-          "priority": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "objectId",
-          "name",
-          "homeUrl",
-          "icon",
-          "priority"
-        ]
-      },
-      "SingleAttributeValue": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string"
-          },
-          "value": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "key",
-          "value"
-        ]
-      },
-      "ResourceItem": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SingleAttributeValue"
-            }
-          }
-        },
-        "required": [
-          "objectId",
-          "name"
-        ]
-      },
-      "ResourceGroup": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceItem"
-            }
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SingleAttributeValue"
-            }
-          }
-        },
-        "required": [
-          "objectId",
-          "name",
-          "type"
-        ]
-      },
-      "Product": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/components/schemas/ProductType"
-          },
-          "resourceGroups": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceGroup"
-            }
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SingleAttributeValue"
-            }
-          }
-        },
-        "required": [
-          "objectId",
-          "type"
-        ]
-      },
-      "Organisation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "uid": {
-            "type": "string"
-          },
-          "senderAccess": {
-            "type": "boolean"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "countryCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "ipSafelist": {
-            "type": "string",
-            "nullable": true
-          },
-          "apiFeatures": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "dns",
-                "dmarc",
-                "domains",
-                "organizations",
-                "users"
-              ]
-            }
-          },
-          "billingInfo": {
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BillingInfo"
-              }
-            ]
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Product"
-            }
-          },
-          "attributes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SingleAttributeValue"
-            }
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "name",
-          "uid",
-          "senderAccess",
-          "createdAt",
-          "countryCode",
-          "ipSafelist",
-          "billingInfo",
-          "updatedAt"
-        ]
-      },
-      "OrganisationUserCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "PolicyIdEnum": {
-        "type": "string",
-        "enum": [
-          "none",
-          "OrganisationCreate",
-          "OrganisationUpdate",
-          "OrganisationList",
-          "OrganisationGet",
-          "OrganisationRemove",
-          "Organisation:OwnershipChange",
-          "Organisation:IpSafelistManage",
-          "Organisation:AlertManage",
-          "Organisation:SsoManage",
-          "Organisation:UserCreate",
-          "Organisation:UserUpdate",
-          "Organisation:UserList",
-          "Organisation:UserGet",
-          "Organisation:UserRemove",
-          "Organisation:ProductList",
-          "Organisation:ProductDmarcCreate",
-          "Organisation:ProductDmarcGet",
-          "Organisation:ProductDmarcRemove",
-          "Organisation:ProductSenderCreate",
-          "Organisation:ProductSenderGet",
-          "Organisation:ProductSenderRemove",
-          "Organisation:ProductInguardCreate",
-          "Organisation:ProductInguardGet",
-          "Organisation:ProductInguardRemove",
-          "Dmarc:SubscriptionManage",
-          "Dmarc:UserCreate",
-          "Dmarc:UserUpdate",
-          "Dmarc:UserList",
-          "Dmarc:UserGet",
-          "Dmarc:UserRemove",
-          "Dmarc:DmnGroup:UserCreate",
-          "Dmarc:DmnGroup:UserUpdate",
-          "Dmarc:DmnGroup:UserList",
-          "Dmarc:DmnGroup:UserGet",
-          "Dmarc:DmnGroup:UserRemove",
-          "Dmarc:DmnGroupCreate",
-          "Dmarc:DmnGroupUpdate",
-          "Dmarc:DmnGroupList",
-          "Dmarc:DmnGroupGet",
-          "Dmarc:DmnGroupRemove",
-          "Dmarc:Domain:UserCreate",
-          "Dmarc:Domain:UserUpdate",
-          "Dmarc:Domain:UserList",
-          "Dmarc:Domain:UserGet",
-          "Dmarc:Domain:UserRemove",
-          "Dmarc:DomainCreate",
-          "Dmarc:DomainUpdate",
-          "Dmarc:DomainList",
-          "Dmarc:DomainGet",
-          "Dmarc:DomainRemove",
-          "Sender:UserCreate",
-          "Sender:UserUpdate",
-          "Sender:UserList",
-          "Sender:UserGet",
-          "Sender:UserRemove",
-          "Inguard:UserCreate",
-          "Inguard:UserUpdate",
-          "Inguard:UserList",
-          "Inguard:UserGet",
-          "Inguard:UserRemove"
-        ]
-      },
-      "Action": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/PolicyIdEnum"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "PolicyTargetEnum": {
-        "type": "string",
-        "enum": [
-          "Account",
-          "Organisation",
-          "Organisation:ProductDmarc",
-          "Dmarc:Domain",
-          "Dmarc:DmnGroup",
-          "Organisation:ProductSender",
-          "Organisation:ProductInguard"
-        ]
-      },
-      "Policy": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "target": {
-            "$ref": "#/components/schemas/PolicyTargetEnum"
-          },
-          "description": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "objectId",
-          "name",
-          "target"
-        ]
-      },
-      "Role": {
-        "type": "object",
-        "properties": {
-          "objectId": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "policies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Policy"
-            }
-          }
-        },
-        "required": [
-          "objectId",
-          "name",
-          "description"
-        ]
-      },
-      "OrganisationUser": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          },
-          "organisationId": {
-            "type": "number"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "user",
-          "role"
-        ]
-      },
-      "OrganizationDomainRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "OrganizationDomainUpsert": {
-        "type": "object",
-        "properties": {}
       },
       "CreateOrganization": {
         "type": "object",
@@ -8999,144 +8337,6 @@
         },
         "required": [
           "name"
-        ]
-      },
-      "PageMeta_2": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "type": "number",
-            "description": "Current page number",
-            "example": 1
-          },
-          "limit": {
-            "type": "number",
-            "description": "Maximum number of items per page",
-            "example": 20
-          },
-          "total": {
-            "type": "number",
-            "description": "Total number of items across all pages",
-            "example": 123
-          },
-          "pageCount": {
-            "type": "number",
-            "description": "Total number of pages",
-            "example": 7
-          },
-          "hasPreviousPage": {
-            "type": "boolean",
-            "description": "Whether there is a previous page available",
-            "example": false
-          },
-          "hasNextPage": {
-            "type": "boolean",
-            "description": "Whether there is a next page available",
-            "example": true
-          }
-        },
-        "required": [
-          "page",
-          "limit",
-          "total",
-          "pageCount",
-          "hasPreviousPage",
-          "hasNextPage"
-        ]
-      },
-      "ProductUserUpsert": {
-        "type": "object",
-        "properties": {}
-      },
-      "ResourceGroupBulkUpsertRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ResourceGroupUpsertRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ResourceGroupUserUpsert": {
-        "type": "object",
-        "properties": {}
-      },
-      "DomainCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ResourceUserUpsert": {
-        "type": "object",
-        "properties": {}
-      },
-      "BulkDomainsCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "BulkDomainsRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "PaymentSourceCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "PaymentIntentCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "PlanCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ProductFamilyEnum": {
-        "type": "string",
-        "enum": [
-          "plus",
-          "premium",
-          "plus-new",
-          "premium-new",
-          "increased_plus",
-          "increased_premium",
-          "plus_without_unlimited",
-          "premium_without_unlimited",
-          "msp",
-          "msp_trial",
-          "msp_standard",
-          "pax8_trial",
-          "pax8_paid",
-          "enterprise",
-          "custom",
-          "old_plus",
-          "old_premium",
-          "easysender_email_verification",
-          "easysender_inbox_placement",
-          "south_asia_premium",
-          "south_asia_plus",
-          "compliance",
-          "compliance_deliverability"
-        ]
-      },
-      "CurrencyEnum": {
-        "type": "string",
-        "enum": [
-          "USD",
-          "EUR",
-          "GBP"
-        ]
-      },
-      "FrequencyEnum": {
-        "type": "string",
-        "enum": [
-          "m",
-          "y",
-          "d"
-        ]
-      },
-      "PlanTypeEnum": {
-        "type": "string",
-        "enum": [
-          "plan",
-          "addon"
         ]
       },
       "PlanFeatures": {
@@ -9251,518 +8451,44 @@
             "type": "number",
             "description": "Touchpoint usage limit",
             "example": 10000
+          },
+          "email_investigation_report_count": {
+            "type": "number",
+            "description": "Number of email investigations allowed"
+          },
+          "custom_dashboards": {
+            "type": "boolean",
+            "description": "Whether custom dashboards feature is enabled"
+          },
+          "reputation_intelligence_integrations": {
+            "type": "boolean",
+            "description": "Whether reputation intelligence integrations feature is enabled"
+          },
+          "email_preview_suite": {
+            "type": "boolean",
+            "description": "Whether email preview suite feature is enabled"
+          },
+          "alert_management": {
+            "type": "boolean",
+            "description": "Whether alert management feature is enabled"
+          },
+          "sso": {
+            "type": "boolean",
+            "description": "Whether SSO (Single Sign-On) feature is enabled"
+          },
+          "sendgrid_integration": {
+            "type": "boolean",
+            "description": "Whether SendGrid integration is enabled"
+          },
+          "mailgun_integration": {
+            "type": "boolean",
+            "description": "Whether Mailgun integration is enabled"
+          },
+          "esp_integrations": {
+            "type": "boolean",
+            "description": "Whether ESP integrations (Amazon SES, SendGrid, Mailgun) are enabled"
           }
         }
-      },
-      "Plan": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "Unique numeric identifier for the plan",
-            "example": 101
-          },
-          "name": {
-            "type": "string",
-            "description": "Human-readable name of the plan (e.g., \"Premium Monthly\", \"Domain Add-on\")",
-            "example": "Premium Monthly Plan"
-          },
-          "objectId": {
-            "type": "string",
-            "description": "Unique object identifier with \"plan\" prefix used for external references",
-            "example": "plan_xyz789abc456"
-          },
-          "productFamily": {
-            "description": "Product family classification that groups related plans together. Includes Plus, Premium, Enterprise, MSP variants, and custom plans",
-            "example": "premium",
-            "$ref": "#/components/schemas/ProductFamilyEnum"
-          },
-          "type": {
-            "description": "Type of plan distinguishing between base subscription plans and add-on features",
-            "example": "plan",
-            "$ref": "#/components/schemas/PlanTypeEnum"
-          },
-          "features": {
-            "description": "Comprehensive feature configuration for this plan including domain limits, email volume, retention periods, and feature flags (SAML, API access, alerting, audit logs, etc.)",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PlanFeatures"
-              }
-            ]
-          },
-          "productType": {
-            "description": "Product type associated with this plan, defining the service category (e.g., DMARC monitoring, email investigation)",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProductType"
-              }
-            ]
-          },
-          "prices": {
-            "description": "Available pricing options for this plan. Multiple prices can exist with different currencies, billing frequencies (monthly/annual), and billing cycles",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Price"
-            }
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "objectId",
-          "productFamily",
-          "type",
-          "features"
-        ]
-      },
-      "Price": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Numeric identifier for the price record",
-            "example": "123"
-          },
-          "objectId": {
-            "type": "string",
-            "description": "Unique object identifier with \"price\" prefix used for external references",
-            "example": "price_abc123xyz789"
-          },
-          "name": {
-            "type": "string",
-            "description": "Human-readable name describing the pricing tier or option",
-            "example": "Premium Monthly - USD"
-          },
-          "amount": {
-            "type": "number",
-            "description": "Price amount in the specified currency. Stored as decimal with 2 decimal places",
-            "example": 99.99
-          },
-          "currency": {
-            "description": "Currency code for the price amount. Supports USD, EUR, and GBP",
-            "example": "USD",
-            "$ref": "#/components/schemas/CurrencyEnum"
-          },
-          "frequency": {
-            "description": "Billing frequency for this price. Monthly (m), yearly (y), or daily (d)",
-            "example": "m",
-            "$ref": "#/components/schemas/FrequencyEnum"
-          },
-          "minimumBillableItems": {
-            "type": "number",
-            "description": "Minimum number of items that will be billed regardless of actual usage. Used for enforcing minimum charges",
-            "example": 10,
-            "nullable": true
-          },
-          "billingCycles": {
-            "type": "number",
-            "description": "Number of billing cycles for this price. Used for limited-term subscriptions or promotional periods",
-            "example": 12,
-            "nullable": true
-          },
-          "billingPeriod": {
-            "type": "number",
-            "description": "Billing period multiplier. For example, 1 for standard monthly/yearly, 2 for bi-monthly, etc.",
-            "example": 1
-          },
-          "vendorPriceId": {
-            "type": "string",
-            "description": "Vendor-specific price identifier used for payment gateway integration (e.g., Stripe price ID, Chargebee price ID)",
-            "example": "price_1234567890abcdef",
-            "nullable": true
-          },
-          "vendor": {
-            "description": "Payment vendor/gateway used for this price. Supports Stripe, Chargebee, Chargebee EU, and Azure in multiple regions",
-            "example": "chargebee",
-            "$ref": "#/components/schemas/VendorEnum"
-          },
-          "plan": {
-            "description": "Associated plan containing feature definitions and plan type information",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Plan"
-              }
-            ]
-          },
-          "toolsPlanId": {
-            "type": "number",
-            "description": "Legacy tools plan identifier for backward compatibility with the old billing system",
-            "example": 789
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "name",
-          "amount",
-          "currency",
-          "frequency",
-          "minimumBillableItems",
-          "billingCycles",
-          "billingPeriod",
-          "vendor",
-          "toolsPlanId"
-        ]
-      },
-      "SubscriptionItemStatusEnum": {
-        "type": "string",
-        "enum": [
-          "removed",
-          "active",
-          "suspended"
-        ]
-      },
-      "Subscription": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "Unique numeric identifier for the subscription",
-            "example": 12345
-          },
-          "objectId": {
-            "type": "string",
-            "description": "Unique object identifier with \"sub\" prefix used for external references",
-            "example": "sub_abc123xyz789"
-          },
-          "expireDate": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Date when the subscription expires. Used for subscription renewal scheduling and lifecycle management",
-            "example": "2025-12-31T23:59:59.999Z"
-          },
-          "cancelledAt": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Date when the subscription was cancelled. Null if the subscription is still active",
-            "example": "2025-10-01T10:30:00.000Z",
-            "nullable": true
-          },
-          "organisation": {
-            "description": "Organisation that owns this subscription. Contains organisation details including billing information",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Organisation"
-              }
-            ]
-          },
-          "toolsUserPlanId": {
-            "type": "number",
-            "description": "Legacy tools user plan identifier for backward compatibility with the old system",
-            "example": 456,
-            "nullable": true
-          },
-          "vendorSubscriptionId": {
-            "type": "string",
-            "description": "Payment vendor subscription identifier (e.g., Chargebee subscription ID) used for vendor API integration",
-            "example": "cb_sub_9876543210",
-            "nullable": true
-          },
-          "product": {
-            "description": "Product associated with this subscription. Includes product type and resource groups",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Product"
-              }
-            ]
-          },
-          "items": {
-            "description": "List of subscription items representing individual plan components with pricing, features, and quantities. Each item can have different statuses and feature configurations",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SubscriptionItem"
-            }
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Timestamp when the subscription was created",
-            "example": "2025-01-01T00:00:00.000Z"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Timestamp when the subscription was last updated",
-            "example": "2025-10-09T12:00:00.000Z"
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "expireDate",
-          "createdAt",
-          "updatedAt"
-        ]
-      },
-      "SubscriptionItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "description": "Unique numeric identifier for the subscription item",
-            "example": 9876
-          },
-          "objectId": {
-            "type": "string",
-            "description": "Unique object identifier with \"si\" prefix used for external references",
-            "example": "si_def456uvw123"
-          },
-          "price": {
-            "description": "Pricing information for this subscription item, including amount, currency, frequency, and associated plan details",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Price"
-              }
-            ]
-          },
-          "status": {
-            "description": "Current status of the subscription item. Determines if the item is active, suspended, or removed from the subscription",
-            "example": "active",
-            "$ref": "#/components/schemas/SubscriptionItemStatusEnum"
-          },
-          "quantity": {
-            "type": "number",
-            "description": "Quantity of this subscription item. Used for metered billing or multiple units of the same plan component",
-            "example": 5,
-            "nullable": true
-          },
-          "minimumBillableItems": {
-            "type": "number",
-            "description": "Minimum number of billable items required. Used for enforcing minimum billing thresholds regardless of actual usage",
-            "example": 10,
-            "nullable": true
-          },
-          "features": {
-            "description": "Plan features configuration including domain count, email volume, retention days, and boolean feature flags (SAML, API access, alerting, etc.)",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PlanFeatures"
-              }
-            ]
-          },
-          "subscription": {
-            "description": "Parent subscription that this item belongs to. Contains full subscription details including organisation and other items",
-            "nullable": true,
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Subscription"
-              }
-            ]
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Timestamp when the subscription item was created",
-            "example": "2025-01-15T08:30:00.000Z"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Timestamp when the subscription item was last updated",
-            "example": "2025-10-09T14:22:00.000Z"
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "status",
-          "features",
-          "createdAt",
-          "updatedAt"
-        ]
-      },
-      "SubscriptionAssignRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "SubscriptionUpsertRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "SubscriptionCancelRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "SubscriptionUpdateByItemIdRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "SubscriptionItemUpdateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "UserPermissionsStructured": {
-        "type": "object",
-        "properties": {}
-      },
-      "PermissionsPutRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ProductUserEntity": {
-        "type": "object",
-        "properties": {}
-      },
-      "PermissionsGetRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ListRequest": {
-        "type": "object",
-        "properties": {
-          "order": {
-            "type": "string"
-          },
-          "offset": {
-            "type": "number"
-          },
-          "limit": {
-            "type": "number"
-          }
-        }
-      },
-      "IsOwnerOrAdminResponse": {
-        "type": "object",
-        "properties": {
-          "isOwnerOrAdmin": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "isOwnerOrAdmin"
-        ]
-      },
-      "PriceUpdateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ChargebeeEventRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "InstallmentCreateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "FeatureUsageUpdateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "CreateApiClientRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "mode": {
-            "type": "string"
-          },
-          "ipAccessRestriction": {
-            "type": "string"
-          },
-          "trustedIpsOrCidrs": {
-            "type": "string"
-          },
-          "organisationId": {
-            "type": "string"
-          },
-          "partnerId": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "apiFeatures": {
-            "type": "array",
-            "description": "Roles assigned to the user",
-            "example": [
-              "dns",
-              "dmarc"
-            ],
-            "items": {
-              "type": "string",
-              "enum": [
-                "dns",
-                "dmarc",
-                "domains",
-                "organizations",
-                "users"
-              ]
-            }
-          }
-        },
-        "required": [
-          "name",
-          "mode",
-          "ipAccessRestriction",
-          "trustedIpsOrCidrs",
-          "organisationId",
-          "partnerId",
-          "userId",
-          "apiFeatures"
-        ]
-      },
-      "UpdateApiClientRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Api Client Name",
-            "example": "New API Client"
-          },
-          "mode": {
-            "type": "string",
-            "description": "Api Client Mode",
-            "example": "test"
-          },
-          "trustedIpsOrCidrs": {
-            "type": "string",
-            "description": "The list of trusted ips or CIDRs",
-            "example": "216.58.216.75, 216.58.216.70/32"
-          },
-          "ipAccessRestriction": {
-            "type": "string",
-            "description": "Is the API client restricted or not",
-            "example": "restricted"
-          },
-          "apiFeatures": {
-            "type": "array",
-            "description": "Roles assigned to the user",
-            "example": [
-              "dns",
-              "dmarc"
-            ],
-            "items": {
-              "type": "string",
-              "enum": [
-                "dns",
-                "dmarc",
-                "domains",
-                "organizations",
-                "users"
-              ]
-            }
-          }
-        },
-        "required": [
-          "name",
-          "mode",
-          "ipAccessRestriction",
-          "apiFeatures"
-        ]
-      },
-      "ApiClientRegenerateRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "ApiClientChangeStateRequest": {
-        "type": "object",
-        "properties": {}
       },
       "PlanFeaturesV2": {
         "type": "object",
@@ -9852,6 +8578,10 @@
           "touchpointLimit": {
             "type": "number",
             "description": "Touchpoint usage limit"
+          },
+          "espIntegrations": {
+            "type": "boolean",
+            "description": "Whether ESP integrations (Amazon SES, SendGrid, Mailgun) are enabled"
           }
         }
       },
@@ -10117,245 +8847,6 @@
         "required": [
           "priceId"
         ]
-      },
-      "OrganizationDetails": {
-        "type": "object",
-        "properties": {
-          "organizationObjectId": {
-            "type": "string",
-            "description": "Organization objectId"
-          },
-          "ownerId": {
-            "type": "string",
-            "description": "Owner ID is ID that used for webhooks for now it is partner objectId"
-          },
-          "productFamily": {
-            "type": "string",
-            "enum": [
-              "plus",
-              "premium",
-              "plus-new",
-              "premium-new",
-              "increased_plus",
-              "increased_premium",
-              "plus_without_unlimited",
-              "premium_without_unlimited",
-              "msp",
-              "msp_trial",
-              "msp_standard",
-              "pax8_trial",
-              "pax8_paid",
-              "enterprise",
-              "custom",
-              "old_plus",
-              "old_premium",
-              "easysender_email_verification",
-              "easysender_inbox_placement",
-              "south_asia_premium",
-              "south_asia_plus",
-              "compliance",
-              "compliance_deliverability"
-            ]
-          }
-        },
-        "required": [
-          "organizationObjectId"
-        ]
-      },
-      "DomainDetails": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of the domain"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "CheckPolicy": {
-        "type": "object",
-        "properties": {
-          "policyIds": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "none",
-                "OrganisationCreate",
-                "OrganisationUpdate",
-                "OrganisationList",
-                "OrganisationGet",
-                "OrganisationRemove",
-                "Organisation:OwnershipChange",
-                "Organisation:IpSafelistManage",
-                "Organisation:AlertManage",
-                "Organisation:SsoManage",
-                "Organisation:UserCreate",
-                "Organisation:UserUpdate",
-                "Organisation:UserList",
-                "Organisation:UserGet",
-                "Organisation:UserRemove",
-                "Organisation:ProductList",
-                "Organisation:ProductDmarcCreate",
-                "Organisation:ProductDmarcGet",
-                "Organisation:ProductDmarcRemove",
-                "Organisation:ProductSenderCreate",
-                "Organisation:ProductSenderGet",
-                "Organisation:ProductSenderRemove",
-                "Organisation:ProductInguardCreate",
-                "Organisation:ProductInguardGet",
-                "Organisation:ProductInguardRemove",
-                "Dmarc:SubscriptionManage",
-                "Dmarc:UserCreate",
-                "Dmarc:UserUpdate",
-                "Dmarc:UserList",
-                "Dmarc:UserGet",
-                "Dmarc:UserRemove",
-                "Dmarc:DmnGroup:UserCreate",
-                "Dmarc:DmnGroup:UserUpdate",
-                "Dmarc:DmnGroup:UserList",
-                "Dmarc:DmnGroup:UserGet",
-                "Dmarc:DmnGroup:UserRemove",
-                "Dmarc:DmnGroupCreate",
-                "Dmarc:DmnGroupUpdate",
-                "Dmarc:DmnGroupList",
-                "Dmarc:DmnGroupGet",
-                "Dmarc:DmnGroupRemove",
-                "Dmarc:Domain:UserCreate",
-                "Dmarc:Domain:UserUpdate",
-                "Dmarc:Domain:UserList",
-                "Dmarc:Domain:UserGet",
-                "Dmarc:Domain:UserRemove",
-                "Dmarc:DomainCreate",
-                "Dmarc:DomainUpdate",
-                "Dmarc:DomainList",
-                "Dmarc:DomainGet",
-                "Dmarc:DomainRemove",
-                "Sender:UserCreate",
-                "Sender:UserUpdate",
-                "Sender:UserList",
-                "Sender:UserGet",
-                "Sender:UserRemove",
-                "Inguard:UserCreate",
-                "Inguard:UserUpdate",
-                "Inguard:UserList",
-                "Inguard:UserGet",
-                "Inguard:UserRemove"
-              ]
-            }
-          },
-          "userId": {
-            "type": "string"
-          },
-          "organizationId": {
-            "type": "string"
-          },
-          "resourceGroupId": {
-            "type": "string"
-          },
-          "resourceId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "policyIds",
-          "userId"
-        ]
-      },
-      "IsActionAllowed": {
-        "type": "object",
-        "properties": {
-          "isAllowed": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "isAllowed"
-        ]
-      },
-      "PartnerUser": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "nullable": false,
-            "description": "The unique identifier.",
-            "example": "4a3d6dd3-6694-a41b-9abc-a46fa810a298"
-          },
-          "partnerId": {
-            "type": "string",
-            "nullable": true,
-            "description": "The unique identifier if the user is partner.",
-            "example": "4a3d6dd3-6694-a41b-9abc-a46fa810a298"
-          },
-          "objectId": {
-            "type": "string",
-            "nullable": false,
-            "description": "The unique identifier of the user.",
-            "example": "4a3d6dd3-6694-a41b-9abc-a46fa810a298"
-          },
-          "email": {
-            "type": "string",
-            "nullable": false,
-            "description": "The email address of the user.",
-            "example": "angus.young@example.com"
-          },
-          "status": {
-            "type": "string",
-            "nullable": false,
-            "description": "The status of the user.",
-            "enum": [
-              "active",
-              "invite_pending",
-              "deactivated"
-            ],
-            "example": "active"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true,
-            "description": "The name of the user.",
-            "example": "Donny Darko"
-          },
-          "country": {
-            "type": "string",
-            "nullable": true,
-            "description": "The country of the user.",
-            "example": "USA"
-          },
-          "timezone": {
-            "type": "string",
-            "nullable": true,
-            "description": "The timezone of the user.",
-            "example": "America/New_York"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "The date and time when the user was created.",
-            "example": "2023-10-01T12:00:00Z"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string",
-            "nullable": true,
-            "description": "The date and time when the user was last updated.",
-            "example": "2023-10-01T12:00:00Z"
-          }
-        },
-        "required": [
-          "id",
-          "objectId",
-          "email",
-          "status"
-        ]
-      },
-      "NotFoundException": {
-        "type": "object",
-        "properties": {}
       },
       "ARecordObject": {
         "type": "object",
@@ -11388,12 +9879,14 @@
               "ERROR_DUPLICATE_TAG",
               "ERROR_MULTIPLE_RECORD",
               "WARNING_POLICY_NONE",
-              "WARNING_SUBDOMAIN_POLICY",
-              "WARNING_NON_EXIST_SUBDOMAIN_POLICY",
+              "WARNING_SUBDOMAIN_POLICY_NONE",
+              "WARNING_NON_EXIST_SUBDOMAIN_POLICY_NONE",
               "WARNING_RUA_TAG",
               "WARNING_RUA_TAG_GUEST",
               "WARNING_PCT",
               "INFO_POLICY_QUARANTINE",
+              "INFO_SUBDOMAIN_POLICY_QUARANTINE",
+              "INFO_NON_EXIST_SUBDOMAIN_POLICY_QUARANTINE",
               "INFO_SUBDOMAIN_RECORD_NOT_FOUND",
               "INFO_EXTERNAL_VALIDATION",
               "CUSTOM"
@@ -11610,11 +10103,59 @@
           "domains"
         ]
       },
+      "DmarcRuxBatchRequest": {
+        "type": "object",
+        "properties": {
+          "maxAgeMs": {
+            "type": "number",
+            "example": 5000,
+            "description": "The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"
+          },
+          "domains": {
+            "example": [
+              "example.com"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rux": {
+            "type": "number",
+            "example": "rua",
+            "enum": [
+              5,
+              6
+            ]
+          }
+        },
+        "required": [
+          "domains",
+          "rux"
+        ]
+      },
+      "DomainVerificationStatusResponse": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "example": "example.com"
+          },
+          "hasRux": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "required": [
+          "domain",
+          "hasRux"
+        ]
+      },
       "DkimRecordTerm": {
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "object"
           },
           "tag": {
             "type": "string"
@@ -12863,61 +11404,6 @@
         "required": [
           "record",
           "domain"
-        ]
-      },
-      "ReverseDnsResponse": {
-        "type": "object",
-        "properties": {
-          "raw": {
-            "description": "The raw records.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "query": {
-            "type": "string",
-            "example": "8.8.4.4",
-            "description": "The original IP address that was queried"
-          },
-          "reverseName": {
-            "type": "string",
-            "example": "4.4.8.8.in-addr.arpa.",
-            "description": "The reverse DNS name (PTR record) for the IP address"
-          },
-          "domain": {
-            "type": "string",
-            "example": "dns.google.",
-            "description": "The domain name that the IP address resolves to"
-          },
-          "validation": {
-            "description": "The validation of the reverse lookup",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DnsValidationResult"
-              }
-            ]
-          },
-          "queryStatus": {
-            "type": "string",
-            "enum": [
-              "SUCCESS",
-              "NODATA",
-              "NOTFOUND",
-              "TIMEOUT",
-              "ERROR",
-              "SERVFAIL",
-              "NXDOMAIN"
-            ],
-            "example": "SUCCESS",
-            "description": "DNS resolution status code"
-          }
-        },
-        "required": [
-          "raw",
-          "query",
-          "reverseName",
-          "queryStatus"
         ]
       },
       "PageMeta_3": {
@@ -14742,7 +13228,7 @@
           "filters"
         ]
       },
-      "UserAvatar": {
+      "UserAvatar_3": {
         "type": "object",
         "properties": {
           "url": {
@@ -14752,7 +13238,7 @@
           }
         }
       },
-      "UserAvatarColorRgb": {
+      "UserAvatarColorRgb_3": {
         "type": "string",
         "enum": [
           "#DA6969",
@@ -14768,288 +13254,17 @@
           "#ABB0CB"
         ]
       },
-      "UserAvatarColor": {
+      "UserAvatarColor_3": {
         "type": "object",
         "properties": {
           "color": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatarColorRgb"
+                "$ref": "#/components/schemas/UserAvatarColorRgb_3"
               }
             ]
           }
         }
-      },
-      "OrganisationRole": {
-        "type": "string",
-        "enum": [
-          "owner",
-          "admin",
-          "billing admin",
-          "member"
-        ]
-      },
-      "InvitationStatus": {
-        "type": "string",
-        "enum": [
-          "NONE",
-          "SENT",
-          "DEACTIVATED"
-        ]
-      },
-      "IdpInfo": {
-        "type": "object",
-        "properties": {
-          "providerName": {
-            "type": "string"
-          },
-          "isEnforcement": {
-            "type": "boolean"
-          },
-          "displayName": {
-            "type": "string"
-          },
-          "organizationName": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "providerName",
-          "isEnforcement",
-          "displayName",
-          "organizationName"
-        ]
-      },
-      "Subscription_2": {
-        "type": "object",
-        "properties": {}
-      },
-      "UserOrganisationProfileData": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "e1c9aca4-268a-4464-a849-7ce0f5adab80"
-          },
-          "name": {
-            "type": "string",
-            "example": "John Tyson"
-          },
-          "username": {
-            "type": "string",
-            "example": "johnTyson"
-          },
-          "firstName": {
-            "type": "string",
-            "example": "John"
-          },
-          "lastName": {
-            "type": "string",
-            "example": "Tyson"
-          },
-          "emailVerified": {
-            "type": "string",
-            "example": "example@gmail.com"
-          },
-          "avatar": {
-            "$ref": "#/components/schemas/UserAvatar"
-          },
-          "avatarColor": {
-            "$ref": "#/components/schemas/UserAvatarColor"
-          },
-          "organisationRole": {
-            "example": "admin",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganisationRole"
-              }
-            ]
-          },
-          "organizationRoles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "products": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "lastActive": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "invitationStatus": {
-            "example": "NONE",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/InvitationStatus"
-              }
-            ]
-          },
-          "twoFAEnabled": {
-            "type": "boolean",
-            "example": false
-          },
-          "isOrganizationAdmin": {
-            "type": "boolean"
-          },
-          "isOrganizationOwner": {
-            "type": "boolean"
-          },
-          "isSsoForced": {
-            "type": "boolean"
-          },
-          "organisationType": {
-            "type": "string"
-          },
-          "hasOnlyViewerRole": {
-            "type": "boolean"
-          },
-          "hasSsoAccess": {
-            "type": "boolean"
-          },
-          "idpInfo": {
-            "$ref": "#/components/schemas/IdpInfo"
-          },
-          "isAzureIntegrated": {
-            "type": "boolean"
-          },
-          "invitedDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "dmarcOrganisationSubscription": {
-            "$ref": "#/components/schemas/Subscription_2"
-          },
-          "hasPartnerOrganisation": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "username",
-          "firstName",
-          "lastName",
-          "emailVerified",
-          "emailVerified",
-          "organisationRole",
-          "products",
-          "lastActive",
-          "invitationStatus",
-          "twoFAEnabled",
-          "isOrganizationAdmin",
-          "isOrganizationOwner",
-          "isSsoForced",
-          "organisationType",
-          "hasOnlyViewerRole"
-        ]
-      },
-      "PageResponseUserOrganizationProfile": {
-        "type": "object",
-        "properties": {
-          "totalCount": {
-            "type": "number",
-            "example": 10
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserOrganisationProfileData"
-            }
-          }
-        },
-        "required": [
-          "totalCount",
-          "items"
-        ]
-      },
-      "AccountDropdownContent": {
-        "type": "object",
-        "properties": {
-          "activeOrganisation": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          },
-          "activeOrganizationProfile": {
-            "$ref": "#/components/schemas/UserOrganisationProfileData"
-          },
-          "users": {
-            "$ref": "#/components/schemas/PageResponseUserOrganizationProfile"
-          },
-          "organisationList": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "objectId": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "uid": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        "required": [
-          "activeOrganisation",
-          "activeOrganizationProfile",
-          "users"
-        ]
-      },
-      "RevokeOrganizationAccessRequest": {
-        "type": "object",
-        "properties": {
-          "requesterUserId": {
-            "type": "string",
-            "description": "The unique identifier of the user making the revocation request"
-          },
-          "organizationId": {
-            "type": "string",
-            "description": "The unique identifier of the organization from which to revoke user access",
-            "format": "uuid",
-            "example": "8a7b9c2d-1e3f-4a5b-9c8d-7e6f5a4b3c2d"
-          },
-          "userIds": {
-            "description": "Array of user IDs whose access should be revoked. All users must be members of the specified organization.",
-            "example": [
-              "4fd475a0-e60a-43a0-82ff-6d9532cc3e9b",
-              "7c8d9e0f-2a3b-4c5d-8e9f-0a1b2c3d4e5f"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "requesterUserId",
-          "organizationId",
-          "userIds"
-        ]
       },
       "UserPersonalInfoChange": {
         "type": "object",
@@ -15101,153 +13316,6 @@
           "info"
         ]
       },
-      "GetUserOrganizationProfileData": {
-        "type": "object",
-        "properties": {
-          "requesterUserId": {
-            "type": "string",
-            "example": "223c8101-ff07-460d-aa99-1c3bbdc76931"
-          },
-          "userId": {
-            "type": "string",
-            "example": "872e8564-7033-4088-81a4-5f6145bfe52f"
-          },
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "required": [
-          "requesterUserId",
-          "userId",
-          "organization"
-        ]
-      },
-      "RoleId": {
-        "type": "string",
-        "enum": [
-          "Organisation:Owner",
-          "Organisation:Admin",
-          "Organisation:Editor",
-          "Product:Admin",
-          "Product:Editor",
-          "Dmarc:Admin",
-          "Dmarc:Editor",
-          "DmnGroup:Admin",
-          "DmnGroup:Editor",
-          "DmnGroup:Viewer",
-          "Domain:Admin",
-          "Domain:Editor",
-          "Domain:Viewer",
-          "Sender:Admin",
-          "Sender:Editor",
-          "Inguard:Admin",
-          "Inguard:Editor"
-        ]
-      },
-      "UserListFilterRequest": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "example": "Some query"
-          },
-          "role": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoleId"
-              }
-            ]
-          }
-        }
-      },
-      "UserListSearchRequest": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "$ref": "#/components/schemas/UserListFilterRequest"
-          }
-        },
-        "required": [
-          "filter"
-        ]
-      },
-      "SearchOrganizationUsers": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          },
-          "requesterUserId": {
-            "type": "string",
-            "example": "53422f23-a89a-4d34-acd4-eca3507ec1f7"
-          },
-          "request": {
-            "$ref": "#/components/schemas/UserListSearchRequest"
-          }
-        },
-        "required": [
-          "organization",
-          "requesterUserId",
-          "request"
-        ]
-      },
-      "SearchOrganizationScimUsers": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              }
-            }
-          },
-          "request": {
-            "$ref": "#/components/schemas/UserListSearchRequest"
-          }
-        },
-        "required": [
-          "organization",
-          "request"
-        ]
-      },
-      "PermissionDirectory": {
-        "type": "string",
-        "enum": [
-          "organisation",
-          "product",
-          "resource-group",
-          "resource"
-        ]
-      },
       "Permission": {
         "type": "string",
         "enum": [
@@ -15256,74 +13324,6 @@
           "editor",
           "no_access",
           "viewer"
-        ]
-      },
-      "UserPermission": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "example": "e1c9aca4-268a-4464-a849-7ce0f5adab80"
-          },
-          "email": {
-            "type": "string",
-            "example": "example@gmail.com"
-          },
-          "directory": {
-            "example": "organisation",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PermissionDirectory"
-              }
-            ]
-          },
-          "objectId": {
-            "type": "string",
-            "example": "e1c9aca4-268a-4464-a849-7ce0f5adab80"
-          },
-          "title": {
-            "type": "string",
-            "example": "Some title"
-          },
-          "type": {
-            "type": "string",
-            "example": "Some type"
-          },
-          "role": {
-            "example": "admin",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Permission"
-              }
-            ]
-          }
-        }
-      },
-      "InviteUsers": {
-        "type": "object",
-        "properties": {
-          "inviterUserId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "organizationId": {
-            "type": "string"
-          },
-          "permissionDtos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPermission"
-            }
-          },
-          "redirectUrl": {
-            "type": "string",
-            "example": "https://example.com/redirect"
-          }
-        },
-        "required": [
-          "inviterUserId",
-          "organizationId",
-          "permissionDtos"
         ]
       },
       "UserPermissionUser": {
@@ -15373,7 +13373,7 @@
           "no_access"
         ]
       },
-      "ProductType_2": {
+      "ProductType_4": {
         "type": "string",
         "enum": [
           "dmarc",
@@ -15400,7 +13400,7 @@
             "example": "dmarc",
             "allOf": [
               {
-                "$ref": "#/components/schemas/ProductType_2"
+                "$ref": "#/components/schemas/ProductType_4"
               }
             ]
           },
@@ -15505,1269 +13505,6 @@
           "users"
         ]
       },
-      "InviteUsersV1": {
-        "type": "object",
-        "properties": {
-          "organizationId": {
-            "type": "string",
-            "description": "The unique identifier of the organization to which users are being invited",
-            "format": "uuid",
-            "example": "8a7b9c2d-1e3f-4a5b-9c8d-7e6f5a4b3c2d"
-          },
-          "permissions": {
-            "description": "Permission configuration including user list and role assignments",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserPermissionV1"
-              }
-            ]
-          },
-          "redirectUrl": {
-            "type": "string",
-            "description": "URL to redirect users to after they accept the invitation and complete onboarding. Must be a valid HTTPS URL.",
-            "format": "uri",
-            "example": "https://app.easydmarc.com"
-          },
-          "inviterUserId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          }
-        },
-        "required": [
-          "organizationId",
-          "permissions",
-          "inviterUserId"
-        ]
-      },
-      "SetAvatarColor": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "example": "d4092e75-11c5-4a61-b948-f87829fe7146"
-          },
-          "color": {
-            "example": "#5C85FF",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserAvatarColorRgb"
-              }
-            ]
-          }
-        },
-        "required": [
-          "userId",
-          "color"
-        ]
-      },
-      "OneTimeVerificationCodeResponse": {
-        "type": "object",
-        "properties": {
-          "expiration": {
-            "type": "object",
-            "properties": {
-              "years": {
-                "type": "number",
-                "nullable": true
-              },
-              "months": {
-                "type": "number",
-                "nullable": true
-              },
-              "weeks": {
-                "type": "number",
-                "nullable": true
-              },
-              "days": {
-                "type": "number",
-                "nullable": true
-              },
-              "hours": {
-                "type": "number",
-                "nullable": true
-              },
-              "minutes": {
-                "type": "number",
-                "nullable": true
-              },
-              "seconds": {
-                "type": "number",
-                "nullable": true
-              }
-            }
-          }
-        },
-        "required": [
-          "expiration"
-        ]
-      },
-      "AccountPreTerminationState": {
-        "type": "object",
-        "properties": {}
-      },
-      "UserConsentRepresentation": {
-        "type": "object",
-        "properties": {
-          "clientId": {
-            "type": "string",
-            "example": "client-123"
-          },
-          "createDate": {
-            "type": "string",
-            "example": "2024-03-04T12:34:56Z"
-          },
-          "grantedClientScopes": {
-            "example": [
-              "openid",
-              "profile"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "lastUpdatedDate": {
-            "type": "number",
-            "example": 1678901234567
-          }
-        }
-      },
-      "CredentialRepresentation": {
-        "type": "object",
-        "properties": {
-          "createdDate": {
-            "type": "number",
-            "example": 1678901234567
-          },
-          "credentialData": {
-            "type": "string",
-            "example": "encrypted-data"
-          },
-          "id": {
-            "type": "string",
-            "example": "credential-123"
-          },
-          "priority": {
-            "type": "number",
-            "example": 1
-          },
-          "secretData": {
-            "type": "string",
-            "example": "secret-key-data"
-          },
-          "temporary": {
-            "type": "boolean",
-            "example": false
-          },
-          "type": {
-            "type": "string",
-            "example": "password"
-          },
-          "userLabel": {
-            "type": "string",
-            "example": "User Label"
-          },
-          "value": {
-            "type": "string",
-            "example": "credential-value"
-          }
-        }
-      },
-      "FederatedIdentityRepresentation": {
-        "type": "object",
-        "properties": {
-          "identityProvider": {
-            "type": "string",
-            "example": "google"
-          },
-          "userId": {
-            "type": "string",
-            "example": "123456789"
-          },
-          "userName": {
-            "type": "string",
-            "example": "john.doe"
-          }
-        }
-      },
-      "UserRepresentation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "e1c9aca4-268a-4464-a849-7ce0f5adab80"
-          },
-          "createdTimestamp": {
-            "type": "number",
-            "example": 1678901234567
-          },
-          "username": {
-            "type": "string",
-            "example": "johndoe"
-          },
-          "enabled": {
-            "type": "boolean",
-            "example": true
-          },
-          "totp": {
-            "type": "boolean",
-            "example": false
-          },
-          "emailVerified": {
-            "type": "boolean",
-            "example": true
-          },
-          "disableableCredentialTypes": {
-            "example": [
-              "password"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "requiredActions": {
-            "example": [
-              "UPDATE_PASSWORD"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "notBefore": {
-            "type": "number",
-            "example": 0
-          },
-          "access": {
-            "type": "object",
-            "example": {
-              "viewProfile": true,
-              "manageAccount": false
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "example": {
-              "department": [
-                "IT"
-              ],
-              "country": [
-                "US"
-              ]
-            }
-          },
-          "clientConsents": {
-            "description": "List of user consent representations",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserConsentRepresentation"
-            }
-          },
-          "clientRoles": {
-            "type": "object"
-          },
-          "credentials": {
-            "description": "List of credential representations",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CredentialRepresentation"
-            }
-          },
-          "email": {
-            "type": "string",
-            "example": "example@gmail.com"
-          },
-          "federatedIdentities": {
-            "description": "List of federated identity representations",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FederatedIdentityRepresentation"
-            }
-          },
-          "federationLink": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string",
-            "example": "John"
-          },
-          "groups": {
-            "example": [
-              "admin",
-              "developer"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "lastName": {
-            "type": "string",
-            "example": "Doe"
-          },
-          "origin": {
-            "type": "string"
-          },
-          "realmRoles": {
-            "example": [
-              "user"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "self": {
-            "type": "string"
-          },
-          "serviceAccountClientId": {
-            "type": "string"
-          }
-        }
-      },
-      "AddFederatedIdentityRequest": {
-        "type": "object",
-        "properties": {
-          "kcUserId": {
-            "type": "string",
-            "description": "KC User ID"
-          },
-          "identityUserId": {
-            "type": "string",
-            "description": "Identity User ID"
-          },
-          "identityProvider": {
-            "type": "string",
-            "description": "Identity Provider"
-          },
-          "email": {
-            "type": "string",
-            "description": "Email address"
-          }
-        },
-        "required": [
-          "kcUserId",
-          "identityUserId",
-          "identityProvider",
-          "email"
-        ]
-      },
-      "IntegrationName": {
-        "type": "string",
-        "enum": [
-          "Acronis",
-          "Autotask",
-          "AzureDNS",
-          "Cloudflare",
-          "ConnectWise",
-          "DNSMadeEasy",
-          "EasyDNS",
-          "Gandi",
-          "Godaddy",
-          "GoogleDNS",
-          "GradientMSP",
-          "HaloPSA",
-          "Microsoft",
-          "MS Teams",
-          "Namecheap",
-          "OVH",
-          "Pax8",
-          "Route53",
-          "Sentinel",
-          "Slack",
-          "Splunk",
-          "SyncroMSP"
-        ],
-        "description": "The name of the integration"
-      },
-      "SendIntegrationSlackNotificationRequest": {
-        "type": "object",
-        "properties": {
-          "integrationName": {
-            "description": "The name of the integration",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/IntegrationName"
-              }
-            ]
-          },
-          "userRepresentation": {
-            "description": "User representation details",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserRepresentation"
-              }
-            ]
-          },
-          "messageTitle": {
-            "type": "string",
-            "description": "Title of the message to be sent"
-          }
-        },
-        "required": [
-          "integrationName",
-          "userRepresentation",
-          "messageTitle"
-        ]
-      },
-      "Integrations": {
-        "type": "string",
-        "enum": [
-          "acronis",
-          "autotask",
-          "azure-dns",
-          "cloudflare-dns",
-          "connect-wise",
-          "dnsmadeeasy-dns",
-          "easydns-dns",
-          "gandi-dns",
-          "godaddy-dns",
-          "google-dns",
-          "gradient-msp",
-          "halo-psa",
-          "microsoft",
-          "ms-teams",
-          "namecheap-dns",
-          "ovh-dns",
-          "pax8",
-          "route53",
-          "sentinel",
-          "slack",
-          "splunk",
-          "syncro"
-        ],
-        "description": "Integration name associated with the organization"
-      },
-      "CreateOrganizationAndInviteOwnerRequest": {
-        "type": "object",
-        "properties": {
-          "userPermission": {
-            "description": "User permissions for the organization",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserPermission"
-              }
-            ]
-          },
-          "integrationName": {
-            "description": "Integration name associated with the organization",
-            "example": "Azure",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Integrations"
-              }
-            ]
-          },
-          "organizationName": {
-            "type": "string",
-            "description": "Name of the organization to be created",
-            "example": "EasyDMARC"
-          },
-          "ownerFirstName": {
-            "type": "string",
-            "description": "Owner's first name",
-            "example": "John"
-          },
-          "firstTimeRedirectUrl": {
-            "type": "string",
-            "description": "First time login redirect URL",
-            "example": "https://example.com/welcome"
-          },
-          "ownerLastName": {
-            "type": "string",
-            "description": "Owner's last name",
-            "example": "Smith"
-          },
-          "country": {
-            "type": "string",
-            "description": "Country of the organization or owner",
-            "example": "USA"
-          },
-          "attributes": {
-            "type": "object",
-            "description": "KC user attributes",
-            "additionalProperties": true
-          },
-          "requiredActions": {
-            "description": "List of required actions",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "userPermission",
-          "integrationName",
-          "organizationName",
-          "ownerFirstName",
-          "firstTimeRedirectUrl"
-        ]
-      },
-      "OrganizationAndOwner": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          },
-          "user": {
-            "$ref": "#/components/schemas/UserRepresentation"
-          }
-        },
-        "required": [
-          "organization",
-          "user"
-        ]
-      },
-      "AccountTerminationRequest": {
-        "type": "object",
-        "properties": {
-          "surveyOption": {
-            "type": "string",
-            "example": "Some Survey Option"
-          }
-        },
-        "required": [
-          "surveyOption"
-        ]
-      },
-      "DeviceActivityListConsentScope": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "displayTest": {
-            "type": "string"
-          }
-        }
-      },
-      "DeviceActivityListConsent": {
-        "type": "object",
-        "properties": {
-          "grantedScopes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DeviceActivityListConsentScope"
-            }
-          },
-          "createdDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "lastUpdatedDate": {
-            "format": "date-time",
-            "type": "string"
-          }
-        }
-      },
-      "DeviceActivityListClient": {
-        "type": "object",
-        "properties": {
-          "clientId": {
-            "type": "string"
-          },
-          "clientName": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "userConsentRequired": {
-            "type": "boolean"
-          },
-          "offlineAccess": {
-            "type": "boolean"
-          },
-          "rootUrl": {
-            "type": "string"
-          },
-          "baseUrl": {
-            "type": "string"
-          },
-          "effectiveUrl": {
-            "type": "string"
-          },
-          "consent": {
-            "$ref": "#/components/schemas/DeviceActivityListConsent"
-          },
-          "logoUri": {
-            "type": "string"
-          },
-          "policyUri": {
-            "type": "string"
-          },
-          "tosUri": {
-            "type": "string"
-          }
-        }
-      },
-      "DeviceActivityListSession": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "ipAddress": {
-            "type": "string"
-          },
-          "started": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "lastAccess": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "clients": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DeviceActivityListClient"
-            }
-          },
-          "browser": {
-            "type": "string"
-          },
-          "current": {
-            "type": "boolean"
-          }
-        }
-      },
-      "DeviceActivityListItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "ipAddress": {
-            "type": "string"
-          },
-          "os": {
-            "type": "string"
-          },
-          "osVersion": {
-            "type": "string"
-          },
-          "browser": {
-            "type": "string"
-          },
-          "device": {
-            "type": "string"
-          },
-          "lastAccess": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "current": {
-            "type": "boolean"
-          },
-          "sessions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DeviceActivityListSession"
-            }
-          },
-          "mobile": {
-            "type": "boolean"
-          }
-        }
-      },
-      "ItemsListDeviceActivityListItem": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DeviceActivityListItem"
-            }
-          }
-        },
-        "required": [
-          "items"
-        ]
-      },
-      "OtpStatus": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "enabled"
-        ]
-      },
-      "AccountCredentialsStatusesResponse": {
-        "type": "object",
-        "properties": {
-          "passwordCreated": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "passwordResetDate": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "recentPasswordChangeCount": {
-            "type": "number",
-            "example": 2,
-            "description": "Number of password changes in the last 24 hours"
-          }
-        }
-      },
-      "LinkAccountCanNotUnlinkReason": {
-        "type": "string",
-        "enum": [
-          "PASSWORD_NOT_SET"
-        ]
-      },
-      "LinkedAccountUnlink": {
-        "type": "object",
-        "properties": {
-          "allowed": {
-            "type": "boolean",
-            "example": false
-          },
-          "string": {
-            "example": "PASSWORD_NOT_SET",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LinkAccountCanNotUnlinkReason"
-              }
-            ]
-          }
-        },
-        "required": [
-          "allowed"
-        ]
-      },
-      "LinkedAccountsListItem": {
-        "type": "object",
-        "properties": {
-          "connected": {
-            "type": "boolean",
-            "example": false
-          },
-          "providerAlias": {
-            "type": "string",
-            "example": "Some Provider Alias"
-          },
-          "providerName": {
-            "type": "string",
-            "example": "Some Provider Name"
-          },
-          "displayName": {
-            "type": "string",
-            "example": "Some Display Name"
-          },
-          "linkedUsername": {
-            "type": "string",
-            "example": "Some Linked Username"
-          },
-          "social": {
-            "type": "boolean",
-            "example": false
-          },
-          "unlink": {
-            "$ref": "#/components/schemas/LinkedAccountUnlink"
-          }
-        },
-        "required": [
-          "connected",
-          "providerAlias",
-          "providerName",
-          "displayName",
-          "linkedUsername",
-          "social"
-        ]
-      },
-      "LinkSocialIdentityProvider": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "example": "d2ec3ba0-7ef5-4591-a8ef-77478a7272f7"
-          },
-          "clientId": {
-            "type": "string",
-            "example": "some_app_client_id"
-          },
-          "sessionState": {
-            "type": "string"
-          },
-          "providerAlias": {
-            "type": "string",
-            "example": "My Alias"
-          },
-          "redirectUrl": {
-            "type": "string",
-            "example": "https://redirect.com"
-          }
-        },
-        "required": [
-          "userId",
-          "clientId",
-          "sessionState",
-          "providerAlias",
-          "redirectUrl"
-        ]
-      },
-      "LinkAccountResponse": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "url"
-        ]
-      },
-      "PotentialOwnersGetRequest": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          },
-          "authenticatedUserId": {
-            "type": "string",
-            "example": "abf4e9ce-4393-4bf7-9f1e-440a0ff26755"
-          },
-          "request": {
-            "$ref": "#/components/schemas/UserListSearchRequest"
-          }
-        },
-        "required": [
-          "organization",
-          "authenticatedUserId",
-          "request"
-        ]
-      },
-      "GetPermissionsRequest": {
-        "type": "object",
-        "properties": {
-          "organizationId": {
-            "type": "string"
-          },
-          "requesterId": {
-            "type": "string"
-          },
-          "request": {
-            "$ref": "#/components/schemas/UserPermission"
-          }
-        },
-        "required": [
-          "organizationId",
-          "requesterId",
-          "request"
-        ]
-      },
-      "PermissionsPutRequest_2": {
-        "type": "object",
-        "properties": {
-          "requesterId": {
-            "type": "string"
-          },
-          "organisationId": {
-            "type": "string"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPermission"
-            }
-          },
-          "forceSet": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "requesterId",
-          "organisationId",
-          "permissions",
-          "forceSet"
-        ]
-      },
-      "PutPermissionsRequest": {
-        "type": "object",
-        "properties": {
-          "requesterId": {
-            "type": "string"
-          },
-          "request": {
-            "$ref": "#/components/schemas/PermissionsPutRequest_2"
-          }
-        },
-        "required": [
-          "requesterId",
-          "request"
-        ]
-      },
-      "PutPermissionsUsersV1": {
-        "type": "object",
-        "properties": {
-          "requesterId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "organizationId": {
-            "type": "string"
-          },
-          "permissionDtos": {
-            "$ref": "#/components/schemas/UserPermissionV1"
-          }
-        },
-        "required": [
-          "requesterId",
-          "organizationId",
-          "permissionDtos"
-        ]
-      },
-      "OrganizationPermission": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "My Organization"
-          },
-          "objectId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "role": {
-            "type": "string",
-            "example": "OWNER"
-          },
-          "roleId": {
-            "type": "string",
-            "example": "org-owner-role-id"
-          }
-        },
-        "required": [
-          "name",
-          "objectId",
-          "role",
-          "roleId"
-        ]
-      },
-      "ProductPermission": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "DMARC Analytics"
-          },
-          "objectId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "role": {
-            "type": "string",
-            "example": "ADMIN"
-          },
-          "roleId": {
-            "type": "string",
-            "example": "product-admin-role-id"
-          }
-        },
-        "required": [
-          "name",
-          "objectId",
-          "role",
-          "roleId"
-        ]
-      },
-      "ResourceGroupPermission": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "My Resource Group"
-          },
-          "objectId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "role": {
-            "type": "string",
-            "example": "VIEWER"
-          },
-          "roleId": {
-            "type": "string",
-            "example": "resource-group-viewer-role-id"
-          }
-        },
-        "required": [
-          "name",
-          "objectId",
-          "role",
-          "roleId"
-        ]
-      },
-      "ResourcePermission": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "example.com"
-          },
-          "objectId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "role": {
-            "type": "string",
-            "example": "EDITOR"
-          },
-          "roleId": {
-            "type": "string",
-            "example": "resource-editor-role-id"
-          },
-          "resourceGroupId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "resourceGroupName": {
-            "type": "string",
-            "example": "Main Resource Group"
-          }
-        },
-        "required": [
-          "name",
-          "objectId",
-          "role",
-          "roleId",
-          "resourceGroupId",
-          "resourceGroupName"
-        ]
-      },
-      "GetUserPermissionsStructuredResponse": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "nullable": true,
-            "description": "Organization permission details",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrganizationPermission"
-              }
-            ]
-          },
-          "products": {
-            "description": "Array of product permissions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductPermission"
-            }
-          },
-          "resourceGroups": {
-            "description": "Array of resource group permissions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceGroupPermission"
-            }
-          },
-          "resources": {
-            "description": "Array of resource permissions",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourcePermission"
-            }
-          }
-        },
-        "required": [
-          "products",
-          "resourceGroups",
-          "resources"
-        ]
-      },
-      "OrganizationOwnerChangeOneTimeCodeRequest": {
-        "type": "object",
-        "properties": {
-          "requesterUserId": {
-            "type": "string",
-            "example": "53422f23-a89a-4d34-acd4-eca3507ec1f7"
-          },
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "required": [
-          "requesterUserId",
-          "organization"
-        ]
-      },
-      "OrganizationChangeOwnerRequest": {
-        "type": "object",
-        "properties": {
-          "organization": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "objectId": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "uid": {
-                "type": "string"
-              }
-            }
-          },
-          "requesterUserId": {
-            "type": "string",
-            "example": "53422f23-a89a-4d34-acd4-eca3507ec1f7"
-          },
-          "newOwnerId": {
-            "type": "string",
-            "example": "6f209e39-c9fc-45e6-a4b5-730d5d43daa6"
-          },
-          "oneTimeCode": {
-            "type": "number",
-            "example": 6425
-          }
-        },
-        "required": [
-          "organization",
-          "requesterUserId",
-          "newOwnerId",
-          "oneTimeCode"
-        ]
-      },
-      "PreloadPermissionGetRequest": {
-        "type": "object",
-        "properties": {
-          "organizationId": {
-            "type": "string",
-            "example": "org_6e9385ca-199d-49db-a18e"
-          },
-          "userId": {
-            "type": "string",
-            "example": "d4092e75-11c5-4a61-b948-f87829fe7146"
-          },
-          "directory": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PermissionDirectory"
-              }
-            ]
-          },
-          "objectId": {
-            "type": "string",
-            "example": "e9977f6e-cf9f-456c-9449-5c2162c57658"
-          },
-          "hideRoles": {
-            "type": "boolean",
-            "example": false
-          },
-          "query": {
-            "type": "string",
-            "example": "Some query"
-          },
-          "depth": {
-            "type": "number",
-            "example": 1
-          }
-        },
-        "required": [
-          "organizationId",
-          "userId"
-        ]
-      },
-      "UserPermissionStructure": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "directory": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PermissionDirectory"
-              }
-            ]
-          },
-          "objectId": {
-            "type": "string",
-            "example": "df57ff30-9f8a-4632-9836-ee455da5c8ff"
-          },
-          "title": {
-            "type": "string",
-            "example": "Some Title"
-          },
-          "type": {
-            "type": "string",
-            "example": "Some Title"
-          },
-          "role": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Permission"
-              }
-            ]
-          },
-          "entries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserPermissionStructure"
-            }
-          }
-        },
-        "required": [
-          "userId"
-        ]
-      },
       "UserBasicInfo": {
         "type": "object",
         "properties": {
@@ -16807,7 +13544,7 @@
             "description": "Avatar image information for the user. May contain URL or image data.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatar"
+                "$ref": "#/components/schemas/UserAvatar_3"
               }
             ]
           },
@@ -16815,7 +13552,7 @@
             "description": "Color scheme for the user's avatar when no image is set. Used for generating colored initials.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatarColor"
+                "$ref": "#/components/schemas/UserAvatarColor_3"
               }
             ]
           }
@@ -16827,395 +13564,6 @@
           "lastName",
           "email",
           "emailVerified"
-        ]
-      },
-      "UserPersonalInfo": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "User ID"
-          },
-          "username": {
-            "type": "string",
-            "description": "username"
-          },
-          "firstName": {
-            "type": "string",
-            "description": "First Name"
-          },
-          "lastName": {
-            "type": "string",
-            "description": "Last Name"
-          },
-          "email": {
-            "type": "string",
-            "description": "Email"
-          },
-          "emailVerified": {
-            "type": "boolean",
-            "description": "Email Verified"
-          },
-          "avatar": {
-            "description": "User Avatar",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserAvatar"
-              }
-            ]
-          },
-          "avatarColor": {
-            "description": "User Avatar Color",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserAvatarColor"
-              }
-            ]
-          },
-          "terminationRequestSent": {
-            "format": "date-time",
-            "type": "string",
-            "description": "Termination Request Sent"
-          },
-          "organisationProfile": {
-            "description": "Organisation Profile",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/UserOrganisationProfileData"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id",
-          "username",
-          "firstName",
-          "lastName",
-          "email",
-          "emailVerified"
-        ]
-      },
-      "UserSessionDevice": {
-        "type": "object",
-        "properties": {
-          "sessionId": {
-            "type": "string"
-          },
-          "loginUsername": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "ipAddress": {
-            "type": "string"
-          },
-          "os": {
-            "type": "string"
-          },
-          "osVersion": {
-            "type": "string"
-          },
-          "browser": {
-            "type": "string"
-          },
-          "device": {
-            "type": "string"
-          },
-          "mobile": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "sessionId",
-          "loginUsername",
-          "userId",
-          "ipAddress",
-          "os",
-          "osVersion",
-          "browser",
-          "device",
-          "mobile"
-        ]
-      },
-      "Attribute_2": {
-        "type": "object",
-        "properties": {}
-      },
-      "SingleAttributeResponse": {
-        "type": "object",
-        "properties": {}
-      },
-      "Page": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "number"
-          },
-          "size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "index",
-          "size"
-        ]
-      },
-      "Organization": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "createdAt"
-        ]
-      },
-      "PageResponseUserOrganization": {
-        "type": "object",
-        "properties": {
-          "totalCount": {
-            "type": "number",
-            "example": 10
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Organization"
-            }
-          }
-        },
-        "required": [
-          "totalCount",
-          "items"
-        ]
-      },
-      "PermissionRole": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "PermissionOrganisation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "org_00000000000000000000000c"
-          },
-          "role": {
-            "$ref": "#/components/schemas/PermissionRole"
-          }
-        },
-        "required": [
-          "id",
-          "role"
-        ]
-      },
-      "UpdateOrganizationName": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "UserOrganizationDomainRequest": {
-        "type": "object",
-        "properties": {
-          "domain": {
-            "type": "string",
-            "example": "example.com"
-          }
-        },
-        "required": [
-          "domain"
-        ]
-      },
-      "ScimSecretResponse": {
-        "type": "object",
-        "properties": {
-          "secret": {
-            "type": "string",
-            "description": "SCIM secret for the organization",
-            "example": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
-          }
-        },
-        "required": [
-          "secret"
-        ]
-      },
-      "KeycloakUpdateEmailEvent": {
-        "type": "object",
-        "properties": {}
-      },
-      "IamSso": {
-        "type": "object",
-        "properties": {
-          "addReadTokenRoleOnCreate": {
-            "type": "boolean"
-          },
-          "alias": {
-            "type": "string"
-          },
-          "config": {
-            "type": "object"
-          },
-          "displayName": {
-            "type": "string"
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "firstBrokerLoginFlowAlias": {
-            "type": "string"
-          },
-          "internalId": {
-            "type": "string"
-          },
-          "linkOnly": {
-            "type": "boolean"
-          },
-          "postBrokerLoginFlowAlias": {
-            "type": "string"
-          },
-          "providerId": {
-            "type": "string"
-          },
-          "storeToken": {
-            "type": "boolean"
-          },
-          "trustEmail": {
-            "type": "boolean"
-          },
-          "idpEntityId": {
-            "type": "string"
-          },
-          "singleSignOnServiceUrl": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "addReadTokenRoleOnCreate",
-          "alias",
-          "config",
-          "displayName",
-          "enabled",
-          "firstBrokerLoginFlowAlias",
-          "internalId",
-          "linkOnly",
-          "postBrokerLoginFlowAlias",
-          "providerId",
-          "storeToken",
-          "trustEmail",
-          "idpEntityId",
-          "singleSignOnServiceUrl"
-        ]
-      },
-      "SsoSp": {
-        "type": "object",
-        "properties": {
-          "entityId": {
-            "type": "string"
-          },
-          "acsUrl": {
-            "type": "string"
-          },
-          "idpUrl": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "entityId",
-          "acsUrl",
-          "idpUrl"
-        ]
-      },
-      "Sso": {
-        "type": "object",
-        "properties": {
-          "idp": {
-            "$ref": "#/components/schemas/IamSso"
-          },
-          "sp": {
-            "$ref": "#/components/schemas/SsoSp"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "ssoForce": {
-            "type": "object"
-          },
-          "providerName": {
-            "type": "object"
-          }
-        },
-        "required": [
-          "idp",
-          "sp",
-          "createdAt",
-          "ssoForce",
-          "providerName"
-        ]
-      },
-      "UserOrganizationDomainResponse": {
-        "type": "object",
-        "properties": {
-          "domain": {
-            "type": "string",
-            "example": "example.com"
-          },
-          "isVerified": {
-            "type": "boolean",
-            "example": true
-          },
-          "token": {
-            "type": "string",
-            "example": "token"
-          }
-        },
-        "required": [
-          "domain",
-          "isVerified",
-          "token"
-        ]
-      },
-      "SsoInfo": {
-        "type": "object",
-        "properties": {
-          "hasSsoSetupAccess": {
-            "type": "boolean"
-          },
-          "isSsoSetup": {
-            "type": "boolean"
-          },
-          "domainInfo": {
-            "$ref": "#/components/schemas/UserOrganizationDomainResponse"
-          }
-        },
-        "required": [
-          "hasSsoSetupAccess",
-          "isSsoSetup",
-          "domainInfo"
         ]
       },
       "PublicInviteUsersV1": {
@@ -17332,12 +13680,6 @@
         "Organizations",
         "Billing - Subscriptions & Pricing",
         "Users"
-      ]
-    },
-    {
-      "name": "Other",
-      "tags": [
-        "DnsCore"
       ]
     }
   ]
