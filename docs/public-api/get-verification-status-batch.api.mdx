@@ -1,0 +1,72 @@
+---
+id: get-verification-status-batch
+title: "getVerificationStatusBatch"
+description: "getVerificationStatusBatch"
+sidebar_label: "getVerificationStatusBatch"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVktv20YQ/ivE9LoyZQPpgTfHTooUTWvITnsQhGK4HJEbc3eZfdhSBf73YnYlhZJrF9GFy+U8v5n5RjuwAzkMyppPDVTQUviTnForme7uA4bo32OQHQgY0KGmQM5DtVwJcPQtkg/vbbOFapdelaMGquAiCZDWBDKBP+Ew9HuT5VdvDd952ZFGPoXtQFCBrb+SDOzHcVBBkeevGjfXLX32E0kTdU0OBNAG9dATVO/m87mAhrx0amA3UMFDR4XGjdJRF9hSYddF6KiQKDsqlCm06nvlSVrT+GI5X83WFGRXNMaLYjm7XM3WzuosDqOAxmpUJoVxdLs8HC+k1bAShwDROdyCABVITwP3wSnTwjgKcHHzZkbgIvK7iRqq5Tvx8yppHTFeHgPKtti5CknzVqOTi7hJdVvkIsE4Zn0/WOMzslfzOT9OUYMfL9xr2b5S0Bz3S1SmyU9hHQV06BcneNXW9oRmqsNN998QwdHAFKT06WWzL/YIJcDYXsCW+x1uf78vfrP2MQ5sxpOMToUtVMsd1ISOHA/FuDrvwjcnSlPoLM/dYH0CCkMHFZRPl2Vj/KxP7sqG61k+TazMfDIzq/d2PLmnPJY7iK6HCroQBl+VJQ7q6oLQb5ORjOck/HuuZS7L+5TEdeQIjjizGThP6RcyzBlUbG10BUpJ3hfBPpIpolemLTCGjkxQkjs4tUuqWUZJ7A8frdMYoIJf/3rgGtdv+P8xG8cm/T8NceJmFGA58qtpC+cLAevePieYlOaJUHk6YuisU/+kmnw5wT2iPIW9dIS99uXxshycDVbavrQDGdXMpDWGZCjZasrZDrky+TtHkw9poNYqtfHhJIA0Ko4gPwXY9bpXhv7O9WHt04vU3Ocw8R3P+eI7tX84DNiUivd8e6DEFzyY2C1R2ChAmbVNmO5H7wP67e3n68VNcX33CQRw6+bOuryYX8xf9Nt3+btY90qyWnFrZdRkQsJ+T1ooU1kM6hM3IM6G4mweBGxmvW1TjG8Ilkq3JctdDImtapSPrbPRNDe2tw4q+Olj+oEA7MMDbcJJFIwtz7lGM4mypVBMCaLIDFEcKOIEimNfBtqEcuiZ3MZ9drs9eyzh6ZL1jvzBL5xDRvoVDlkJ6JiDqiXsdjV6+uL6ceTrb5HcNi/8J3QK67T4VszKhE2ivR080hYquMmLY/bAQbJ4H9N+OF8iozhoXEtJQ3hTdjWhybs/7nlq6/0/Dm2btCnxmZcgPuf1ZRNYaXLS3Q56NG3ElmWzTS4FnjLNGU+krA77zWwnEe52WeKBCW8cQexTSQQI42ocx38BFvA1CA==
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"getVerificationStatusBatch"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dmarc/verification-status-batch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+getVerificationStatusBatch
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domains":{"example":["example.com"],"type":"array","items":{"type":"string"}},"rux":{"type":"number","example":"rua","enum":[5,6]}},"required":["domains","rux"],"title":"DmarcRuxBatchRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"domain":{"type":"string","example":"example.com"},"hasRux":{"type":"boolean","example":true}},"required":["domain","hasRux"],"title":"DomainVerificationStatusResponse"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

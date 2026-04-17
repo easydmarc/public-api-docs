@@ -332,6 +332,12 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
+              id: "public-api/get-verification-status-batch",
+              label: "getVerificationStatusBatch",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
               id: "public-api/dns-lookup-for-dkim",
               label: "DNS lookup for dkim record",
               className: "api-method get",
@@ -604,7 +610,7 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
-              id: "public-api/create",
+              id: "public-api/create-2",
               label: "Create user",
               className: "api-method post",
             },
@@ -625,32 +631,6 @@ const sidebar: SidebarsConfig = {
               id: "public-api/patch-change-personal-info",
               label: "Update User Info",
               className: "api-method patch",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Other",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        {
-          type: "category",
-          label: "DnsCore",
-          link: {
-            type: "doc",
-            id: "public-api/easydmarc-api",
-          },
-          collapsible: true,
-          collapsed: true,
-          items: [
-            {
-              type: "doc",
-              id: "public-api/get-reverse-record",
-              label: "Perform reverse DNS lookup",
-              className: "api-method get",
             },
           ],
         },

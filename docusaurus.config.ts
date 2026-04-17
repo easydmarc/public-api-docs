@@ -77,6 +77,7 @@ const config: Config = {
             outputDir: "docs/public-api",
             showExtensions: true,
             showSchemas: false,
+
             sidebarOptions: {
               groupPathsBy: "tagGroup",
               categoryLinkSource: "info",
