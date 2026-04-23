@@ -448,6 +448,30 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "Audit Log",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/get-audit-logs",
+              label: "Get audit logs with filters",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/export-audit-logs",
+              label: "Export audit logs to CSV",
+              className: "api-method get",
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Failure Reports",
           link: {
             type: "doc",
@@ -610,7 +634,7 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
-              id: "public-api/create-2",
+              id: "public-api/create-3",
               label: "Create user",
               className: "api-method post",
             },

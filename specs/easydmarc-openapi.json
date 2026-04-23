@@ -36,6 +36,10 @@
       "x-displayName": "Aggregate Reports"
     },
     {
+      "name": "Audit Log",
+      "x-displayName": "Audit Log"
+    },
+    {
       "name": "Failure Reports",
       "x-displayName": "Failure Reports"
     },
@@ -3915,6 +3919,349 @@
         ]
       }
     },
+    "/v1/audit-log": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "\n      Query audit logs with comprehensive filtering options.\n\n      **Filtering by user:** Use 'userIds' parameter with comma-separated user IDs or 'userEmails' parameter with comma-separated user emails.\n\n      **Filtering by domain:** Use 'domainIds' parameter with comma-separated domain IDs.\n\n      **Filtering by domain group:** Use 'domainGroupIds' parameter with comma-separated domain group IDs.\n\n      **Filtering by action category:** Use 'actionCategories' parameter with one or more of:\n      - DOMAINS: Domain-related actions\n      - DOMAIN_GROUPS: Domain group actions\n      - MANAGED_SERVICES: Managed DMARC, BIMI, MTA-STS, EasySPF actions\n      - USER_MANAGEMENT: User invitation, revocation, permission changes\n      - BILLING: Billing details, plan upgrades, cancellations\n      - SECURITY_FEATURES: MFA setup/removal\n      - ORGANIZATION_SECURITY: SSO setup, account termination\n      - LOGIN_AND_LOGOUT: Login, logout, device actions\n      - INTEGRATIONS: Integration connections, token generation\n      - ALERTING: Alert creation, modification, deletion\n      - RUF: Failure report actions\n      - RUA: Aggregate report actions\n      - PERSONAL_SETTINGS: Name changes\n      - REPORTING: Scheduled report actions, whitelabel, SMTP setup\n      - LABEL_MANAGEMENT: Label creation, modification, deletion\n\n      **Filtering by specific actions:** Use 'actions' parameter with specific AuditLogAction values.\n\n      **Date range:** Use 'startDate' and 'endDate' parameters (ISO 8601 format).\n    ",
+        "operationId": "getAuditLogs",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "Organization ID to query audit logs for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by user IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "userEmails",
+            "required": false,
+            "in": "query",
+            "description": "Filter by user emails",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "domainIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by domain IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "domainGroupIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by domain group IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "actions",
+            "required": false,
+            "in": "query",
+            "description": "Filter by specific actions",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AuditLogAction"
+              }
+            }
+          },
+          {
+            "name": "actionCategories",
+            "required": false,
+            "in": "query",
+            "description": "Filter by action categories (DOMAINS, DOMAIN_GROUPS, MANAGED_SERVICES, USER_MANAGEMENT, BILLING, SECURITY_FEATURES, ORGANIZATION_SECURITY, LOGIN_AND_LOGOUT, INTEGRATIONS, ALERTING, RUF, RUA, PERSONAL_SETTINGS, REPORTING, LABEL_MANAGEMENT)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AuditLogActionCategory"
+              }
+            }
+          },
+          {
+            "name": "entityTypes",
+            "required": false,
+            "in": "query",
+            "description": "Filter by entity types",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EntityType"
+              }
+            }
+          },
+          {
+            "name": "startDate",
+            "required": false,
+            "in": "query",
+            "description": "Start date for the date range filter",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "required": false,
+            "in": "query",
+            "description": "End date for the date range filter",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDirection",
+            "required": false,
+            "in": "query",
+            "description": "Sort direction for results",
+            "schema": {
+              "$ref": "#/components/schemas/SortDirection"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number (1-indexed)",
+            "schema": {
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "description": "Number of items per page",
+            "schema": {
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned audit logs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogPageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request is invalid."
+          },
+          "401": {
+            "description": "Request authentication is required."
+          },
+          "403": {
+            "description": "Request is not authorized."
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "summary": "Get audit logs with filters",
+        "tags": [
+          "Audit Log"
+        ]
+      }
+    },
+    "/v1/audit-log/export": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "\n      Export audit logs with the same filtering options as the query endpoint.\n      Returns audit logs as a CSV file.\n    ",
+        "operationId": "exportAuditLogs",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "Organization ID to export audit logs for",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by user IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "userEmails",
+            "required": false,
+            "in": "query",
+            "description": "Filter by user emails",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "domainIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by domain IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "domainGroupIds",
+            "required": false,
+            "in": "query",
+            "description": "Filter by domain group IDs",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "actions",
+            "required": false,
+            "in": "query",
+            "description": "Filter by specific actions",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AuditLogAction"
+              }
+            }
+          },
+          {
+            "name": "actionCategories",
+            "required": false,
+            "in": "query",
+            "description": "Filter by action categories",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AuditLogActionCategory"
+              }
+            }
+          },
+          {
+            "name": "entityTypes",
+            "required": false,
+            "in": "query",
+            "description": "Filter by entity types",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EntityType"
+              }
+            }
+          },
+          {
+            "name": "startDate",
+            "required": false,
+            "in": "query",
+            "description": "Start date for the date range filter",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "required": false,
+            "in": "query",
+            "description": "End date for the date range filter",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortDirection",
+            "required": false,
+            "in": "query",
+            "description": "Sort direction for results",
+            "schema": {
+              "$ref": "#/components/schemas/SortDirection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully exported audit logs. Returns CSV content as text."
+          },
+          "400": {
+            "description": "Request is invalid."
+          },
+          "401": {
+            "description": "Request authentication is required."
+          },
+          "403": {
+            "description": "Request is not authorized."
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          }
+        ],
+        "summary": "Export audit logs to CSV",
+        "tags": [
+          "Audit Log"
+        ]
+      }
+    },
     "/v1/dns-lookup/a": {
       "servers": [
         {
@@ -6069,7 +6416,7 @@
       ],
       "post": {
         "description": "Creates one or more new users in the organization with specified roles and permissions. Unlike the invite endpoint, this creates users directly without requiring them to accept an invitation.\n\n**Key Differences from Invite:**\n- Creates users immediately without invitation flow\n- Users are active immediately\n- No email invitation is sent\n\n**Use Cases:**\n- Bulk user import from external systems\n- Automated user provisioning via integrations\n- Pre-creating accounts for known team members\n\n**Permissions Required:**\n- Must have admin role in the organization\n- Must have user creation permissions",
-        "operationId": "create_2",
+        "operationId": "create_3",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -8848,6 +9195,417 @@
           "priceId"
         ]
       },
+      "UserRole": {
+        "type": "string",
+        "enum": [
+          "Organization Owner",
+          "Organization Admin",
+          "Product Admin",
+          "Product Editor",
+          "Domain Group Admin",
+          "Domain Group Editor",
+          "Domain Admin",
+          "Domain Editor",
+          "Domain Group Viewer",
+          "Domain Viewer"
+        ]
+      },
+      "ActionPerformerResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "role": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserRole"
+              }
+            ]
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "avatarColor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "fullName",
+          "role"
+        ]
+      },
+      "CountryResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "flagUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "code"
+        ]
+      },
+      "AuditLogAction": {
+        "type": "string",
+        "enum": [
+          "UNKNOWN",
+          "DOMAIN_ADDED",
+          "DOMAIN_REMOVED",
+          "DOMAIN_MOVED_TO_GROUP",
+          "GROUP_MOVE_TO_WORKSPACE",
+          "DOMAIN_GROUP_ADDED",
+          "DOMAIN_GROUP_REMOVED",
+          "DOMAIN_GROUP_NAME_EDITED",
+          "MANAGED_DMARC_ACTIVATED",
+          "MANAGED_DMARC_RECORD_CHANGED",
+          "FAILURE_REPORT_DISABLED",
+          "FAILURE_REPORT_ENABLED",
+          "MANAGED_BIMI_ACTIVATED",
+          "MANAGED_BIMI_RECORD_CHANGED",
+          "MANAGED_MTA_STS_ACTIVATED",
+          "MANAGED_MTA_STS_RECORD_CHANGED",
+          "EASY_SPF_SOURCE_ADDED",
+          "EASY_SPF_SOURCE_REMOVED",
+          "EASY_SPF_SOURCE_NAME_UPDATED",
+          "EASY_SPF_PART_TYPE_UPDATED",
+          "EASY_SPF_PART_VALUE_UPDATED",
+          "EASY_SPF_SOURCE_ENABLED",
+          "EASY_SPF_SOURCE_DISABLED",
+          "EASY_SPF_ACTIVATED",
+          "USER_INVITED_AS_ADMIN",
+          "USER_INVITED_AS_EDITOR",
+          "USER_INVITED_AS_VIEWER",
+          "USER_REVOKED_FROM_ORGANIZATION",
+          "USER_PERMISSION_CHANGED",
+          "BILLING_DETAILS_ADDED",
+          "PRODUCT_PLAN_UPGRADED",
+          "BILLING_CANCELLATION_REQUESTED",
+          "INTEGRATION_TOKEN_GENERATED",
+          "INTEGRATION_CONNECTED",
+          "INTEGRATION_DISCONNECTED",
+          "LOGGED_IN",
+          "LOGGED_OUT",
+          "LOGGED_IN_ERROR",
+          "ADDED_MFA",
+          "REMOVED_MFA",
+          "SETUP_SSO",
+          "LOGGED_IN_SSO",
+          "REGISTERED_SSO",
+          "CHANGED_FULL_NAME",
+          "CHANGED_LAST_NAME",
+          "CHANGED_FIRST_NAME",
+          "REQUESTED_ACCOUNT_TERMINATION",
+          "LOGGED_IN_NEW_DEVICE",
+          "LOGGED_OUT_DEVICE",
+          "LOGGED_OUT_FROM_ALL_DEVICES",
+          "DISCONNECTED_SOCIAL_ACCOUNT",
+          "LEFT_ORGANIZATION",
+          "AGGREGATE_REPORT_FILE_UPLOADED",
+          "TLS_REPORT_FILE_UPLOADED",
+          "DOMAIN_OR_IP_REPUTATION_MONITORING_ADDED",
+          "DOMAIN_OR_IP_REPUTATION_MONITORING_REMOVED",
+          "CREATED_ALERT",
+          "EDITED_ALERT_NAME",
+          "ADDED_RECIPIENTS_FOR_ALERT",
+          "REMOVED_RECIPIENTS_FOR_ALERT",
+          "ADDED_DOMAINS_FOR_ALERT",
+          "REMOVED_DOMAINS_FOR_ALERT",
+          "DELETED_ALERT",
+          "ENABLED_ALERT",
+          "DISABLED_ALERT",
+          "DELETED_ALERT_LOG",
+          "MARKED_ALERT_LOG_RESOLVED",
+          "APPLIED_LABEL",
+          "REMOVED_LABEL",
+          "CREATED_LABEL",
+          "EDITED_LABEL_NAME",
+          "DELETED_LABEL",
+          "CREATED_SCHEDULED_REPORT",
+          "ADDED_ENTITY_FOR_SCHEDULED_REPORT",
+          "REMOVED_ENTITY_FOR_SCHEDULED_REPORT",
+          "DELETED_SCHEDULED_REPORT",
+          "EDITED_TIMEZONE_FOR_SCHEDULED_REPORT",
+          "EDITED_FREQUENCY_FOR_SCHEDULED_REPORT",
+          "FEDERATED_IDENTITY_LINK",
+          "ENABLED_WHITELABEL_SETTINGS_FOR_REPORTING",
+          "DISABLED_WHITELABEL_SETTINGS_FOR_REPORTING",
+          "CREATED_SMTP_SETUP_FOR_REPORTING",
+          "EDITED_SMTP_SETUP_FOR_REPORTING",
+          "DELETED_SMTP_SETUP_FOR_REPORTING",
+          "RENEWED_SUBSCRIPTION"
+        ]
+      },
+      "EntityType": {
+        "type": "string",
+        "enum": [
+          "domain",
+          "domain_group",
+          "workspace",
+          "partner",
+          "organization",
+          "vendor",
+          "sso",
+          "login",
+          "user",
+          "link",
+          "product",
+          "role",
+          "plan",
+          "record",
+          "source_name",
+          "source_type",
+          "source_value",
+          "logout",
+          "text",
+          "social",
+          "device",
+          "ip",
+          "email",
+          "slack",
+          "ms_teams",
+          "alert_name",
+          "label_name",
+          "timezone",
+          "frequency"
+        ]
+      },
+      "ActionItemResponse": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "entityType": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EntityType"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "imgPath": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "entityType"
+        ]
+      },
+      "SortDirection": {
+        "type": "string",
+        "enum": [
+          "ASC",
+          "DESC"
+        ]
+      },
+      "AuditLogOs": {
+        "type": "string",
+        "enum": [
+          "MAC",
+          "WINDOWS",
+          "LINUX",
+          "OTHER"
+        ]
+      },
+      "AuditLogBrowser": {
+        "type": "string",
+        "enum": [
+          "CHROME",
+          "SAFARI",
+          "OPERA",
+          "FIREFOX",
+          "OTHER"
+        ]
+      },
+      "AuditLogDevice": {
+        "type": "string",
+        "enum": [
+          "PC",
+          "PHONE",
+          "OTHER"
+        ]
+      },
+      "PlatformResponse": {
+        "type": "object",
+        "properties": {
+          "os": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogOs"
+              }
+            ]
+          },
+          "browser": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogBrowser"
+              }
+            ]
+          },
+          "device": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogDevice"
+              }
+            ]
+          }
+        },
+        "required": [
+          "os",
+          "browser",
+          "device"
+        ]
+      },
+      "AuditLogResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/ActionPerformerResponse"
+          },
+          "date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "actionDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "action": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditLogAction"
+            }
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionItemResponse"
+            }
+          },
+          "entity": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionItemResponse"
+            }
+          },
+          "country": {
+            "$ref": "#/components/schemas/CountryResponse"
+          },
+          "ip": {
+            "type": "string"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/PlatformResponse"
+          },
+          "os": {
+            "type": "string"
+          },
+          "browser": {
+            "type": "string"
+          },
+          "device": {
+            "type": "string"
+          },
+          "onData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActionItemResponse"
+            }
+          },
+          "from": {
+            "$ref": "#/components/schemas/ActionItemResponse"
+          },
+          "to": {
+            "$ref": "#/components/schemas/ActionItemResponse"
+          }
+        },
+        "required": [
+          "id",
+          "user",
+          "date",
+          "actionDate",
+          "action",
+          "entities",
+          "entity",
+          "country",
+          "ip",
+          "platform",
+          "os",
+          "browser",
+          "device"
+        ]
+      },
+      "AuditLogPageResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditLogResponse"
+            }
+          },
+          "totalCount": {
+            "type": "number",
+            "description": "Total number of records matching the query"
+          },
+          "currentPage": {
+            "type": "number",
+            "description": "Current page number (1-based)"
+          },
+          "totalPages": {
+            "type": "number",
+            "description": "Total number of pages"
+          }
+        },
+        "required": [
+          "data",
+          "totalCount",
+          "currentPage",
+          "totalPages"
+        ]
+      },
+      "AuditLogActionCategory": {
+        "type": "string",
+        "enum": [
+          "DOMAINS",
+          "DOMAIN_GROUPS",
+          "MANAGED_SERVICES",
+          "USER_MANAGEMENT",
+          "BILLING",
+          "SECURITY_FEATURES",
+          "ORGANIZATION_SECURITY",
+          "LOGIN_AND_LOGOUT",
+          "INTEGRATIONS",
+          "ALERTING",
+          "RUF",
+          "RUA",
+          "PERSONAL_SETTINGS",
+          "REPORTING",
+          "LABEL_MANAGEMENT"
+        ]
+      },
       "ARecordObject": {
         "type": "object",
         "properties": {}
@@ -10151,11 +10909,24 @@
           "hasRux"
         ]
       },
+      "DkimTermEnum": {
+        "type": "string",
+        "enum": [
+          "v",
+          "g",
+          "h",
+          "k",
+          "n",
+          "p",
+          "s",
+          "t"
+        ]
+      },
       "DkimRecordTerm": {
         "type": "object",
         "properties": {
           "type": {
-            "type": "object"
+            "$ref": "#/components/schemas/DkimTermEnum"
           },
           "tag": {
             "type": "string"
@@ -10474,7 +11245,6 @@
           "MULTIPLE_VERSION_TAG",
           "DUPLICATE_DOMAIN",
           "INVALID_MX_RECORD",
-          "INVALID_EXP_MECHANISM",
           "INVALID_REDIRECT_TERM",
           "DUPLICATE_REDIRECT_TERM",
           "DUPLICATE_MECHANISM",
@@ -10482,6 +11252,7 @@
           "UNKNOWN_MECHANISM",
           "TERM_MUST_BE_DOMAIN",
           "INVALID_IP_ADDRESS",
+          "INVALID_EXP_MECHANISM",
           "TERM_MUST_BE_IP4",
           "TERM_MUST_BE_IP6",
           "INVALID_CIDR",
@@ -10491,6 +11262,7 @@
           "MISSING_ALL_AND_REDIRECT_TAG",
           "HAS_ALL_AND_REDIRECT_TAG",
           "DNS_LOOKUP_COUNT",
+          "DNS_LOOKUP_LIMIT",
           "SOURCE_DNS_LOOKUP_COUNT",
           "CUSTOM"
         ]
@@ -10694,11 +11466,6 @@
             "type": "string",
             "example": "example.com"
           },
-          "isRoot": {
-            "type": "boolean",
-            "default": false,
-            "example": false
-          },
           "visitedTerms": {
             "default": [],
             "type": "array",
@@ -10810,11 +11577,6 @@
           "domain": {
             "type": "string",
             "example": "example.com"
-          },
-          "isRoot": {
-            "type": "boolean",
-            "default": false,
-            "example": false
           },
           "visitedTerms": {
             "default": [],
@@ -10932,6 +11694,8 @@
           "v",
           "l",
           "a",
+          "avp",
+          "lps",
           "other"
         ]
       },
@@ -10979,6 +11743,8 @@
           "ERROR_ONLY_ONE_TAG",
           "ERROR_INVALID_SVG_URI",
           "ERROR_INVALID_SVG_PROTOCOL",
+          "ERROR_INVALID_AVP_TAG",
+          "ERROR_INVALID_LPS_TAG",
           "ERROR_MANAGED_VALIDATION_FAILURE",
           "ERROR_BIMI_CNAME_RECORD_NOT_FOUND",
           "ERROR_BIMI_HOST_NOT_FOUND",
@@ -11250,6 +12016,20 @@
           },
           "certificate": {
             "$ref": "#/components/schemas/BimiCertificateTerm"
+          },
+          "avp": {
+            "type": "string",
+            "enum": [
+              "personal",
+              "brand"
+            ],
+            "example": "brand",
+            "description": "Avatar Preference tag value."
+          },
+          "lps": {
+            "type": "string",
+            "example": "sales-,support-",
+            "description": "Local-Part Selector tag value."
           }
         },
         "required": [
@@ -11939,7 +12719,7 @@
           "value"
         ]
       },
-      "DateRange": {
+      "DateRange_2": {
         "type": "object",
         "properties": {
           "from": {
@@ -12065,7 +12845,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -12211,7 +12991,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -12414,7 +13194,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -12558,7 +13338,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -13025,7 +13805,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -13177,7 +13957,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange"
+                "$ref": "#/components/schemas/DateRange_2"
               }
             ]
           },
@@ -13228,7 +14008,7 @@
           "filters"
         ]
       },
-      "UserAvatar_3": {
+      "UserAvatar_5": {
         "type": "object",
         "properties": {
           "url": {
@@ -13238,7 +14018,7 @@
           }
         }
       },
-      "UserAvatarColorRgb_3": {
+      "UserAvatarColorRgb_4": {
         "type": "string",
         "enum": [
           "#DA6969",
@@ -13254,19 +14034,19 @@
           "#ABB0CB"
         ]
       },
-      "UserAvatarColor_3": {
+      "UserAvatarColor_4": {
         "type": "object",
         "properties": {
           "color": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatarColorRgb_3"
+                "$ref": "#/components/schemas/UserAvatarColorRgb_4"
               }
             ]
           }
         }
       },
-      "UserPersonalInfoChange": {
+      "UserPersonalInfoChange_2": {
         "type": "object",
         "properties": {
           "firstName": {
@@ -13306,7 +14086,7 @@
             },
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserPersonalInfoChange"
+                "$ref": "#/components/schemas/UserPersonalInfoChange_2"
               }
             ]
           }
@@ -13544,7 +14324,7 @@
             "description": "Avatar image information for the user. May contain URL or image data.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatar_3"
+                "$ref": "#/components/schemas/UserAvatar_5"
               }
             ]
           },
@@ -13552,7 +14332,7 @@
             "description": "Color scheme for the user's avatar when no image is set. Used for generating colored initials.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserAvatarColor_3"
+                "$ref": "#/components/schemas/UserAvatarColor_4"
               }
             ]
           }
@@ -13671,6 +14451,7 @@
         "Alerting",
         "DNS Lookup",
         "Aggregate Reports",
+        "Audit Log",
         "Failure Reports"
       ]
     },
