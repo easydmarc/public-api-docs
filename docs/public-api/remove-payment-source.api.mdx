@@ -1,0 +1,72 @@
+---
+id: remove-payment-source
+title: "Remove a payment source"
+description: "Removes a payment method from an organization."
+sidebar_label: "Remove a payment source"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVclu2zAQ/RViemkB2nLSnHTL4hQuWjRIE/QQ+EBLY5kIRarkyIgi6N+LoWTDW9PFF2vhzHsz8+aphRxD5nVF2llI4R5Lt8YglKhUU6IlUSKtXC6W3pVCWeF8oax+VXx+DBJchT7ezHJIwcfwuz70u6t9hiChUl6VSOgDpE8tWFUipDAAfI35ZzlI8Piz1h5zSMnXKEHbeIxWIA9o3u2Tm92AhJCtsFSQtkBNxQCBvLYFdJ3cYu6y/z3kzxp9c4Q5fSH0Vpm9FvwJes4QoXI2YOD355MJ/52uJsSGib6JuQh1lmEIy9qYBjoJF5Oz49hHq2paOa9fMRcjMbNrZXQunBelDkHbQvB7tKSznjC5Z7R9uo/H6W6dX+g8RytG4ttunbnDIKwjsUDjbCHICVqhqJQni77Pd/HH0jjB0tU256lAwKz2mpqoCsc8zyF9mvO8Fqg8+ng3l0CqYOnAlTaGSxqJTd5ePQHmEnotQAo5GqRed7SCFJL1WTLwDMmgulFPKCTtgQw7Hif69UastTeQwoqoCmmSqEqfj1GFJi+Vz8aZK4H5bQr5zjroB30VC7ismcFWFpzmSFef0PIKoWhc7YWKM++nJOqDAW6kxrmGDsnh4tb5UhGk8PnHA09j8Qb+v+Xg+L+KkHswPGBtly7CazL8YqpCc/P18v5aXN7NQAJ3uW/C2Xgynhyv3Pb8Xb0wOuMwceOymicWdQkSMmdJZcQ4w5Zvw0AezO9gdBJeRsYVkeMbBxNdFgmfG1e24NpV9lx4lvG1M85DCu9u4w8kKEMP+EJ7LLgVlQtUKrvDsrfaHacNG7/ca0IbC0RL/+POw0AIXyipjNJx8WOl7bAdT7A+6y067ke83NsQkJAeWvVcwsoF4ui2XaiAj950HT/urZMXJ9dBLQw761KZgG9U9f5+MOEP4g2PPVnKMzanXH2tTM2H43KuldfM5P9ZnfranKQzPFS22SWxoXnYxW7e7bjWzfTL9GHKCtrf2YONi1WcxGnb/sQDW0fXbWEHw593XfcLEWK7NQ==
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Remove a payment source"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/partners/payment-sources/{paymentMethodId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Removes a payment method from an organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"paymentMethodId","required":true,"in":"path","description":"Payment method ID","schema":{"type":"string"}},{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Payment source removed successfully"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"},"404":{"description":"Payment source not found"}}}
+>
+  
+</StatusCodes>
+
+
+      

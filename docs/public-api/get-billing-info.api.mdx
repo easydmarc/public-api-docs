@@ -1,0 +1,72 @@
+---
+id: get-billing-info
+title: "Get billing information for an organization"
+description: "Retrieves billing address and payment details for a given organization."
+sidebar_label: "Get billing information for an organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zYQ/RVi+tICip2kfdJbNje4aLGL7G4L1DAKSpzI3FCklhwacQT9+2IoOZHsIHWA+sWSPfc5c2ZaUBhKrxvSzkIOd0he4waDKLQx2lZCKuUxBCGtEo3c1mhJKCSpTRD3zgspKr1BK5yvpNVPkg3NIAPXoE8vCwU5VEgfeoMLe+8gg0Z6WSOhD5AvW7CyRshhbGShIAOP36P2qCAnHzEDzUF+j+i3kO2Ffv1I6K00k0jE4goyCOUaawl5C7Rt2E8gr20FXbdiF6FxNmDg/89PT/lranmIXGh773yd7EIGpbOEllhcNo3RZfpj/i2wTnvo0xXfsCRO3XNtSPce+8z3I8vARmNkYbDPvMsAa6nNUZJD666PVhh6/Ie2x4UyyF+6aMlv36Wi6V3yn0nSu2L6RzdHidc6lEcJljGQq9H/hVY5nzo2EclAGvPxPqF43xjaWEO+TD80+C9GxmJ6Zvyspa+wwMlzLyOfokdYZUCa2A/0zq/ZXLcaBcWzdTwgruS49jbWBfpXU/YoCdVFwnYPechBScIT0jXHuzdGGcRGvU+lG8/2sp+CHcb3EDzF5wH6ptjaQ84EF0PXD3o6qeekWuNajJMctWZMa13Hef12enbIIV+tjLR2Xj+hEidiYTfSaCWcF7UOIRFtpDVaGnhEkHtAC8ncr4fmbpwvtFJoxYn4OOY75TAI60gUaJytBDlBaxSN9GTRp7oHLKNPc7hswbHbc8iXqy5roUDp0ac3TlFWzM7P/Hcidk+LEROuMqiR1m6g+cTttIYc5puz+eA3zIeiznVP/wH9Zsf90RvIYU3UhHw+l40+n6EMW1VLX85Kx5B/Cfoz02rPnB9SsBeRnT2jms0crIZbtLyMUGxd9EKWJS+0VGAR92q/2xZsa6hGNjzc7GD9+99fuDHFG/7fZ+N5X/yXRjZxw81M9WT3AxyvZdhe/XlxdykuPi0gA65yX4Sz2ens9HBrPst/ioXRJauJK1dGXvTjVSdLellXL2o8FpP+7bUug8cT46oU4xuCc11Xc5abNYnCClk+VN5Fqy6dYdqFn27Shyfa0Bd8pEkUXIrGBaqlHUV5i/R8x4yWd3+3TE+W/cK0L/v9fzyKhu4RPtK8MVKnAU9laYepWcLmrD+P0ty80BEMvV5lsHaBWLJtCxnwqzddxz/3ZxFPlNKBCV1Bfi9NwDdS+/luIOFfxBv306thP+D2tYttI01k4TS1G+l1v1qYX2CNUiV6aQfti7LEhkZaB5dUN6aX22seATmduL15GS9iabcj223bS3zhwe862KUwMO2q67oflJvTHA==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get billing information for an organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/billing/info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves billing address and payment details for a given organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Billing information","content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","nullable":true},"email":{"type":"string","nullable":true},"billingEmail":{"type":"string","nullable":true},"addressLine":{"type":"string","nullable":true},"addressCountry":{"type":"string","nullable":true},"addressCity":{"type":"string","nullable":true},"addressState":{"type":"string","nullable":true},"addressZip":{"type":"string","nullable":true},"misc":{"type":"string","nullable":true},"customerVendor":{"nullable":true,"allOf":[{"type":"string","enum":["stripe_eu","stripe","chargebee","chargebee_eu","azure"],"title":"VendorEnum"}]},"customerId":{"type":"string","nullable":true},"billingDay":{"type":"number","nullable":true},"createdAt":{"format":"date-time","type":"string"},"updatedAt":{"format":"date-time","type":"string"}},"required":["name","email","billingEmail","addressLine","addressCountry","addressCity","addressState","addressZip","misc","customerVendor","customerId","billingDay","createdAt","updatedAt"],"title":"BillingInfo"}}}},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"}}}
+>
+  
+</StatusCodes>
+
+
+      

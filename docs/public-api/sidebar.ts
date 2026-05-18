@@ -472,6 +472,30 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "DNS Intelligence",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/list-dns-intelligence-checks",
+              label: "List available DNS Intelligence checks",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/run-dns-intelligence-check",
+              label: "Run a DNS Intelligence check against a domain",
+              className: "api-method post",
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Failure Reports",
           link: {
             type: "doc",
@@ -618,6 +642,90 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "category",
+          label: "Billing - Billing Information",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/get-billing-info",
+              label: "Get billing information for an organization",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/upsert-billing-info",
+              label: "Create or update billing information",
+              className: "api-method post",
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Billing - Invoices",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/list-invoices",
+              label: "List invoices for an organization",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/get-invoice",
+              label: "Get invoice details",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/get-invoice-pdf-url",
+              label: "Get invoice PDF URL",
+              className: "api-method get",
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Billing - Payment Methods",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/list-payment-sources",
+              label: "List payment sources for an organization",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/add-payment-source",
+              label: "Add a payment source",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
+              id: "public-api/remove-payment-source",
+              label: "Remove a payment source",
+              className: "api-method delete",
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Users",
           link: {
             type: "doc",
@@ -634,7 +742,7 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
-              id: "public-api/create-3",
+              id: "public-api/create",
               label: "Create user",
               className: "api-method post",
             },

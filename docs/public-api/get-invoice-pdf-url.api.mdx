@@ -1,0 +1,72 @@
+---
+id: get-invoice-pdf-url
+title: "Get invoice PDF URL"
+description: "Returns a URL to download the invoice as PDF."
+sidebar_label: "Get invoice PDF URL"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v00AQ/Sur4QLSNk4LJ98KaaogEFFpxaHKYWJP7KXrXbO7Dg2W/zuajZPmiyDIJY53Pt7OvPfSQk4+c6oOyhpI4Y5C44wXKB7uPolgRW5/Gm0xF6EkoczSqowEejEdjQcgwdbkkHMnOaRQUJisQ6b54sFpkFCjw4oCOQ/pYwsGK4IU+kKTHCQ4+tEoRzmkwTUkQTGOGkMJ8gBcX1tMRiDBZyVVCGkLYVVzTR+cMgV0ndy2sa5Ao35tAP6h14+G3Oqo2c1zIGdQi90if2s94xa+tsaT5/Or4ZC/Tl9jOhrzlEFCZk0gEzgU61qrLDZLvnuOb8/06zoJ74aXxz0eDDahtE79olxciIlZola5sE5UyntlCsHnZELfSwT7RAZiubfH5cbWzVWekxEX4svuPHJLXhgbxJy0NQUzholSowuG3Lreuz+PgDMXtjE5rw08ZY1TYRWZYhngFaSPM17onNCRi79mEgIWTCd4r7Tmu8QLckEPMwkVhdL2dIwMDCWkkCwvkx6WT3r++aTdMrFL6nzByyW33LC1cRpSKEOofZokWKurAaFf5RW6bJDZChjMBvVX3tJ67e8j2uuGG2+XxmWOWHZLhgVEYmUbJzDLyPv1LkRzsKYN8bhWPw7ZP4ytqzBACh+/3fPM52f6/1uNLf3+liH32vA2lVnY2F4FzQc36Fejz9d3H8T1dAISeMrrIVwOhoPhsQC38dNmrlXGaWJks6YiEyL7euVgFpXTa36bBvJgfwerk/B8oW0RMZ4JTFRVJBw3qE3Bd8fsqXDM2Q9WWwcpvBrHD0hAHe7pOeyh4FHU1ocKzQ7KWwpbN33xgb0BtC+28M+23O8i0HNIao0qKjtesu318AjLy7U9R0WA3HgyP6a7/syymEkorQ+c1rZz9PTgdNfx67V5slhy5XGu2VsXqD2duc3ru96G34gzLnvyDk+0OuXrS9QNB0dBLtEpRvL/qPb+aE7i6F+iWe123+B7GV836ySUhHk0r7Y/v84yqsNO5pHrd7s+dnvD+sJ9OR+IMVY/iapt1xH37CpdtwXZO/6s67rfHSC50w==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get invoice PDF URL"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/invoices/{invoiceId}/pdf"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a URL to download the invoice as PDF.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"invoiceId","required":true,"in":"path","description":"Invoice ID","schema":{"type":"string"}},{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Invoice PDF URL","content":{"application/json":{"schema":{"type":"string"}}}},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"},"404":{"description":"Invoice not found"}}}
+>
+  
+</StatusCodes>
+
+
+      

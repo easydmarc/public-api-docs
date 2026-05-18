@@ -1,0 +1,72 @@
+---
+id: add-payment-source
+title: "Add a payment source"
+description: "Adds a new payment method (credit card or PayPal) for an organization."
+sidebar_label: "Add a payment source"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVU1v2zgQ/SvE7KUFZMvJ7kk356twgaJGkmIPgQ8jcSKzoUiVpByrgv77YijZ8UeQxQLriy1r5s3jzLzHDiT5wqk6KGsgg7mUXqAw9CpqbCsyQVQU1laKT4UjqYIo0ElhnVhiu0T9WTxbJ9AI60o06jcyzhQSsDW5+LCQkAFKuRzgHmzjCoIEanRYUSDnIXvqwGBFkMEhzEJCAo5+NcqRhCy4hhJQzPJXQ66F5IT77TaQM6iPuIjFDSTgizVVCFkHoa25jg9OmRL6fjWUIB+urGw54rRiYU0gE/gV1rVWRcRNf3ou2p1D2/wnFYFP6LgJQZGHrOsTCCpoDjjqxLUjDHQ/UIC+73sm5GtrfMyDy9kFfx0fdYQQPmIIlJKk8E1RkPfPjdYt9An8NZudZy7MBrWSYjy0mIhKea9MKYJ9IZ6jUMN5I8I7tX8YbMLaOvWbpJiIHaB1eyR+TyaMnRqAB7g/z+HurMuVlGTERHw/HJy05IWxQeSkbeQnwppEjS4YcsCN8lQ0ToU2bpDlspeQPa36pIOc0JGLT6sEApa8ZnCltGaGE7Hr4Le43R5WCQyLDhnU1sf5YVhDBunmIh2L+nQUxWRovOfVIrfZLXHjNGSwDqH2WZpirS6nhL6VFbpiWtgKmMuO9AMvzjDjq0h23nC9/R4xzNmOfyHDuiLR2sYJjAMfJ9ec9H639ow1diMZf9xZV2GADL7+/ciDyT+o/98w9or4t4zkqAwPkwV1/ybF2y1WNeuFpaPMs43URgndom9vvs3vr8V8uYAEeAJDgy6ms+ns3Br28csm16rgNHFji4aHGdcNBqFjEYU+utE+DZKT2Z6MNYHtRNsycvwgMFVVmXLctDYl9wWLl9LZxshrq62DDP64ix9IAHV4pG04YsFt4uWs0BywnEspcG/XfmewRx3o3mzs//P4cYKBtiGtNaoo8nj8bhTPE2wuBq+P8ok/jwW0SmDNcsueoOty9PTD6b7nvweTZ1lJ5THX7MjPqD19cLRP96N5fxYf3Abv8n6h9r37Z4O64eAo3Q06xUwGk4E1oYwe043Z1wORySMXeMs9uzb6Q7dZfn9gOeTj9VNZyTkOX/n2w1euzdcpZ0eziP91oNGUDZYcO2DycuCxhE8EGJmOr9C0Bwy7boh4ZCfpe9i1Y7TuVd/3/wBM2tBH
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add a payment source"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/partners/payment-sources"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Adds a new payment method (credit card or PayPal) for an organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{},"title":"PaymentSourceCreateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Payment source added successfully"},"400":{"description":"Invalid request - missing token or intent"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"}}}
+>
+  
+</StatusCodes>
+
+
+      

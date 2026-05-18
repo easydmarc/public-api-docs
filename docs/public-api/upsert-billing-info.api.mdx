@@ -1,0 +1,72 @@
+---
+id: upsert-billing-info
+title: "Create or update billing information"
+description: "Creates or updates billing address and payment details for an organization."
+sidebar_label: "Create or update billing information"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zYQ/RVi+rIFFDtJ+6S3bC6FixYJNtkWqGEsRuLE5oYitbwYcQT9ezGUHEt2kDpA82LamRvPzDnDBiT50qk6KGsgh0tHGMgL60SsZToWSmtllgKldOS9QCNFjZuKTBCSAirtxaN1Ao2wbolGvSAHm0AGtiaXvswk5BBrTy587sLNzKOFDGp0WFEg5yGfN2CwIshhGGcmIQNHP6JyJCEPLlIGimv9EcltINu7wfVzIGdQj4oRsyvIwJcrqhDyBsKm5jw+OGWW0LYLTuFrazx5/v/56Sl/jCP3lQtlHq2rurgdSFxiaU0gE9gN61qrMhlMv3v2bQ5z2+I7lYEhcAxTUF3mDoH9CjMwUWssNHUItBlQhUofZdk38Ppoh77TfyhzXCm9/aWNJrjNh1xU+JD9fcDwoZr+UfVR5pXy5VGGZfTBVuT+IiOtSx0bmWSAWt8+pmneD0YmVpDP0w81faPIM5nOPD8rdEsqaHTubPAlOoJFBkEFzgNd8msO1y4GRTHNjh+IKxxib2JVkHvzykkT5EWa7W70IQee+5OgKq53j04Z9LQ43qUdcnzesWA743sTPJ7Pg+kbz9be5Izmou/6QU9HeI7QGmIxvOSgNUN5a1u+169vacnMrFErKfjS5IMorNxAMj47NP5qMIaVdeqFpDgRW1/rRKW8T9ocw4pM6EVHBPtEpgv3y2G4G+sKJSUZcSJuhyIpLXlhbBAFaWuWIlgRViRqdMGQS03yVEaXSDtvwHLac8jnizZroCB05NI3xgOXLOmvonkitqfZTj4ZuIrCyvJ6qK1PcohhBTlM12fTPrGf9i2Yqm5peHLr7caITkMOqxBqn0+nWKvzCaHfyApdOSktE2RX9T2LcKezn1O1F5GTvXKAwxwslN/I8BYjsbHRCSxLXoIJYRH3wN/uGI7Vw5H1h5stCX7/+4E7U7yT/2MxXrfLf3lkozTczYQnp++H9xr95urPiy+X4uJuBhkwyh0IZ5PTyenhrn21v4uFViW7iStbRn4cdB3uFiOWYbfcdm5MolH/9lqXwfOJtstU4zuGU1Utp2w3qZPgFVg+LZ2NRl5azSINP92kP+a/Dg/0HEZVMBQ8fRWaQZXdU2j3Enp9CA32/z4ize4Z8D8/pfrWBXoO01qjSvROmDQ9ZeawPuteVIk0O+WCvtGLDFbMsXwOTVOgp69Oty3/3L2kmE5SedZ+Cfkjak/vXO/Tl16vfxbvPLneLPuJNm898taoIxsnyq7RqW4LsbrAilAmcWl674uypDoMvA4eXe1QXO5u75kAOObbHluGSxvNZhC8aTqLB6Z928L2Dr3QLtq2/RffF+fN
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create or update billing information"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/partners/billing/info"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates or updates billing address and payment details for an organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Billing information updated","content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","nullable":true},"email":{"type":"string","nullable":true},"billingEmail":{"type":"string","nullable":true},"addressLine":{"type":"string","nullable":true},"addressCountry":{"type":"string","nullable":true},"addressCity":{"type":"string","nullable":true},"addressState":{"type":"string","nullable":true},"addressZip":{"type":"string","nullable":true},"misc":{"type":"string","nullable":true},"customerVendor":{"nullable":true,"allOf":[{"type":"string","enum":["stripe_eu","stripe","chargebee","chargebee_eu","azure"],"title":"VendorEnum"}]},"customerId":{"type":"string","nullable":true},"billingDay":{"type":"number","nullable":true},"createdAt":{"format":"date-time","type":"string"},"updatedAt":{"format":"date-time","type":"string"}},"required":["name","email","billingEmail","addressLine","addressCountry","addressCity","addressState","addressZip","misc","customerVendor","customerId","billingDay","createdAt","updatedAt"],"title":"BillingInfo"}}}},"400":{"description":"Invalid request body"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"}}}
+>
+  
+</StatusCodes>
+
+
+      

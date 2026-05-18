@@ -1,0 +1,72 @@
+---
+id: run-dns-intelligence-check
+title: "Run a DNS Intelligence check against a domain"
+description: "Issues a NATS request to the dns-intelligence worker and returns the typed reply. Verdicts are returned as data; only transport, worker, and protocol failures map to non-2xx."
+sidebar_label: "Run a DNS Intelligence check against a domain"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Run a DNS Intelligence check against a domain"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dns-intelligence/run"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Issues a NATS request to the dns-intelligence worker and returns the typed reply. Verdicts are returned as data; only transport, worker, and protocol failures map to non-2xx.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"check":{"type":"string","description":"Camel-case check name from the dns-intelligence-client-sdk catalogue (e.g. caaMissing, dnssecChain, ttlOutOfRange).","example":"caaMissing"},"domain":{"type":"string","example":"easydmarc.com"},"params":{"type":"object","description":"Per-check parameters object. Shape depends on `check`; pass `{}` when the check needs no input.","example":{}},"region":{"type":"string","description":"Worker region tag. Absent ⇒ global routing (the default for nearly every call).","example":"eu-west-1"},"timeoutMs":{"type":"number","description":"Per-call timeout in ms. Wins over the service default (10s).","example":5000},"tenantId":{"type":"string","description":"Tenant identifier propagated to the worker as `tenant_id`."},"traceparent":{"type":"string","description":"W3C `traceparent` header pass-through."},"tracestate":{"type":"string","description":"W3C `tracestate` header pass-through."},"requestId":{"type":"string","description":"Optional client-supplied request id. Auto-generated UUID v4 when absent."},"correlationId":{"type":"string","description":"Payload-level correlation id, distinct from the `request_id` header."},"idempotencyKey":{"type":"string","description":"Header `idempotency_key`. Pass a stable value to dedupe retries upstream."}},"required":["check","domain"],"title":"RunCheckRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"verdict":{"type":"number","enum":[0,1,2,3,4],"description":"PASS / WARN / FAIL / INCONCLUSIVE / UNSPECIFIED. Returned as data — never thrown."},"checkName":{"type":"string","description":"Wire-format check name (snake_case)."},"checkLogicVersion":{"type":"string"},"queriedAt":{"type":"string","format":"date-time"},"region":{"type":"string"},"elapsedMs":{"type":"number","description":"Worker-reported elapsed milliseconds."},"reasonCodes":{"type":"array","items":{"type":"string"}},"notes":{"description":"Worker notes.","type":"array","items":{"type":"object"}},"correlationId":{"type":"string"},"evidence":{"type":"object","description":"Structured evidence — shape varies by check. Refer to the proto Evidence oneof for the variant matching `check`."}},"required":["verdict","checkName","checkLogicVersion","region","elapsedMs","reasonCodes","notes","correlationId"],"title":"RunCheckResponse"}}}},"400":{"description":"Unknown check or worker rejected the request shape."},"422":{"description":"Worker reported INVALID_INPUT."},"502":{"description":"Worker INTERNAL or protocol decode failure."},"503":{"description":"NATS unreachable or no worker subscribed."},"504":{"description":"Request or worker deadline exceeded."}}}
+>
+  
+</StatusCodes>
+
+
+      

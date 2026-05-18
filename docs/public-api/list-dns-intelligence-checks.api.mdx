@@ -1,0 +1,72 @@
+---
+id: list-dns-intelligence-checks
+title: "List available DNS Intelligence checks"
+description: "Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`."
+sidebar_label: "List available DNS Intelligence checks"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVMlu2zAQ/RViemWsJEfd3GxI0SVIHPQQGMiEnkisKVLljNwIgv69IO0kthO06K28SKJmee/NMkBoKaLY4C8XUIKzLKeeL72Qc7Yib+ikJrNk0LAgNtG2yRZKuCbpomclNSmDDbkTZFJ2QV7so6XIKjwqWlHslUkRsuGvEJcUVaTKssRe4WJFUSwTT9QtkwqekpvUxKSQ1X12vVfWq/urbzczVSw8H9gtdEXs/P0ENLQYsSGhyFDezTVE4jZ4JoZygOPDw/TYZQAaTPBCXtI/bFtnTVai+MHJYAA2NTWY3qRvCUrAGLEHDVao4a17lmh9BWM+GgSrhAJOv96obSlhroHJdNFKD+XdAA+EkWICPM41NCR1SFWoSDIjqaGEYnWUWbsQll37VgDzXB+muFrTH6CLDkqoRVouiwJbezwh5H7RYDQTExoYt6DcJJproT5mQNMuZX5hl8K8qf8F+dQ4pPrQRYXGELOSsCSvOra+UthJnZrBYMKWU0D5zFhvXs5DbFCghE/fZzA+376f/99ivNTvbx56J00qn/WPIae34tKPM+T+9Mv0+kRNry5BQ1J5LcLR5HBy+EaaV/ur7sFZk9zUaTBdQ15yh21aD01uPY/NThrQe/XbK52GpwMXqozxD4aFbaoi2U1aXyXuaJZVDJ1fnAQXIpTw4Twf0IBOZvQkOyiSFG1gadBvofxsWRSu0Dp8cKT2W1yZd9fF8Dpq/93m2JRf6EmK1qH1SeGs67CZwTtYHSVGL1O4+dgOl0q6pj7XUAeW5DYMD8h0G904puufHcV+vZ5WGG0SMM++hppwkRfBAEvqoYSpMdSmLbBC1+XVs7+fdjbGxVlqZNydm72uz9GfF5nvt2IPw9pilsZ3HEFvQORxhnE+juNvfHgdpA==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List available DNS Intelligence checks"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/dns-intelligence/checks"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

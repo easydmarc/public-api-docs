@@ -1,0 +1,72 @@
+---
+id: get-invoice
+title: "Get invoice details"
+description: "Retrieves a specific invoice by ID."
+sidebar_label: "Get invoice details"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVctu2zAQ/BVie2kBxnLSnHRLmwdcoGiQpugh8GEtbWQiFKmSKyOKoH8vVpIdx3bTtL5YFrkzs69xCznFLJiKjXeQwg1xMLSiqFDFijJzbzJl3MqbjNSiUbPzCWjwFQWUiFkOKRTEs+EGaKgwYElMIUJ614LDkiCFEWGWg4ZAv2oTKIeUQ00ajPBWyEvQO2JGVDU7Bw0xW1KJkLbATSWYkYNxBXSd3tD4UKAzT2tpf+D6VVNo9sguHpmCQ6u2Qf5GPReKWHkXKcr5yXQqX4fTyInR2AidhtPp8f69Hw5rXvpgnihXR2rmVmhNrnxQpYnRuELJOTk22SCO/QO5Ae7jPtylDwuT5+TUkfq2nVPuKSrnWS3Ielco9oqXpCoM7CgMeKd/TkMi733tcik9RMrqYLjpu+1F4Amkd3NpyoIwUOh/zTUwFjIS8MlYK7n0CQpghLmGknjpx2Hqp4iXkEKyOk5GWTEZZygm7WaaOmkOhdV62upgIYUlcxXTJMHKnEwIY5OXGLJJ5ksQIWvF36WrQ9s+9UrPaiHdNFlg9qbkipyMPqnG10FhllGMQx9UvdOi9eAI1lgKPT5c+lAiQwpfft5KvRev8P8bhsS/KUK/oJFOGnfve3rDVg4uMDbnX89uPquz6xlokCoPRTieTCfT/QXa3L+uF9ZkEqbOfVaX5LifPNCQeceYsfCMO7sJA73Tv53WaXg8sr7oNb5yMTFlkci9SeUKyR2zhyLIvH721gdI4d1l/wENaPmWHvmFCilF5SOX6LZUXhFvbHC9xzsFaPvkyPGbbXTsANMjJ5VF0+9yn1o7bsAdrI4HU+13APTaSeUxfXbVuYaljywBbbvASD+C7Tp5PZidLEduIi6seOE92kivqH9/M9rmB/WKKx5U/0DNIR9eoa3lcr+AKwxGlPy/qhd/DAd1jC/RNdvsa33Phevm3Zb5XF3IYuDLPdzZol71Qfi2HW7cih103YZttOl513W/Aah9iBs=
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get invoice details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/invoices/{invoiceId}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves a specific invoice by ID.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"invoiceId","required":true,"in":"path","description":"Invoice ID","schema":{"type":"string"}},{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Invoice details"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"},"404":{"description":"Invoice not found"}}}
+>
+  
+</StatusCodes>
+
+
+      

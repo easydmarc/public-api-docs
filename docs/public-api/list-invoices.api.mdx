@@ -1,0 +1,72 @@
+---
+id: list-invoices
+title: "List invoices for an organization"
+description: "Retrieves all invoices for a given organization."
+sidebar_label: "List invoices for an organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SsCd9kANUm7nXzrNzKsWNG12KHIQbEZR6gsuRJtJDX83wfKzncXdMslUUTxPT6Sr4EMQ+p1SdpZSOAByWusMQhljNC2djrFIGbOCyVyXaMVzufK6jfFLwYgwZXo42GcQQJGBxr3z0BCqbwqkNAHSJ4bsKpASGA7xTgDCR5fK+0xg4R8hRI0c3mt0C9B7jG8XhB6q8wODzG+AgkhnWOhIGmAliXjBPLa5tC2cg1tdKFpB3GmTDgOeacWuqgKYatiil642UYYcsIjVd6+B9/FQ9tOGC+UzgYMfH82GvHXLsoPHWg7N7QSvo1ODwOfrKpo7rx+w0yciLGtldGZcF4UOgRtc8H3aEmnnTjkXtB26b4eprtxfqqzDK04ET+3Nc0cBmEdiSkaZ3OuleYoSuXJxrIkBEwrr2kZm+sY9gyS5wnrPUXl0cfTRAKpnCcALrQxzDDS7sqcSCiQ5o6nJ0eKQ0NzSGBYnw57sDDUm5kK6OvVQFXeQAJzojIkw6Eq9dkAVVhmhfLpIHUFMPiK5S9uUNeBi8juvGKgdb84zUHzb9HyfKNYusoLlaYYQqeoqPbEXs0A5+rLl/2PG+cLRZDA99+P3InpEfx/y8HvP/RC7sBw97SduQivyfDFtQrLq7vzh0txfj8GCaxyJ8LpYDQYHa7iOv6+mhqd8jNx5dKqQEtxhkBC6iyplBinX8H1M5B7/dtrnYTFiXF55HgkcKiLfMhxg9LmXLtKX3LvKptdOuM8JPDpJn5AgjL0iAvaYcFSlC5QoewWy7iOuwa46337cjSxVLT0fzbaN4dwQcPSKB0XNlbd9AvxDPVpZ6lxJYAbuNmhuQvEMU0zVQGfvGlb/rtzNF6VTAc1NVuO91f2nx96c/wijrjtu4RfcPmev9fKVBwM7AwfJ/JB4z3CZGX3GwITPnjNDDqr2rjP7TVvidpdyr2VilL2V8out1I3TRfxyN7QtrCi0LvvpG3bP5h/jZ8=
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List invoices for an organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/invoices"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves all invoices for a given organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}},{"name":"limit","required":false,"in":"query","description":"Maximum number of invoices to return","schema":{"type":"number"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"List of invoices"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"}}}
+>
+  
+</StatusCodes>
+
+
+      

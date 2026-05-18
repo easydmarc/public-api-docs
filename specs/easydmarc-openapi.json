@@ -40,6 +40,10 @@
       "x-displayName": "Audit Log"
     },
     {
+      "name": "DNS Intelligence",
+      "x-displayName": "DNS Intelligence"
+    },
+    {
       "name": "Failure Reports",
       "x-displayName": "Failure Reports"
     },
@@ -50,6 +54,18 @@
     {
       "name": "Billing - Subscriptions & Pricing",
       "x-displayName": "Billing - Subscriptions & Pricing"
+    },
+    {
+      "name": "Billing - Billing Information",
+      "x-displayName": "Billing - Billing Information"
+    },
+    {
+      "name": "Billing - Invoices",
+      "x-displayName": "Billing - Invoices"
+    },
+    {
+      "name": "Billing - Payment Methods",
+      "x-displayName": "Billing - Payment Methods"
     },
     {
       "name": "Users",
@@ -3301,7 +3317,7 @@
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/Object"
+              "$ref": "#/components/schemas/OrderEnum"
             }
           },
           {
@@ -3919,6 +3935,434 @@
         ]
       }
     },
+    "/v1/partners/payment-sources": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Retrieves all payment methods (credit cards, PayPal) for a given organization.",
+        "operationId": "listPaymentSources",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of payment sources"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "List payment sources for an organization",
+        "tags": [
+          "Billing - Payment Methods"
+        ]
+      },
+      "post": {
+        "description": "Adds a new payment method (credit card or PayPal) for an organization.",
+        "operationId": "addPaymentSource",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentSourceCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Payment source added successfully"
+          },
+          "400": {
+            "description": "Invalid request - missing token or intent"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Add a payment source",
+        "tags": [
+          "Billing - Payment Methods"
+        ]
+      }
+    },
+    "/v1/partners/payment-sources/{paymentMethodId}": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "delete": {
+        "description": "Removes a payment method from an organization.",
+        "operationId": "removePaymentSource",
+        "parameters": [
+          {
+            "name": "paymentMethodId",
+            "required": true,
+            "in": "path",
+            "description": "Payment method ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment source removed successfully"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          },
+          "404": {
+            "description": "Payment source not found"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Remove a payment source",
+        "tags": [
+          "Billing - Payment Methods"
+        ]
+      }
+    },
+    "/v1/partners/invoices": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Retrieves all invoices for a given organization.",
+        "operationId": "listInvoices",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Maximum number of invoices to return",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of invoices"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "List invoices for an organization",
+        "tags": [
+          "Billing - Invoices"
+        ]
+      }
+    },
+    "/v1/partners/invoices/{invoiceId}": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Retrieves a specific invoice by ID.",
+        "operationId": "getInvoice",
+        "parameters": [
+          {
+            "name": "invoiceId",
+            "required": true,
+            "in": "path",
+            "description": "Invoice ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice details"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          },
+          "404": {
+            "description": "Invoice not found"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get invoice details",
+        "tags": [
+          "Billing - Invoices"
+        ]
+      }
+    },
+    "/v1/partners/invoices/{invoiceId}/pdf": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Returns a URL to download the invoice as PDF.",
+        "operationId": "getInvoicePdfUrl",
+        "parameters": [
+          {
+            "name": "invoiceId",
+            "required": true,
+            "in": "path",
+            "description": "Invoice ID",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice PDF URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          },
+          "404": {
+            "description": "Invoice not found"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get invoice PDF URL",
+        "tags": [
+          "Billing - Invoices"
+        ]
+      }
+    },
+    "/v1/partners/billing/info": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Retrieves billing address and payment details for a given organization.",
+        "operationId": "getBillingInfo",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Billing information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingInfo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get billing information for an organization",
+        "tags": [
+          "Billing - Billing Information"
+        ]
+      },
+      "post": {
+        "description": "Creates or updates billing address and payment details for an organization.",
+        "operationId": "upsertBillingInfo",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "query",
+            "description": "External organization ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Billing information updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Create or update billing information",
+        "tags": [
+          "Billing - Billing Information"
+        ]
+      }
+    },
     "/v1/audit-log": {
       "servers": [
         {
@@ -4048,7 +4492,7 @@
             "in": "query",
             "description": "Sort direction for results",
             "schema": {
-              "$ref": "#/components/schemas/SortDirection"
+              "$ref": "#/components/schemas/SortDirection_2"
             }
           },
           {
@@ -4233,7 +4677,7 @@
             "in": "query",
             "description": "Sort direction for results",
             "schema": {
-              "$ref": "#/components/schemas/SortDirection"
+              "$ref": "#/components/schemas/SortDirection_2"
             }
           }
         ],
@@ -5911,6 +6355,100 @@
         ]
       }
     },
+    "/v1/dns-lookup/dns-intelligence/checks": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "operationId": "listDnsIntelligenceChecks",
+        "summary": "List available DNS Intelligence checks",
+        "description": "Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/v1/dns-lookup/dns-intelligence/run": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "post": {
+        "operationId": "runDnsIntelligenceCheck",
+        "summary": "Run a DNS Intelligence check against a domain",
+        "description": "Issues a NATS request to the dns-intelligence worker and returns the typed reply. Verdicts are returned as data; only transport, worker, and protocol failures map to non-2xx.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunCheckRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunCheckResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unknown check or worker rejected the request shape."
+          },
+          "422": {
+            "description": "Worker reported INVALID_INPUT."
+          },
+          "502": {
+            "description": "Worker INTERNAL or protocol decode failure."
+          },
+          "503": {
+            "description": "NATS unreachable or no worker subscribed."
+          },
+          "504": {
+            "description": "Request or worker deadline exceeded."
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/v1/dmarc/rua/reports": {
       "servers": [
         {
@@ -6416,7 +6954,7 @@
       ],
       "post": {
         "description": "Creates one or more new users in the organization with specified roles and permissions. Unlike the invite endpoint, this creates users directly without requiring them to accept an invitation.\n\n**Key Differences from Invite:**\n- Creates users immediately without invitation flow\n- Users are active immediately\n- No email invitation is sent\n\n**Use Cases:**\n- Bulk user import from external systems\n- Automated user provisioning via integrations\n- Pre-creating accounts for known team members\n\n**Permissions Required:**\n- Must have admin role in the organization\n- Must have user creation permissions",
-        "operationId": "create_3",
+        "operationId": "create",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -6677,21 +7215,6 @@
         "scheme": "bearer",
         "bearerFormat": "JWT",
         "type": "http"
-      },
-      "oauth2": {
-        "type": "oauth2",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://uac.easydmarc.com/realms/easydmarc/protocol/openid-connect/auth",
-            "scopes": {
-              "openid": "openid",
-              "profile": "profile",
-              "email": "email",
-              "offline_access": "offline_access"
-            }
-          }
-        },
-        "scheme": "bearer"
       }
     },
     "responses": {
@@ -8578,9 +9101,96 @@
           "scope"
         ]
       },
-      "Object": {
+      "VendorEnum": {
+        "type": "string",
+        "enum": [
+          "stripe_eu",
+          "stripe",
+          "chargebee",
+          "chargebee_eu",
+          "azure"
+        ]
+      },
+      "BillingInfo": {
         "type": "object",
-        "properties": {}
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressLine": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressCity": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressState": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressZip": {
+            "type": "string",
+            "nullable": true
+          },
+          "misc": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerVendor": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VendorEnum"
+              }
+            ]
+          },
+          "customerId": {
+            "type": "string",
+            "nullable": true
+          },
+          "billingDay": {
+            "type": "number",
+            "nullable": true
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "billingEmail",
+          "addressLine",
+          "addressCountry",
+          "addressCity",
+          "addressState",
+          "addressZip",
+          "misc",
+          "customerVendor",
+          "customerId",
+          "billingDay",
+          "createdAt",
+          "updatedAt"
+        ]
       },
       "PageMeta_2": {
         "type": "object",
@@ -8623,6 +9233,13 @@
           "pageCount",
           "hasPreviousPage",
           "hasNextPage"
+        ]
+      },
+      "OrderEnum": {
+        "type": "string",
+        "enum": [
+          "ASC",
+          "DESC"
         ]
       },
       "CreateOrganization": {
@@ -8680,13 +9297,22 @@
             "maxLength": 128,
             "description": "New name of the organization",
             "example": "Acme Inc. Updated"
+          },
+          "partnerId": {
+            "type": "string",
+            "description": "Partner object ID to link to this organization",
+            "example": "partner_abc123"
           }
         },
         "required": [
           "name"
         ]
       },
-      "PlanFeatures": {
+      "PaymentSourceCreateRequest": {
+        "type": "object",
+        "properties": {}
+      },
+      "PlanFeatures_2": {
         "type": "object",
         "properties": {
           "domain_count": {
@@ -9083,7 +9709,7 @@
             },
             "allOf": [
               {
-                "$ref": "#/components/schemas/PlanFeatures"
+                "$ref": "#/components/schemas/PlanFeatures_2"
               }
             ]
           },
@@ -9382,7 +10008,9 @@
           "alert_name",
           "label_name",
           "timezone",
-          "frequency"
+          "frequency",
+          "dns_record",
+          "dns_domain"
         ]
       },
       "ActionItemResponse": {
@@ -9410,7 +10038,7 @@
           "entityType"
         ]
       },
-      "SortDirection": {
+      "SortDirection_2": {
         "type": "string",
         "enum": [
           "ASC",
@@ -12186,6 +12814,127 @@
           "domain"
         ]
       },
+      "RunCheckRequest": {
+        "type": "object",
+        "properties": {
+          "check": {
+            "type": "string",
+            "description": "Camel-case check name from the dns-intelligence-client-sdk catalogue (e.g. caaMissing, dnssecChain, ttlOutOfRange).",
+            "example": "caaMissing"
+          },
+          "domain": {
+            "type": "string",
+            "example": "easydmarc.com"
+          },
+          "params": {
+            "type": "object",
+            "description": "Per-check parameters object. Shape depends on `check`; pass `{}` when the check needs no input.",
+            "example": {}
+          },
+          "region": {
+            "type": "string",
+            "description": "Worker region tag. Absent ⇒ global routing (the default for nearly every call).",
+            "example": "eu-west-1"
+          },
+          "timeoutMs": {
+            "type": "number",
+            "description": "Per-call timeout in ms. Wins over the service default (10s).",
+            "example": 5000
+          },
+          "tenantId": {
+            "type": "string",
+            "description": "Tenant identifier propagated to the worker as `tenant_id`."
+          },
+          "traceparent": {
+            "type": "string",
+            "description": "W3C `traceparent` header pass-through."
+          },
+          "tracestate": {
+            "type": "string",
+            "description": "W3C `tracestate` header pass-through."
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Optional client-supplied request id. Auto-generated UUID v4 when absent."
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Payload-level correlation id, distinct from the `request_id` header."
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "description": "Header `idempotency_key`. Pass a stable value to dedupe retries upstream."
+          }
+        },
+        "required": [
+          "check",
+          "domain"
+        ]
+      },
+      "RunCheckResponse": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "number",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "PASS / WARN / FAIL / INCONCLUSIVE / UNSPECIFIED. Returned as data — never thrown."
+          },
+          "checkName": {
+            "type": "string",
+            "description": "Wire-format check name (snake_case)."
+          },
+          "checkLogicVersion": {
+            "type": "string"
+          },
+          "queriedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "region": {
+            "type": "string"
+          },
+          "elapsedMs": {
+            "type": "number",
+            "description": "Worker-reported elapsed milliseconds."
+          },
+          "reasonCodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "description": "Worker notes.",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "correlationId": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "object",
+            "description": "Structured evidence — shape varies by check. Refer to the proto Evidence oneof for the variant matching `check`."
+          }
+        },
+        "required": [
+          "verdict",
+          "checkName",
+          "checkLogicVersion",
+          "region",
+          "elapsedMs",
+          "reasonCodes",
+          "notes",
+          "correlationId"
+        ]
+      },
       "PageMeta_3": {
         "type": "object",
         "properties": {
@@ -13307,23 +14056,17 @@
           "filters"
         ]
       },
-      "VolumeRequest": {
+      "DomainWithReportTypes": {
         "type": "object",
         "properties": {
-          "domainNames": {
-            "description": "Array of fully qualified domain names",
-            "example": [
-              "example.com",
-              "test.com"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "domainName": {
+            "type": "string",
+            "description": "Fully qualified domain name",
+            "example": "example.com"
           },
           "reportTypes": {
             "type": "array",
-            "description": "Array of report types to include in volume calculation",
+            "description": "Array of report types for this domain",
             "items": {
               "type": "string",
               "enum": [
@@ -13332,6 +14075,22 @@
                 "threat-unknown",
                 "forwarded"
               ]
+            }
+          }
+        },
+        "required": [
+          "domainName",
+          "reportTypes"
+        ]
+      },
+      "VolumeRequest": {
+        "type": "object",
+        "properties": {
+          "domainsWithReportTypes": {
+            "description": "Array of domains with their report types",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DomainWithReportTypes"
             }
           },
           "dateRange": {
@@ -13437,8 +14196,7 @@
           }
         },
         "required": [
-          "domainNames",
-          "reportTypes",
+          "domainsWithReportTypes",
           "dateRange",
           "filters"
         ]
@@ -13777,28 +14535,11 @@
       "ReportsForPeriodRequest": {
         "type": "object",
         "properties": {
-          "domainNames": {
-            "description": "Array of fully qualified domain names",
-            "example": [
-              "example.com",
-              "test.com"
-            ],
+          "domainsWithReportTypes": {
+            "description": "Array of domains with their report types",
             "type": "array",
             "items": {
-              "type": "string"
-            }
-          },
-          "reportTypes": {
-            "type": "array",
-            "description": "Array of report types to include",
-            "items": {
-              "type": "string",
-              "enum": [
-                "dmarc-capable",
-                "non-compliant",
-                "threat-unknown",
-                "forwarded"
-              ]
+              "$ref": "#/components/schemas/DomainWithReportTypes"
             }
           },
           "dateRange": {
@@ -13913,8 +14654,7 @@
           }
         },
         "required": [
-          "domainNames",
-          "reportTypes",
+          "domainsWithReportTypes",
           "dateRange",
           "filters"
         ]
@@ -13953,6 +14693,13 @@
       "PassRateDataRequest": {
         "type": "object",
         "properties": {
+          "domainsWithReportTypes": {
+            "description": "Array of domains with their report types",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DomainWithReportTypes"
+            }
+          },
           "dateRange": {
             "description": "Date range filter",
             "allOf": [
@@ -13966,27 +14713,6 @@
             "description": "Advanced filtering options keyed by field name",
             "additionalProperties": {
               "$ref": "#/components/schemas/FilterValue"
-            }
-          },
-          "senderDomainNames": {
-            "description": "Array of sender domain names (optional if parkedDomainNames is provided)",
-            "example": [
-              "example.com",
-              "mail.example.com"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "parkedDomainNames": {
-            "description": "Array of parked domain names (optional if senderDomainNames is provided)",
-            "example": [
-              "parked1.example.com"
-            ],
-            "type": "array",
-            "items": {
-              "type": "string"
             }
           },
           "page": {
@@ -14004,6 +14730,7 @@
           }
         },
         "required": [
+          "domainsWithReportTypes",
           "dateRange",
           "filters"
         ]
@@ -14096,7 +14823,7 @@
           "info"
         ]
       },
-      "Permission": {
+      "Permission_2": {
         "type": "string",
         "enum": [
           "owner",
@@ -14106,7 +14833,7 @@
           "viewer"
         ]
       },
-      "UserPermissionUser": {
+      "UserPermissionUser_2": {
         "type": "object",
         "properties": {
           "email": {
@@ -14118,21 +14845,21 @@
           }
         }
       },
-      "OrganizationInvitedPermission": {
+      "OrganizationInvitedPermission_2": {
         "type": "string",
         "enum": [
           "admin",
           "no_access"
         ]
       },
-      "UserPermissionOrganization": {
+      "UserPermissionOrganization_2": {
         "type": "object",
         "properties": {
           "role": {
             "example": "admin",
             "allOf": [
               {
-                "$ref": "#/components/schemas/OrganizationInvitedPermission"
+                "$ref": "#/components/schemas/OrganizationInvitedPermission_2"
               }
             ]
           },
@@ -14145,7 +14872,7 @@
           "role"
         ]
       },
-      "ProductInvitedPermissionRole": {
+      "ProductInvitedPermissionRole_2": {
         "type": "string",
         "enum": [
           "admin",
@@ -14153,7 +14880,7 @@
           "no_access"
         ]
       },
-      "ProductType_4": {
+      "ProductType_5": {
         "type": "string",
         "enum": [
           "dmarc",
@@ -14161,14 +14888,14 @@
           "inguard"
         ]
       },
-      "UserPermissionProduct": {
+      "UserPermissionProduct_2": {
         "type": "object",
         "properties": {
           "role": {
             "example": "admin",
             "allOf": [
               {
-                "$ref": "#/components/schemas/ProductInvitedPermissionRole"
+                "$ref": "#/components/schemas/ProductInvitedPermissionRole_2"
               }
             ]
           },
@@ -14180,7 +14907,7 @@
             "example": "dmarc",
             "allOf": [
               {
-                "$ref": "#/components/schemas/ProductType_4"
+                "$ref": "#/components/schemas/ProductType_5"
               }
             ]
           },
@@ -14195,7 +14922,7 @@
           "type"
         ]
       },
-      "UserPermissionResourceGroup": {
+      "UserPermissionResourceGroup_2": {
         "type": "object",
         "properties": {
           "resourceGroupId": {
@@ -14206,7 +14933,7 @@
             "example": "admin",
             "allOf": [
               {
-                "$ref": "#/components/schemas/Permission"
+                "$ref": "#/components/schemas/Permission_2"
               }
             ]
           },
@@ -14220,14 +14947,14 @@
           "role"
         ]
       },
-      "UserPermissionResource": {
+      "UserPermissionResource_2": {
         "type": "object",
         "properties": {
           "role": {
             "example": "admin",
             "allOf": [
               {
-                "$ref": "#/components/schemas/Permission"
+                "$ref": "#/components/schemas/Permission_2"
               }
             ]
           },
@@ -14250,34 +14977,34 @@
           "resourceId"
         ]
       },
-      "UserPermissionV1": {
+      "UserPermissionV1_2": {
         "type": "object",
         "properties": {
           "users": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserPermissionUser"
+              "$ref": "#/components/schemas/UserPermissionUser_2"
             }
           },
           "organization": {
-            "$ref": "#/components/schemas/UserPermissionOrganization"
+            "$ref": "#/components/schemas/UserPermissionOrganization_2"
           },
           "products": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserPermissionProduct"
+              "$ref": "#/components/schemas/UserPermissionProduct_2"
             }
           },
           "resourceGroups": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserPermissionResourceGroup"
+              "$ref": "#/components/schemas/UserPermissionResourceGroup_2"
             }
           },
           "resources": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UserPermissionResource"
+              "$ref": "#/components/schemas/UserPermissionResource_2"
             }
           }
         },
@@ -14359,7 +15086,7 @@
             "description": "Permission configuration including user list and role assignments",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserPermissionV1"
+                "$ref": "#/components/schemas/UserPermissionV1_2"
               }
             ]
           },
@@ -14388,7 +15115,7 @@
             "description": "Permission configuration including user details and role assignments",
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserPermissionV1"
+                "$ref": "#/components/schemas/UserPermissionV1_2"
               }
             ]
           }
@@ -14440,7 +15167,10 @@
           "userIds"
         ]
       }
-    }
+    },
+    "examples": {},
+    "headers": {},
+    "requestBodies": {}
   },
   "x-tagGroups": [
     {
@@ -14452,6 +15182,7 @@
         "DNS Lookup",
         "Aggregate Reports",
         "Audit Log",
+        "DNS Intelligence",
         "Failure Reports"
       ]
     },
@@ -14460,6 +15191,9 @@
       "tags": [
         "Organizations",
         "Billing - Subscriptions & Pricing",
+        "Billing - Billing Information",
+        "Billing - Invoices",
+        "Billing - Payment Methods",
         "Users"
       ]
     }

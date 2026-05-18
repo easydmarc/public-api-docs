@@ -1,0 +1,72 @@
+---
+id: list-payment-sources
+title: "List payment sources for an organization"
+description: "Retrieves all payment methods (credit cards, PayPal) for a given organization."
+sidebar_label: "List payment sources for an organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VE1v2zAM/SsCd9kA5aPdTr51aztkWLGgH9ihyIGxWUeoLLkSHdQ1/N8Hym7WpEOxHZZLbIsiH/n4XgcFxTyYmo13kMElcTC0pajQWlVjW5FjVRFvfBHV+zxQYVjlGIqo1RLbJdoP6s4Hhao0W3LKhxKdeULJNwUNvqaQXhYFZGBN5OWQ9Mo3IacIGmoMWBFTiJDdduCwIsjgZaJFARoCPTQmUAEZh4Y0GMH70FBoQR90cfbIFBzaPTRqcQoaYr6hCiHrgNta6kQOxpXQ9yspEWvvIkU5P57P5W8/83cTWfm73WTi2EWv4dP86HX8jcOGNz6YJyrURC3cFq0plA+qMjEaVyo5J8cmH0Cyvyc3pPv4Ot25D2tTFOTURP142VvhKSrnWa3Jelcq9oo3pGoM7ChA32uIlDfBcJuG7KXsMWS3q153sCYMFNLbSgNjKUzAZ2OtIJyokTJ1MewBrDQMKwEZlMSJQ95ABrPt0WysGWfjjCZxx3SksH2muQkWMtgw1zGbzbA2x1PC2BYVhnya+woEyjPmK2FtoOVzwnrSSL0diZLm1RZ8JSe7R6r1TVCY5xTjMF/VHIz+eTEk1zgMPT6c+1AhQwbffl4LL+s36v9bDrn/Vzf0Xhnh0rg7n8obtnJwhrE9vTi5/KJOlgvQIFMehnA0nU/nrwWyi182a2tyuaZOfd4IYWmjQEPuHWPOUmfU5O4a6AP+DqjT8DixvkwY3wicmaqcSdy0dqX0jvl9GXzjii/e+gAZvDtPP9CAlq/pkfdQyChqH7lC9wJl0uiBQAeP2renw6l0qWNy/D98cGSQ6ZFntUWTNJ5G043iuYXt0eCGST7pcV9AKw0bH1lCu26NkW6C7Xv5PNigyKowEddWXPIObaQ3Wnx/ORrqB/WGX/4R9z21f3LoLdpGgpN0txiMIBk85rdffD2ThcZ9/Rxsf+pkPELXvkjddUPEtci47+EZy2ibq77vfwEFjFmp
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List payment sources for an organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/payment-sources"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieves all payment methods (credit cards, PayPal) for a given organization.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"query","description":"External organization ID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"List of payment sources"},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"}}}
+>
+  
+</StatusCodes>
+
+
+      
