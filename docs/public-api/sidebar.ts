@@ -628,6 +628,12 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
+              id: "public-api/update-subscription-auto-renew",
+              label: "Enable or disable automatic renewal",
+              className: "api-method patch",
+            },
+            {
+              type: "doc",
               id: "public-api/assign-subscription",
               label: "Assign a subscription (partner-admin flow)",
               className: "api-method post",
@@ -652,7 +658,7 @@ const sidebar: SidebarsConfig = {
           items: [
             {
               type: "doc",
-              id: "public-api/get-billing-info",
+              id: "public-api/get-get-billing-info",
               label: "Get billing information for an organization",
               className: "api-method get",
             },

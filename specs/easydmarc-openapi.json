@@ -3317,7 +3317,7 @@
             "required": false,
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/OrderEnum"
+              "$ref": "#/components/schemas/OrderEnum_2"
             }
           },
           {
@@ -3803,6 +3803,79 @@
         ]
       }
     },
+    "/v1/partners/subscriptions/{subscriptionId}/auto-renew": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "patch": {
+        "description": "Toggles automatic renewal for a subscription. When enabled, a scheduled job extends the expiration date based on the assigned price billing period once the term ends. Cannot be applied to a cancelled subscription.",
+        "operationId": "updateSubscriptionAutoRenew",
+        "parameters": [
+          {
+            "name": "subscriptionId",
+            "required": true,
+            "in": "path",
+            "description": "Subscription ID",
+            "schema": {
+              "example": "sub_12ab34",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Automatic renewal setting",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubscriptionAutoRenewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Automatic renewal setting updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionV2"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          },
+          "404": {
+            "description": "Subscription not found"
+          },
+          "422": {
+            "description": "Unprocessable Entity - Subscription is cancelled"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Enable or disable automatic renewal",
+        "tags": [
+          "Billing - Subscriptions & Pricing"
+        ]
+      }
+    },
     "/v1/partners/subscriptions/assign": {
       "servers": [
         {
@@ -4271,7 +4344,7 @@
       ],
       "get": {
         "description": "Retrieves billing address and payment details for a given organization.",
-        "operationId": "getBillingInfo",
+        "operationId": "get_getBillingInfo",
         "parameters": [
           {
             "name": "organizationId",
@@ -4438,7 +4511,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/AuditLogAction"
+                "$ref": "#/components/schemas/AuditLogAction_2"
               }
             }
           },
@@ -4462,7 +4535,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/EntityType"
+                "$ref": "#/components/schemas/EntityType_2"
               }
             }
           },
@@ -4514,6 +4587,15 @@
               "default": 20,
               "type": "number"
             }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Free-text search across user name/email, entity labels, and old/new value labels (case-insensitive).",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4522,7 +4604,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuditLogPageResponse"
+                  "$ref": "#/components/schemas/AuditLogPageResponse_2"
                 }
               }
             }
@@ -4623,7 +4705,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/AuditLogAction"
+                "$ref": "#/components/schemas/AuditLogAction_2"
               }
             }
           },
@@ -4647,7 +4729,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/EntityType"
+                "$ref": "#/components/schemas/EntityType_2"
               }
             }
           },
@@ -4678,6 +4760,15 @@
             "description": "Sort direction for results",
             "schema": {
               "$ref": "#/components/schemas/SortDirection_2"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Free-text search across user name/email, entity labels, and old/new value labels (case-insensitive).",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -7066,7 +7157,7 @@
         ]
       }
     },
-    "/v1/users/revoke-organization-access/{token}": {
+    "/v1/users/revoke-organization-access": {
       "servers": [
         {
           "url": "https://api2.easydmarc.com"
@@ -7215,6 +7306,21 @@
         "scheme": "bearer",
         "bearerFormat": "JWT",
         "type": "http"
+      },
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://uac.easydmarc.dev/realms/easydmarc/protocol/openid-connect/auth",
+            "scopes": {
+              "openid": "openid",
+              "profile": "profile",
+              "email": "email",
+              "offline_access": "offline_access"
+            }
+          }
+        },
+        "scheme": "bearer"
       }
     },
     "responses": {
@@ -9235,7 +9341,7 @@
           "hasNextPage"
         ]
       },
-      "OrderEnum": {
+      "OrderEnum_2": {
         "type": "string",
         "enum": [
           "ASC",
@@ -9761,6 +9867,12 @@
             "format": "date-time",
             "nullable": true
           },
+          "autoRenew": {
+            "type": "boolean",
+            "description": "Whether the subscription renews automatically when its term ends. When true, a scheduled job extends the expiration date based on the assigned price billing period.",
+            "example": true,
+            "nullable": true
+          },
           "items": {
             "description": "The list of subscription items. Each subscription has at least one item.",
             "type": "array",
@@ -9789,6 +9901,19 @@
           "updatedAt"
         ]
       },
+      "UpdateSubscriptionAutoRenewRequest": {
+        "type": "object",
+        "properties": {
+          "autoRenew": {
+            "type": "boolean",
+            "description": "Whether the subscription should be renewed automatically when its term ends. When true, a scheduled job extends the expiration date based on the assigned price billing period.",
+            "example": true
+          }
+        },
+        "required": [
+          "autoRenew"
+        ]
+      },
       "PartnerSubscriptionAssignRequest": {
         "type": "object",
         "properties": {
@@ -9801,6 +9926,12 @@
             "type": "string",
             "description": "The unique identifier of the organization to assign the subscription to",
             "example": "org_88xy77"
+          },
+          "autoRenew": {
+            "type": "boolean",
+            "description": "Whether the subscription should be renewed automatically when its term ends. When true, a scheduled job extends the expiration date based on the assigned price billing period. Defaults to true.",
+            "example": true,
+            "default": true
           }
         },
         "required": [
@@ -9821,7 +9952,7 @@
           "priceId"
         ]
       },
-      "UserRole": {
+      "UserRole_2": {
         "type": "string",
         "enum": [
           "Organization Owner",
@@ -9836,7 +9967,7 @@
           "Domain Viewer"
         ]
       },
-      "ActionPerformerResponse": {
+      "ActionPerformerResponse_2": {
         "type": "object",
         "properties": {
           "id": {
@@ -9851,7 +9982,7 @@
           "role": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/UserRole"
+                "$ref": "#/components/schemas/UserRole_2"
               }
             ]
           },
@@ -9869,7 +10000,7 @@
           "role"
         ]
       },
-      "CountryResponse": {
+      "CountryResponse_2": {
         "type": "object",
         "properties": {
           "name": {
@@ -9887,7 +10018,7 @@
           "code"
         ]
       },
-      "AuditLogAction": {
+      "AuditLogAction_2": {
         "type": "string",
         "enum": [
           "UNKNOWN",
@@ -9977,7 +10108,7 @@
           "RENEWED_SUBSCRIPTION"
         ]
       },
-      "EntityType": {
+      "EntityType_2": {
         "type": "string",
         "enum": [
           "domain",
@@ -10013,7 +10144,7 @@
           "dns_domain"
         ]
       },
-      "ActionItemResponse": {
+      "ActionItemResponse_2": {
         "type": "object",
         "properties": {
           "label": {
@@ -10022,7 +10153,7 @@
           "entityType": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/EntityType"
+                "$ref": "#/components/schemas/EntityType_2"
               }
             ]
           },
@@ -10045,7 +10176,7 @@
           "DESC"
         ]
       },
-      "AuditLogOs": {
+      "AuditLogOs_2": {
         "type": "string",
         "enum": [
           "MAC",
@@ -10054,7 +10185,7 @@
           "OTHER"
         ]
       },
-      "AuditLogBrowser": {
+      "AuditLogBrowser_2": {
         "type": "string",
         "enum": [
           "CHROME",
@@ -10064,7 +10195,7 @@
           "OTHER"
         ]
       },
-      "AuditLogDevice": {
+      "AuditLogDevice_2": {
         "type": "string",
         "enum": [
           "PC",
@@ -10072,27 +10203,27 @@
           "OTHER"
         ]
       },
-      "PlatformResponse": {
+      "PlatformResponse_2": {
         "type": "object",
         "properties": {
           "os": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/AuditLogOs"
+                "$ref": "#/components/schemas/AuditLogOs_2"
               }
             ]
           },
           "browser": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/AuditLogBrowser"
+                "$ref": "#/components/schemas/AuditLogBrowser_2"
               }
             ]
           },
           "device": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/AuditLogDevice"
+                "$ref": "#/components/schemas/AuditLogDevice_2"
               }
             ]
           }
@@ -10103,14 +10234,14 @@
           "device"
         ]
       },
-      "AuditLogResponse": {
+      "AuditLogResponse_2": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string"
           },
           "user": {
-            "$ref": "#/components/schemas/ActionPerformerResponse"
+            "$ref": "#/components/schemas/ActionPerformerResponse_2"
           },
           "date": {
             "format": "date-time",
@@ -10121,31 +10252,32 @@
             "type": "string"
           },
           "action": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AuditLogAction"
-            }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogAction_2"
+              }
+            ]
           },
           "entities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ActionItemResponse"
+              "$ref": "#/components/schemas/ActionItemResponse_2"
             }
           },
           "entity": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ActionItemResponse"
+              "$ref": "#/components/schemas/ActionItemResponse_2"
             }
           },
           "country": {
-            "$ref": "#/components/schemas/CountryResponse"
+            "$ref": "#/components/schemas/CountryResponse_2"
           },
           "ip": {
             "type": "string"
           },
           "platform": {
-            "$ref": "#/components/schemas/PlatformResponse"
+            "$ref": "#/components/schemas/PlatformResponse_2"
           },
           "os": {
             "type": "string"
@@ -10159,14 +10291,14 @@
           "onData": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ActionItemResponse"
+              "$ref": "#/components/schemas/ActionItemResponse_2"
             }
           },
           "from": {
-            "$ref": "#/components/schemas/ActionItemResponse"
+            "$ref": "#/components/schemas/ActionItemResponse_2"
           },
           "to": {
-            "$ref": "#/components/schemas/ActionItemResponse"
+            "$ref": "#/components/schemas/ActionItemResponse_2"
           }
         },
         "required": [
@@ -10185,13 +10317,13 @@
           "device"
         ]
       },
-      "AuditLogPageResponse": {
+      "AuditLogPageResponse_2": {
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AuditLogResponse"
+              "$ref": "#/components/schemas/AuditLogResponse_2"
             }
           },
           "totalCount": {
@@ -13468,7 +13600,7 @@
           "value"
         ]
       },
-      "DateRange_2": {
+      "DateRange_3": {
         "type": "object",
         "properties": {
           "from": {
@@ -13594,7 +13726,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
@@ -13740,7 +13872,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
@@ -13943,7 +14075,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
@@ -14097,7 +14229,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
@@ -14546,7 +14678,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
@@ -14704,7 +14836,7 @@
             "description": "Date range filter",
             "allOf": [
               {
-                "$ref": "#/components/schemas/DateRange_2"
+                "$ref": "#/components/schemas/DateRange_3"
               }
             ]
           },
