@@ -488,8 +488,20 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
-              id: "public-api/run-dns-intelligence-check",
-              label: "Run a DNS Intelligence check against a domain",
+              id: "public-api/run-dns-intelligence-checks",
+              label: "Run a batch of DNS Intelligence checks against a domain",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
+              id: "public-api/list-dns-intelligence-lookups",
+              label: "List available DNS lookup types",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/run-dns-intelligence-lookup",
+              label: "Perform a DNS lookup against a domain",
               className: "api-method post",
             },
           ],
@@ -727,6 +739,24 @@ const sidebar: SidebarsConfig = {
               id: "public-api/remove-payment-source",
               label: "Remove a payment source",
               className: "api-method delete",
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Organizations - Users",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/list-organization-users",
+              label: "List users of an organization",
+              className: "api-method get",
             },
           ],
         },

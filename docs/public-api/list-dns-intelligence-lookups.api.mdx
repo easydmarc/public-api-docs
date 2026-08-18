@@ -1,0 +1,72 @@
+---
+id: list-dns-intelligence-lookups
+title: "List available DNS lookup types"
+description: "Returns the camelCase record-type tokens the worker can resolve. Use one as `type` in `POST /dns-intelligence/lookups`."
+sidebar_label: "List available DNS lookup types"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVE1v4zYQ/SvE9MpYSY66pclmkWI/gnxgD4HRTKixxDVFsiTlRCvovxdD2YnsdLfoqbqIGg1n3jw+vgGcp4BJO3tVQQlGx3Rh45VNZIyuySr65Ny68xEkVBRV0J6ToYQbSl2wUaSGhMKWzDlGEoGUC9VR6j2J5Na0TXh2YU1BKLQiUHRmQwtxH0k4SwKjeOT8R6GteLz+ensnisrGIz0DUZgJxeMCJHgM2FKiEKF8WEoIFL2zkSKUA5weH/NrHytIUM4mson/ofdGqzx08T1ywgBRNdQirxgKlIAhYA8SdKI2zuIxBW1rGPMjIWHNKODiy62YswZLCZFUF3TqoXwY4IkwUGDA41JCS6lxTHhNKU+UGiih2Jzkyadhf0oCcOmwmeYfoAsGSmhS8rEsCvT6dEEY+6rFoBbKtTDOsNzynBNTv2dEZx23fh2Py7w76o9kWSQketcFgUpRjNPpii5qWwvsUkM2aYWMLbeAcjey3C4uXWgxQQl/fLuDcRf95/7/rcbrAf7bDrnXZpTgGPnprP82IGFl3HOmSbesFj0pp0uNC/pH1s79Hu8dqhntFW2KQGjaWLwGCx9ccsqZwnmyujpSzlpSqeCqeWbnp5OZ/jOaaSHBB7fShgHuVhKoRc0IprcEt1oZbenP6Xx4934g6/WQJo5pu3KZAp1yiw8Y+4vPZzfn4uz6CiSw0iYhnCyOF8fv5PGWf909Ga14m7hwqmvJpkzV9v6hyixabPfagDzQ8IF8JbwcGVdnjL9ILHRbF5y38Lbm80e1roPrbHXujAtQwm+X+QEJaNIdvaQ9FEyFdzG1aGcoP+mYBG5QG3wyJPieT9dQsGLe2eLwZjT/o0NuxZzoJRXeoLZMYqZu2HrNA2xOGPur22w/5iVBws5xlhIaFxPvG4YnjHQfzDhy+K+OQj/58AaDZpKyyUloCKvseAOsqYcSzpQiz3a3QdNljz004j1r/PiBLyzu+8PB7c7Vd45t+1ntYZgy7pjicQS5BZEph3E5juPf0H1pCg==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List available DNS lookup types"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/dns-intelligence/lookups"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the camelCase record-type tokens the worker can resolve. Use one as `type` in `POST /dns-intelligence/lookups`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,11 +1,11 @@
 ---
 id: list-dns-intelligence-checks
 title: "List available DNS Intelligence checks"
-description: "Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`."
+description: "Returns the camelCase identifiers of every check the worker registry advertises. Use them as `checks[].check` in `POST /dns-intelligence/checks`."
 sidebar_label: "List available DNS Intelligence checks"
 hide_title: true
 hide_table_of_contents: true
-api: eJzNVE1v5DYM/SsCe1XGSY6+pcnuIkU/gk2CHoLBhpE5tjqy5Eq0N67h/15QnsnOTBYteqsvlml+PD5Sb4LQUUS2wd9WUIKziW98uvVMztmavKHrhsw2gYaKkom2E18o4TNxH31S3JAy2JK7xkTKVuTZbizFpMJG0UBxVEYyZMevIW4pqki1TRxHhdVAkW2itFKPiVTwJGHcUCKFST3n0GdlvXq+++3+QRWVT2f2AF0Re/+8Ag0dRmyJKSYon9YaIqUu+EQJygkuz8/lddwBaDDBM3mWf9h1zprMRPFHEocJkmmoRTnx2BGUgDHiCBosU5sO7Imj9TXM+dHAWAsKuPn1Xh1SCWsNiUwfLY9QPk3wQhgpCuB5raElboJMoSbOHXEDJRTDRe7ahbDtu/cEmP18EsVhaX+CPjoooWHuUlkU2NnLFWEaqxajWZnQwnwA5V7aXIj6MQO66qXyW3eS5t38P5GXxSE1hj4qNIZSUhy25FWfrK8V9tzIMhgUbLkElPuO9e7wMcQWGUr46fcHmPfW79f/bzne5vdvEfqozKwhCPLLg/o7g4aNC18zTbaVZbHL4vTchGj/yqvzeMR7j+aA9oqGIhK6NhVvxqKLgYMJrggdeVudmeA9GS4ka+45dMtklv+CZjlo6GLYWCcA9ycN1KIVBMtbQ9hsnPX0ZZmPRB8b8rqe0iQ26zchU2A5l/iAabz55erztbq6uwUNsmnLIlyszlfn79bjm/9d/+KskTB1E0zfkudM1e76ocksemyPyoA+2eGT9dXweuZCnTH+g2Nh27oQv1Xna5k/mm0dQ++r6+BChBJ++Jgf0ICOH+iVj1AIFV1I3KI/QPmzTaxwQOvwxZE6vebKfFcyp29y879Tz92mM71y0Tm0XhjOvE47HXqC4UI6elOi3cdhOhnp0vpaQxMSS9g0vWCix+jmWcx/9hTHRaIHjFYIzPqnoSGsshhOsKURSrgyhjpRwgFdn+X3VKOPVPPTB7nMeKwdJzc/Z9+LuR8Pck/T4vEgEjbPoHcgsqTBvJ7n+W/BIHm1
+api: eJzNVMFu3DYQ/RVieqVXto+6uXYSuGgSI7bRg7Gox9SsxCxFquRIsSro34uh1s7uJk3QW3URNRrOvHl8fBOEjiKyDf66ghKcTXzl07Vncs7W5A1dNmS2CTRUlEy0neRCCZ+I++iT4oaUwZbcJSZStiLPdmMpJhU2igaKozJSISd+CXFLUUWqbeI4KqwGimwTpZW6TyQ5rcKkHvOW9LBe5cWjsl493ny8vVNF5dOJ3YNXLKmPK9DQYcSWmGKC8mGtIVLqgk+UoJzg/PRUXodTgAYTPJNn+Ydd56zJbBSfkyRMkExDLcqKx46gBIwRR9Bgmdq0F08cra9hzo8GxlpQwNWHW7VPJ6w1JDJ9tDxC+TDBE2GkKIDntYaWuAlyEjVxnogbKKEYzvLgLoRt3/0bByCV47CMP0EfHZTQMHepLArs7PmKMI1Vi9GsTGhh3oNyK2MuRP2aAV300vl1OinzjQbekRfxkBpDHxUaQykpDlvyqk/W1wp7bkQQBgVbbgHly8R6t3gbYosMJfz2xx3ML9Hv9/9vNV7P72c79EGbWUMQ5Od7/XcBDRsXvmSabCtisYtwem5CtH9n6dwf8N6j2aO9oqGIhK5NxWuw6GLgYIIrQkfeVicmeE+GC6maZw7dcjLLf0GzLDR0MWysE4AvKw3UohUEy1tD2Gyc9fTncj6y+zCQ5XpMk8Ss34RMgeXc4g2m8er9xadLdXFzDRpEaYsQzlanq9Nv5PE1/6Z/ctbINnUVTN+S50zV7vqhySx6bA/agD7S8JF8NTyfuFBnjD9ILGxbF5K36nwt549mW8fQ++oyuBChhF/e5gc0oOM7euYDFEJFFxK36PdQ/m4TKxzQOnxypI6vuTLftc3pq938Lx10p3amZy46h9YLy5nbaedFDzCcyVSvbrT72K8ox7qMv9bQhMSybZqeMNF9dPMs4b96iuNi0wNGKyRmD9TQEFbZECfY0gglXBhDnbjhgK7PFnzs0wfO+e6NXGg89I+j25+rvxi6H/dqT9OScSc2Ns+gdyCyrcG8nuf5HyoVfRc=
 sidebar_class_name: "get api-method"
 info_path: public-api/easydmarc-api
 custom_edit_url: null
@@ -37,7 +37,7 @@ import Heading from "@theme/Heading";
 
 
 
-Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`.
+Returns the camelCase identifiers of every check the worker registry advertises. Use them as `checks[].check` in `POST /dns-intelligence/checks`.
 
 <Heading
   id={"request"}

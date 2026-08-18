@@ -1,0 +1,72 @@
+---
+id: run-dns-intelligence-checks
+title: "Run a batch of DNS Intelligence checks against a domain"
+description: "Issues a single NATS request running every check in `checks` against `domain` under one deadline, and returns one result per check. Verdicts and per-check worker errors are returned as data; only transport, protocol, and whole-request failures map to non-2xx."
+sidebar_label: "Run a batch of DNS Intelligence checks against a domain"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWc1uGzkSfpUC95IALclxMhflpJGViTaxbFhycjACi2qWJI7ZZA/Jlq0VBOxt74t9wnmSRZHdrdZPYmexwF42l7S6WWSx6quqr8obZnK03Eujh4J1mS30hXZD7VEpuUCdYn+J6YNjCRPoUitzWsq6bOhcgQ44OKkXCmHUm4zB4h8FOg+20FrqBeAK7RpS2gGkhml4clPgCy618zAVJuNST6HQAi0YjSCQCyU1JsC1AIu+sNqFLxZdoTzkaOOObfiCVsjUu7A0R9uKJz0a+4AW0FpjHXCL5TYogDsQ3PP3YLRag7dcu9xYn0BujTepUfHYx6VR2KpuM+dSFRYdZDwHb0Ab3Tp/emqzhOXc8gw9Wse6d98SVor8asSadTfhp7QoWNfbAhOWGu1Re/rE81zJNBi+87sjk26YS5eYcXry6xxZl5nZ75h6OseSm7xEF7ddyChRrnPeSr048tHXaIi4HDxftKE3c6g9/PmPf8JCmRlXYE3hyVev/JKsP+dk5LmxoJFbta58yJV6TTfGJ57lig5VJuWKbRPmZYam8JeuoZEushnaI42uyUlcKShlCBWZa8NXSU5eoQXSwqFdyXSnzas3Z27/8F/Ozs7oZNRcewLuc6aYhJUgBWov5xIteTznC+5RkE/p2BI33ME0bnwvxbQdbmh5ijm3pe+esfrbPkwbElNYIid459y5ll9aUyyWu22d5x5/Ztcg8P1NSwi+xChX4YErSJVE7VuuIFCiqONYijb0Cm9aC9SUJVDA7e3wAlbv4HGJGnhAUzg2NdaiqhPJc0df87UyXLQUrlBBQxikSEBI56VOPcytyYJvpqVK5JLy6uFYKTDLjUedrj/h+vlzP0arTRty9w+4nrbhmruQzjyfKYQVVwUSMASKIg8ZxEp0UOTOW+RZODxmr1OH7qIEuVuLjNu0nZosGCrm0+7m0BkawVjIjMWY3xwdbwtdZ8sQoOFICps68864T5coKviWhmpDL6TEUqBKqxDyDroa85Tp4hbwyiHCtI7maQi58mbcWr5mCZMeM/d8hgoXeN4bfZ6haqXclVcGzTOMTp/+NphAR2jXko1i1CkryH4mSjm/lI7MQQYOOfmkjidyUTh1l8XbMF7ynDJPjlpQ3SmL1vQ9mEz6CHsyXKkvonCgDUidF35Pq812W0ZjrAB3pVG+UcL0Qe9QWsc5puxobQmtGi4NqZtCx5p8Ez1NwkHa5Ua7aP/zs7NjhLH/WgH6yWDv74U3YLo0KHaxXWWbVwGGMSW8LnMZlfzvBAtqb9eBDpQboIheSXZpXsBsXXnwf4Rmv5Su4i7BbuQmQQH4IxBTki/cydSii4wQYh7oB3EcAse+JlPzMA01fmoxV+spSAcO/XuYBoHyW/kcv5X2ztX6eXusIu86Ve5L7c6SN8l58jZ5d6TadW88hg587d2MoAMfesPP0IHhqH816n++HQ+/DKADt6Px9aA//DAcXLTrlDni2UvKpLTYmhubcd90wiun+QPek29e77b8bBYy/YLWnWRT24T9UaCVKHonq348hXWZ4B5blDajCU9zs23CUPHcoXgJT4rMrWWR2CkKKEUhk0pJhykhqPQYd0b3jcATUXLJ06XURGS5CFUtroaUlsOMpw9E/CgES4++IESq62wTpo0/derY2yL1hd2VpLDwPw8/RxRU+vXzeDtC28h4opNRHv78+79gOPpwtcPf4Obm6iZyMXx6Abf7WGRc7+xJFwOSbLPDBF4rXW7dSOCkVFiPK0pUKT5fqxo2rYTCbVyoViseuMlsXTVGY8Tg1tDVwDSUi0EpN6VmyszfxwUmL1TgdbQHMeQssAlXJ82qYzgofJhJT4VP4/HVq/TQDNxTEVcHSzM09iFdgeywaN6ERLWtEuARBq9PNoPNjvFkV1hzKmr5KDbiHsIg3TV2gsEIHyeT65ppsYRxpa7mrHv3fOEUL0liDZ1DsCaA7UUbhqMvvc/Di/vh6Pp2ksDt6NPo6uvovv9x0P+UwJfBzXh4Nbq/HI4ve5P+xwQmw8vBFa0cjiaDm1Hvc0B6hs7xxYvV2HUFUZ9SfNfAvIQBVFtJgRCEiAfMw+1KaqAXoMzCHaMpmGyn9e7QBibi9oOAhe2307yrrqnHWKLafH9+TML2ac6OjpwmY5F+lWzs3fn5MSpLwkbNhRSRDhGiUARj/nJ2QuTr3iSiCWZqFqqpBQgkM1WTinK7t8fbhSlNoS3ydBkyGPX5ptrXFTNaPKsVevf9OxhbSdWtBT6liCIIEzb4goYi7GI0huY8iaznMC1iRr/bsBlyi5bmJ9tv5Ge/NDSJyo0L8cP9knVZZ/UmNAPKmIci/15fQE5Gu4rjmA0rrGJdtvQ+d91Oh+fyvH3QjjV0GRP3jVH6a9CoV9DJNbJpmyNc/1b2xbA2hQWepuiI2T2ghoJSCfDCL4mLppx0C0ewbnXlpHz4UDGJv36dkOFnPzj/5/aoSf1zEsneMduEGdL8vFmZ4ouEzZV5DGaSGXUQMnYThV8aK/8WUH27Z/eCpw2zC1x1LHKVuU79slPhuGNy1FK0UqM1pr5Du4Y7mzx6Jn4nbeJDyK9zGUKxekoYZlySBvH/hJn5nAB6H/1D0vsvQsQemoneUV90sxvpDererqZ55RRsbwhGw6nmbGqXFPfmSAevyznQ7m1jkLN7edB57T4cDkIambicUhyMInaTiLu6w2k2IY1Gerv9RqMWPTcBD2XqG3C3vrjs3fShdz1kCZX9SKTZm/ZZ++woVnbrr4uZkimJwYVJiwy1DzcqG1QeWwsdCP9OjCUHAX00WnlqKbMIOv5gYUdmiw6ta+fhlkSDF9YUWvSNIi7B/vIh/Atl3U8CL2xoQbig3JRx3dDyhuY05RzFzOEw6VUTnWqUw6Fu8PeMtNl16P+fsD81Wgbi0J1ckcm2JQ42ZW24Y6s3ZMe6OpQ/mvVhb5CypMrSvWObzYw7vLVqu6XX1Oyt4xg/kOEZofyOkB/njSFQHkJs9aOTWhNSjparIvQ1hyOVbVJJ9NIUc//Dtc3id301ppw8K/+OkAXayCx/pLzAH+MwxwTQxL8I0LsNU1wvisDtWNyTwMr368hBFWiSVq7XDQ03m7hiQuVsu2VJeZVQ3gLN2v4bKb8fDw==
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Run a batch of DNS Intelligence checks against a domain"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dns-intelligence/checks"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Issues a single NATS request running every check in `checks` against `domain` under one deadline, and returns one result per check. Verdicts and per-check worker errors are returned as data; only transport, protocol, and whole-request failures map to non-2xx.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"region":{"type":"string","description":"Worker region tag. Absent ⇒ global routing (the default for nearly every call).","example":"local"},"timeoutMs":{"type":"number","description":"Per-call timeout in ms. Wins over the service default (10s).","example":5000},"tenantId":{"type":"string","description":"Tenant identifier propagated to the worker as `tenant_id`."},"traceparent":{"type":"string","description":"W3C `traceparent` header pass-through."},"tracestate":{"type":"string","description":"W3C `tracestate` header pass-through."},"requestId":{"type":"string","description":"Optional client-supplied request id. Auto-generated UUID v4 when absent."},"correlationId":{"type":"string","description":"Payload-level correlation id, distinct from the `request_id` header."},"idempotencyKey":{"type":"string","description":"Header `idempotency_key`. Pass a stable value to dedupe retries upstream."},"domain":{"type":"string","example":"easydmarc.com"},"checks":{"description":"One or more checks to run against the domain in a single batched worker request. A per-domain deadline applies to the whole batch (see `timeoutMs`).","type":"array","items":{"type":"object","properties":{"check":{"type":"string","description":"Camel-case check name from `GET /dns-intelligence/checks`.","example":"caaMissing"},"params":{"type":"object","description":"Per-check parameters. Shape depends on `check`; omit when the check needs no input.","example":{}}},"required":["check"],"title":"CheckSpec"}}},"required":["domain","checks"],"title":"RunChecksRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"correlationId":{"type":"string","description":"Correlation id echoed from the request (batch-level)."},"results":{"description":"One entry per requested check, identified by `check`.","type":"array","items":{"type":"object","properties":{"check":{"type":"string","description":"Camel-case check name this result corresponds to.","example":"caaMissing"},"status":{"type":"string","enum":["ok","error"],"description":"`ok` ⇒ `reply` is set; `error` ⇒ `error` is set."},"reply":{"type":"object","properties":{"verdict":{"type":"number","enum":[0,1,2,3,4],"description":"PASS / WARN / FAIL / INCONCLUSIVE / UNSPECIFIED."},"checkName":{"type":"string","description":"Wire-format check name (snake_case)."},"checkLogicVersion":{"type":"string"},"queriedAt":{"type":"string","format":"date-time"},"region":{"type":"string"},"elapsedMs":{"type":"number","description":"Worker-reported elapsed milliseconds."},"reasonCodes":{"description":"Machine-readable reason codes backing the verdict.","type":"array","items":{"type":"string"}},"notes":{"description":"Structured worker notes.","type":"array","items":{"type":"object","properties":{"severity":{"type":"number","enum":[0,1,2,3],"description":"Note severity — INFO / WARN / ERROR."},"text":{"type":"string","description":"Human-readable note text."}},"required":["severity","text"],"title":"Note"}},"evidence":{"type":"object","description":"Structured evidence — shape varies by check. See the proto `CheckEvidence` oneof; the populated variant matches `check`. Absent when the check emits none."}},"required":["verdict","checkName","checkLogicVersion","region","elapsedMs","reasonCodes","notes"],"title":"CheckReply"},"error":{"description":"Per-check worker error. Verdicts are returned as data; a single failing check does not fail the HTTP request.","allOf":[{"type":"object","properties":{"code":{"type":"string","description":"Worker error code, e.g. INVALID_INPUT, UNKNOWN_CHECK, VERSION_MISMATCH, TIMEOUT, INTERNAL."},"message":{"type":"string","description":"Worker-supplied error message."},"traceId":{"type":"string","description":"Worker-side trace id for correlating logs."}},"required":["code","message","traceId"],"title":"WorkerError"}]}},"required":["check","status"],"title":"CheckResult_2"}}},"required":["correlationId","results"],"title":"RunChecksResponse"}}}},"422":{"description":"Request validation failed."},"502":{"description":"Whole-request worker error or protocol decode failure."},"503":{"description":"NATS unreachable or no worker subscribed."},"504":{"description":"Request or worker deadline exceeded."}}}
+>
+  
+</StatusCodes>
+
+
+      

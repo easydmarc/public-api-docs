@@ -68,6 +68,10 @@
       "x-displayName": "Billing - Payment Methods"
     },
     {
+      "name": "Organizations - Users",
+      "x-displayName": "Organizations - Users"
+    },
+    {
       "name": "Users",
       "x-displayName": "Users"
     }
@@ -3244,6 +3248,11 @@
         "summary": "Obtain authentication token",
         "tags": [
           "Authentication"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
         ]
       }
     },
@@ -4436,6 +4445,97 @@
         ]
       }
     },
+    "/v1/partners/organizations/{organizationId}/users": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "description": "Returns the users that belong to one of the partner's organizations (across organisation, workspace and partner memberships). Used to determine whether an organization has any users.",
+        "operationId": "listOrganizationUsers",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "required": true,
+            "in": "path",
+            "description": "External organization ID",
+            "schema": {
+              "example": "org_88xy77",
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 50,
+              "default": 10,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of the organization users.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Page_2"
+                    },
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/PartnerOrganizationUser"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing authentication token"
+          },
+          "403": {
+            "description": "Forbidden - Organization does not belong to the partner"
+          },
+          "422": {
+            "description": "Unprocessable Entity - Invalid organization ID format"
+          }
+        },
+        "security": [
+          {
+            "oauth2": []
+          },
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "List users of an organization",
+        "tags": [
+          "Organizations - Users"
+        ]
+      }
+    },
     "/v1/audit-log": {
       "servers": [
         {
@@ -5508,6 +5608,177 @@
         ]
       }
     },
+    "/v1/dns-lookup/dns-intelligence/checks": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "operationId": "listDnsIntelligenceChecks",
+        "summary": "List available DNS Intelligence checks",
+        "description": "Returns the camelCase identifiers of every check the worker registry advertises. Use them as `checks[].check` in `POST /dns-intelligence/checks`.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "runDnsIntelligenceChecks",
+        "summary": "Run a batch of DNS Intelligence checks against a domain",
+        "description": "Issues a single NATS request running every check in `checks` against `domain` under one deadline, and returns one result per check. Verdicts and per-check worker errors are returned as data; only transport, protocol, and whole-request failures map to non-2xx.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunChecksRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunChecksResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed."
+          },
+          "502": {
+            "description": "Whole-request worker error or protocol decode failure."
+          },
+          "503": {
+            "description": "NATS unreachable or no worker subscribed."
+          },
+          "504": {
+            "description": "Request or worker deadline exceeded."
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/v1/dns-lookup/dns-intelligence/lookups": {
+      "servers": [
+        {
+          "url": "https://api2.easydmarc.com"
+        }
+      ],
+      "get": {
+        "operationId": "listDnsIntelligenceLookups",
+        "summary": "List available DNS lookup types",
+        "description": "Returns the camelCase record-type tokens the worker can resolve. Use one as `type` in `POST /dns-intelligence/lookups`.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "runDnsIntelligenceLookup",
+        "summary": "Perform a DNS lookup against a domain",
+        "description": "Resolves a single record type for `domain`. Recursive by default; pass `mode: authoritative` with `nsAddress` to query a specific nameserver. Worker errors map to non-2xx since a lookup is a single operation.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunLookupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunLookupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unknown lookup type, or authoritative mode without nsAddress."
+          },
+          "422": {
+            "description": "Worker reported INVALID_INPUT."
+          },
+          "502": {
+            "description": "Worker INTERNAL or protocol decode failure."
+          },
+          "503": {
+            "description": "NATS unreachable or no worker subscribed."
+          },
+          "504": {
+            "description": "Request or worker deadline exceeded."
+          }
+        },
+        "tags": [
+          "DNS Intelligence"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
     "/v1/dns-lookup/cname": {
       "servers": [
         {
@@ -6438,100 +6709,6 @@
         },
         "tags": [
           "DNS Lookup"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/v1/dns-lookup/dns-intelligence/checks": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com"
-        }
-      ],
-      "get": {
-        "operationId": "listDnsIntelligenceChecks",
-        "summary": "List available DNS Intelligence checks",
-        "description": "Returns the camelCase identifiers of every check the worker registry advertises. Use one of these as `check` in `POST /dns-intelligence/run`.",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "DNS Intelligence"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
-        ]
-      }
-    },
-    "/v1/dns-lookup/dns-intelligence/run": {
-      "servers": [
-        {
-          "url": "https://api2.easydmarc.com"
-        }
-      ],
-      "post": {
-        "operationId": "runDnsIntelligenceCheck",
-        "summary": "Run a DNS Intelligence check against a domain",
-        "description": "Issues a NATS request to the dns-intelligence worker and returns the typed reply. Verdicts are returned as data; only transport, worker, and protocol failures map to non-2xx.",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RunCheckRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RunCheckResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unknown check or worker rejected the request shape."
-          },
-          "422": {
-            "description": "Worker reported INVALID_INPUT."
-          },
-          "502": {
-            "description": "Worker INTERNAL or protocol decode failure."
-          },
-          "503": {
-            "description": "NATS unreachable or no worker subscribed."
-          },
-          "504": {
-            "description": "Request or worker deadline exceeded."
-          }
-        },
-        "tags": [
-          "DNS Intelligence"
         ],
         "security": [
           {
@@ -9341,6 +9518,24 @@
           "hasNextPage"
         ]
       },
+      "Page_2": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PageMeta_2"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ]
+      },
       "OrderEnum_2": {
         "type": "string",
         "enum": [
@@ -9386,13 +9581,20 @@
             "type": "string",
             "description": "Timestamp when the organization was last updated",
             "example": "2025-05-17T11:35:15.567Z"
+          },
+          "ownerUserId": {
+            "type": "string",
+            "description": "User objectId of the organization owner",
+            "example": "user_68231dcfeb8e9f092a052b88",
+            "nullable": true
           }
         },
         "required": [
           "id",
           "name",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "ownerUserId"
         ]
       },
       "UpdateOrganization": {
@@ -9486,6 +9688,16 @@
             "description": "Whether EasySPF feature for simplified SPF record management is enabled",
             "example": true
           },
+          "managed_mta_sts": {
+            "type": "boolean",
+            "description": "Whether Managed MTA-STS is enabled",
+            "example": true
+          },
+          "tls_reports": {
+            "type": "boolean",
+            "description": "Whether TLS reporting (TLS-RPT) is enabled",
+            "example": true
+          },
           "domain_access": {
             "type": "boolean",
             "description": "Whether domain-level access control and permissions are available",
@@ -9501,25 +9713,10 @@
             "description": "Duration in days that audit logs are retained (e.g., 30, 90, 365)",
             "example": 365
           },
-          "dns_integrations": {
-            "type": "boolean",
-            "description": "Whether DNS integrations are enabled",
-            "example": true
-          },
-          "messaging_integrations": {
-            "type": "boolean",
-            "description": "Whether messaging integrations are enabled",
-            "example": true
-          },
           "email_investigation": {
             "type": "boolean",
             "description": "Whether email investigation and forensics features are available",
             "example": true
-          },
-          "amazon_ses_integration": {
-            "type": "boolean",
-            "description": "Whether Amazon SES integration for sending emails is enabled",
-            "example": false
           },
           "touchpoint": {
             "type": "boolean",
@@ -9555,17 +9752,73 @@
             "type": "boolean",
             "description": "Whether SSO (Single Sign-On) feature is enabled"
           },
-          "sendgrid_integration": {
-            "type": "boolean",
-            "description": "Whether SendGrid integration is enabled"
-          },
-          "mailgun_integration": {
-            "type": "boolean",
-            "description": "Whether Mailgun integration is enabled"
-          },
           "esp_integrations": {
             "type": "boolean",
             "description": "Whether ESP integrations (Amazon SES, SendGrid, Mailgun) are enabled"
+          },
+          "managed_dmarc": {
+            "type": "boolean",
+            "description": "Whether Managed DMARC is enabled"
+          },
+          "managed_dkim": {
+            "type": "boolean",
+            "description": "Whether Managed DKIM is enabled"
+          },
+          "managed_bimi": {
+            "type": "boolean",
+            "description": "Whether Managed BIMI is enabled"
+          },
+          "aggregate_reports": {
+            "type": "boolean",
+            "description": "Whether DMARC aggregate (RUA) reports are enabled"
+          },
+          "failure_reports": {
+            "type": "boolean",
+            "description": "Whether DMARC failure (RUF) reports are enabled"
+          },
+          "uptime_monitoring": {
+            "type": "boolean",
+            "description": "Whether uptime monitoring is enabled"
+          },
+          "dns_monitoring": {
+            "type": "boolean",
+            "description": "Whether DNS monitoring is enabled"
+          },
+          "vmc_monitoring": {
+            "type": "boolean",
+            "description": "Whether VMC monitoring is enabled"
+          },
+          "ssl_certificate_monitoring": {
+            "type": "boolean",
+            "description": "Whether SSL certificate monitoring is enabled"
+          },
+          "dns_management": {
+            "type": "boolean",
+            "description": "Whether DNS management is enabled"
+          },
+          "dns_insights": {
+            "type": "boolean",
+            "description": "Whether DNS insights are enabled"
+          },
+          "sender_reporting": {
+            "type": "boolean",
+            "description": "Whether sender reporting is enabled"
+          },
+          "threat_intelligence": {
+            "type": "boolean",
+            "description": "Whether threat intelligence is enabled"
+          },
+          "blocklist_monitoring": {
+            "type": "boolean",
+            "description": "Whether blocklist monitoring is enabled"
+          },
+          "reputation_intelligence": {
+            "type": "boolean",
+            "description": "Whether reputation intelligence is enabled"
+          },
+          "ai_assistant": {
+            "type": "boolean",
+            "description": "Whether the AI assistant is enabled"
           }
         }
       },
@@ -9638,17 +9891,9 @@
             "type": "number",
             "description": "Audit log retention duration in days"
           },
-          "dnsIntegrations": {
-            "type": "boolean",
-            "description": "Whether DNS integrations are enabled"
-          },
           "emailInvestigation": {
             "type": "boolean",
             "description": "Whether email investigation feature is enabled"
-          },
-          "amazonSesIntegration": {
-            "type": "boolean",
-            "description": "Whether Amazon SES integration is enabled"
           },
           "touchpoint": {
             "type": "boolean",
@@ -9719,6 +9964,11 @@
             "description": "The billing period value combined with frequency. For example, 1 with frequency \"month\" means monthly billing.",
             "example": 1
           },
+          "deprecated": {
+            "type": "boolean",
+            "description": "Indicates whether the price has been soft-deleted (deprecated). Deprecated prices remain assigned to the partner and are still returned, but should no longer be offered for new subscriptions.",
+            "example": false
+          },
           "createdAt": {
             "format": "date-time",
             "type": "string",
@@ -9739,6 +9989,7 @@
           "currency",
           "frequency",
           "billingPeriod",
+          "deprecated",
           "createdAt",
           "updatedAt"
         ]
@@ -9950,6 +10201,32 @@
         },
         "required": [
           "priceId"
+        ]
+      },
+      "PartnerOrganizationUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the user.",
+            "example": "4a3d6dd3-6694-a41b-9abc-a46fa810a298"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the user.",
+            "example": "jane.doe@example.com"
+          },
+          "name": {
+            "type": "object",
+            "description": "Display name of the user. May be empty if not set.",
+            "example": "Jane Doe",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "name"
         ]
       },
       "UserRole_2": {
@@ -11026,6 +11303,368 @@
         },
         "required": [
           "domains"
+        ]
+      },
+      "CheckSpec": {
+        "type": "object",
+        "properties": {
+          "check": {
+            "type": "string",
+            "description": "Camel-case check name from `GET /dns-intelligence/checks`.",
+            "example": "caaMissing"
+          },
+          "params": {
+            "type": "object",
+            "description": "Per-check parameters. Shape depends on `check`; omit when the check needs no input.",
+            "example": {}
+          }
+        },
+        "required": [
+          "check"
+        ]
+      },
+      "RunChecksRequest": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "description": "Worker region tag. Absent ⇒ global routing (the default for nearly every call).",
+            "example": "local"
+          },
+          "timeoutMs": {
+            "type": "number",
+            "description": "Per-call timeout in ms. Wins over the service default (10s).",
+            "example": 5000
+          },
+          "tenantId": {
+            "type": "string",
+            "description": "Tenant identifier propagated to the worker as `tenant_id`."
+          },
+          "traceparent": {
+            "type": "string",
+            "description": "W3C `traceparent` header pass-through."
+          },
+          "tracestate": {
+            "type": "string",
+            "description": "W3C `tracestate` header pass-through."
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Optional client-supplied request id. Auto-generated UUID v4 when absent."
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Payload-level correlation id, distinct from the `request_id` header."
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "description": "Header `idempotency_key`. Pass a stable value to dedupe retries upstream."
+          },
+          "domain": {
+            "type": "string",
+            "example": "easydmarc.com"
+          },
+          "checks": {
+            "description": "One or more checks to run against the domain in a single batched worker request. A per-domain deadline applies to the whole batch (see `timeoutMs`).",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CheckSpec"
+            }
+          }
+        },
+        "required": [
+          "domain",
+          "checks"
+        ]
+      },
+      "Note": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "number",
+            "enum": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "description": "Note severity — INFO / WARN / ERROR."
+          },
+          "text": {
+            "type": "string",
+            "description": "Human-readable note text."
+          }
+        },
+        "required": [
+          "severity",
+          "text"
+        ]
+      },
+      "CheckReply": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "number",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "description": "PASS / WARN / FAIL / INCONCLUSIVE / UNSPECIFIED."
+          },
+          "checkName": {
+            "type": "string",
+            "description": "Wire-format check name (snake_case)."
+          },
+          "checkLogicVersion": {
+            "type": "string"
+          },
+          "queriedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "region": {
+            "type": "string"
+          },
+          "elapsedMs": {
+            "type": "number",
+            "description": "Worker-reported elapsed milliseconds."
+          },
+          "reasonCodes": {
+            "description": "Machine-readable reason codes backing the verdict.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "description": "Structured worker notes.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Note"
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "description": "Structured evidence — shape varies by check. See the proto `CheckEvidence` oneof; the populated variant matches `check`. Absent when the check emits none."
+          }
+        },
+        "required": [
+          "verdict",
+          "checkName",
+          "checkLogicVersion",
+          "region",
+          "elapsedMs",
+          "reasonCodes",
+          "notes"
+        ]
+      },
+      "WorkerError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Worker error code, e.g. INVALID_INPUT, UNKNOWN_CHECK, VERSION_MISMATCH, TIMEOUT, INTERNAL."
+          },
+          "message": {
+            "type": "string",
+            "description": "Worker-supplied error message."
+          },
+          "traceId": {
+            "type": "string",
+            "description": "Worker-side trace id for correlating logs."
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "traceId"
+        ]
+      },
+      "CheckResult_2": {
+        "type": "object",
+        "properties": {
+          "check": {
+            "type": "string",
+            "description": "Camel-case check name this result corresponds to.",
+            "example": "caaMissing"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ],
+            "description": "`ok` ⇒ `reply` is set; `error` ⇒ `error` is set."
+          },
+          "reply": {
+            "$ref": "#/components/schemas/CheckReply"
+          },
+          "error": {
+            "description": "Per-check worker error. Verdicts are returned as data; a single failing check does not fail the HTTP request.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WorkerError"
+              }
+            ]
+          }
+        },
+        "required": [
+          "check",
+          "status"
+        ]
+      },
+      "RunChecksResponse": {
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string",
+            "description": "Correlation id echoed from the request (batch-level)."
+          },
+          "results": {
+            "description": "One entry per requested check, identified by `check`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CheckResult_2"
+            }
+          }
+        },
+        "required": [
+          "correlationId",
+          "results"
+        ]
+      },
+      "RunLookupRequest": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string",
+            "description": "Worker region tag. Absent ⇒ global routing (the default for nearly every call).",
+            "example": "local"
+          },
+          "timeoutMs": {
+            "type": "number",
+            "description": "Per-call timeout in ms. Wins over the service default (10s).",
+            "example": 5000
+          },
+          "tenantId": {
+            "type": "string",
+            "description": "Tenant identifier propagated to the worker as `tenant_id`."
+          },
+          "traceparent": {
+            "type": "string",
+            "description": "W3C `traceparent` header pass-through."
+          },
+          "tracestate": {
+            "type": "string",
+            "description": "W3C `tracestate` header pass-through."
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Optional client-supplied request id. Auto-generated UUID v4 when absent."
+          },
+          "correlationId": {
+            "type": "string",
+            "description": "Payload-level correlation id, distinct from the `request_id` header."
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "description": "Header `idempotency_key`. Pass a stable value to dedupe retries upstream."
+          },
+          "type": {
+            "type": "string",
+            "description": "Camel-case lookup type from `GET /dns-intelligence/lookups` (e.g. a, aaaa, mx, txt, ns, soa, caa, cname, srv, ptr).",
+            "example": "mx"
+          },
+          "domain": {
+            "type": "string",
+            "example": "easydmarc.com"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "recursive",
+              "authoritative"
+            ],
+            "description": "Resolver strategy. Default `recursive`. `authoritative` requires `nsAddress`."
+          },
+          "nsAddress": {
+            "type": "string",
+            "description": "Authoritative nameserver address. Required when `mode` is `authoritative`."
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "google",
+              "cloudflare",
+              "quad9"
+            ],
+            "description": "Recursive upstream to query. Absent ⇒ the worker-configured default. Only valid with `mode: recursive` (the default); rejected otherwise."
+          }
+        },
+        "required": [
+          "type",
+          "domain"
+        ]
+      },
+      "RunLookupResponse": {
+        "type": "object",
+        "properties": {
+          "lookupName": {
+            "type": "string",
+            "description": "Record-type token echoed by the worker.",
+            "example": "mx"
+          },
+          "records": {
+            "description": "Typed answer records; shape varies by lookup `type` (see the proto `LookupReply` body oneof). Each record includes `ttl` (seconds) plus type-specific fields. Empty on NXDOMAIN / NOERROR-empty / SERVFAIL.",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "rcode": {
+            "type": "number",
+            "description": "DNS response code (0 = NOERROR, 3 = NXDOMAIN, …)."
+          },
+          "authoritativeAnswer": {
+            "type": "boolean",
+            "description": "AA bit — authoritative answer."
+          },
+          "authenticatedData": {
+            "type": "boolean",
+            "description": "AD bit — DNSSEC authenticated data."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "TC bit — set only when the TCP retry was itself truncated."
+          },
+          "queriedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "elapsedMs": {
+            "type": "number",
+            "description": "Worker-reported elapsed milliseconds."
+          },
+          "correlationId": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lookupName",
+          "records",
+          "rcode",
+          "authoritativeAnswer",
+          "authenticatedData",
+          "truncated",
+          "elapsedMs",
+          "correlationId",
+          "region"
         ]
       },
       "CnameRecord": {
@@ -12944,127 +13583,6 @@
         "required": [
           "record",
           "domain"
-        ]
-      },
-      "RunCheckRequest": {
-        "type": "object",
-        "properties": {
-          "check": {
-            "type": "string",
-            "description": "Camel-case check name from the dns-intelligence-client-sdk catalogue (e.g. caaMissing, dnssecChain, ttlOutOfRange).",
-            "example": "caaMissing"
-          },
-          "domain": {
-            "type": "string",
-            "example": "easydmarc.com"
-          },
-          "params": {
-            "type": "object",
-            "description": "Per-check parameters object. Shape depends on `check`; pass `{}` when the check needs no input.",
-            "example": {}
-          },
-          "region": {
-            "type": "string",
-            "description": "Worker region tag. Absent ⇒ global routing (the default for nearly every call).",
-            "example": "eu-west-1"
-          },
-          "timeoutMs": {
-            "type": "number",
-            "description": "Per-call timeout in ms. Wins over the service default (10s).",
-            "example": 5000
-          },
-          "tenantId": {
-            "type": "string",
-            "description": "Tenant identifier propagated to the worker as `tenant_id`."
-          },
-          "traceparent": {
-            "type": "string",
-            "description": "W3C `traceparent` header pass-through."
-          },
-          "tracestate": {
-            "type": "string",
-            "description": "W3C `tracestate` header pass-through."
-          },
-          "requestId": {
-            "type": "string",
-            "description": "Optional client-supplied request id. Auto-generated UUID v4 when absent."
-          },
-          "correlationId": {
-            "type": "string",
-            "description": "Payload-level correlation id, distinct from the `request_id` header."
-          },
-          "idempotencyKey": {
-            "type": "string",
-            "description": "Header `idempotency_key`. Pass a stable value to dedupe retries upstream."
-          }
-        },
-        "required": [
-          "check",
-          "domain"
-        ]
-      },
-      "RunCheckResponse": {
-        "type": "object",
-        "properties": {
-          "verdict": {
-            "type": "number",
-            "enum": [
-              0,
-              1,
-              2,
-              3,
-              4
-            ],
-            "description": "PASS / WARN / FAIL / INCONCLUSIVE / UNSPECIFIED. Returned as data — never thrown."
-          },
-          "checkName": {
-            "type": "string",
-            "description": "Wire-format check name (snake_case)."
-          },
-          "checkLogicVersion": {
-            "type": "string"
-          },
-          "queriedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "region": {
-            "type": "string"
-          },
-          "elapsedMs": {
-            "type": "number",
-            "description": "Worker-reported elapsed milliseconds."
-          },
-          "reasonCodes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "notes": {
-            "description": "Worker notes.",
-            "type": "array",
-            "items": {
-              "type": "object"
-            }
-          },
-          "correlationId": {
-            "type": "string"
-          },
-          "evidence": {
-            "type": "object",
-            "description": "Structured evidence — shape varies by check. Refer to the proto Evidence oneof for the variant matching `check`."
-          }
-        },
-        "required": [
-          "verdict",
-          "checkName",
-          "checkLogicVersion",
-          "region",
-          "elapsedMs",
-          "reasonCodes",
-          "notes",
-          "correlationId"
         ]
       },
       "PageMeta_3": {
@@ -15250,11 +15768,17 @@
                 "$ref": "#/components/schemas/UserPermissionV1_2"
               }
             ]
+          },
+          "requirePasswordChange": {
+            "type": "boolean",
+            "example": false,
+            "description": "Whether the user should be required to change their password upon first login. Defaults to false."
           }
         },
         "required": [
           "organizationId",
-          "permissions"
+          "permissions",
+          "requirePasswordChange"
         ]
       },
       "CreateUsersResponse": {
@@ -15326,6 +15850,7 @@
         "Billing - Billing Information",
         "Billing - Invoices",
         "Billing - Payment Methods",
+        "Organizations - Users",
         "Users"
       ]
     }

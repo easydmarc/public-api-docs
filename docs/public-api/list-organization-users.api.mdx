@@ -1,0 +1,72 @@
+---
+id: list-organization-users
+title: "List users of an organization"
+description: "Returns the users that belong to one of the partner's organizations (across organisation, workspace and partner memberships). Used to determine whether an organization has any users."
+sidebar_label: "List users of an organization"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV99v2zYQ/lcI7mEtIFu2m6Wpn5YlaZFiWYOuQR8CIzhLZ5sNRaok5do19L8PR0qyJOfH1u1leXAk6nh3/O7uu+OOp2gTI3IntOJT/hFdYZRlboWssGjoCRybo9RqyZxmWiHTC/89B+MUmp8t02YJSnwHUmLZC0iMtvWq9asR+6bNvc0hQQYqrfeyDLM5GrsSuX05ZDcWUzKSokOTCYXs2wrdCg0D1THCVmAZqG3wccgjrnM0/tNlyqdcCus+tORvSIxHPAcDGSm3fHq74woy5FPe1nyZ8ogb/FoIgymfOlNgxAVBk4Nb8aiH18XGoVEgu95dnvOI22SFGfDpjuMGslxWlu5OTjbb1695xN02pzXrjFBLXpZR41AOS+y4sQBpaz++Fmi2Hf2ZUCIrMj4dk3sLKKTzz5UBVRDGHQNSZML9oIUMNuH5l1Hb3OjQ3owM2Fwri5a0TEYj+tdF8BqWQoHDlFHQ6tzqwNkEOdHKoXKkBPJcisR/j79Y0rRr+QtSflj4EFc+6fkXTOjEuaFMcSJ4lILz8pUUGAN0cOEws631andZRjzDzo5H9PoA7qUqRPrJc1YYg8oxkmaNTJMt4zKqAvWspqsQk0oJgeiPwHI0rEqmRu1kVEbcaQfyeb2fSOxAa1XfIKVXbjtOT16VkT//mS7U33C9b+JA4+sy4iuw1wbXQhf2ugvtXGuJoA7Ufq6Ig36QCcuA5ZWGgDesQUiYyw42vgqCvT9w437clsKNe8IO0Qpl077+buuir0szRKgN5SEMXUdnEXfCeZ6h9yt0cDfhfTM+5as87u0g6Wj3r0qkXwgibclUTNeH70aJrwUykaJyYiFCGtQNaNiGjR/Bq/Q4TV8Njo/fHA3gaDwfvIF5MoCj4wWcjEcweXPCy4hjBkI+b/mCxBikqUHqV49Z/QIKh6nGX6ulYaIzshLI9BCCrpFzYXMJW0bSHRvsCrZsjgyz3G2ZWDClHbPousbfg0J2rinYqpAhkx7MH0GdKxy8cq0TXt9v+z2Rl2VZzugn4kej8SE73ygo3Eob8R1TNmCXag1SpEwblglrhVoy+k6BC1zMnL5Hxb26V4fq3mozF2mKig1Y2xeWarT+/PtJozVieH2TyUPu5UYnaC3Bwi6UE27bcbPTlNlCmwwCj1tMCiPc1jcJTYeY8OntjPJ/jmDQ+DdCEJY0LPAPnRlnwMJIMfOVtNI0dCzR5z+NCVMer8dx5b2NO/NRvOvOG2VcVNOJRbOuR5PCSD7lK+dyO41jyMVkiGC3aQYmCfk32x/iT2p8oeB+886fFuREk5mk5iAv36GikQnZVheGQUIwhvCxohfZehbwJBjQiaqHtwHSKX//+ROFaf6E/X+mo+noz+2IOmbKqAnnvjLDQsQXUn8LvJTR+BBaa53hoSo6uBeQtGBPcR0bBJnZuFmMc6OdTrSMdY5KpINEK4WJi0mrP7POQ2TCd/ImPHiqXAhfnvVTw1xNIevFQgqFdyE+tLu74Eu3DxOtCbXQHoKKAS7Abs+vTj+esdPrSx5xyrSQCOPhaDg65MZG/rqYS5HQNnaukyJD5TxU1UAGiUexmiybbTzq5XAvfSO+GUi99D4+IRiLbBmT3DD3BD6H5H5pdKHSMy214VP+01v/xyMO0n3Cjet4QVDk2roMVMvL32nUDPcbvehfLvpQ7PZz5//3flRVgsONi3MJwnO0x31XUdYtX4/DFcmTFuVe220e8enBRamoSXClrSMVu90cLN4YWZa0HG4SxGep8By9v2nc43Z/01mDLMg9P388IloPRnvZGb0YEVriQzYeDeOLj1XjfMmeuME9iFk9B6lt25fayR5C5YyGSYTU95NdJXSaJJi3j3JwmSnbfeXdBXEcdCm1obSmd+0edi2wDasYhnleYT0Sqb33ZOVj8KCq/44Vgzl6Ib591GDD0vWOpQHl7rysH1v+AjFSx78=
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List users of an organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/organizations/{organizationId}/users"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the users that belong to one of the partner's organizations (across organisation, workspace and partner memberships). Used to determine whether an organization has any users.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"organizationId","required":true,"in":"path","description":"External organization ID","schema":{"example":"org_88xy77","type":"string"}},{"name":"page","required":false,"in":"query","schema":{"minimum":1,"default":1,"type":"number"}},{"name":"limit","required":false,"in":"query","schema":{"minimum":1,"maximum":50,"default":10,"type":"number"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Paginated list of the organization users.","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"data":{"type":"array","items":{"type":"object"}},"meta":{"type":"object","properties":{"page":{"type":"number","description":"Current page number","example":1},"limit":{"type":"number","description":"Maximum number of items per page","example":20},"total":{"type":"number","description":"Total number of items across all pages","example":123},"pageCount":{"type":"number","description":"Total number of pages","example":7},"hasPreviousPage":{"type":"boolean","description":"Whether there is a previous page available","example":false},"hasNextPage":{"type":"boolean","description":"Whether there is a next page available","example":true}},"required":["page","limit","total","pageCount","hasPreviousPage","hasNextPage"],"title":"PageMeta_2"}},"required":["data","meta"],"title":"Page_2"},{"properties":{"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"Unique identifier of the user.","example":"4a3d6dd3-6694-a41b-9abc-a46fa810a298"},"email":{"type":"string","description":"Email address of the user.","example":"jane.doe@example.com"},"name":{"type":"object","description":"Display name of the user. May be empty if not set.","example":"Jane Doe","nullable":true}},"required":["id","email","name"],"title":"PartnerOrganizationUser"}}}}]}}}},"401":{"description":"Unauthorized - Invalid or missing authentication token"},"403":{"description":"Forbidden - Organization does not belong to the partner"},"422":{"description":"Unprocessable Entity - Invalid organization ID format"}}}
+>
+  
+</StatusCodes>
+
+
+      
