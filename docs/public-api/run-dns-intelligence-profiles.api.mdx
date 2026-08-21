@@ -1,0 +1,72 @@
+---
+id: run-dns-intelligence-profiles
+title: "Run a batch of profile operations against a domain"
+description: "Issues a single NATS request running every operation in `profiles` against `domain` under one deadline, and returns one result per operation. Answers are observations with typed evidence — there is no verdict and no score. Per-operation worker errors are returned as data; only transport, protocol, and whole-request failures map to non-2xx."
+sidebar_label: "Run a batch of profile operations against a domain"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Run a batch of profile operations against a domain"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/dns-intelligence/profiles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Issues a single NATS request running every operation in `profiles` against `domain` under one deadline, and returns one result per operation. Answers are observations with typed evidence — there is no verdict and no score. Per-operation worker errors are returned as data; only transport, protocol, and whole-request failures map to non-2xx.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"region":{"type":"string","description":"Worker region tag. Absent ⇒ global routing (the default for nearly every call).","example":"local"},"timeoutMs":{"type":"number","description":"Per-call timeout in ms. Wins over the service default (10s).","example":5000},"tenantId":{"type":"string","description":"Tenant identifier propagated to the worker as `tenant_id`."},"traceparent":{"type":"string","description":"W3C `traceparent` header pass-through."},"tracestate":{"type":"string","description":"W3C `tracestate` header pass-through."},"requestId":{"type":"string","description":"Optional client-supplied request id. Auto-generated UUID v4 when absent."},"correlationId":{"type":"string","description":"Payload-level correlation id, distinct from the `request_id` header."},"idempotencyKey":{"type":"string","description":"Header `idempotency_key`. Pass a stable value to dedupe retries upstream."},"domain":{"type":"string","example":"easydmarc.com"},"profiles":{"description":"One or more profile operations to run against the domain in a single batched worker request. Batching is what makes a multi-operation profile cheap — operations reading the same record share one DNS query through request-scoped dedup. A per-domain deadline applies to the whole batch (see `timeoutMs`).","type":"array","items":{"type":"object","properties":{"profile":{"type":"string","description":"Profile operation wire name from `GET /dns-intelligence/profiles`, e.g. `dns_provider`. Snake_case, exactly as the worker’s registry knows it — profile operations have no camelCase aliases.","example":"dns_provider"},"params":{"description":"Per-operation parameters. Omit unless the operation’s mechanism takes input; vendor categories accept `{ vendor: { maxDkimSelectors } }`.","allOf":[{"type":"object","properties":{"vendor":{"type":"object","properties":{"maxDkimSelectors":{"type":"number","description":"Cap on DKIM selectors probed for this request. 0 (or omitted) means the worker’s configured default set.","example":12}},"title":"VendorProfileParams"}},"title":"ProfileParams"}]}},"required":["profile"],"title":"ProfileSpec"}}},"required":["domain","profiles"],"title":"RunProfilesRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"correlationId":{"type":"string","description":"Correlation id echoed from the request (batch-level)."},"results":{"description":"One entry per requested operation. A per-operation failure is an `error` entry, not a non-2xx response, so one unknown operation does not discard the answers that succeeded.","type":"array","items":{"type":"object","properties":{"profile":{"type":"string","description":"Wire-format operation name (snake_case). A plain string rather than an enum: operation names live in the worker’s registry, and a worker newer than this API can return operations it has never heard of."},"status":{"type":"string","enum":["ok","error"],"description":"`ok` ⇒ `reply` is set; `error` ⇒ `error` is set."},"reply":{"type":"object","properties":{"profileName":{"type":"string","description":"Wire-format operation name (snake_case), echoing the spec."},"profileLogicVersion":{"type":"string"},"queriedAt":{"type":"string","format":"date-time"},"region":{"type":"string"},"elapsedMs":{"type":"number","description":"Worker-reported elapsed milliseconds."},"detections":{"description":"What the domain was observed to use. Empty is a valid answer, not an error — interpret it through `completeness`.","type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"confidence":{"type":"string","enum":["unspecified","possible","probable","confirmed"]},"matchedOn":{"type":"object","properties":{"scope":{"type":"string","enum":["unspecified","ns_suffix","mx_suffix","spf_include","dkim_selector","dmarc_rua","apex_cname","txt_token","asn","html","dmarc_cname","www_cname"]},"pattern":{"type":"string"},"observedValue":{"type":"string"}},"required":["scope","pattern","observedValue"],"title":"MatchSource"},"competitor":{"type":"boolean"}},"required":["id","confidence","competitor"],"title":"Detection"}},"notes":{"description":"Structured worker notes.","type":"array","items":{"type":"object","properties":{"severity":{"type":"string","enum":["unspecified","info","warn","error"],"description":"Note severity — info / warn / error."},"text":{"type":"string","description":"Human-readable note text."}},"required":["severity","text"],"title":"Note"}},"completeness":{"type":"object","properties":{"kind":{"type":"string","enum":["unspecified","full","partial"]},"missingInputs":{"type":"array","items":{"type":"string"}}},"required":["kind","missingInputs"],"title":"Completeness"},"observation":{"description":"What the matcher actually read, so a disputed detection is reproducible without re-querying. Exactly one arm is set, matching the operation’s mechanism.","allOf":[{"type":"object","properties":{"vendor":{"type":"object","properties":{"nsSuffixes":{"type":"array","items":{"type":"string"}},"mxExchanges":{"type":"array","items":{"type":"string"}},"spfIncludes":{"type":"array","items":{"type":"string"}},"dkimSelectorsFound":{"type":"array","items":{"type":"string"}},"dmarcRua":{"type":"array","items":{"type":"string"}},"apexCname":{"type":"string"},"txtTokens":{"type":"array","items":{"type":"string"}},"asns":{"type":"array","items":{"type":"number"}},"dmarcCname":{"type":"string"},"wwwCname":{"type":"string"}},"required":["nsSuffixes","mxExchanges","spfIncludes","dkimSelectorsFound","dmarcRua","apexCname","txtTokens","asns","dmarcCname","wwwCname"],"title":"VendorObservation"},"techStack":{"type":"object","properties":{"fetchedUrl":{"type":"string"},"status":{"type":"number"},"bytesRead":{"type":"number"},"truncated":{"type":"boolean"},"contentType":{"type":"string"},"categories":{"type":"array","items":{"type":"object","properties":{"detectionId":{"type":"string"},"category":{"type":"string","enum":["unspecified","cms","analytics","ecommerce","framework","hosting","advertising","chat"]}},"required":["detectionId","category"],"title":"TechDetectionCategory"}}},"required":["fetchedUrl","status","bytesRead","truncated","contentType","categories"],"title":"TechStackObservation"},"leadIntel":{"type":"object","properties":{"fetchedUrl":{"type":"string"},"status":{"type":"number"},"bytesRead":{"type":"number"},"truncated":{"type":"boolean"},"contentType":{"type":"string"},"contactEmails":{"type":"array","items":{"type":"string"}},"socialProfiles":{"type":"array","items":{"type":"object","properties":{"platform":{"type":"string","enum":["unspecified","linkedin","facebook","x","instagram","youtube","tiktok","pinterest","github"]},"url":{"type":"string"}},"required":["platform","url"],"title":"SocialProfile"}},"careersLink":{"type":"boolean"},"ecommerce":{"type":"boolean"},"adPlatforms":{"type":"array","items":{"type":"string"}}},"required":["fetchedUrl","status","bytesRead","truncated","contentType","contactEmails","socialProfiles","careersLink","ecommerce","adPlatforms"],"title":"LeadIntelObservation"}},"title":"ProfileObservation"}]}},"required":["profileName","profileLogicVersion","region","elapsedMs","detections","notes"],"title":"ProfileReply"},"error":{"type":"object","properties":{"code":{"type":"string","description":"Worker error code, e.g. INVALID_INPUT, UNKNOWN_CHECK, VERSION_MISMATCH, TIMEOUT, INTERNAL."},"message":{"type":"string","description":"Worker-supplied error message."},"traceId":{"type":"string","description":"Worker-side trace id for correlating logs."}},"required":["code","message","traceId"],"title":"WorkerError"}},"required":["profile","status"],"title":"ProfileResult"}}},"required":["correlationId","results"],"title":"RunProfilesResponse"}}}},"422":{"description":"Request validation failed."},"502":{"description":"Whole-request worker error or protocol decode failure."},"503":{"description":"NATS unreachable or no worker subscribed."},"504":{"description":"Request or worker deadline exceeded."}}}
+>
+  
+</StatusCodes>
+
+
+      

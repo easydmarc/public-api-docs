@@ -390,6 +390,54 @@ const sidebar: SidebarsConfig = {
               label: "Validate BIMI record",
               className: "api-method post",
             },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-tls-rpt",
+              label: "DNS lookup for TLS-RPT record",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-tls-rpt-cname",
+              label: "CNAME lookup for TLS-RPT record",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/generate-tls-rpt-record",
+              label: "Generate TLS-RPT record",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-mta-sts",
+              label: "MTA-STS lookup",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-mta-sts-cname",
+              label: "CNAME lookup for MTA-STS record",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-mta-sts-policy-cname",
+              label: "CNAME lookup for MTA-STS policy host",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/dns-lookup-for-mta-sts-mx-records",
+              label: "MX records for MTA-STS",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/generate-mta-sts-record",
+              label: "Generate MTA-STS record and policy file",
+              className: "api-method post",
+            },
           ],
         },
         {
@@ -490,6 +538,18 @@ const sidebar: SidebarsConfig = {
               type: "doc",
               id: "public-api/run-dns-intelligence-checks",
               label: "Run a batch of DNS Intelligence checks against a domain",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
+              id: "public-api/list-dns-intelligence-profiles",
+              label: "List available DNS Intelligence profile operations",
+              className: "api-method get",
+            },
+            {
+              type: "doc",
+              id: "public-api/run-dns-intelligence-profiles",
+              label: "Run a batch of profile operations against a domain",
               className: "api-method post",
             },
             {
@@ -628,6 +688,12 @@ const sidebar: SidebarsConfig = {
             },
             {
               type: "doc",
+              id: "public-api/bulk-list-subscriptions",
+              label: "List subscriptions for multiple organizations",
+              className: "api-method post",
+            },
+            {
+              type: "doc",
               id: "public-api/cancel-subscription",
               label: "Cancel a subscription",
               className: "api-method post",
@@ -756,6 +822,24 @@ const sidebar: SidebarsConfig = {
               type: "doc",
               id: "public-api/list-organization-users",
               label: "List users of an organization",
+              className: "api-method get",
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Partner - Profile",
+          link: {
+            type: "doc",
+            id: "public-api/easydmarc-api",
+          },
+          collapsible: true,
+          collapsed: true,
+          items: [
+            {
+              type: "doc",
+              id: "public-api/get-current-partner",
+              label: "Get the current partner",
               className: "api-method get",
             },
           ],

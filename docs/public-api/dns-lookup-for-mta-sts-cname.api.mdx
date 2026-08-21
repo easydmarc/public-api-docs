@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-mta-sts-cname
+title: "CNAME lookup for MTA-STS record"
+description: "Resolve the _mta-sts CNAME record for a domain and validate its target"
+sidebar_label: "CNAME lookup for MTA-STS record"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/ivE7UsLyJFidBugb26SFtmatLDTDZhhBGfqbLGRSJWkHHuG/vtwlPyeJhtQ7FPzxQp17/fo+NwaTEUWvTL6OoMUMu0+GPNQV++MvfE48u5CY0kQQUZOWlWxJKQwJGeKBQmfk7gvPfacd+LidnBzJSxJYzMxM1agyEyJSgvUmVhgoTL0JJR3wqOdk4cIKrRYkifrIB2vIThLocTlYE43DiKw9LVWljJIZ1g4ikCx/6812dVJVHc5iRKXqqxLgXMSZhYClChzEkqLUhWFciSNzpwYJ5PejLzMRaZdJMa980lvZk3ZikMETuZUIqRroCWWVUGQ/pwkSQR+VXGQui6nZKFpom3cbboHUXtbHwf9hOHN05k0JWw9OG+VnkPTTNiiq4x25FivnyT8c5g9RCCN9qQ9v8OqKpQMnY2/OBZY7znuHJjpF5KhDZZx4FVr3uLjnlAXRQS6LgqccricVBNt1NP10asIsCg+zkJHn/e0IOtUG9yxt11tRnejxTk0EajsecF+0v8l+fU8Oe8nSZL8xa3Z68R46y1YmkTglQ96LdIvtRsG7P6BRU3QTJoIyFpj3Z5XtBa5h8pT6V6u5AOtngr5sHG/02oD1ZKcwzkdZHVzPRpd376/v7wd3Q+vLj4OL7kWG8kXrV9rT7YyBXrKRF6XqHuWMONubd01EaCdP5nPobGBndclae9E7SgT3gi1M3+UAWaZYjUsPh3U5BjcUff1vJTIB5qjXAlaSgpHQhbonGBl8epRWRIVWuVX4lH5XEhTlkb3HNmFkuReQ8ACn5LO0H8DdMdTbl9eGC1y88hJz9QyJGupMpbrWlkzLag8QRz3f9errsonyLvZtKGJ4BGtVnr+A3M/MPc/Ye5InYf/dvDt4fHEQmAGw+5aYjtNBG+eupjeYiaG9LUm57kib/r9U5nPurJGckyMkSvtlV+FzDwyRsZweTsSLTXhSBzJmuserpgpoSUL6XjCF2VJPjfMZTYEw+eQQrw4jzPtekUwEXeUJZYdu+GWbThIbQtIIfe+cmkcY6X6Z4RulZVoZbifm70ARnylthh7G8IY1Oxv22U2c9Lj96SZdJFYmdoKlJy38OaBtKid0nOBtc9JeyVxQxfYVpdn1D28M7ZEDyn89ucd13X6jP//ZmPLFV7SiA7cMCPgyPv733R7EMGsMI+hTKpkYqJaklL73Fj1d8D654O61yj3yp7RIraEReni7WFcWeONNEVsKtIq60mjNUkfs9WQs6nazrTvOZr2IUzMmQpY3jxFQCUqjqD9jcDMZoXSdN/2h7UPDwLgj8vEZ0rPTChB97lcoVtd3gyGF2Lw6RqiHemB87PkLDmBx07+Uz0tlGQ1cWlkmILtGGmpHnbkqyWfWzWIjjB8BN8Ilr3CzEOMzwjGqpzHLHdWhTk1Rfkwt6bW2YUpjIUUfnoX/njGFP6Olv4gCi5FZZwvUe9F2S4J7WcYloSbu0FvdDfq9objYqx3nPb7LR0dNj0tfVwVzNibrmTrbl6MYXHOoWwnBk/U1iPXPuQyiSA3zrPwej1FR59t0TR83BJ9niWZCgNtt718M7nvu7s8mWEgBvu71SIQ3RSAV5h/H+qrYXddvBbPu9quQztHE/7HqnZXGDPFzgmzML075gIDyZftntbJKnMw5t9f8RzCw7F3NLT2NxHUqz3b63UrccfTt2lgE3qYxrwDNM0/j+Ey6w==
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CNAME lookup for MTA-STS record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/mta-sts/cname"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Resolve the _mta-sts CNAME record for a domain and validate its target
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"raw":{"type":"string","nullable":true},"object":{"nullable":true,"allOf":[{"type":"object","properties":{"version":{"type":"string","example":"STSv1"},"id":{"type":"string","example":"20260710120000Z"}},"required":["version","id"],"title":"MtaStsDnsRecordValue"}]},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"name":{"type":"string","description":"Legacy exception class name (wire parity with common-services)"},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"MtaStsMessage"}},"warnings":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"name":{"type":"string","description":"Legacy exception class name (wire parity with common-services)"},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"MtaStsMessage"}}},"required":["raw","errors","warnings"],"title":"MtaStsCnameResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

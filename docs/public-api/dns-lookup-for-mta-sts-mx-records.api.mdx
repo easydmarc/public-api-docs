@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-mta-sts-mx-records
+title: "MX records for MTA-STS"
+description: "Resolve, normalize, and sort the MX records used for MTA-STS policy generation"
+sidebar_label: "MX records for MTA-STS"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu2zgQ/RVi9qUF6MgJui9+c5u0yG6TLewUu4BhFDQ1ltjwopJUYtfQvxdDybZsp8kWaF7MUHM5c+GZ2YCr0IuonL3OYQS5DR+du6+r987fRDGN4WY1Qel8HoBDjkF6VZE0jGCCwekH5Mw6b4RW35EzYXMWnI8slshu/mO+1WV1wJwtnWc3d+PB9G7KKqeVXLMCbeceOFTCC4MRfYDRbANWGIQRGLEaF3hD/j1+q5XHHEZLoQNyUITjW41+fYLurkRmxEqZ2jBRIHPLhEkKWSJTlhmltQoonc0Dmw3ngyVGWbLcBs5mg/P5YOmdacWBQ5AlGgGjDeBKmEojjP4cDocc4roikLY2C/TQNHyHO3dGKHuAOvr6GPQThrenM+kM7DyE6JUtoGnmZDFUzgYMpHcxHNLPYfTAQTob0Ub6JqpKK5nSnH0NJLDpOe4cuMVXlJHK4KknomrNdxU8dXG7rXrOXmn3iF6KgDln0QullS0GuYsDQl1VmL/edQbmvb7Yhye8F5QPFdGEl1GVLsSeVJcc/pMkNvRBlsIW+LySEUqfHWlWXjmv4rqn2VW7p3k+bJp+pWctwp7fnqE5h6hicnj4xq4jGuohQO+d76fhF9Nzj+unAj0s4N+43r4KgyGIBHKfi5vr6fT69sOXy9vpl8nVu38ml5SNreSL1q9tRF85LajiZW2EHXgUuVjovbuGg/DFk/EcGhv7ojZoY0ck0TG1N38UgchzRWpCfzrIyfE74t1DfSmQj1gIuWa4kpiumNQiBEbK7NWj8sgqQWVljyqWTDpjnB0E9A9KYngNqS3oFm3eEt2LHicH8sxZVrpHCnqpVilYj1X7kirvFrrrmX7zUf33teqyfNp22zIcq+9fZ9eIP+3YMOmoiIw0HN48RUZvRc4m+K3GECkdby4uTmU+28o7SYCoQa5spIdCFqOgBpnB5e2UtaOJ0ASUdfsoZxtYoPDoYTSbEzkajKWjWVZgehgiljCC7OE8y20Y6GQiM1EMQgyZWQ32wVLRtsOn9hpGUMZYhVGWiUpdnKEI69wIL1tm6KGYEpe2XfY2YRnX5HRXZzJzUuUP7ehDtna1Z0JS8Cy6e7SsDsoWTNSxRBuVFNs5Qba6YHl3eE8sHGEEf/17R8ldPOP/12zshsRLGvzATcPBEfKL/qtuLzgstXtMaVKGJpJqp1MdS+fV99Ttnw/yXgvZS3uOD5lHoU3IdpdZ5V100unMVWhVPpDOWpQxI6spZle1lWm/E5r2kDhzqVJTb08ckEYAjY/0y8Etl1pZ/NLWh7QPL1LXH6eJ7pRdupSC7t1cibC+vBlP3rHxp2vgQJ3WNsL52fBseNIee/lP9UIrSWrs0snEg9uNiWa8kCmL3daxUwN+1MNH7cthNdCuSBifEcyUKTKSO6sSUy2EvC+8q23+zmnnYQR/vE9/xDI63uEqHqCgVFQuRCNsD2VvM+wthcc52Ox3mN+/bHatGXEVs0rTptZ0Gdt0nDGDh3OCtGMNotSWN+i0Z4457/aRGWw2CxHws9dNQ9ftlkd8kqvEbPvV9aeR/t7F9ckw03rQX6wfhK5JDGh//f9QX026ofGaPe9qtwvvHc3pH6/IU2JuDiWKPNF4t7/AWNLI7Wmd7LEHfP/hirhIHFLfEXEl69udyq57tjebVuKOGLhpYAs9MTI086ZpfgBInIfn
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MX records for MTA-STS"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/mta-sts/mx-records"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Resolve, normalize, and sort the MX records used for MTA-STS policy generation
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"records":{"description":"Normalized (lowercased, trailing-dot-stripped) and sorted MX records","type":"array","items":{"type":"object","properties":{"host":{"type":"string","example":"example.com"},"exchange":{"type":"string","example":"mail.example.com"},"priority":{"type":"number","example":10}},"required":["host","exchange","priority"],"title":"MtaStsMxRecordItem"}},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"name":{"type":"string","description":"Legacy exception class name (wire parity with common-services)"},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"MtaStsMessage"}}},"required":["records","errors"],"title":"MtaStsMxRecordsResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

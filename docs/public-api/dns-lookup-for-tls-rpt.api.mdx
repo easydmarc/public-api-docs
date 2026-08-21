@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-tls-rpt
+title: "DNS lookup for TLS-RPT record"
+description: "Resolve and validate the _smtp._tls TXT record for a domain"
+sidebar_label: "DNS lookup for TLS-RPT record"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu20YQ/ZXF9CUBKEs20hf1pU7sBG5t15CUtoAgGCNyJG68F2Z3qUsF/nsxS0qiJF9atH4RvZydy5nDM7MBW5DDIK25yaAPmfG31j6VxWfrRsoPigAJZORTJws2gj4MyFu1IIEmEwtUMsNAIuQkHr0OxdljUF6M/hwJR6l1mZhZJ1BkVqM0kECBDjUFch764w0Y1AR90Li6nNOdhwQcfS+lowz6M1SeEpAc9HtJbn2SyignoXEldakFzknYWUwkxTQnIY3QUinpKbUm82Lcm3RmFNJcZMYnYtw5n3RmzuraHBLwaU4aob8BWqEuFEH/x16vl0BYF5ykKfWUHFRVsst7V9Y+6+DK46Sfcbx9Okuthl0EH5w0c6iqCXv0hTWePN+76PX457B6SCC1JpAJ/A6LQsk0drL7zbPBphW4CWCn3yjllhaO+x5k7b4u4z7WtDlKJnkh6SoBh8vn7I/ogsstFRaoSkqEdcKUSollTkYYu327RC9mtjQZJMDvccoxGc4q2SZ+gsEDOk/ZQYCfXvfO4Zkkzbn0QppI45OwCaBSv80iT1/Hb0HOyxryE/BMqaE/htHtcPAwWpzDpA3o7pTRLPEyyxz5puc7qzFolCrYvqPCuuB/brdhsiMPOofMNhlI+9NUqqpq03S8S/ooMjuUoc4uCsCV8YOI1e+MLlSTKgFyzrp2kJeCvwDYE63fZs6vtN5+0Zq8xzkdkPHuZji8uf/yeHU/fBxcf/ptcMUobi3f9H5jArnCKgyUibzUaDqOMOP278JVCaCbP1vPobNLNy81meBFyXQMVsi9+6MKMMskX0P1cIDJcbuSRmTeKuSW5piuBa1SikciVei94Mvi3VI6EgU6GdZiKUMuUqu1NR1PbiFT8u8j84hPyWQYXmDx8QRo2wtrRG6XXPRMrppvi4lKmSicnSrScMw97v++Vw3KJ8y727bh+HpLr2oVSvaNaah54qwea4NGVdlnlcCH53T1I2ZiQN9L8oHR+XBxcWrz1RTOppwf8+XaBBnWscqAzJcxXN0PRR2SU/GUltyDqCVTQkcO+uMJ67ymkFsevXOK3wmGHPrQXZx3M+M7KrroBuU7Ls5ibtx2eJZOQR/yEArf73axkBdnhH6daXRprdGt0EOeBTXTPsYELkuOtOs1uznp9BcyvB2QWNvSCUy5YhHsExlRemnmAsuQkwkyxe2cY19NhUnz8Nk6jQH68MsfI0Z0+kr8f+djN+TeupEchOGBwplftL/s+iCBmbLLCJPUPFFlPV3LkFsn/4qM/3qAe4lpC/aMFl1HqLTv7g67hbPBplZ1bUFGZp3UGkNp6LLXWLMt6s7U7zmb+iHq5kxGGm+fEiCeBzyO428CdjZT0tBj3R++fXgQqX4ME59JM7MRguZLuUa/vrq7HHwSlw83kOznGpyf9c56J/TY2z+UUyVTviaubBq1sBaTekfBenY3W9PuGiRHHD6ibwKrjrLzmOMrhl2p5122OyuiWk0xfZo7HvafrLIO+vDD5/jHSqPCiFbhIAuGorA+aDStLPkLrj+/uMOOboedwcN2rT2GYrNfxf7jgtzQMdAqdAvFZ1WD0qYRhzEszjn+Th74ViMQkwRy6wMbbTZT9PTVqari43oZZdnIZFSt/Yb9YiX/7379bGVxE2jv/3GH4+2W1+x/nuq7QTMf3ovXQ+2A3gea8D9O1pvfmPebnDCLEt2sKnCZ8nRt3TpZtw+0/Ms1Sw4eKtyRPrX3SjTrlu/NprYYsdBWFWxTj8LLC1hV/Q2iP7ds
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for TLS-RPT record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/tls-rpt"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Resolve and validate the _smtp._tls TXT record for a domain
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domainName":{"type":"string","example":"example.com"},"raw":{"type":"string","description":"Raw record value, or null when no record was found","nullable":true},"object":{"description":"Parsed record value; null when no record was found or the record is invalid","nullable":true,"allOf":[{"type":"object","properties":{"version":{"type":"string","enum":["TLSRPTv1"],"example":"TLSRPTv1"},"ruaAddresses":{"example":["mailto:reports@example.com"],"type":"array","items":{"type":"string"}}},"required":["version","ruaAddresses"],"title":"TlsRptDnsRecordValue"}]},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"name":{"type":"string","description":"Legacy exception class name (wire parity with common-services)"},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"TlsRptMessage"}}},"required":["domainName","raw","object","errors"],"title":"TlsRptLookupResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

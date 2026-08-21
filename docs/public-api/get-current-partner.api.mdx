@@ -1,0 +1,72 @@
+---
+id: get-current-partner
+title: "Get the current partner"
+description: "Returns the partner the credentials belong to, including its billing-management type. Use this to discover whether the partner manages customer plans itself (RESELLER) or may only provision Trial (0 cost) plans (STANDARD) — this endpoint is the source of truth for that flag."
+sidebar_label: "Get the current partner"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1u4zYQfhViekkAxUrSntSTN8kGKbZtkDjtIQgCmhpL3FCkQo68cQ0D+xC99PX2SYoh5f/dNAV6rC+mqPn5+M3MR82hxKC8bkk7CwXcIHXeBkE1ilZ6sujjWnks0ZKWJogxGmcrQS4T2irTldpWQlMQY22MttVRI62ssEFLgmYtDsRdQEG1DoKcKHVQbopefKqR6j78MlXyDEJ1gVyDXrRG2sDB0UzEwc3F7cWHDxc3h8Kx7Uw4a2ai9W6qg3ZWjLyWRhwcC+UCHfbOB7ej4S/nw5vzQ/Hl858JB9qyddqS0OmowXVeoXATQb6jWkwc45IkJkZWA8jAteglc3RVQgEV0lnnPVq6TsAhg1Z62SChD1DcP2TgMbTOBgxQzOH0+Jj/trkevYVjyEA5S2iJA8i2NVpFIPnHwFHmEFSNjeQVkw0FuPFHVMSQPMMmnTDocsMmkNe2guwrkDqrnzsUOmKZaPSRljVWyABfZNMajtPvPZ6cfg+LDKxs8G1ZSh1aI2eCPV5LMFQNiltUndc04xS90Shm2KX03X4HNq7cTTAQy0Za7oS+89hK+1X7hS+f/+q7iGpsApophh/FsqE2vd/Wi9KWEQjact3jXVt5WWIQ2ooLGWbnPw9vzgZbLHgMaEykRhrz6wSK+32S0XYNFPcQSNpS+hKytd9DBqQpxrreIHDxsFiw1XOnPZbsrNktlnGb6v0A195NtMHfTmGx4Cg/HJ/sF+TOyo5q5/UfWIojcWWn0ugyjq8OgYWD33Onpa4W5J7QAscLy6LzWR2bnfJkLbI5jFF69PGJccmKZ26JSxyJHhqDbpBq189sPBLVUEA+PcmXxcvjWQP6aZrdOXTeQAE1URuKPJetPh2gDLOykV4NlGuAsy7h3fL4pQl7F2ENO06xKg+H2ZuAS7SsJyhmrvNCKoUhpKOLbocVxhZTQLE8d9Yv3jvfSIICfvp9xKMxfiX/v4ux0pV/8si20iyyVaHWapQ2MpgY9ykJUcMippOg9d0Ri3+3xXsn1QbtJU5zj9I0IV9t5q135JQzuWvR6vJIOWtRUc5R45ldmyqT3jOatIjaGFukWK0ywEZqRpD+M3CTidEWH1N92Ht7I7b9Lk28p+3ERQr6iVlNtRheX0EG3GmpEU4Gx4PjvfZY2193Y6MVu4lzpzpWtEhVfy1IFVlMsrt2g2ynh3faN4OXI+OqiPEVw1w3Vc52gzYKzFiqp8q7zpZnzjgPBXz3Pv6iLNEIX2gLBVPRukCNtBsoL5HSdZdu0A3V3yJhvr73/v8q+cZXST9ihC+Ut0Zqy6WNBZ33SncP05O1kgdgQWRZrF0gfjufj2XAO28WC95+7tDP0vfLVHotx9y+rLlQoyyj5M7hCWfxYlbYsqROpekYxd63yWJTfi8vWCzktjattGEl76tX0s42YqexFf2oijigYmcasx5YnHrga+Krof47eUnp+IGF65sJV3K39Ki8tPRIy/t38Te92gFG
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get the current partner"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/partners/me"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the partner the credentials belong to, including its billing-management type. Use this to discover whether the partner manages customer plans itself (RESELLER) or may only provision Trial (0 cost) plans (STANDARD) — this endpoint is the source of truth for that flag.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"The partner the credentials belong to","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The unique identifier of the partner","example":"partner_123"},"name":{"type":"string","description":"The display name of the partner","example":"Acme Security"},"partnerType":{"description":"Billing-management mode of the partner. RESELLER partners manage their customers’ plans themselves; STANDARD partners may only provision Trial (0 cost) plans and the end customer upgrades in EasyDMARC.","example":"reseller","allOf":[{"type":"string","enum":["standard","reseller"],"title":"PartnerType"}]}},"required":["id","name","partnerType"],"title":"PartnerProfileV2"}}}},"401":{"description":"Unauthorized - Invalid or missing authentication token"}}}
+>
+  
+</StatusCodes>
+
+
+      

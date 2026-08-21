@@ -1,0 +1,72 @@
+---
+id: list-dns-intelligence-profiles
+title: "List available DNS Intelligence profile operations"
+description: "Returns the wire-format (snake_case) names of every profile operation the worker registry serves. Use them as `profiles[].profile` in `POST /dns-intelligence/profiles`. Unlike checks there are no camelCase aliases — profile operations are named only by the worker."
+sidebar_label: "List available DNS Intelligence profile operations"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVc1u4zYQfhViemkBxkpy1C1Ndhcp+hNsEvQQGJsJPZZZU6TKobxRBQF9iD5hn6QYSnFkZ9ui9+oiajQ/H78ZfuwhNBQx2eCvV1CCs5yuPF/7RM7ZiryhmxjW1hGDhhWxibYRbyjhI6U2elZpQ+qzjXSyDrHGpL5mj1v6ZJDpG+WxJlZhrWhHsVPNmEztq47RIW4pqkiV5RQ7xRR3xAt1zyT/a4WsHqdQflgupuWjsl493vx0e6eKlecTO0NdvLg/LtS9d3ZLymzIbDPcSAojKR+UwZrcJTIpdBaZWP35+x9vUfLojzWtVPCuU0/dDPgCNDQYsaZEkaF8WGqIxE3wTAxlD+enp/I6pA80mOAT+ST/sGmcNblY8QuLQw9sNlSjrFLXEJSAMWIHGmyimmd2TtH6Cob8aEhYCQq4+vFWzTsJSw1Mpo02dVA+9PBEGCkK4GGpoaa0CTIEFaW8o7SBEordWSbXhbBtm7/nGSR33I0E9NBGByVsUmq4LAps7PmCkLtVjdEsTKhhmIG5lY2OVH2bIV20Unu/P0nzZvw+kJfukOpCGxUaQ8wqhS151bL1lcI2bcgna1Cw5RJQvuxZT4v3eWahhO9+voPhxfrl+v8tx76D/xahD8oMGoIgP5/Vnwwa1i58zjTZWsbFjqPTpk2I9rc8PPcHvLdoZrSvaFdEQldzsTdK/1IwwRWhIW9XJyZ4TyYVkjXvOTRjZ8b/gmZcaJhaD+V+pYFqtIJgfGsI67Wznj6N/ZHoQ0Me2GOaxGb9OmQKbMol3iF3Vz9cfLxUFzfXoEEmbRyEs8Xp4vTNeLz637RPzhoJU1fBtDX5lKmaDiCazKIc7nkY6KMZPhpfDc8nLlQZ4z84FrauCvFbNL6S/qPZVjG0fnUZXIhQwlfv8wMa0KU7ek4HKISKJnCq0c9Qfm85KdyhdfjkSB0f9C8I2DE//av4/C/kcyGfjlyi51Q0Dq2XVucG95MkPsDuTOjci+L0MUf9ejpYVHcTOElg3z8h0310wyDmX1uK3Xhf7DBa6WUWYw0bwlVW5h621EEJF8ZQI7K8Q9fmu+D4wjiQ8A/vRFfwUMaORChnf7lZfDfL3fejx52o6TCAnkBkdYVhOQzDXw5038g=
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List available DNS Intelligence profile operations"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/dns-intelligence/profiles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the wire-format (snake_case) names of every profile operation the worker registry serves. Use them as `profiles[].profile` in `POST /dns-intelligence/profiles`. Unlike checks there are no camelCase aliases — profile operations are named only by the worker.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

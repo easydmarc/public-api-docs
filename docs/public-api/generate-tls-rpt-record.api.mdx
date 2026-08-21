@@ -1,0 +1,72 @@
+---
+id: generate-tls-rpt-record
+title: "Generate TLS-RPT record"
+description: "Generate a TLS-RPT TXT record for a domain and RUA list"
+sidebar_label: "Generate TLS-RPT record"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV21v2zYQ/ivE7csGyJETdF9UFJibpEW2JA1sZytgBAFNnW02IqmSlGPX0H8fjpRsy3kpgi1fLMv3fs89d9mAKdFyL42+yCGDOWr6iuPCDUs/RGFsDgnk6ISVJYlBBp8bIcbZ+HLUG96M2fjrmNkgzWbGMs5yo7jUjOucDW8HrJDOQwIlt1yhR+sgm9wlYPF7hc5/NPkask34Ki3mkHlbYQLCaI/a00+8LAspQqDpN0dhbMCJBSpOT35dImRgpt9QBD+W0vISHf2q+Gowxyu3J6krNUULCeCKq7JAyH7v9/uHiY4XyBRfSVUpxufIzIz5BTLBxQKZ1EzJopAOhdG5Y5P+XW+GXixYrl3CJr3ju97MGhXFoU4g1mQvCuet1PP9KNqnI2EUqdiKD/LconMxla3gBBSXhTeZxdJY7/7YV7xLWg/cWr6GBKRH5Z56rus62av6pA3xwDHZkz7EF4HRImAY+0d2giFXGt1EetLv00e3oPC/9TQGes0Vvq2eAaMvqemqKPiU9CL+dmbunfLl0b0v3NGzFsfB0lssjr+Od+p/86J6o/7yw/hyNLwZL4/fM1vxDy/D4T35QWuN3UfAS8h4od4PuH4uvm57/8J1OyMKneNz7PTi6mI0urj+fH92Pbofnp9+GZ5RZK3kT61faI+2NAX3mLNFpbjuWeQ5lWfrrk6A2/mz+XSNDey8Uqi9Y5XDnHnD5M78QQY8zyWp8eKmU5PDWUpAvwCsru9LnHOxZrgSGF4xUXDnGCmzXx+lRVZyK/2aPUq/YMIoZXTPoV1Kge63FjVKoc55NPkzj8OOPDOaLcwjJT2Tq5BshA3mrLRmWqCCQ2Kg/u961VT5CS9ctW14nlfC3HWGsDM/3WnYYvYV9ol809DPu+cY5yPP2ZalEnh3cvJU5laX1ggKnaB0rr3061AAzwlKEzi7HrFLYx6qkoJxKCpqD2STDUyRW7S0zeo7qo9fGNqjpWn2nV9ABunyOM216xXBRuoL17OlT9tlC2TTLuNW3EBlC8hg4X3psjTlpTw5Qu7WueJWRNbZC2JEfBnh+DGEMqjI5RYQZOblBb42lWVcUO7MmwfUrHJSzxmv/AK1l4JTbMEFZG2uSfPwyVjFPWTw5z+Byqav+H+bje0i+JlG0nFTJ2Ao8pP98Y8vEpgV5jGUSSraOjJuoMovjJU/wljcdupecbFX9hyXqUVeKJduX6alNd4IU6SmRC3znjBao/ApWQ05mzJ2Jv5O0cSHQK4zGSDdPiWAROG0ssJnAmY2K6TG+9gf0u6+CKA/LBO9o1063F1W5y0B719CzbnTXCSdNXl4dbx+atQJSD0zoeTNlJ5ztz67GgxP2eDmAhIgZEfgHR/1j/pP4LiTv6mmhRSkxs6MCAQdGS7eDVyErkWW3alBcjAzB+OSwKpXmHmI8RXBVKp5SnJHZaDQKRcPc2sqnZ+awljI4JdP4Y/or/BjXPlOFFR6mnvF9V6U21lrT2X77FG92R1G/+G+bkDvceXTsqDW1k1tNg0XTWB5TL63bERakY8g2Z7/RHMLorBsApvNlDu8tUVd0+vvFdp1vN6X3Mp4nEwIBgvkeaDC5lqA05hRryH3ZTxynp59ddJqDAStxFdl91n25suIOGDa/PugTE46lj8ShvljPDhNqHCYw/BuAwXX8yqcHBBtUud4l7cOWCdk1V5Oer0X4WYTJcZEn3UNSZNKoFOo7+q6/hfNb54P
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate TLS-RPT record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/tls-rpt/generate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generate a TLS-RPT TXT record for a domain and RUA list
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domain":{"type":"string","example":"example.com"},"ruaAddresses":{"example":["mailto:reports@example.com"],"type":"array","items":{"type":"string"}}},"required":["domain","ruaAddresses"],"title":"TlsRptGenerateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domainName":{"type":"string","example":"example.com"},"recordName":{"type":"string","nullable":true,"example":"_smtp._tls.example.com"},"recordType":{"type":"string","nullable":true,"example":"TXT"},"recordValue":{"type":"string","nullable":true,"example":"v=TLSRPTv1; rua=mailto:reports@example.com;"},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"name":{"type":"string","description":"Legacy exception class name (wire parity with common-services)"},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"TlsRptMessage"}}},"required":["domainName","recordName","recordType","recordValue","errors"],"title":"TlsRptGenerateResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      
