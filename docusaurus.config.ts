@@ -1,7 +1,7 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
+import type { APIOptions } from "docusaurus-plugin-openapi-docs/lib/types";
 import { myCustomApiMdGenerator } from "./customMdGenerators";
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -85,7 +85,7 @@ const config: Config = {
               sidebarCollapsible: true,
             },
             // markdownGenerators: { createApiPageMD: myCustomApiMdGenerator },
-          } satisfies OpenApiPlugin.Options,
+          } satisfies Partial<APIOptions>,
         }
       },
     ]
