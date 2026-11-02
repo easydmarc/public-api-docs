@@ -10,6 +10,7 @@ import {createRequestHeader} from "docusaurus-plugin-openapi-docs/lib/markdown/c
 import {createStatusCodes} from "docusaurus-plugin-openapi-docs/lib/markdown/createStatusCodes";
 import {createVendorExtensions} from "docusaurus-plugin-openapi-docs/lib/markdown/createVendorExtensions";
 import {render} from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
+import type {ApiPageMetadata} from "docusaurus-plugin-openapi-docs/lib/types";
 
 function createServersTable(servers: any[]) {
     if (servers.length) {
@@ -66,7 +67,7 @@ export function myCustomApiMdGenerator(
         createRequestBodyDetails({
             title: "Body",
             body: requestBody,
-        } as RequestBodyProps),
+        } as Parameters<typeof createRequestBodyDetails>[0]),
         createStatusCodes({responses}),
         createCallbacks({callbacks}),
     ]);
