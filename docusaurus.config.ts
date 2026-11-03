@@ -91,8 +91,9 @@ const config: Config = {
     ]
   ],
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    // Social card (og:image / twitter:image), 1200x630 JPG: social scrapers
+    // do not reliably read AVIF/WebP.
+    image: 'img/easydmarc-social-card.jpg',
     navbar: {
       // title: 'EasyDMARC',
       logo: {
