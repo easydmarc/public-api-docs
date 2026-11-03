@@ -1,0 +1,72 @@
+---
+id: dns-lookup-for-aprf
+title: "DNS lookup for APRF record"
+description: "Resolve and validate the `<selector>._aprf._domainkey.<domain>` TXT record for a domain, or `_aprf._domainkey.<domain>` when no selector is given"
+sidebar_label: "DNS lookup for APRF record"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DNS lookup for APRF record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/dns-lookup/aprf"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Resolve and validate the `<selector>._aprf._domainkey.<domain>` TXT record for a domain, or `_aprf._domainkey.<domain>` when no selector is given
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"maxAgeMs","required":false,"in":"query","description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache","schema":{"example":5000,"type":"number"}},{"name":"domain","required":true,"in":"query","schema":{"example":"example.com","type":"string"}},{"name":"selector","required":false,"in":"query","description":"DKIM selector the record is anchored to; omit to look up the record covering every selector","schema":{"example":"selector1","type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domainName":{"type":"string","example":"example.com"},"selector":{"type":"string","example":"selector1","description":"Empty string when no selector was requested"},"recordName":{"type":"string","example":"selector1._aprf._domainkey.example.com"},"isWildcard":{"type":"boolean","example":false,"description":"True when the record found covers every selector rather than the requested one: either the bare `_aprf._domainkey.<domain>` form, which a selector-specific request falls back to, or a `*._aprf._domainkey.<domain>` DNS wildcard, whose content DNS returns for the selector-specific name itself. False when no record was found"},"status":{"type":"number","enum":[0,1,2,3],"description":"Aggregate status of the records at `recordName`: 0 = MISSING, 1 = INVALID, 2 = WARNING, 3 = VALID"},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"AprfMessage"}},"records":{"type":"array","items":{"type":"object","properties":{"raw":{"type":"string","description":"The record as published"},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"AprfMessage"}},"warnings":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"AprfMessage"}},"object":{"description":"Parsed record value; null whenever `errors` is not empty","nullable":true,"type":"object","allOf":[{"type":"object","properties":{"version":{"type":"string","enum":["APRFv1"],"example":"APRFv1"},"ruaAddresses":{"example":["reports@example.com"],"type":"array","items":{"type":"string"}},"sdi":{"nullable":true,"type":"object","allOf":[{"type":"object","properties":{"header":{"type":"string","example":"Signer-Info"},"separator":{"type":"string","example":"^"}},"required":["header","separator"],"title":"AprfSdi"}]}},"required":["version","ruaAddresses","sdi"],"title":"AprfRecordValue"}]}},"required":["raw","errors","warnings","object"],"title":"AprfRecordValidationResult"}}},"required":["domainName","selector","recordName","isWildcard","status","errors","records"],"title":"AprfLookupResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      

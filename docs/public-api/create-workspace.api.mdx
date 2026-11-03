@@ -1,0 +1,72 @@
+---
+id: create-workspace
+title: "Create a workspace"
+description: "Create a workspace under an organization. The id is minted by the server. Requires action__workspace__create on the organization. The name must be unique among the organization's workspaces (case-insensitive, trimmed): a clash is 409 `name_conflict`. An organization that is not migrated to the workspace model (or does not exist) is 409 `workspaces_not_available`."
+sidebar_label: "Create a workspace"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a workspace"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/workspaces"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a workspace under an organization. The id is minted by the server. Requires action__workspace__create on the organization. The name must be unique among the organization's workspaces (case-insensitive, trimmed): a clash is 409 `name_conflict`. An organization that is not migrated to the workspace model (or does not exist) is 409 `workspaces_not_available`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"description":"Create a workspace under an organization.","required":["organizationId","name"],"type":"object","properties":{"organizationId":{"description":"The owning organization's objectId.","type":"string","example":"org_68231dcfeb8e9f092a052b88"},"name":{"description":"Workspace name. Unique among the organization's workspaces, compared case-insensitively on the trimmed value.","type":"string","example":"EU Marketing"}},"title":"WorkspaceCreateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Workspace created","content":{"application/json":{"schema":{"description":"A workspace as the public API presents it.","type":"object","properties":{"id":{"description":"Workspace id (a UUID).","type":"string","example":"b2c1f9a4-1234-5678-90ab-cdef12345678"},"name":{"description":"Workspace name.","type":"string","example":"EU Marketing"},"organizationId":{"description":"The owning organization's objectId.","type":"string","example":"org_68231dcfeb8e9f092a052b88"},"createdAt":{"description":"Creation time, ISO-8601 UTC. Null for workspaces created before the timestamp was recorded (September 2026) unless backfilled.","type":"string","example":"2026-03-14T09:21:00Z","nullable":true},"memberCount":{"format":"int32","description":"Number of members whose role reaches this workspace, inherited organization and partner members included — so even a brand-new workspace counts the organization's admins. On the list it is present only when includeMemberCount=true; on single reads and write read-backs it is absent only when the read-back could not see the workspace.","type":"integer","example":12,"nullable":true}},"title":"WorkspaceResponse"}}}},"400":{"description":"Validation error (organizationId and name required)","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"401":{"description":"Missing/invalid bearer token","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"403":{"description":"Insufficient scope","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"409":{"description":"`name_conflict` — the name is already used in this organization; `workspaces_not_available` — the organization is not migrated, or does not exist","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

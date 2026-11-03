@@ -1,0 +1,72 @@
+---
+id: delete-workspace
+title: "Delete a workspace"
+description: "Delete a workspace and everything under it. Requires action__workspace__delete on the organization. The organization's last workspace cannot be deleted (409 `min_children`)."
+sidebar_label: "Delete a workspace"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWc1uGzcQfpXB9FAbWGltx5eol7qx3bhIWyNxkINhKCPuSEubS25IrmxVWKAP0SfskxSzu5L1Y9hN0EsB+eIVORx+M/z4kRjOMdIk4OAaPzl/F0pSHPAmwYyD8rqM2lkc4CkbjgwE9wsjIJsBT9nPYq7tBCqbsQcd+/Cev1TacwBSMno4XI4ZDrPWj7MQcwbnJ2T1HyRmfbjaaPk+gKEQV6ZUZK2LMGJo/WSwd3zwGj4X2g5Vrk3m2X7e72OCrmTfOLnIcICt9TI+TLAkTwVH9hL5HC0VjAPUGSaoJd6SYo6bSVg6gMbQt3FmOIi+4gSDyrkgHMwxzkpxF6LXdoJ1fSPGoXQ2cJD+o4Nj+fdUirMfwDoYuWyGdYLHB4fbhr/qELSdpNpOyegMRkyePUR3xxYTVM5GtlHGUVkarZo8pLdBBs9XUK57/Wj12PkC2HvnGwDgOVbecgZj54GMAets7+jhAZbBSKq7YN3ollWU1HpJftRtqCFSrJov8U5Rsmzjq6Ot5L69urqE1hqUy3jFtbaRJ+wxQX6gojSMg+OD4zrBBusTCSKVa8s9z5TRyHAX04bXbnVWnKJ1cTh2lc0k9wWHQBPedv+2KshuOu+sn/f/noOrvGIQFjcTDYTxvcOjVzKj77qFs5uT/t58kBm0G6dJ9kUG2k6dmcpG+M3Fc/GYvnF2bLSK6SV5tnHRvv88tDUYLa8/KFc+Ef46kiBGEHOKcE8BFmNhVEUoWqLC3rnzI51lbF8AsRAM7wwPh8ozRRZEGUfSJryIpWSlx1qBjlwEIFBdKkD2d0iA+5N+Y0lGlm/W03aqRUa4EP8iSwSiKGPvCmjnvxCTZgutsp28p5mIhcz0xJZfieoab8nyj6QK7itXYIK3LrePv2/qBI0udPwXm2QRbwLOmpngFbRU6qEymm0cNo7abBQuRDB6yrAndOsUc1+se611aLl0b2WRIluyEQqaQe5M9vz2OzyoE1SV953Q/Eewc3cPBdnZ18MWyAGsu38Rd51g1LGh20mpzxoFqeu6EdtX2wy7sKEaj7WSiVuy7yR2J7E7id1J7E5iv0Vin7j4Pl6rl3t2p7E7jd1p7E5jdxr7LRr7epth6yUS+PvPv7YKMFBUIcIdcwkUwbCUXpzlx/LLTpR3orwT5Z0o70T5a0W5TjCwqryOs6bc3FZsT6qY4+D6RsrDBcfcPZaqmwq19GI6PUyXChzSuc5qFG9+uqhdV97gAPMYyzBIUyr1UZ8pzLKCvOpIsZ6xd3rKKJMuMH0Q2W4l9acVZEviie8tLz+zlRI7w8xVHkgpDqGtQUPV7EyqYs42akXY1cbFVxs6Jt3H+WJxf/l0JcwePTP/1/lYnkcvjUjWpqkTdIL8aGX+riHBsXH3TZp0IYdfu62k0/nuEP24thgVqZW1yHiaeiZThHTZmJbeRaecSV3JVmc95axlFVPx2sTsynZl2n5B0340h+FYN2RbfCXYiA0Ouv8JuvHYaMvDdn1k9HpDy82NNEmbtmPXpKDj8xmF2emvJ+/fwMnlBSYo9GuJcNg/6B9s0ePR/rIaGa1kGJw6VRVsW8nrrhOkmix2LzDLYZhsEHud03WCDz3jJg3GZwxTXUxSseuXzXkwInU38XJmvXFGznf87rz5wwTJxCt+iGsoJBWlC7Egu4Jy+zVsM/7541Xpf/d21rE+8kNMS0PaSrabHM87VbrG6SEm+KhLmOBAZ/JsmLsQxWA+H1Hgj97UtTR/qdiL9t0kOCWv5XLTiFemg3xnOBiTCfxMFve61GT7sPEO9yTexVlq5SSdkqnkFyZ4x7P2oa+WszFnykQqruddx4lSXMaVIVvX3DW1Pj17d3Z1JtxZV6wNvWkmeBLRfN5aXIlw1vUSYPuYV9/Udf0PGVZH9Q==
+sidebar_class_name: "delete api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a workspace"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/workspaces/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a workspace and everything under it. Requires action__workspace__delete on the organization. The organization's last workspace cannot be deleted (409 `min_children`).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","description":"Workspace id","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Deleted; no body"},"401":{"description":"Missing/invalid bearer token","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"403":{"description":"Insufficient scope","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"404":{"description":"Workspace not found","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}},"409":{"description":"`min_children` — the organization must keep at least one workspace","content":{"application/json":{"schema":{"description":"Uniform error body returned for all non-2xx responses.","type":"object","properties":{"status":{"format":"int32","description":"HTTP status code.","type":"integer","example":404},"error":{"description":"Machine-readable error code.","type":"string","example":"not_found"},"message":{"description":"Human-readable error message.","type":"string","example":"Resource not found: org-123"},"resourceId":{"description":"Optional: the objectId involved (NotFound/Conflict/ParentNotFound).","type":"string","example":"org-123"},"requiredScope":{"description":"Optional: the scope that was required but missing (Forbidden).","type":"string","example":"action__role__create"},"details":{"description":"Optional: the specific items a conflict names, e.g. the already-invited emails on a 409 from createInvitations.","type":"array","items":{"type":"string"},"example":["jane@acme.com","john@acme.com"]},"limit":{"format":"int32","description":"Optional, only on 409 api_client_limit: the most live (not deleted) api-clients the owning tenant may hold.","type":"integer","example":10},"current":{"format":"int32","description":"Optional, only on 409 api_client_limit: how many live (not deleted) api-clients the owning tenant holds now.","type":"integer","example":10}},"title":"ApiError"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

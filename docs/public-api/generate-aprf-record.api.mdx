@@ -1,0 +1,72 @@
+---
+id: generate-aprf-record
+title: "Generate APRF record"
+description: "Generate an APRF TXT record for a domain, an optional DKIM selector, a RUA list and an optional SDI declaration"
+sidebar_label: "Generate APRF record"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFV+1v2jgY/1cs39dAaLX7kmnSWOkmbmtXAb2bhLjKOA/Ea2xntkPhUP7302MnQIC2qnTS9UtD8ry//PzzlqZguRGFE1rRhH4BBYY5IEyR/t3oM5n8mBADXJuULLQhjKRaMqEiFNBei+Vk8HV4QyzkwJ02EWFkdN8nubCOMJW2JMeDIUmB58ww7zGiuoDwPExpQpe1/35hFiPvlka0YIZJcGAsTaaziBr4VYJ1n3S6ocnW/xQGUpo4U0JEuVYOlMNPrChywb35+KfFDLfU8gwkwye3KYAmVM9/Anfox2AwToDFr5Kt+0u4sQeSqpRzMDSisGayyIEmv/d6veiohpMMiGRrIUtJ2BKIXhCXAeGMZ0CEIlLkubDAtUotmfZmnQU4npFU2YhMOxezzsJoGcRpFdFQ8IMorDNCLQ+jaJ66XEtUaVrxslIjdUGPM2j1kzhNLNcF+CzqWXD6PdFSOPxYlPNc2Iyw5iPXK0BvBFZgNjtDGJkpWT9NDVgbiryLZkoNFNo4+/Ewl1nUxM+MYRsaUeFA2tO8Ksw6Fa93NQOWwiuFGYulAtMZqoUO1cQBfLWcf/sg9sM4bXwdWsCEhPPyOOLjVJxo1f0+qtWRYrOno7AKtKqCGVtoVZf2stfDf+3O0v9sPUKYt0zCm0YzjMhzaqrMczZHvbDKZ4a1+8AKs+g+BP+PsOme9TDxlt/iYfJjslf/k+XlG/VXHxAwVxfviSnZB8lE7nRyZqjfoxcwRpvDOX5uvp+p/iNszkXXbvZX2DTgI8FatoRWZ26G4/Hw9svD4Hb8MLq++j4aYGSN5KvWh8qBKXTOHKQkKyVTHQMsxeLs3FURZWZ5Np+2sb5ZlhKUs6S0gPBCxN78UQYsTUU4Tu5aNTlFBOyllKDScNi8mtKoJU+0Ipl+wmAWYl2jH7YTUlIYPc9Bniwv9mVfwzr7o929aYpzfvP9brQWpTXT7QndTdKz+BAQoQaId+cw4RNLyQ5HIvru8vJU5l4VRnMMHNt7rZxwmwC6wEuDP5Lpls6BGQTX6azCeBh2fkoHt2PyTevHssAoJbhM41FfaOvnmrmMJjReXcSpsp3cC8a443FDBjyCmlU4/7e0NDlNaOZcYZM4ZoW47AKzm1Qywz0IHLf1m1gBxYiaYMeIcWFoPvmQ+yUGsRsPtH1iZUeNNro0hHGsBnH6ERQpLZ52rHQZKCc4w4C9C5o0NYnqh8/aSOZoQv/4y8PN/AX/b7OxA+/XNKKWmyqiGiO/PFzS8CKii1w/+TIJiSeFCKdG6TJtxD9+Se5bzSgZP+hFCqvYAMuljXcv48Jop7nOY12AEmmHa6WAuxit+px1EToTvmM04cFD4EL4EW+eIgoItHjM+P8R1YtFLhQ8hP6gdvuFX4PjMuE7PP9Ge2J53cDkIRGs2V5NyFpH2yHpajGrNuN5lubU5KWhJy0O0qIgNc8Q+AE7Vi/9NbObwU1/dEX6d0MaUdyWMLcX3V63dzLNe/k7pG8c1chAc4/CDTdHqsC4b7ryJ/ZejUZHe9hewSqi606ulz7GFwRjIZcxynULj8dzxh+XRpcqvdK5T/e3z/4PsTR3E1i7VhRYCgQSydRBlLtV9VcY09wjWhXY7onQ/3DrqRfNwdrFRY7jVNUF3daIOKUrT8x3mIgVKMyCRrtLEs5NhiiaTOl2O2cW7k1eVfj6VwlmE25LK2ZEYCzTWRXtJmxakwh6FcrQqU+XVWA+p9ywihqNPudQuBdlD4H+7vsYQWdeX9ekTlHHsCfcDvYUWGmolV98/25Lc6aWpWciNNjEXrM2UB7BnM+qIVRqcxDhdhskJojXVUWjOhWP37SaVVX1L8B7LUA=
+sidebar_class_name: "post api-method"
+info_path: public-api/easydmarc-api
+custom_edit_url: null
+show_extensions: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate APRF record"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dns-lookup/aprf/generate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generate an APRF TXT record for a domain, an optional DKIM selector, a RUA list and an optional SDI declaration
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"maxAgeMs":{"type":"number","example":5000,"description":"The maximum age of the cache in milliseconds [0]-fetch dns, [-1]-from cache"},"domain":{"type":"string","example":"example.com"},"selector":{"type":"string","example":"selector1","description":"DKIM selector to scope the record to; omit to publish a record covering every selector"},"ruaAddresses":{"example":["reports@example.com"],"type":"array","items":{"type":"string"}},"sdi":{"type":"object","properties":{"header":{"type":"string","example":"Signer-Info"},"separator":{"type":"string","example":"^"}},"required":["header","separator"],"title":"AprfSdi"}},"required":["domain","ruaAddresses"],"title":"AprfGenerateRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"domainName":{"type":"string","example":"example.com"},"recordName":{"type":"string","nullable":true,"example":"selector1._aprf._domainkey.example.com"},"recordType":{"type":"string","nullable":true,"example":"TXT"},"recordValue":{"type":"string","nullable":true,"example":"v=APRFv1; rua=mailto:reports@example.com;"},"errors":{"type":"array","items":{"type":"object","properties":{"key":{"type":"string","description":"Key of the message","example":"MISSING_DNS_RECORD"},"message":{"type":"string","description":"Interpolated human-readable message"},"args":{"type":"object","description":"Arguments used to interpolate the message","additionalProperties":{"type":"string"}},"recommendation":{"type":"string","description":"Recommendation on how to fix the reported problem"}},"required":["key","message","args"],"title":"AprfMessage"}}},"required":["domainName","recordName","recordType","recordValue","errors"],"title":"AprfGenerateResponse"}}}},"400":{"description":"Bad Request"},"422":{"description":"Unprocessable Entity"}}}
+>
+  
+</StatusCodes>
+
+
+      
