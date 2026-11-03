@@ -28,18 +28,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Download the published spec
+        # specs/easydmarc-openapi.json in git is only a local-dev snapshot; the site is
+        # always built from the URL in the EASYDMARC_PUBLIC_API_SPEC_URL repository variable
+        run: node scripts/download-spec.mjs
+        env:
+          EASYDMARC_PUBLIC_API_SPEC_URL: ${{ vars.EASYDMARC_PUBLIC_API_SPEC_URL }}
+
       - name: Regenerate API docs from the published spec
         # clean first: the OpenAPI plugin never overwrites an existing sidebar, so new tag groups
         # (and removed endpoints) would otherwise stay invisible even though the spec changed
         run: npx docusaurus clean-api-docs all && npx docusaurus gen-api-docs all
-        env:
-          EASYDMARC_PUBLIC_API_SPEC_URL: ${{ vars.EASYDMARC_PUBLIC_API_SPEC_URL }}
 
       - name: Build
         run: npx docusaurus build
-        env:
-          EASYDMARC_PUBLIC_API_SPEC_URL: ${{ vars.EASYDMARC_PUBLIC_API_SPEC_URL }}
-          #BASE_URL: /${{ github.event.repository.name }}/
+        #env:
+        #  BASE_URL: /${{ github.event.repository.name }}/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
