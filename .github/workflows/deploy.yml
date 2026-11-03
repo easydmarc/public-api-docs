@@ -28,8 +28,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate API docs
-        run: npx docusaurus gen-api-docs all
+      - name: Regenerate API docs from the published spec
+        # clean first: the OpenAPI plugin never overwrites an existing sidebar, so new tag groups
+        # (and removed endpoints) would otherwise stay invisible even though the spec changed
+        run: npx docusaurus clean-api-docs all && npx docusaurus gen-api-docs all
         env:
           EASYDMARC_PUBLIC_API_SPEC_URL: ${{ vars.EASYDMARC_PUBLIC_API_SPEC_URL }}
 
