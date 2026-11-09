@@ -1,0 +1,7 @@
+include:
+  # git-flow:check fails a merge request that breaks the git flow (see easydmarc/git-flow-policy).
+  - component: $CI_SERVER_FQDN/easydmarc/git-flow-policy/check@0.2.0
+    inputs:
+      # A normal stage: this pipeline has no other merge request job, and GitLab creates no pipeline whose only jobs sit in .post.
+      stage: test
+
