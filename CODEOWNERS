@@ -1,0 +1,19 @@
+# Code owners. A release or hotfix into the default branch needs the approval of one owner who is not its author.
+* @aharon5 @noro.isakhanyan @gevorg.aghakhanyan
+
+# DevOps files. A change of them is approved by one of the DevOps team, not by the owners above: the last line
+# that matches a file counts.
+.gitlab-*.yml @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+/ci/ @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+/.gitmodules @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+/policy-template @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+/dev-scripts @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+deployments/ @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+Dockerfile* @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+.dockerignore @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+docker-*entrypoint* @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+Caddyfile @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+/docker/nginx.conf @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1 @gevorg.aghakhanyan
+
+# A change of the owners is approved by one of these people.
+/CODEOWNERS @gevorg.aghakhanyan @alexandershelega @jor.khachatryan.93 @tigran.shahverdyan1 @rafayel.sardaryan @levon.ananyan1
